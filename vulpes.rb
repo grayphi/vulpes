@@ -2,4 +2,5 @@
 
 require_relative 'lib/core'
 
-p Vulpes::Core::VERSION
+p "Current Running Version :: #{Vulpes::Core::VERSION}"
+

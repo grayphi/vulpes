@@ -1,1 +1,1 @@
-require_relative 'vulpes/vulpes'
+require_relative 'vulpes/loader'
