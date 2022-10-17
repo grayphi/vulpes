@@ -36,6 +36,10 @@ def parseargs(args)
       opts[:disable_warnings] = true
    end
 
+   opt.on('--no-pretty', 'Do not prettify output.') do
+      opts[:no_pretty] = true
+   end
+
    begin
       opt.parse!(args)
    rescue OptionParser::InvalidOption => e
@@ -56,11 +60,14 @@ options = parseargs(ARGV)
 Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
 Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
 Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
+Vulpes::Constants.add('no_pretty', options[:no_pretty]) if options[:no_pretty]
 
 Vulpes::Config.configLoader
 
 
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
+
+
 
 

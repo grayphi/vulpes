@@ -28,7 +28,7 @@ module Vulpes
 
       def self.has(key)
          if self.isKeyOK?(key)
-            @@CONSTANTS.has_key?(key)
+            @@CONSTANTS.has_key? :"#{key}"
          else
             raise InvalidKeyError, "key: '#{key}' is invalid."
          end
