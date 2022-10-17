@@ -10,7 +10,7 @@ def parseargs(args)
    opt = {}
    opt = OptionParser.new
 
-   opt.banner = "===BANER==="
+   opt.banner = "=======================Vulpes BANER======================="
    opt.separator('')
    opt.separator('Options:')
 
@@ -20,17 +20,21 @@ def parseargs(args)
    end
 
    opt.on('-v', '--verbose', 'Be Verbose.') do |v|
-      opts[:verbose] = 0 if opts[:verbose].nil?
-      opts[:verbose] += 1
+      opts[:verbose] = true
    end
 
    opt.on('-V', '--version', 'Print Version and exit.') do
-         puts "#{Vulpes::Core::VERSION}"
-         exit
+      puts "#{Vulpes::VERSION}"
+      exit
    end
 
+   opt.on('-D', '--debug', 'Turn on the debugger.') do
+      opts[:debug] = true
+   end
 
-
+   opt.on('-S', '--silent', 'Silent the Warning messages.') do
+      opts[:disable_warnings] = true
+   end
 
    begin
       opt.parse!(args)
@@ -47,5 +51,16 @@ def parseargs(args)
    opts
 end
 
-
 options = parseargs(ARGV)
+
+Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
+Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
+Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
+
+Vulpes::Config.configLoader
+
+
+Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
+Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
+
+
