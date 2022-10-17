@@ -65,11 +65,25 @@ module Vulpes
                kvs = line.split(/(:=|:|=)/)
                key = kvs[0]
                sep = kvs[1]
-               val = kvs[2..].join
+               val = kvs[2..].join unless kvs[2].nil?
 
                Vulpes::Logger.debug("  >> Got Key: <#{key}>, sep: <#{sep}>, value: <#{val}>")
 
+               if sep == ':'
+                  # strict value, add as-is
 
+
+               elsif sep == ':='
+                  # loosy, only references are expanded
+
+               elsif sep == "="
+                  # very loosy, references are expanced, spaces are removed
+
+               else
+                  # must be a wrong or empty seperator, invalid key, value pair
+                  raise VulpesConfigError, "Invalid sep: <#{sep}>, in config file(#{file})"
+               end
+                     
 
             end
          end
