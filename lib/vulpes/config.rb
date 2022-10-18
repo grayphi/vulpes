@@ -1,7 +1,7 @@
 module Vulpes
    class Config < Vulpes::Object
       @@CONFIG = {}
-
+      @@config_loaded = false
 
       def initialize()
          super("VulpesConfig")
@@ -30,14 +30,44 @@ module Vulpes
       def self.configLoader
          # load tool defaults
          config_file = File.join(Vulpes::Constants.get('VULPES_BASE'), 'config', 'vulpes.config')
-         self.load(config_file)
-         # load system
-         # load user
-         # load runtime
+         sys_conf_file = "/etc/vulpes/config/vulpes.config"
+         usr_conf_file = "~/.vulpes/config/vulpes.config"
+         
+         self.load(config_file) if File.exist? config_file
+         self.load(sys_conf_file) if File.exist? sys_conf_file
+         self.load(usr_conf_file) if File.exist? usr_conf_file
+
+         Vulpes::Constants.add('CONFIG', @@CONFIG)
+         @@config_loaded = true
+      end
+
+      def self.loadFile(file)
+         self.configLoader unless @@config_loaded
+
+         Vulpes::Logger.debug "Loading config from file(#{file}):"
+
+         self.load file if !"#{file}".empty? and File.exist? file
 
          Vulpes::Constants.add('CONFIG', @@CONFIG)
       end
 
+      # When loading configuration from object variables, they are expected to 
+      #  be exact values and will be used as-is.
+      def self.loadConfig(conf={})
+         self.configLoader unless @@config_loaded
+
+         Vulpes::Logger.debug "Loading config from object(#{conf}):"
+
+         conf.each do |k,v|
+            if self.isKeyOK?(k)
+               self.update(k, v)
+            else
+               raise InvalidKeyError, "Invalid key supplied, key: <#{k}>"
+            end
+         end unless conf.nil?
+
+         Vulpes::Constants.add('CONFIG', @@CONFIG)
+      end
 
       private
       # any combination of [A-Z] [a-z] [0-9] . _ that doesn't starts or ends with .

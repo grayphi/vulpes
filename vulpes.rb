@@ -40,6 +40,21 @@ def parseargs(args)
       opts[:no_pretty] = true
    end
 
+   opt.on('--config-file FILE', String,'Read config from file.') do |f|
+      opts[:config_file] = f
+   end
+
+   opt.on('--config-set KEY=VAL', String, "Set key in config.") do |pair|
+      kvs = pair.split(/(=)/)
+      key = kvs[0].strip
+      val = kvs[2..].join unless kvs[2].nil?
+
+      kvp = opts[:config_obj] || {}
+      kvp[:"#{key}"] = val
+
+      opts[:config_obj] = kvp
+   end
+
    begin
       opt.parse!(args)
    rescue OptionParser::InvalidOption => e
@@ -63,7 +78,8 @@ Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
 Vulpes::Constants.add('no_pretty', options[:no_pretty]) if options[:no_pretty]
 
 Vulpes::Config.configLoader
-
+Vulpes::Config.loadFile options[:config_file]
+Vulpes::Config.loadConfig options[:config_obj]
 
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
