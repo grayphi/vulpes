@@ -86,24 +86,25 @@ module Vulpes
 
       # initialize variables only if system is linux based
       def self.init_vars
-         @@c_red = self.prettify? ? `tput setaf 196` : ""
-         @@c_cyan = self.prettify? ? `tput setaf 44` : ""
-         @@c_light_green_2 = self.prettify? ? `tput setaf 10` : ""
-         @@c_yellow = self.prettify? ? `tput setaf 190` : ""
-         @@c_orange = self.prettify? ? `tput setaf 202` : ""
-         @@c_light_blue = self.prettify? ? `tput setaf 42` : ""
-         @@c_light_green = self.prettify? ? `tput setaf 2` : ""
-         @@c_light_red = self.prettify? ? `tput setaf 9` : ""
+        flag = self.prettify?
+        @@c_red =  flag ? `tput setaf 196` : ""
+        @@c_cyan = flag ? `tput setaf 44` : ""
+        @@c_light_green_2 = flag ? `tput setaf 10` : ""
+        @@c_yellow = flag ? `tput setaf 190` : ""
+        @@c_orange = flag ? `tput setaf 202` : ""
+        @@c_light_blue = flag ? `tput setaf 42` : ""
+        @@c_light_green = flag ? `tput setaf 2` : ""
+        @@c_light_red = flag ? `tput setaf 9` : ""
 
-         @@b_black = self.prettify? ? `tput setab 16` : ""
-         @@b_dark_black = self.prettify? ? `tput setab 233` : ""
-         @@b_light_black = self.prettify? ? `tput setab 236` : ""
+        @@b_black = flag ? `tput setab 16` : ""
+        @@b_dark_black = flag ? `tput setab 233` : ""
+        @@b_light_black = flag ? `tput setab 236` : ""
 
-         @@s_bold = self.prettify? ? `tput bold` : ""
-         @@s_dim = self.prettify? ? `tput dim` : ""
-         @@s_underline = self.prettify? ? `tput smul` : ""
+        @@s_bold = flag ? `tput bold` : ""
+        @@s_dim = flag ? `tput dim` : ""
+        @@s_underline = flag ? `tput smul` : ""
 
-         @@p_reset = self.prettify? ? `tput sgr0` : ""
+        @@p_reset = flag ? `tput sgr0` : ""
       end
    end
 end
