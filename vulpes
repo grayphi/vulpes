@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+__FILE__=$(readlink -f $0)
+__DIR__=$(dirname $__FILE__)
+
+cd $__DIR__
+
+ruby vulpes.rb "$@"
