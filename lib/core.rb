@@ -5,6 +5,7 @@ require 'vulpes/constants'
 require 'vulpes/errors'
 require 'vulpes/config'
 require 'vulpes/logger'
+require 'vulpes/module'
 
 c_file = __FILE__
 while File.symlink?(c_file)
