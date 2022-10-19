@@ -106,5 +106,7 @@ module Vulpes
 
         @@p_reset = flag ? `tput sgr0` : ""
       end
+
+      private_class_method :__cont, :_color, :prettify?, :init_vars
    end
 end

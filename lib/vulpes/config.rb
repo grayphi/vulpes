@@ -29,9 +29,9 @@ module Vulpes
 
       def self.configLoader
          # load tool defaults
-         config_file = File.join(Vulpes::Constants.get('VULPES_BASE'), 'config', 'vulpes.config')
-         sys_conf_file = "/etc/vulpes/config/vulpes.config"
-         usr_conf_file = "~/.vulpes/config/vulpes.config"
+         config_file = Vulpes::Defaults::Config.config_file
+         sys_conf_file = Vulpes::Defaults::Config.sys_conf_file
+         usr_conf_file = Vulpes::Defaults::Config.usr_conf_file
          
          self.load(config_file) if File.exist? config_file
          self.load(sys_conf_file) if File.exist? sys_conf_file
@@ -162,5 +162,7 @@ module Vulpes
             self.update(k, v)
          end
       end
+
+      private_class_method :isKeyOK?, :update, :load
    end
 end
