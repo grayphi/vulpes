@@ -46,7 +46,7 @@ module Vulpes
 
          Vulpes::Logger.debug "Loading config from file(#{file}):"
 
-         self.load file if !"#{file}".empty? and File.exist? file
+         self.load file if !"#{file}".empty? && File.exist?(file)
 
          Vulpes::Constants.add('CONFIG', @@CONFIG)
       end
@@ -91,7 +91,7 @@ module Vulpes
             f.each_line do |line|
                line_no += 1
                line.lstrip!
-               next if line.empty? or line.start_with? '#'
+               next if line.empty? || line.start_with?('#')
                line.chomp!
 
                Vulpes::Logger.debug(" > Processing line <#{line}>")
