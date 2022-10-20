@@ -20,11 +20,18 @@ module Vulpes
          puts "[#{prompt}]: #{msg}" unless Vulpes::Constants.get('disable_warnings')
       end
 
-      def self.info(msg)
-         prompt = @@pp.as_cyan(@@pp.as_bold 'INFO')
-         puts "[#{prompt}]: #{msg}" if Vulpes::Constants.get('verbose')
+      def self.info(msg, prompt=nil)
+         prompt ||= "INFO"
+         prompt = @@pp.as_cyan(@@pp.as_bold "#{prompt}")
+         puts "[#{prompt}]: #{msg}"
       end
       
+      def self.verbose(msg, prompt=nil)
+         prompt ||= '*'
+         prompt = @@pp.as_cyan(@@pp.as_bold "#{prompt}")
+         puts "[#{prompt}]: #{msg}" if Vulpes::Constants.get('verbose')
+      end
+
       def self.error(msg)
          prompt = @@pp.as_red(@@pp.as_bold 'ERROR')
          STDERR.puts "[#{prompt}]: #{msg}"
