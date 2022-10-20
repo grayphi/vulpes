@@ -5,7 +5,6 @@ module Vulpes
       def initialize(obj={})
          super("VulpesDork")
 
-         Vulpes::Logger::info(obj, 'SUPER.inspect')
          @name = obj[:name] || ""
          @ghdb_url = obj[:ghdb_url]  || ""
          @severity = obj[:severity] || ""
