@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2019-02-15",
             author: "Bruno Schmid",
             dork: <<~EDORK,
-intitle:"index of" "Windows\Cookies"
+intitle:"index of" "Windows\\Cookies"
 EDORK
             description: <<~EDESC
 Cookies from Windows users.
