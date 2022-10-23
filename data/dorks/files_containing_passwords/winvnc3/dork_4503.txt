@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4503
+Severity:		  5 
+Category:         files_containing_passwords.winvnc3
+Published Date:   2017-05-29
+Author:           anonymous
+GoogleDork:       ext:reg " [HKEY_CURRENT_USER\Software\ORL\WinVNC3]" -git
+Description:      ext:reg " [HKEY_CURRENT_USER\Software\ORL\WinVNC3]" -git
+
+
+Finds files with WinVNC passwords Dxtroyer

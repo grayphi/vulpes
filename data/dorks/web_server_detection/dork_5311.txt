@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5311
+Severity:		  3 
+Category:         web_server_detection
+Published Date:   2019-07-31
+Author:           Reza Abasi
+GoogleDork:       intitle:"Apache2 Ubuntu Default Page: It works"
+Description:      intitle:"Apache2 Ubuntu Default Page: It works"
+
+
+web server detection:
+ intitle:"Apache2 Ubuntu Default Page: It works"
+ 
+ Reza Abasi(Turku)
+ 

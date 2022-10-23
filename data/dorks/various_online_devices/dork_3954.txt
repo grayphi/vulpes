@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3954
+Severity:		  5 
+Category:         various_online_devices
+Published Date:   2014-07-03
+Author:           anonymous
+GoogleDork:       SiteScope inurl:/SiteScope/cgi/go.exe/SiteScope?page=
+Description:      SiteScope inurl:/SiteScope/cgi/go.exe/SiteScope?page=
+
+
+inurl:/SiteScope/cgi/go.exe/SiteScope?page= twitter @firebitsbr

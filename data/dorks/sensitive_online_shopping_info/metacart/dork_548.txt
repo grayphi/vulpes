@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/548
+Severity:         3
+Category:         sensitive_online_shopping_info.metacart
+Published Date:   2004-10-10
+Author:           anonymous
+GoogleDork:       "More Info about MetaCart Free"
+Description:      "More Info about MetaCart Free"
+
+
+MetaCart is an ASP based shopping Cart application with SQL database. A security vulnerability in the free demo version of the product (MetaCartFree) allows attackers to access the database used for storing user provided data (Credit cart numbers, Names, Surnames, Addresses, E-mails, etc).

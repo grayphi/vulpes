@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/666
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2004-11-12
+Author:           anonymous
+GoogleDork:       filetype:pst pst -from -to -date
+Description:      filetype:pst pst -from -to -date
+
+
+Finds Outlook PST files which can contain emails, calendaring and address information.

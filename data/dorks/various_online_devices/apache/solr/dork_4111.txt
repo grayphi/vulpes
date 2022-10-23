@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4111
+Severity:		  6 
+Category:         various_online_devices.apache.solr
+Published Date:   2015-11-05
+Author:           anonymous
+GoogleDork:       intitle:"Solr Admin" "Core Admin" "Thread Dump"
+Description:      intitle:"Solr Admin" "Core Admin" "Thread Dump"
+
+
+Apache Solr admin interfaces. - Andy G - twitter.com/vxhex

@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5464
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2019-08-28
+Author:           Reza Abasi
+GoogleDork:       intitle:"index of" "ftp.passwd"
+Description:      intitle:"index of" "ftp.passwd"
+
+
+files containing password:
+ 
+ intitle:"index of" "ftp.passwd"
+ 
+ Reza Abasi(Turku)
+ 

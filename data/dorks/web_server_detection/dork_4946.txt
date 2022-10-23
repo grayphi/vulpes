@@ -1,0 +1,24 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4946
+Severity:         5 
+Category:         web_server_detection
+Published Date:   2018-09-12
+Author:           Alfie
+GoogleDork:       inurl:/_hcms/
+Description:      inurl:/_hcms/
+
+
+Google dork *description: * Get all sites using Hubspot's Content Mangement
+ System (CMS)
+ 
+ *Google Search: *inurl:/_hcms/
+ 
+ Submitted by: Alfie
+ 
+ Website: (https://the-infosec.com)
+ 
+ 
+ -- 
+ Regards,
+ Alfie.
+ the-infosec.com
+ 

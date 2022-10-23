@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5656
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2019-11-22
+Author:           shivaGprasadh
+GoogleDork:       filetype:"xls | xlsx | doc | docx | ppt | pptx | pdf" site:gov "FOUO" | "NOFORN" | "Confidential"
+Description:      filetype:"xls | xlsx | doc | docx | ppt | pptx | pdf" site:gov "FOUO" | "NOFORN" | "Confidential"
+
+
+*Google Dork:* filetype:"xls | xlsx | doc | docx | ppt | pptx | pdf" site:gov "FOUO" | "NOFORN" | "Confidential"
+ 
+ *Description: Vulnerable_Files containing confidential information
+ 
+ *Author: * shivaGprasadh

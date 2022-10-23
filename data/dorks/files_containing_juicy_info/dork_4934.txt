@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4934
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2018-08-28
+Author:           Bl4kd43m0n
+GoogleDork:       inurl:conf/tomcat-users.xml -github
+Description:      inurl:conf/tomcat-users.xml -github
+
+
+inurl:conf/tomcat-users.xml -github
+ 
+ Find some login information of apache tomcat
+ 

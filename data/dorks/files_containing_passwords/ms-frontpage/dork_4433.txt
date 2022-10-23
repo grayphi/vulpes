@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4433
+Severity:		  6 
+Category:         files_containing_passwords.ms-frontpage
+Published Date:   2017-04-13
+Author:           Dxtroyer
+GoogleDork:       "# -FrontPage-" ext:pwd
+Description:      "# -FrontPage-" ext:pwd
+
+
+Finds MS Frontpage passwords!
+ 
+ 
+ 
+ Dxtroyer

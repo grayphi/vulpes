@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5743
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-02-20
+Author:           Magrabur Alam Sofily
+GoogleDork:       intitle:"index of" "smtp.log"
+Description:      intitle:"index of" "smtp.log"
+
+
+*Dork:* intitle:"index of" "smtp.log"
+ *Description:*
+ It finds SMTP logs
+ 
+ *Author:* Magrabur Alam Sofily
+ www.linkedin.com/in/magrabur-sofily
+ @masofily
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1296
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2006-03-21
+Author:           anonymous
+GoogleDork:       intitle:"EZPartner" -netpond
+Description:      intitle:"EZPartner" -netpond
+
+
+EZPartner is a great marketing tool that will help you increase your sales by sending webmaster affiliate traffic to your sites. This search finds the logins.

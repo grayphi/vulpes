@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5635
+Severity:		  5 
+Category:         sensitive_directories
+Published Date:   2019-11-11
+Author:           Reza Abasi
+GoogleDork:       intitle:"index of" "ws_ftp.log"
+Description:      intitle:"index of" "ws_ftp.log"
+
+
+Sensitive directories:
+ 
+ intitle:"index of" "ws_ftp.log"
+ 
+ Reza Abasi(Turku)
+ 

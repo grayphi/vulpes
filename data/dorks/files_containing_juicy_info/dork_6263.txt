@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6263
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-10
+Author:           Akhil G Krishnan
+GoogleDork:       intitle:index.of.?.db
+Description:      intitle:index.of.?.db
+
+
+Dor: intitle:index.of.?.db
+ Description: Used to find database of different websites
+ 
+ -- 
+ With Regards,
+ Akhil G Krishnan
+ 

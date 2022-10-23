@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5731
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-02-10
+Author:           Debashis Pal
+GoogleDork:       inurl:"saw.dll" AND intitle:"Sign In"
+Description:      inurl:"saw.dll" AND intitle:"Sign In"
+
+
+# Dork #
+ 
+ inurl:"saw.dll" AND intitle:"Sign In"
+ 
+ Login Portals.
+ 

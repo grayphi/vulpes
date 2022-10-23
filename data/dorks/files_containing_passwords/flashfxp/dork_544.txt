@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/544
+Severity:		  5 
+Category:         files_containing_passwords.flashfxp
+Published Date:   2004-10-10
+Author:           anonymous
+GoogleDork:       filetype:ini inurl:flashFXP.ini
+Description:      filetype:ini inurl:flashFXP.ini
+
+
+FlashFXP offers the easiest and fastest way to transfer any file using FTP, providing an exceptionally stable and robust program that you can always count on to get your job done quickly and efficiently. There are many, many features available in FlashFXP.The flashFXP.ini file is its configuration file and may contain usernames/passwords and everything else that is needed to use FTP.

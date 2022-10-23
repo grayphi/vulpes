@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1344
+Severity:		  4 
+Category:         error_messages.mysql
+Published Date:   2006-04-25
+Author:           anonymous
+GoogleDork:       "Unable to jump to row" "on MySQL result index" "on line"
+Description:      "Unable to jump to row" "on MySQL result index" "on line"
+
+
+another error message

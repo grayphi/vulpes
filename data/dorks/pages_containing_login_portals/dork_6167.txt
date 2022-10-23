@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6167
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-06-02
+Author:           Abhinav Porwal
+GoogleDork:       inurl:"resetpassword.jsf"
+Description:      inurl:"resetpassword.jsf"
+
+
+Dork:
+ inurl:"resetpassword.jsf"
+ 
+ Description: This google dork lists out the various pages containing reset
+ passwords portals.
+ 
+ Author: Abhinav Porwal
+ 

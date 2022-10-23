@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6532
+Severity:		  4 
+Category:         footholds.httpd
+Published Date:   2020-09-11
+Author:           Navaneeth Shyam
+GoogleDork:       intitle:"index of" "httpd.pid"
+Description:      intitle:"index of" "httpd.pid"
+
+
+Dork: intitle:"index of" "httpd.pid"
+ 
+ 
+ *Regards,*
+ *Navaneeth Shyam*
+ *Security Researcher*
+ 
+ 

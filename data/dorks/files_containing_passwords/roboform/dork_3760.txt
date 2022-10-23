@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3760
+Severity:		  5 
+Category:         files_containing_passwords.roboform
+Published Date:   2011-12-12
+Author:           anonymous
+GoogleDork:       "My RoboForm Data" "index of"
+Description:      "My RoboForm Data" "index of"
+
+
+This dork looks for Roboform password files. Author: Robert McCurdy 

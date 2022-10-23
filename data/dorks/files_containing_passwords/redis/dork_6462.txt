@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6462
+Severity:		  8 
+Category:         files_containing_passwords.redis
+Published Date:   2020-08-05
+Author:           Alexandros Pappas
+GoogleDork:       allintext:"redis_password" ext:env
+Description:      allintext:"redis_password" ext:env
+
+
+# Google Dork: allintext:"redis_password" ext:env
+ # Exposed Redis Passwords found in .env files.
+ # Date: 05/08/2020
+ # Exploit Author: Alexandros Pappas
+ 

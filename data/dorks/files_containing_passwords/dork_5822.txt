@@ -1,0 +1,20 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5822
+Severity:		  7 
+Category:         files_containing_passwords
+Published Date:   2020-03-23
+Author:           Alexandros Pappas
+GoogleDork:       "configure account user encrypted" ext:cfg
+Description:      "configure account user encrypted" ext:cfg
+
+
+# Google Dork: "configure account user encrypted" ext:cfg
+ intext:"configure account user encrypted"
+ intext:"configure account admin encrypted"
+ "configure account admin encrypted" ext:cfg
+ 
+ # By using this dork, user passwords in configuration files can be found.
+ 
+ # Date: 21/03/2020
+ 
+ # Exploit Author: Alexandros Pappas
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4108
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2015-11-02
+Author:           anonymous
+GoogleDork:       intitle:index.of inurl:grades site:edu
+Description:      intitle:index.of inurl:grades site:edu
+
+
+Directories containing grades. Decoy

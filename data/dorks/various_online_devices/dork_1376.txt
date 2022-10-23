@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1376
+Severity:		  5 
+Category:         various_online_devices
+Published Date:   2006-05-04
+Author:           anonymous
+GoogleDork:       inurl:cgi-bin/guestimage.html
+Description:      inurl:cgi-bin/guestimage.html
+
+
+just more more MOBOTIX's

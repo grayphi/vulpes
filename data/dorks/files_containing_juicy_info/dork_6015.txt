@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6015
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-05-05
+Author:           Juveria Banu
+GoogleDork:       intitle:"index of" "login.txt"
+Description:      intitle:"index of" "login.txt"
+
+
+Exposes the login.txt file containing login credentials
+ 
+ -Juveria Banu
+ 

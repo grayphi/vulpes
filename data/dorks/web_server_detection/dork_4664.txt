@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4664
+Severity:		  6 
+Category:         web_server_detection
+Published Date:   2018-02-02
+Author:           Rootkit_Pentester
+GoogleDork:       "Application Blocked!" "Google bot"
+Description:      "Application Blocked!" "Google bot"
+
+
+Pages with black list or behind Fortigate firewall.
+ Regards.
+ Rootkit Pentester.
+ 

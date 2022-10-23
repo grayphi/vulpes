@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3977
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2014-11-24
+Author:           anonymous
+GoogleDork:       filetype:mobileconfig intext:password OR intext:pass
+Description:      filetype:mobileconfig intext:password OR intext:pass
+
+
+filetype:mobileconfig intext:password OR intext:pass

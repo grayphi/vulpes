@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/18
+Severity:		  2 
+Category:         files_containing_passwords
+Published Date:   2003-06-24
+Author:           anonymous
+GoogleDork:       people.lst
+Description:      people.lst
+
+
+*sigh*

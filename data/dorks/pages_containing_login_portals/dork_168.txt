@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/168
+Severity:		  4
+Category:         pages_containing_login_portals
+Published Date:   2004-04-20
+Author:           anonymous
+GoogleDork:       inurl:":10000" intext:webmin
+Description:      inurl:":10000" intext:webmin
+
+
+Webmin is a html admin interface for Unix boxes. It is run on a proprietary web server listening on the default port of 10000.

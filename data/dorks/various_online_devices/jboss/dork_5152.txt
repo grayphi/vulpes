@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5152
+Severity:		  3 
+Category:         various_online_devices.jboss
+Published Date:   2019-03-11
+Author:           Lazy Hacker
+GoogleDork:       intitle:'Welcome to JBoss AS'
+Description:      intitle:'Welcome to JBoss AS'
+
+
+*Search: * JBoss Administrator Console
+ *Google Dorks:*intitle:'Welcome to JBoss AS'
+ *Default Credentials:* admin:admin
+ 
+ *Author:* Rishabh Sharma (Lazy Hacker)
+ 

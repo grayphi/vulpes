@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4188
+Severity:		  6 
+Category:         various_online_devices.phppgadmin
+Published Date:   2016-01-26
+Author:           anonymous
+GoogleDork:       inurl:phpPgAdmin/browser.php intitle:"phpPgAdmin"
+Description:      inurl:phpPgAdmin/browser.php intitle:"phpPgAdmin"
+
+
+Dork For phpPgAdmin servers portal. Discovered for Rootkit Pentester. Regards.

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4084
+Severity:		  6 
+Category:         various_online_devices.printer
+Published Date:   2015-09-24
+Author:           anonymous
+GoogleDork:       inurl:printer/main.html
+Description:      inurl:printer/main.html
+
+
+This Dork reveals a lot of Printers Panels. Enjoy with moderation xD. This Dork is discovered by Rootkit Pentester.

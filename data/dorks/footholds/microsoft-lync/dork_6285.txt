@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6285
+Severity:		  7 
+Category:         footholds.microsoft-lync
+Published Date:   2020-06-16
+Author:           Kevin Randall
+GoogleDork:       allinurl:XFrame.html
+Description:      allinurl:XFrame.html
+
+
+Dork: allinurl:XFrame.html
+ 
+ Find Microsoft Lync Server AutoDiscover
+ 
+ Discovered By: Kevin Randall
+ 

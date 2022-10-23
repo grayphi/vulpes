@@ -1,0 +1,20 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6418
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2020-07-17
+Author:           Sachin Kattimani
+GoogleDork:       inurl:wp-content/plugins/all-in-one-wp-migration
+Description:      inurl:wp-content/plugins/all-in-one-wp-migration
+
+
+DORK: inurl:wp-content/plugins/all-in-one-wp-migration
+ 
+ https://wpvulndb.com/vulnerabilities/10151
+ 
+ This google dork gives us the advisories and vulnerabilities on wordpress
+ plugins
+ 
+ 
+ Thanks,
+ Sachin
+ 

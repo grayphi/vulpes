@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1374
+Severity:		  6 
+Category:         various_online_devices.camera
+Published Date:   2006-05-04
+Author:           anonymous
+GoogleDork:       (intitle:(EyeSpyFX|OptiCamFX) "go to camera")|(inurl:servlet/DetectBrowser)
+Description:      (intitle:(EyeSpyFX|OptiCamFX) "go to camera")|(inurl:servlet/DetectBrowser)
+
+
+just more cameras vendor site: http://www.eyespyfx.com/

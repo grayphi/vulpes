@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/976
+Severity:		  3 
+Category:         files_containing_passwords.exguestbook
+Published Date:   2005-05-11
+Author:           anonymous
+GoogleDork:       intext:"powered by EZGuestbook"
+Description:      intext:"powered by EZGuestbook"
+
+
+HTMLJunction EZGuestbook is prone to a database disclosure vulnerability. Remote users may download the database http://www.securityfocus.com/bid/13543/info/

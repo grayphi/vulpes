@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4895
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2018-07-20
+Author:           Rootkit_Pentester
+GoogleDork:       "air confirmation" "passenger(s)"
+Description:      "air confirmation" "passenger(s)"
+
+
+Dork with very juicy information.
+ 
+ Rootkit Pentester.
+ 

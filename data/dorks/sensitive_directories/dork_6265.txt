@@ -1,0 +1,11 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6265
+Severity:		  3 
+Category:         sensitive_directories
+Published Date:   2020-06-10
+Author:           bhumish
+GoogleDork:       index of logs.tar
+Description:      index of logs.tar
+
+
+# Dork: index of logs.tar
+ # Description: Juicy info

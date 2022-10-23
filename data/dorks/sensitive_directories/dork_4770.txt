@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4770
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2018-04-13
+Author:           Bruno Schmid
+GoogleDork:       intitle:"Index.Of.Applications (Parallels)" -stackoverflow -quora
+Description:      intitle:"Index.Of.Applications (Parallels)" -stackoverflow -quora
+
+
+Dork will give application folder of parallels virtual machines showing
+ what is installed in the virtual machines
+ 
+ 
+ 
+ 
+ Bruno Schmid
+ 

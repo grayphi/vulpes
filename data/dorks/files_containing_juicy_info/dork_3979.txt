@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3979
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2014-12-11
+Author:           anonymous
+GoogleDork:       ext:pem intext:BEGIN CERTIFICATE
+Description:      ext:pem intext:BEGIN CERTIFICATE
+
+
+Vulnerables CA files. By Rootkit.

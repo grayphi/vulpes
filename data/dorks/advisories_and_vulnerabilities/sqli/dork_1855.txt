@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1855
+Severity:		  5 
+Category:         advisories_and_vulnerabilities.sqli
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       Powered by Blox CMS from TownNews.com
+Description:      Powered by Blox CMS from TownNews.com
+
+
+Blox CMS SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12729

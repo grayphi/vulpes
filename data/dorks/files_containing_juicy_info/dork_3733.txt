@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3733
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2011-07-26
+Author:           anonymous
+GoogleDork:       inurl:server-info intitle:"Server Information" Apache Server Information
+Description:      inurl:server-info intitle:"Server Information" Apache Server Information
+
+
+Juicy information about the apache server installation in the website. -- *Regards, Fady Mohammed Osman.*

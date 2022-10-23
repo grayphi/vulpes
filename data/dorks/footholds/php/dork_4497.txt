@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4497
+Severity:		  4 
+Category:         footholds.php
+Published Date:   2017-05-25
+Author:           anonymous
+GoogleDork:       ext:php intext:"-rwxr-xr-x" site:.in
+Description:      ext:php intext:"-rwxr-xr-x" site:.in
+
+
+You can find the software affected at: ext:php intext:"-rwxr-xr-x" site:.in Armhacker666

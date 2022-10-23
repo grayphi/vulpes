@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4731
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-04-02
+Author:           Bruno Schmid
+GoogleDork:       intitle:"login form" "powered by" -tutorial
+Description:      intitle:"login form" "powered by" -tutorial
+
+
+Many login portals from several frameworks.
+ Also try intitle:"login form" "powered by" | "CMS" -tutorial
+ 
+ 
+ Bruno Schmid
+ 
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3907
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2013-11-25
+Author:           anonymous
+GoogleDork:       site:github.com inurl:"known_hosts" "ssh-rsa"
+Description:      site:github.com inurl:"known_hosts" "ssh-rsa"
+
+
+Finds SSH known_hosts files on GitHub. - Andy G - twitter.com/vxhex

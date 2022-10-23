@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4513
+everity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2017-06-07
+Author:           Dxtroyer
+GoogleDork:       inurl:"exit.php?url=" -entry_id
+Description:      inurl:"exit.php?url=" -entry_id
+
+
+Pages vulnerable to arbitrary redirection
+ 
+ 
+ 
+ Dxtroyer

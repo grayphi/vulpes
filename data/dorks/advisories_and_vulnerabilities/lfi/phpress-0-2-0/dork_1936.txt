@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1936
+Severity:		  6
+Category:         advisories_and_vulnerabilities.lfi.phpress-0-2-0
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       allinurl:/phpress/
+Description:      allinurl:/phpress/
+
+
+phpress 0.2.0 (adisplay.php lang) Local File Inclusion Vulnerability: https://www.exploit-db.com/exploits/4382

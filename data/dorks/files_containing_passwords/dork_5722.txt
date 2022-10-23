@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5722
+Severity:		  8 
+Category:         files_containing_passwords
+Published Date:   2020-02-03
+Author:           Bruno Schmid
+GoogleDork:       intitle:"index of" share.passwd OR cloud.passwd OR ftp.passwd -public
+Description:      intitle:"index of" share.passwd OR cloud.passwd OR ftp.passwd -public
+
+
+Dorks containing passwords.
+ 
+ 
+ Bruno Schmid
+ https://ch.linkedin.com/in/schmidbruno
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4383
+Severity:		  6 
+Category:         various_online_devices.router.arris
+Published Date:   2017-01-12
+Author:           anonymous
+GoogleDork:       inurl:cgi-bin "ARRIS Enterprises"
+Description:      inurl:cgi-bin "ARRIS Enterprises"
+
+
+Dork for Panels ARRIS Router. Enjoy healthy. Dork made by Rootkit Pentester.

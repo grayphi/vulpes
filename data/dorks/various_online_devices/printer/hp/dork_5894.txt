@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5894
+Severity:		  7 
+Category:         various_online_devices.printer.hp
+Published Date:   2020-04-16
+Author:           Prasad Lingamaiah
+GoogleDork:       inurl:SSI/index.htm
+Description:      inurl:SSI/index.htm
+
+
+inurl:SSI/index.htm
+ 
+ Category: Sensitive Information
+ 
+ Summary:
+ A Google dork that gives information about HP LaserJet Professional Printer.
+ 

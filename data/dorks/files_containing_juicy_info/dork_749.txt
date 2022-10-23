@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/749
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-12-04
+Author:           anonymous
+GoogleDork:       inurl:"/axs/ax-admin.pl" -script
+Description:      inurl:"/axs/ax-admin.pl" -script
+
+
+This system records visits to your site. This admin script allows you to display these records in meaningful graph and database formats.

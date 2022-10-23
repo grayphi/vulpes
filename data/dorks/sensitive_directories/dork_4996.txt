@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4996
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2018-10-23
+Author:           Alfie
+GoogleDork:       inurl:"/wp-json/" -wordpress
+Description:      inurl:"/wp-json/" -wordpress
+
+Google dork *description: * Sites running WordPress CMS and access to the
+wp-json API endpoint which *might* be vulnerable to content injection
+
+*Google Search: *inurl:"/wp-json/" -wordpress
+
+Submitted by: Alfie
+
+Website: (https://the-infosec.com)

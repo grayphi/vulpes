@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4960
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2018-09-21
+Author:           Miguel Santareno
+GoogleDork:       inurl:robots.txt intext:Disallow: /web.config
+Description:      inurl:robots.txt intext:Disallow: /web.config
+
+
+# Google Dork: inurl:robots.txt intext:Disallow: /web.config
+ # Description: Google Dork to find /web.config file in robots.txt
+ # Date: 2018-09-21
+ # Author: Miguel Santareno
+ # Contact: https://www.linkedin.com/in/miguelsantareno/
+ 
+ 

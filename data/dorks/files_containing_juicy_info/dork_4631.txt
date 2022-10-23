@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4631
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2017-12-07
+Author:           Dxtroyer
+GoogleDork:       "Start of NVIDIA bug report log file" ext:log
+Description:      "Start of NVIDIA bug report log file" ext:log
+
+
+Finds NVIDIA bug reports, containing juicy info about the computer,
+ including settings
+ 
+ Dxtroyer
+ 

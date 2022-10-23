@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5517
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2019-09-11
+Author:           Reza Abasi
+GoogleDork:       site:*/sitemap/sitemap.xml
+Description:      site:*/sitemap/sitemap.xml
+
+
+file containing juicy info:
+ 
+ site:*/sitemap/sitemap.xml
+ 
+ Reza Abasi(Turku)
+ 

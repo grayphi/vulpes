@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4994
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-10-22
+Author:           Bruno Schmid
+GoogleDork:       inurl:"/saml2?SAMLRequest="
+Description:      inurl:"/saml2?SAMLRequest="
+
+
+Login portals using SAML
+ 
+ 
+ Bruno Schmid
+ https://ch.linkedin.com/in/schmidbruno
+ 
+ @brulliant 
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4510
+Severity:		  7 
+Category:         files_containing_passwords
+Published Date:   2017-06-05
+Author:           anonymous
+GoogleDork:       "resources.db.params.password" ext:ini -git
+Description:      "resources.db.params.password" ext:ini -git
+
+
+Finds lots of database usernames & passwords! Dxtroyer

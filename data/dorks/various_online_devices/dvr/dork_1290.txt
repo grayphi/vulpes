@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1290
+Severity:		  4 
+Category:         various_online_devices.dvr
+Published Date:   2006-03-21
+Author:           anonymous
+GoogleDork:       intitle:"DVR Client" -the -free -pdf -downloads -blog -download -dvrtop
+Description:      intitle:"DVR Client" -the -free -pdf -downloads -blog -download -dvrtop
+
+
+This dork finds digital video recording client from Nuvico.

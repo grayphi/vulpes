@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4488
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2017-05-17
+Author:           anonymous
+GoogleDork:       " End Stealer " ext:txt
+Description:      " End Stealer " ext:txt
+
+
+Finds logs from "Black Stealer", an internet password stealer Dxtroyer

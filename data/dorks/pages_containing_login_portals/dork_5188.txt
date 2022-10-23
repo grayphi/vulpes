@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5188
+Severity:		  4
+Category:         pages_containing_login_portals
+Published Date:   2019-04-22
+Author:           Raj Kiran P
+GoogleDork:       inurl:7474/browser intitle:Neo4j
+Description:      inurl:7474/browser intitle:Neo4j
+
+
+Login pages of Neo4j graph database. Some pages can even access the
+ database.
+ 
+ Author : Raj Kiran P
+ 

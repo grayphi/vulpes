@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6119
+Severity:		  7 
+Category:         web_server_detection
+Published Date:   2020-05-25
+Author:           Ozer Goker
+GoogleDork:       inurl:":8088/cluster/apps"
+Description:      inurl:":8088/cluster/apps"
+
+
+##################################################################################################################################
+ # Dork Title: to Find Apache Hadoop
+ # Google Dork: inurl:":8088/cluster/apps"
+ # Date: 22.05.2020
+ # Author: Ozer Goker
+ ##################################################################################################################################
+ 

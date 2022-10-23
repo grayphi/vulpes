@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1170
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2005-10-26
+Author:           anonymous
+GoogleDork:       intitle:"Docutek ERes - Admin Login" -edu
+Description:      intitle:"Docutek ERes - Admin Login" -edu
+
+
+Docutek Eres is software that helps libaries get an internet end to them. This dork finds the admin login in page. Using Docutek Eres you can look through course material amoung other things.

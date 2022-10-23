@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/167
+Severity:		  4 
+Category:         files_containing_passwords.coldfusion
+Published Date:   2004-04-19
+Author:           anonymous
+GoogleDork:       filetype:cfm "cfapplication name" password
+Description:      filetype:cfm "cfapplication name" password
+
+
+These files contain ColdFusion source code. In some cases, the pages are examples that are found in discussion forums. However, in many cases these pages contain live sourcecode with usernames, database names or passwords in plaintext.

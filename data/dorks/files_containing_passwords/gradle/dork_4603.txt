@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4603
+Severity:		  5 
+Category:         files_containing_passwords.gradle
+Published Date:   2017-10-30
+Author:           Huijun Chen
+GoogleDork:       inurl:"gradle.properties" intext:"proxyPassword"
+Description:      inurl:"gradle.properties" intext:"proxyPassword"
+
+
+Google Dork: Files Containing Passwords
+ 
+ Exploit Author: Huijun Chen
+ 
+ 

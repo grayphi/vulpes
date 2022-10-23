@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5448
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2019-08-26
+Author:           Nisankh Acharjya
+GoogleDork:       index of /cache
+Description:      index of /cache
+
+
+Google Dork : index of /cache
+ 
+ Nisankh Acharjya
+ 

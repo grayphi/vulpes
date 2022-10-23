@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4500
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2017-05-29
+Author:           anonymous
+GoogleDork:       "WEB Browser Password Recovery" ext:txt
+Description:      "WEB Browser Password Recovery" ext:txt
+
+
+Description: Various stealers logs Dork: "WEB Browser Password Recovery" ext:txt Author: scumsec

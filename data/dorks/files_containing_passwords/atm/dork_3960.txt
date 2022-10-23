@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3960
+Severity:		  6 
+Category:         files_containing_passwords.atm
+Published Date:   2014-09-15
+Author:           anonymous
+GoogleDork:       "automatic teller" "operator manual" "password" filetype:pdf
+Description:      "automatic teller" "operator manual" "password" filetype:pdf
+
+
+ATM Passwords "automatic teller" "operator manual" "password" filetype:pdf

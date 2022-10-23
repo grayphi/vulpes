@@ -1,0 +1,19 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4752
+Severity:		  5 
+Category:         files_containing_passwords.microsoft-visual
+Published Date:   2018-04-09
+Author:           vocuzi
+GoogleDork:       intitle:"Index Of" intext:".vscode"
+Description:      intitle:"Index Of" intext:".vscode"
+
+
+Description :
+ Microsoft Visual Code Editor files containing passwords and config
+ information.
+ 
+ Dork :
+ intitle:"Index Of" intext:".vscode"
+ 
+ Author:
+ Vipin Joshi (@vocuzi)
+ 

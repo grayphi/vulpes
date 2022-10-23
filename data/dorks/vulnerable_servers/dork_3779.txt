@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3779
+Severity:		  3 
+Category:         vulnerable_servers
+Published Date:   2012-05-15
+Author:           anonymous
+GoogleDork:       intitle:"-N3t" filetype:php undetectable
+Description:      intitle:"-N3t" filetype:php undetectable
+
+
+intitle:"-N3t" filetype:php undetectable Search WebShell indexed on a page. -- Joel Campusano Rojas. 632 161 62 @joelcampusano Ingeniero Civil en Inform�tica.

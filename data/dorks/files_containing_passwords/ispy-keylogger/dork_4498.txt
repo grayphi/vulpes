@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4498
+Severity:		  8 
+Category:         files_containing_passwords.ispy-keylogger
+Published Date:   2017-05-29
+Author:           anonymous
+GoogleDork:       "iSpy Keylogger" "Passwords Log" ext:txt
+Description:      "iSpy Keylogger" "Passwords Log" ext:txt
+
+
+Description: iSpy keylogger logs Dork: "iSpy Keylogger" "Passwords Log" ext:txt Author: scumsec

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/977
+Severity:		  4
+Category:         pages_containing_login_portals
+Published Date:   2005-05-11
+Author:           anonymous
+GoogleDork:       inurl::2082/frontend -demo
+Description:      inurl::2082/frontend -demo
+
+
+This allows you access to CPanel login dialogues/screens.

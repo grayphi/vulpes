@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6316
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-22
+Author:           Deepak Kumar Bharti
+GoogleDork:       Index of /__MACOSX/System
+Description:      Index of /__MACOSX/System
+
+
+# Dork: Index of /__MACOSX/System
+ # Name: Deepak Kumar Bharti
+ # Description: Will show some juicy information related to Parent directory
+ # and details.
+ 

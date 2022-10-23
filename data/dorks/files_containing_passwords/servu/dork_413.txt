@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/413
+Severity:		  4 
+Category:         files_containing_passwords.servu
+Published Date:   2004-08-06
+Author:           anonymous
+GoogleDork:       filetype:ini ServUDaemon
+Description:      filetype:ini ServUDaemon
+
+
+The servU FTP Daemon ini file contains setting and session information including usernames, passwords and more.

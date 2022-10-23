@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4126
+Severity:		  8 
+Category:         files_containing_passwords
+Published Date:   2015-11-12
+Author:           anonymous
+GoogleDork:       intext:http | https intext:login | logon intext:password | passcode filetype:xls | filetype:xlsx
+Description:      intext:http | https intext:login | logon intext:password | passcode filetype:xls | filetype:xlsx
+
+
+Files with Passwords of http and https servers in format xls and xlsx. Enjoy well. Dork By Rootkit Pentester.

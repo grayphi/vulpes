@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4418
+Severity:		  6 
+Category:         files_containing_passwords
+Published Date:   2017-04-10
+Author:           Dxtroyer
+GoogleDork:       "Index of" "logins.json" "key3.db"
+Description:      "Index of" "logins.json" "key3.db"
+
+
+Finds directories containing saved Firefox passwords, browsing history, and
+ 
+ more.
+ 
+ 
+ 
+ Dxtroyer

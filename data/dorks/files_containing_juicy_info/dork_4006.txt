@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4006
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2015-05-26
+Author:           anonymous
+GoogleDork:       filetype:pub inurl:ssh
+Description:      filetype:pub inurl:ssh
+
+
+This dork finds various SSH pub files. Author:NickiK.

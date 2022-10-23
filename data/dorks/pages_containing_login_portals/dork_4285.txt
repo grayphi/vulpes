@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4285
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2016-05-20
+Author:           anonymous
+GoogleDork:       inurl:citrix inurl:login.asp -site:citrix.com
+Description:      inurl:citrix inurl:login.asp -site:citrix.com
+
+
+Citrix Login Portals inurl:citrix inurl:login.asp -site:citrix.com

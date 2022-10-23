@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5770
+Severity:		  6 
+Category:         various_online_devices.camera
+Published Date:   2020-03-05
+Author:           yunaranyancat
+GoogleDork:       inurl:"nobody/loginQuick.htm"
+Description:      inurl:"nobody/loginQuick.htm"
+
+
+Avtech CCTV Login Page :
+ 
+ inurl:"nobody/loginQuick.htm"
+ 
+ Author : Zulfiqar Wardi (yunaranyancat)
+ 

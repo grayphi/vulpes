@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6283
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-15
+Author:           krushna Lipane
+GoogleDork:       intitle:"index of" secrets.yml
+Description:      intitle:"index of" secrets.yml
+
+
+Dork: intitle:"index of" secrets.yml
+ Date: 2020-06-15
+ 
+ by
+ 
+ krushna Lipane
+ 

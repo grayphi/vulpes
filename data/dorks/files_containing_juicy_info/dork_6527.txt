@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6527
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-09-09
+Author:           Reza Abasi
+GoogleDork:       intitle:"index of" "phpmyadmin.sql"
+Description:      intitle:"index of" "phpmyadmin.sql"
+
+
+Files containing Juicy info:
+ 
+ intitle:"index of" "phpmyadmin.sql"
+ 
+ BR,
+ Reza Abasi(Turku)
+ 

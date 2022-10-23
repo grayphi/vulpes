@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6073
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-05-08
+Author:           BlackBelu.ga
+GoogleDork:       intitle:"index of" "mvn-settings.xml"
+Description:      intitle:"index of" "mvn-settings.xml"
+
+
+This Google dork finds Maven settings files on web servers.
+ 
+ intitle:"index of" "mvn-settings.xml"
+  
+ --
+ BlackBelu.ga
+ 

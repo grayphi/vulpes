@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4428
+Severity:		  6 
+Category:         files_containing_passwords
+Published Date:   2017-04-12
+Author:           Dxtroyer
+GoogleDork:       "END_FILE" inurl:"/password.log"
+Description:      "END_FILE" inurl:"/password.log"
+
+
+Finds user-specific login info.
+ 
+ 
+ 
+ Dxtroyer

@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6531
+Severity:		  4 
+Category:         footholds
+Published Date:   2020-09-11
+Author:           AjithKumar
+GoogleDork:       mail/u/0 filetype:pdf
+Description:      mail/u/0 filetype:pdf
+
+
+Google Dork: mail/u/0 filetype:pdf
+ Description: Pages Exposing internal Documents
+ Date: 11/09/2020
+ 
+ Thanks & Regards
+ AjithKumar K
+ 

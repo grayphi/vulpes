@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3991
+Severity:		  3 
+Category:         sensitive_directories.joomla
+Published Date:   2015-02-11
+Author:           anonymous
+GoogleDork:       "jos_users" intitle:"Index of"
+Description:      "jos_users" intitle:"Index of"
+
+
+"jos_users" intitle:"Index of" Files of configuration of user Joomla servers. By Rootkit.

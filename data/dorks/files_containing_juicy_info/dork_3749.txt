@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3749
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2011-11-19
+Author:           anonymous
+GoogleDork:       intitle:index.of? configuration.php.zip
+Description:      intitle:index.of? configuration.php.zip
+
+this dork finds mostly backed up configuration.php files.
+
+Its possible to change the *.zip to *.txt or other file types.
+
+Author: Lord.TMR

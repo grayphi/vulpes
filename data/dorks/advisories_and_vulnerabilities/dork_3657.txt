@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3657
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2010-12-29
+Author:           anonymous
+GoogleDork:       "Powered by KaiBB 1.0.1"
+Description:      "Powered by KaiBB 1.0.1"
+
+
+Multiple Vulnerabilities:https://www.exploit-db.com/exploits/15846/

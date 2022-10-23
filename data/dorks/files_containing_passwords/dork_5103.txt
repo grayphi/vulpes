@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5103
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2019-02-15
+Author:           Bruno Schmid
+GoogleDork:       username | password inurl:resources/application.properties -github.com -gitlab
+Description:      username | password inurl:resources/application.properties -github.com -gitlab
+
+
+Credentials
+ 
+ 
+ Bruno Schmid
+ https://ch.linkedin.com/in/schmidbruno
+ 

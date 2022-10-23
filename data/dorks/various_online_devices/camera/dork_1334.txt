@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1334
+Severity:		  3 
+Category:         various_online_devices.camera
+Published Date:   2006-04-18
+Author:           anonymous
+GoogleDork:       intitle:"IVC Control Panel"
+Description:      intitle:"IVC Control Panel"
+
+
+this searches for security cameras, vendor site:http://www.ivcco.com/

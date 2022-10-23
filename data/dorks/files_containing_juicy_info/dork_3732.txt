@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3732
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2011-07-18
+Author:           anonymous
+GoogleDork:       inurl:/push/ .pem apns -"push notifications" "bag attributes"
+Description:      inurl:/push/ .pem apns -"push notifications" "bag attributes"
+
+
+iphone apple push notification system private keys, frequently unencrypted, frequently with DeviceIDs in same dir

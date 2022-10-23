@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5874
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-04-16
+Author:           ASHIK KUNJUMON
+GoogleDork:       site:*/admin/password.php
+Description:      site:*/admin/password.php
+
+
+# Google Dork: site:*/admin/password.php
+ 
+ #Date: 31/03/2020
+ 
+ #Author: ASHIK KUNJUMON
+ 

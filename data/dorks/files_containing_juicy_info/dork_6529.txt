@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6529
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-09-10
+Author:           Navaneeth Shyam
+GoogleDork:       intitle:"index of" "config.db"
+Description:      intitle:"index of" "config.db"
+
+
+Dork: intitle:"index of" "config.db"
+ 
+ Show files containing juicy info
+ 

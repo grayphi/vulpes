@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5081
+Severity:		  7 
+Category:         footholds.fckeditor
+Published Date:   2019-01-18
+Author:           Burov Konstantin
+GoogleDork:       intitle:"FCKeditor - Connectors Tests"
+Description:      intitle:"FCKeditor - Connectors Tests"
+
+
+Dork: intitle:"FCKeditor - Connectors Tests"
+ 
+ 
+ Unauthenticated file upload and directory list
+ 
+ 
+ Burov Konstantin
+ 

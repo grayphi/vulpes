@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/231
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2004-05-13
+Author:           anonymous
+GoogleDork:       filetype:log inurl:"password.log"
+Description:      filetype:log inurl:"password.log"
+
+
+These files contain cleartext usernames and passwords, as well as the sites associated with those credentials. Attackers can use this information to log on to that site as that user.

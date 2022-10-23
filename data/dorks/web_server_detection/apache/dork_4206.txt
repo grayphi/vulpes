@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4206
+Severity:		  4 
+Category:         web_server_detection.apache
+Published Date:   2016-02-26
+Author:           anonymous
+GoogleDork:       intitle:"Apache Status" | intext:"Apache Server Status"
+Description:      intitle:"Apache Status" | intext:"Apache Server Status"
+
+
+This dork gives, Apache Server Status Server Version:  Server Built:  Current Time:  Restart Time:  Parent Server Generation:  Server uptime:  -Xploit

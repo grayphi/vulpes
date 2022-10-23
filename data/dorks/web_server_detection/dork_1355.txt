@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1355
+Severity:		  4 
+Category:         web_server_detection
+Published Date:   2006-05-03
+Author:           anonymous
+GoogleDork:       intitle:"Apache Status" "Apache Server Status for"
+Description:      intitle:"Apache Status" "Apache Server Status for"
+
+
+New Apache Server Status Dork
