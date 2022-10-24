@@ -2,6 +2,8 @@ require 'rbconfig'
 
 module Vulpes
    class Prettify < Vulpes::Object
+      @@initialized = false
+
       def initialize
          super("VulpesPrettyPrinter")
       end
@@ -86,6 +88,8 @@ module Vulpes
 
       # initialize variables only if system is linux based
       def self.init_vars
+        return if @@initialized
+
         flag = self.prettify?
         @@c_red =  flag ? `tput setaf 196` : ""
         @@c_cyan = flag ? `tput setaf 44` : ""
@@ -105,6 +109,8 @@ module Vulpes
         @@s_underline = flag ? `tput smul` : ""
 
         @@p_reset = flag ? `tput sgr0` : ""
+
+        @@initialized = true
       end
 
       private_class_method :__cont, :_color, :prettify?, :init_vars

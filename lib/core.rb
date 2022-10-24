@@ -8,6 +8,5 @@ require 'vulpes/config'
 require 'vulpes/logger'
 require 'vulpes/module'
 require 'vulpes/dork'
-require 'vulpes/module'
 
 Vulpes::Constants.add('VULPES_BASE', Vulpes::Defaults::Core.vulpes_base)
