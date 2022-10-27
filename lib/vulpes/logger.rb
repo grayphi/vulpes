@@ -38,7 +38,11 @@ module Vulpes
       end
 
       def self.log(prompt="", msg)
-         puts "#{prompt}#{msg}"
+         print "#{prompt}#{msg}"
+      end
+
+      def self.newline()
+         print "\n"
       end
 
    end

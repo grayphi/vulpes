@@ -86,3 +86,6 @@ Vulpes::Config.loadConfig options[:config_obj]
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
+Vulpes::Logger.debug('=========================================================' + \
+   '====================================================================')
+
