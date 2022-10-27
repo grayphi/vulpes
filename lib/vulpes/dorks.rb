@@ -32,8 +32,17 @@ module Vulpes
          editor = Vulpes::Config.get('editor')
 
          if (editor.nil? || editor.empty?)
-            Vulpes::Logger.debug("No Editor defined, Can't edit multiple dorks at once. Using as-is.")
-            return
+            Vulpes::Logger.debug("No Editor defined, Can't edit multiple dorks at once. Calling edit on each.")
+            
+            c = 0
+            n = @dorks.length
+            @dorks.each do |d|
+               c += 1
+               if d.kind_of? Vulpes::Dork
+                  Vulpes::Logger.info("Edit dork('#{d.name}') [#{c}/#{n}]:")
+                  d.edit
+               end
+            end
          else
             Vulpes::Logger.debug("Got #{editor} editor")
 
