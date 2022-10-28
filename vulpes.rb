@@ -77,9 +77,6 @@ Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
 Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
 Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
 
-Vulpes::Logger.init
-
-Vulpes::Config.configLoader
 Vulpes::Config.loadFile options[:config_file]
 Vulpes::Config.loadConfig options[:config_obj]
 

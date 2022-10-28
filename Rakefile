@@ -14,6 +14,10 @@ end
 task :conf_post do
   puts "Configuring [post]:"
 
+  Rake::Task["db_conf"].invoke unless ENV['skip_db']
+end
+
+task :db_conf do
   require_relative 'lib/vulpes/loader'
   require 'vulpes/object'
   require 'vulpes/errors'
@@ -37,8 +41,5 @@ task :conf_post do
     "#{db_port}) with name(#{db_name}) for user(#{db_user}) using password."
 
   sh "./scripts/install/db.sh '#{db_type}' '#{db_name}' '#{db_user}' '#{db_pass}' '#{db_host}' '#{db_port}'"
-end
-
-task :db_conf do
 end
 
