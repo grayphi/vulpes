@@ -10,3 +10,4 @@ CREATE TABLE IF NOT EXISTS cache_dorks (
     description varchar(10000),
     PRIMARY KEY (id)
 );
+
