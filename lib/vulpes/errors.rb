@@ -9,3 +9,5 @@ class VulpesIOError < IOError; end
 class VulpesConfigError < VulpesError; end
 
 class InvalidKeyError < VulpesConfigError; end
+
+class InvalidDatabaseError < VulpesError; end
