@@ -13,7 +13,8 @@ db_port="$6"
 mysql_drop(){
     args="-u $db_user --password=$db_pass -D $db_name"
     _pwd=$(dirname "$0")
-    mysql $args < "$_pwd/sql/cache_dorks.sql"
+    cd "$_pwd/sql/"
+    mysql $args < main.sql
 
     RETVAL=$?
 }
