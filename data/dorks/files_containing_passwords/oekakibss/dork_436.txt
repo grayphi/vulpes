@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/436
+Severity:		  4 
+Category:         files_containing_passwords.oekakibss 
+Published Date:   2004-08-16
+Author:           anonymous
+GoogleDork:       filetype:conf oekakibbs
+Description:      filetype:conf oekakibbs
+
+
+Oekakibss is a japanese anime creation application. The config file tells an attacker the encrypted password.

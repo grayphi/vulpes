@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5444
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-08-26
+Author:           Reza Abasi
+GoogleDork:       site:sts.*.*/adfs/ls/?SAMLRequest= intitle:"sign in"
+Description:      site:sts.*.*/adfs/ls/?SAMLRequest= intitle:"sign in"
+
+
+Login Page:
+ 
+ site:sts.*.*/adfs/ls/?SAMLRequest= intitle:"sign in"
+ 
+ Reza Abasi(Turku)
+ 

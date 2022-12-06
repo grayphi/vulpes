@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/925
+Severity:		  4 
+Category:         various_online_devices.officeconnect
+Published Date:   2005-04-12
+Author:           anonymous
+GoogleDork:       intitle:"OfficeConnect Wireless 11g Access Point" "Checking your browser"
+Description:      intitle:"OfficeConnect Wireless 11g Access Point" "Checking your browser"
+
+
+OfficeConnect Wireless 11g Access Point

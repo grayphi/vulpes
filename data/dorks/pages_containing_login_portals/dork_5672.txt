@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5672
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-12-20
+Author:           berat isler
+GoogleDork:       intitle:"WHMCS - Login" inurl:/admin/login.php
+Description:      intitle:"WHMCS - Login" inurl:/admin/login.php
+
+
+Google Dork : intitle:"WHMCS - Login" inurl:/admin/login.php
+ 
+ This dork finding some useful login page.
+ 
+ Berat İşler (root1x)
+ 

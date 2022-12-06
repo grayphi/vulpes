@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3689
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2011-02-24
+Author:           anonymous
+GoogleDork:       intext:db_pass inurl:settings.ini
+Description:      intext:db_pass inurl:settings.ini
+
+
+Submitter: Bastich mysql.nimbit.com dashboard settings

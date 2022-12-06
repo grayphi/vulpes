@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5514
+Severity:		  6 
+Category:         sensitive_directories
+Published Date:   2019-09-10
+Author:           Renato Hormazabal
+GoogleDork:       inurl:/_vti_txt*
+Description:      inurl:/_vti_txt*
+
+
+Google Dorks for Sensitive Directories

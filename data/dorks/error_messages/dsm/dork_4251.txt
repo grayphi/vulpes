@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4251
+Severity:		  4 
+Category:         error_messages.dsm
+Published Date:   2016-04-01
+Author:           anonymous
+GoogleDork:       intitle:"DSM Terminator [ ABORT ]" | inurl:"./com.sap.portal.dsm.Terminator"
+Description:      intitle:"DSM Terminator [ ABORT ]" | inurl:"./com.sap.portal.dsm.Terminator"
+
+
+DSM Terminator Error -Xploit 

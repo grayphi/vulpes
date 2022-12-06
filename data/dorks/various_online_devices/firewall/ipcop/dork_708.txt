@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/708
+Severity:		  6 
+Category:         various_online_devices.firewall.ipcop
+Published Date:   2004-11-23
+Author:           anonymous
+GoogleDork:       intitle:"ipcop - main"
+Description:      intitle:"ipcop - main"
+
+
+IPCop Firewall is a Linux firewall for home and SOHO users. IPCop can be managed from a simple web interface (which can be found and managed by Google Hackers ;)

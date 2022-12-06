@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/397
+Severity:		  4 
+Category:         files_containing_passwords.wwwboard
+Published Date:   2004-08-01
+Author:           anonymous
+GoogleDork:       inurl:/wwwboard
+Description:      inurl:/wwwboard
+
+
+The software wwwboard stores its passwords in a file called "passwd.txt".An attacker may try to search forinurl:/wwwboardthen add a "passwd.txt" to it (../wwwboard/passwd.txt) and decrypt des DES passwords.

@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6121
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-05-25
+Author:           Hilary Soita
+GoogleDork:       inurl:pentaho/Login
+Description:      inurl:pentaho/Login
+
+
+Find pentaho login portals
+ 
+ *Hilary Soita.*
+ 

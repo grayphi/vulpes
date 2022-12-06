@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5040
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-11-28
+Author:           CrimsonTorso
+GoogleDork:       "inurl:"Umbraco/#/login" site:*edu"
+Description:      "inurl:"Umbraco/#/login" site:*edu"
+
+
+Find login portals for .edu websites using Umbraco web software.
+ 
+ 
+ Find login portals for .gov websites using Umbraco web software.
+ "inurl:"Umbraco/#/login" site:*gov"
+ 
+ ~ CrimsonTorso

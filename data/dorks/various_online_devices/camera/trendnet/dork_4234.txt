@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4234
+Severity:		  6 
+Category:         various_online_devices.camera.trendnet
+Published Date:   2016-03-14
+Author:           anonymous
+GoogleDork:       intitle:"TRENDnet" (inurl:"top.htm"| inurl:"STSSYS.HTM"| inurl:"AVIEW.HTM"| inurl:"JPlug.htm" | inurl:"JVIEW.HTM")
+Description:      intitle:"TRENDnet" (inurl:"top.htm"| inurl:"STSSYS.HTM"| inurl:"AVIEW.HTM"| inurl:"JPlug.htm" | inurl:"JVIEW.HTM")
+
+
+Description: TRENDnet IP camera Google search: intitle:"TRENDnet" (inurl:"top.htm"| inurl:"STSSYS.HTM"| inurl:"AVIEW.HTM"| inurl:"JPlug.htm" | inurl:"JVIEW.HTM") Author: nebo_oben

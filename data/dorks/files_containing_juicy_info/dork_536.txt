@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/536
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2004-10-09
+Author:           anonymous
+GoogleDork:       inurl:odbc.ini ext:ini -cvs
+Description:      inurl:odbc.ini ext:ini -cvs
+
+
+This search will show the googler ODBC client configuration files which may contain usernames/databases/ipaddresses and whatever.

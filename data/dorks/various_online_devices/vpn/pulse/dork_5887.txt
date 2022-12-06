@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5887
+Severity:		  6 
+Category:         various_online_devices.vpn.pulse
+Published Date:   2020-04-16
+Author:           idealphase
+GoogleDork:       inurl:/dana/home/ filetype:cgi
+Description:      inurl:/dana/home/ filetype:cgi
+
+
+# Exploit Title: Pulse Secure SSL VPN
+ 
+ # Google Dork: inurl:/dana/home/ filetype:cgi
+ 
+ # Author: Kitchaphan Singchai (idealphase)
+ 

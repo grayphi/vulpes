@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/2985
+Severity:		  6
+Category:         advisories_and_vulnerabilities.sqli.kwsphp
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       allinurl:"index.php?mod=archives"
+Description:      allinurl:"index.php?mod=archives"
+
+
+KwsPHP Module Archives (id) Remote SQL Injection Vulnerability: https://www.exploit-db.com/exploits/5351

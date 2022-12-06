@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4142
+Severity:		  3 
+Category:         various_online_devices
+Published Date:   2015-11-30
+Author:           anonymous
+GoogleDork:       inurl:/net/net/protocol.html
+Description:      inurl:/net/net/protocol.html
+
+
+Title: inurl:/net/net/protocol.html Description: This dork can access many printers without login By Sivabalan

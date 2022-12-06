@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4714
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-03-27
+Author:           ManhNho
+GoogleDork:       intitle:"Control Panel" + emailmarketer
+Description:      intitle:"Control Panel" + emailmarketer
+
+
+intitle:"Control Panel" + emailmarketer
+ 
+ Email Marketer login panel
+ 
+ ManhNho
+ 

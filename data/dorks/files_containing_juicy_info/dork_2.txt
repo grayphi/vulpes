@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/2
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2003-06-24
+Author:           anonymous
+GoogleDork:       Ganglia Cluster Reports
+Description:      Ganglia Cluster Reports
+
+
+These are server cluster reports, great for info gathering. Lesse, what were those server names again?

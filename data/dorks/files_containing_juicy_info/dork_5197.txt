@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5197
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2019-04-30
+Author:           Neat
+GoogleDork:       "passport" filetype:xls site:"*.edu.*" | site:"*.gov.*" | site:"*.com.*" | site:"*.org.*" | site:"*.net.*" | site:"*.mil.*"
+Description:      "passport" filetype:xls site:"*.edu.*" | site:"*.gov.*" | site:"*.com.*" | site:"*.org.*" | site:"*.net.*" | site:"*.mil.*"
+
+
+# Exploit Title: [Leaking Passport details]
+ # Google Dork: ["passport" filetype:xls site:"*.edu.*" | site:"*.gov.*" | site:"*.com.*" | site:"*.org.*" | site:"*.net.*" | site:"*.mil.*"]
+ # Date: [April 29 2019]
+ # Exploit Author: [Neat - MrMeterpreter]

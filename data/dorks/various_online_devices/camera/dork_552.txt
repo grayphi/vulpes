@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/552
+Severity:		  6 
+Category:         various_online_devices.camera
+Published Date:   2004-10-11
+Author:           anonymous
+GoogleDork:       intitle:"my webcamXP server!" inurl:":8080"
+Description:      intitle:"my webcamXP server!" inurl:":8080"
+
+
+"my webcamXP server!"Is there really an explantation needed?

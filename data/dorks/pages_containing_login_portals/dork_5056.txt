@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5056
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-12-14
+Author:           Kaligulah
+GoogleDork:       intext:"EQ1PCI"
+Description:      intext:"EQ1PCI"
+
+
+Finds Login portals
+ 
+ ~ Kaligulah
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3627
+Severity:		  6
+Category:         advisories_and_vulnerabilities.upload.soop
+Published Date:   2010-12-05
+Author:           anonymous
+GoogleDork:       "SOOP Portal 2.0"
+Description:      "SOOP Portal 2.0"
+
+
+Submitted by: Net.Edit0r Shell Upload: https://www.exploit-db.com/exploits/15690

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/2054
+Severity:		  5 
+Category:         advisories_and_vulnerabilities.atomic-photo-album
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       "Powered by Atomic Photo Album" inurl:"photo.php?apa_album_ID="
+Description:      "Powered by Atomic Photo Album" inurl:"photo.php?apa_album_ID="
+
+
+Atomic Photo Album 1.0.2 Multiple Vulnerabilities: https://www.exploit-db.com/exploits/14801

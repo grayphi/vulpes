@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/2323
+Severity:		  6
+Category:         advisories_and_vulnerabilities.joomla.com-event
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       inurl:"com_event"
+Description:      inurl:"com_event"
+
+
+Joomla Component com_event Multiple Vulnerabilities: https://www.exploit-db.com/exploits/12633

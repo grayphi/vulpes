@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5942
+Severity:		  7 
+Category:         files_containing_passwords
+Published Date:   2020-04-22
+Author:           Alexandros Pappas
+GoogleDork:       intitle:"index of" "db.ini"
+Description:      intitle:"index of" "db.ini"
+
+
+# Google Dork: intitle:"index of" "db.ini"
+ 
+ # Configuration files containing database usernames and passwords.
+ 
+ # Date: 22/04/2020
+ 
+ # Author: Alexandros Pappas
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/727
+Severity:		  6 
+Category:         error_messages.mysql
+Published Date:   2004-11-28
+Author:           anonymous
+GoogleDork:       "Warning: mysql_query()" "invalid query"
+Description:      "Warning: mysql_query()" "invalid query"
+
+
+MySQL query errors revealing database schema and usernames.

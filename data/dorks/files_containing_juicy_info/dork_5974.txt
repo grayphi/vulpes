@@ -1,0 +1,18 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5974
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2020-04-30
+Author:           Alexandros Pappas
+GoogleDork:       intitle:"index of" "client_secret.json" OR "client secret" OR "client_secret live.json"
+Description:      intitle:"index of" "client_secret.json" OR "client secret" OR "client_secret live.json"
+
+
+# Google Dork: intitle:"index of" "client_secret.json" OR "client secret"
+ OR "client_secret live.json"
+ 
+ # Juicy information including credentials, client IDs, tokens and more.
+ 
+ # Date: 30/04/2020
+ 
+ # Author: Alexandros Pappas
+ 

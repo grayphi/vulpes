@@ -1,0 +1,12 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5677
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2019-12-30
+Author:           Michael Meade
+GoogleDork:       "MailChimp API error:" ext:log
+Description:      "MailChimp API error:" ext:log
+
+
+# Google Dork: "MailChimp API error:" ext:log
+ # Date: 12.28.2019
+ # Author: Michael Meade

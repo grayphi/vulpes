@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4586
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2017-10-05
+Author:           anonymous
+GoogleDork:       inurl:".hg/store/fncache"
+Description:      inurl:".hg/store/fncache"
+
+
+hg repository dork @tahaSuleyman

@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4957
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2018-09-18
+Author:           ManhNho
+GoogleDork:       /var/www/manage/storage/logs/laravel- ext:log
+Description:      /var/www/manage/storage/logs/laravel- ext:log
+
+
+Laravel logs
+ 
+ ManhNho
+ 

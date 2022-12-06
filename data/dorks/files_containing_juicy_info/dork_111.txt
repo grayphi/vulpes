@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/111
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-03-04
+Author:           anonymous
+GoogleDork:       intitle:index.of dead.letter
+Description:      intitle:index.of dead.letter
+
+
+dead.letter contains the contents of unfinished emails created on the UNIX platform. Emails (finished or not) can contain sensitive information.

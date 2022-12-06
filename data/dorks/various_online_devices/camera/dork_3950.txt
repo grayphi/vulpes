@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3950
+Severity:		  4 
+Category:         various_online_devices.camera
+Published Date:   2014-05-08
+Author:           anonymous
+GoogleDork:       intext:"Hikvision" inurl:"login.asp"
+Description:      intext:"Hikvision" inurl:"login.asp"
+
+
+Hikvision IP Camera login page

@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6191
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-04
+Author:           Abhi Chitkara
+GoogleDork:       intitle:"index of" "adminsubscribeack.txt"
+Description:      intitle:"index of" "adminsubscribeack.txt"
+
+
+Dork: intitle:"index of" "adminsubscribeack.txt"
+ Description: This google dorks lists out sensitive admin subscription data
+ on web servers.
+ Author: Abhi Chitkara
+ 

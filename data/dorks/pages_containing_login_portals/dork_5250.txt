@@ -1,0 +1,11 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5250
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-06-06
+Author:           Dec0y
+GoogleDork:       inurl:"/fuel/login"
+Description:      inurl:"/fuel/login"
+
+
+Fuel CMS Login Panels
+ 

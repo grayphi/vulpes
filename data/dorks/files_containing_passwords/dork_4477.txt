@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4477
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2017-05-10
+Author:           anonymous
+GoogleDork:       "Stealer by W33DY" ext:txt
+Description:      "Stealer by W33DY" ext:txt
+
+
+Finds stealer logs with usernames, passwords and sites to input them! Dxtroyer

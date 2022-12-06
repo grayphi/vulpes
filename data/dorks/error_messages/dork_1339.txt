@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1339
+Severity:         3
+Category:         error_messages
+Published Date:   2006-04-25
+Author:           anonymous
+GoogleDork:       "Warning: Division by zero in" "on line" -forum
+Description:      "Warning: Division by zero in" "on line" -forum
+
+
+Just another error that reveals full paths.

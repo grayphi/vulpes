@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5576
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2019-10-18
+Author:           Maxime Westhoven
+GoogleDork:       inurl:"/.vscode/ftp-sync.json"
+Description:      inurl:"/.vscode/ftp-sync.json"
+
+
+inurl:"/.vscode/ftp-sync.json"
+ 
+ -- 
+ Maxime Westhoven
+ 

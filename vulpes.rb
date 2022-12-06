@@ -72,18 +72,16 @@ end
 
 options = parseargs(ARGV)
 
+Vulpes::Constants.add('no_pretty', options[:no_pretty]) if options[:no_pretty]
 Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
 Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
 Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
-Vulpes::Constants.add('no_pretty', options[:no_pretty]) if options[:no_pretty]
 
-Vulpes::Config.configLoader
 Vulpes::Config.loadFile options[:config_file]
 Vulpes::Config.loadConfig options[:config_obj]
 
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
-
-
-
+Vulpes::Logger.debug('=========================================================' + \
+   '====================================================================')

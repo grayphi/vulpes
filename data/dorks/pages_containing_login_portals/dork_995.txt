@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/995
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2005-06-06
+Author:           anonymous
+GoogleDork:       intitle:"VisNetic WebMail" inurl:"/mail/"
+Description:      intitle:"VisNetic WebMail" inurl:"/mail/"
+
+
+VisNetic WebMail is a built-in web mail server that allows VisNetic Mail Server account holders to access their email messages, folders and address books from any standard web browser on an Internet enabled computer.

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3731
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2011-07-18
+Author:           anonymous
+GoogleDork:       site:stashbox.org cv Or resume OR curriculum vitae filetype:pdf OR doc
+Description:      site:stashbox.org cv Or resume OR curriculum vitae filetype:pdf OR doc
+
+
+Searches StashBox for publicly avaliable PDF's or .doc files containing information used in a CV/Resume/Curriculum Vitae which can therefore be used in a Social Engineering based vector attack -- Trevor Starick

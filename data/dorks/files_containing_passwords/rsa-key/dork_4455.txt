@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4455
+Severity:		  6 
+Category:         files_containing_passwords.rsa-key
+Published Date:   2017-05-02
+Author:           Dxtroyer
+GoogleDork:       "-----BEGIN RSA PRIVATE KEY-----" ext:key
+Description:      "-----BEGIN RSA PRIVATE KEY-----" ext:key
+
+
+Some hashes (passwords, certs, etc.)
+ 
+ 
+ 
+ Dxtroyer

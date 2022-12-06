@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1120
+Severity:		  5 
+Category:         files_containing_passwords.rapidshare
+Published Date:   2005-09-18
+Author:           anonymous
+GoogleDork:       intitle:rapidshare intext:login
+Description:      intitle:rapidshare intext:login
+
+
+Rapidshare login passwords.

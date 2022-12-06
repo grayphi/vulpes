@@ -1,0 +1,23 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4933
+Severity:		  6 
+Category:         various_online_devices.gitweb
+Published Date:   2018-08-27
+Author:           Alfie
+GoogleDork:       inurl:"/gitweb.cgi?"
+Description:      inurl:"/gitweb.cgi?"
+
+
+
+
+Google dork *description: * A web-enabled interface to the open source
+distributed version control system Git
+
+*Google Search: *inurl:"/gitweb.cgi?"
+
+Submitted by: Alfie
+
+Website: (https://the-infosec.com)
+
+            
+
+ 

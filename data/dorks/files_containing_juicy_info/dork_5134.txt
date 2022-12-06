@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5134
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2019-03-01
+Author:           Hussain Vohra
+GoogleDork:       intext:reports filetype:cache
+Description:      intext:reports filetype:cache
+
+
+intext:reports filetype:cache
+ 
+ Regards,
+ Hussain vohra
+ 

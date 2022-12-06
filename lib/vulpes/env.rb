@@ -7,5 +7,6 @@ vulpes_base = File.expand_path(File.join(File.dirname(env_file), '..', '..'))
 
 vulpes_lib = File.join(vulpes_base, 'lib')
 
+$:.unshift(vulpes_base)
 $:.unshift(vulpes_lib)
 

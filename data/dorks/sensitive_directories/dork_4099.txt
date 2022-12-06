@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4099
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2015-10-19
+Author:           anonymous
+GoogleDork:       inurl:/aspnet_client/system_web/
+Description:      inurl:/aspnet_client/system_web/
+
+
+Google dork Description: Juice Directory "ASP" Google search: inurl:/aspnet_client/system_web/ Note: Juice Directory. - Yudha[at]glosmon.com

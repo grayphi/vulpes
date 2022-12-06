@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/873
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2005-03-02
+Author:           anonymous
+GoogleDork:       inurl:getmsg.html intitle:hotmail
+Description:      inurl:getmsg.html intitle:hotmail
+
+
+These pages contain hotmail messages that were saved as HTML. These messages can contain anything from personal data to cleartext passwords.

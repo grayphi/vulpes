@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4653
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-01-08
+Author:           Pratik S. Shah
+GoogleDork:       inurl:"/libs/granite/core/content/login.html"
+Description:      inurl:"/libs/granite/core/content/login.html"
+
+
+The following dork will give you the list of AEM Installed server. (Adobe
+ Experience Manager)
+ inurl:"/libs/granite/core/content/login.html"
+ 
+ 

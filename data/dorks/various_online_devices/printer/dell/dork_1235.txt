@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1235
+Severity:		  5 
+Category:         various_online_devices.printer.dell
+Published Date:   2006-01-02
+Author:           anonymous
+GoogleDork:       intitle:"Dell Laser Printer *" port_0 -johnny.ihackstuff
+Description:      intitle:"Dell Laser Printer *" port_0 -johnny.ihackstuff
+
+
+Dell laser printers. This search finds different results that dork id 1077.

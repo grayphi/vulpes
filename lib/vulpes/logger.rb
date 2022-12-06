@@ -1,23 +1,49 @@
+require 'vulpes/prettify'
+
 module Vulpes
-   class Logger
+   class Logger < Vulpes::Object
       def initialize
          super("VulpesLogger")
       end
 
+      def self.init
+         @@pp = Vulpes::Prettify.get_printer
+      end
+
       def self.debug(msg)
-         puts "[DEBUG]: #{msg}" if Vulpes::Constants.get("debug")
+         prompt = @@pp.as_yellow(@@pp.as_bold 'DEBUG')
+         puts "[#{prompt}]: #{msg}" if Vulpes::Constants.get("debug")
       end
 
       def self.warning(msg)
-         puts "[WARN]: #{msg}" unless Vulpes::Constants.get('disable_warnings')
+         prompt = @@pp.as_orange(@@pp.as_bold 'WARN')
+         puts "[#{prompt}]: #{msg}" unless Vulpes::Constants.get('disable_warnings')
       end
 
-      def self.info(msg)
-         puts "[INFO]: #{msg}" if Vulpes::Constants.get('verbose')
+      def self.info(msg, prompt=nil)
+         prompt ||= "INFO"
+         prompt = @@pp.as_cyan(@@pp.as_bold "#{prompt}")
+         puts "[#{prompt}]: #{msg}"
       end
       
-      def self.error(msg)
-         STDERR.puts "[ERROR]: #{msg}"
+      def self.verbose(msg, prompt=nil)
+         prompt ||= '*'
+         prompt = @@pp.as_cyan(@@pp.as_bold "#{prompt}")
+         puts "[#{prompt}]: #{msg}" if Vulpes::Constants.get('verbose')
       end
+
+      def self.error(msg)
+         prompt = @@pp.as_red(@@pp.as_bold 'ERROR')
+         STDERR.puts "[#{prompt}]: #{msg}"
+      end
+
+      def self.log(prompt="", msg)
+         print "#{prompt}#{msg}"
+      end
+
+      def self.newline()
+         print "\n"
+      end
+
    end
 end

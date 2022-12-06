@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3883
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2013-08-08
+Author:           anonymous
+GoogleDork:       filetype:txt inurl:wp-config.txt
+Description:      filetype:txt inurl:wp-config.txt
+
+
+Easily hunt the Wordpress configuration file in of remote web sites Author : Un0wn_X

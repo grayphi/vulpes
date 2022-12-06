@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4415
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2017-04-06
+Author:           anonymous
+GoogleDork:       inurl:"/phpinfo.php" "PHP Version"
+Description:      inurl:"/phpinfo.php" "PHP Version"
+
+
+Finds phpinfo() pages that give you lots of handy info! Dxtroyer

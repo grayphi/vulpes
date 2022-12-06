@@ -1,0 +1,11 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5231
+Severity:		  6 
+Category:         web_server_detection
+Published Date:   2019-05-30
+Author:           Dec0y
+GoogleDork:       inurl:jsmol.php
+Description:      inurl:jsmol.php
+
+
+Moodle sites using Jsmol.
+ 

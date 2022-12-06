@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/538
+Severity:		  3 
+Category:         web_server_detection
+Published Date:   2004-10-09
+Author:           anonymous
+GoogleDork:       intitle:"Object not found" netware "apache 1.."
+Description:      intitle:"Object not found" netware "apache 1.."
+
+
+This search will show netware apache webservers as the result.

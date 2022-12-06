@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/37
+Severity:		  2 
+Category:         sensitive_directories
+Published Date:   2003-06-27
+Author:           anonymous
+GoogleDork:       secure
+Description:      secure
+
+
+What could be hiding in directories marked as "secure?" let's find out...

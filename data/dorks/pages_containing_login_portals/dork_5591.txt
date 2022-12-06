@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5591
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-10-21
+Author:           HackingHomebrewer
+GoogleDork:       inurl:"BasicAuthenticator:LOCAL"
+Description:      inurl:"BasicAuthenticator:LOCAL"
+
+
+Login portals.

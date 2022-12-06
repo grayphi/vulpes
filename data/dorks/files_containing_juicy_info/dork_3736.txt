@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3736
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2011-07-26
+Author:           anonymous
+GoogleDork:       filetype:pem "Microsoft"
+Description:      filetype:pem "Microsoft"
+
+
+Microsoft private keys, frequently used for servers with UserID on the same page. -- Shamanoid

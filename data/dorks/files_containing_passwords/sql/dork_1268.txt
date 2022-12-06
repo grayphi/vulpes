@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1268
+Severity:		  5 
+Category:         files_containing_passwords.sql
+Published Date:   2006-03-06
+Author:           anonymous
+GoogleDork:       filetype:sql "insert into" (pass|passwd|password)
+Description:      filetype:sql "insert into" (pass|passwd|password)
+
+
+Looks for SQL dumps containing cleartext or encrypted passwords.

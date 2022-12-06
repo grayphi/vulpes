@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6389
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-07-09
+Author:           S Suhas
+GoogleDork:       intitle:"report" ("Fortify" | "Web Inspect") filetype:pdf
+Description:      intitle:"report" ("Fortify" | "Web Inspect") filetype:pdf
+
+
+# Google Dork: intitle:"report" ("Fortify" | "Web Inspect") filetype:pdf
+ # Date: 08-07-2020
+ 
+ #Description: This Google Dork allows retrieving reports of scanned
+ sites thereby identifying vulnerabilities and misconfigurations
+ present in an application/website.
+ # Exploit Author: S Suhas
+ 

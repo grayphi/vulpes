@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/2410
+Severity:		  6
+Category:         advisories_and_vulnerabilities.sqli.blacklily
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       "Powered By The Black Lily 2007"
+Description:      "Powered By The Black Lily 2007"
+
+
+Black Lily 2007 (products.php class) Remote SQL Injection Vulnerability: https://www.exploit-db.com/exploits/4444

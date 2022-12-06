@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4495
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2017-05-24
+Author:           anonymous
+GoogleDork:       "-- MySQL dump" ext:sql -git
+Description:      "-- MySQL dump" ext:sql -git
+
+
+Finds MySQL database dumps, sometimes containing usernames, passwords, and more! Dxtroyer

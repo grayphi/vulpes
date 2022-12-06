@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5967
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-04-30
+Author:           Abhi Chitkara
+GoogleDork:       intitle:"index of" license-key.txt
+Description:      intitle:"index of" license-key.txt
+
+
+Dork: intitle:"index of" license-key.txt
+ Description: This Google dork lists out license keys leaked for various
+ software/services.
+ Author: Abhi Chitkara
+ 

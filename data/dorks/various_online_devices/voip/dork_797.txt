@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/797
+Severity:		  5 
+Category:         various_online_devices.voip
+Published Date:   2004-12-30
+Author:           anonymous
+GoogleDork:       intitle:"Sipura.SPA.Configuration" -.pdf
+Description:      intitle:"Sipura.SPA.Configuration" -.pdf
+
+
+Query returns configuration pages for online Voice over IP devices. Discloses an obscene amount of information about the target, including most all routing information and access to control user's telephone system.

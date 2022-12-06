@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6601
+Severity:		  8 
+Category:         files_containing_usernames
+Published Date:   2020-10-09
+Author:           Alexandros Pappas
+GoogleDork:       "CREATE ROLE" + "ENCRYPTED PASSWORD" ext:sql | ext:txt | ext:ini -git -gitlab
+Description:      "CREATE ROLE" + "ENCRYPTED PASSWORD" ext:sql | ext:txt | ext:ini -git -gitlab
+
+
+# Google Dork: "CREATE ROLE" + "ENCRYPTED PASSWORD" ext:sql | ext:txt | ext:ini -git -gitlab
+ 
+ # Exposed usernames, passwords and more...
+ 
+ # Date: 9/10/2020
+ 
+ # Exploit Author: Alexandros Pappas
+ 

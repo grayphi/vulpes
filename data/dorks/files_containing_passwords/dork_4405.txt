@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4405
+Severity:		  4 
+Category:         files_containing_passwords
+Published Date:   2017-03-02
+Author:           anonymous
+GoogleDork:       "your default password is" filetype:pdf
+Description:      "your default password is" filetype:pdf
+
+
+"your default password is" filetype:pdf *Richard De Vere* *Principal Consultant* *Web:* TheAntiSocialEngineer.com *Twitter:* @AntiSocial_Eng

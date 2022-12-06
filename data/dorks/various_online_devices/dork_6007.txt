@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6007
+Severity:		  6 
+Category:         various_online_devices
+Published Date:   2020-05-04
+Author:           Nicholas Doropoulos
+GoogleDork:       intitle:"WeatherLinkIP Configuration"
+Description:      intitle:"WeatherLinkIP Configuration"
+
+
+Severity: 5 
+Category: Various Online Devices
+ 
+ Nicholas Doropoulos

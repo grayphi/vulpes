@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/602
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2004-10-20
+Author:           anonymous
+GoogleDork:       intitle:plesk inurl:login.php3
+Description:      intitle:plesk inurl:login.php3
+
+
+Plesk is server management software developed for the Hosting Service Industry. Various vulnerabilities are reported to security focus.

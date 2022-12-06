@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/238
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2004-05-17
+Author:           anonymous
+GoogleDork:       filetype:dat "password.dat"
+Description:      filetype:dat "password.dat"
+
+
+This file contains plaintext usernames and password. Deadly information in the hands of an attacker.

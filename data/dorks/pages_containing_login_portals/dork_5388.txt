@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5388
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-08-19
+Author:           Reza Abasi
+GoogleDork:       intitle:"Calendarix Admin Login"
+Description:      intitle:"Calendarix Admin Login"
+
+
+Login page :
+ 
+ intitle:"Calendarix Admin Login"
+ 
+ Reza Abasi(Turku)
+ 

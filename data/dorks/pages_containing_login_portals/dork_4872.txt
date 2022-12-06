@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4872
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-06-25
+Author:           CrimsonTorso
+GoogleDork:       "webkactus"
+Description:      "webkactus"
+
+
+Scrape websites using webkactus software login portals.
+ 
+ ~ CrimsonTorso
+ 

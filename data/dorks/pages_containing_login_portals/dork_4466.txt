@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4466
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2017-05-08
+Author:           anonymous
+GoogleDork:       inurl:"/fmi/webd"
+Description:      inurl:"/fmi/webd"
+
+
+FileMaker WebDirect  Logins  Another file cloud folder. -Xploit  

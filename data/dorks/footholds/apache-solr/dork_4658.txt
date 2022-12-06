@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4658
+Severity:		  4 
+Category:         footholds.apache-solr
+Published Date:   2018-01-15
+Author:           Dxtroyer
+GoogleDork:       intitle:"Solr Admin" "Solr Query Syntax"
+Description:      intitle:"Solr Admin" "Solr Query Syntax"
+
+
+Finds Apache Solr admin panels
+ 
+ Dxtroyer
+ 

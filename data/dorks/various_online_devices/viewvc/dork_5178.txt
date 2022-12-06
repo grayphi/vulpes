@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5178
+Severity:		  6 
+Category:         various_online_devices.viewvc
+Published Date:   2019-04-11
+Author:           CrimsonTorso
+GoogleDork:       "Powered by ViewVC 1.0.3"
+Description:      "Powered by ViewVC 1.0.3"
+
+
+Find open file access and databases through ViewVC.
+ 
+ ~ CrimsonTorso
+ 

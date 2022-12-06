@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3821
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2012-11-05
+Author:           anonymous
+GoogleDork:       allinurl:"User_info/auth_user_file.txt"
+Description:      allinurl:"User_info/auth_user_file.txt"
+
+
+Google dork for find user info and configuration password of DCForum allinurl:"User_info/auth_user_file.txt" - Ajith Kp

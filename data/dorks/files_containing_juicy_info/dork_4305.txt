@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4305
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2016-07-01
+Author:           anonymous
+GoogleDork:       intext:"/showme.asp" HTTP_ACCEPT
+Description:      intext:"/showme.asp" HTTP_ACCEPT
+
+
+intext:"/showme.asp" HTTP_ACCEPT Application & Session Contents for Servers. -Xploit 

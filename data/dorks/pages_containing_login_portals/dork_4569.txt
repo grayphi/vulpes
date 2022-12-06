@@ -1,0 +1,27 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4569
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2017-08-02
+Author:           anonymous
+GoogleDork:       inurl:front/central.php
+Description:      inurl:front/central.php
+
+
+GLPI login screen. Default login:
+
+
+
+ * glpi/glpi (super-admin)
+
+ * tech/tech
+
+ * postonly/postonly (only for helpdesk)
+
+ * normal/normal
+
+
+
+--
+
+@verovan
+

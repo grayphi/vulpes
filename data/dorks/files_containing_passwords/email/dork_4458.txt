@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4458
+Severity:		  6 
+Category:         files_containing_passwords.email
+Published Date:   2017-05-03
+Author:           anonymous
+GoogleDork:       ext:fetchmailrc
+Description:      ext:fetchmailrc
+
+
+Finds .fetchmailrc files with eMail login info Dxtroyer

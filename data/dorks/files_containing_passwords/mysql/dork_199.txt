@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/199
+Severity:		  5 
+Category:         files_containing_passwords.mysql
+Published Date:   2004-05-03
+Author:           anonymous
+GoogleDork:       intitle:"index of" intext:globals.inc
+Description:      intitle:"index of" intext:globals.inc
+
+
+contains plaintext user/pass for mysql database

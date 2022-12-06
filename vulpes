@@ -5,4 +5,4 @@ __DIR__=$(dirname $__FILE__)
 
 cd $__DIR__
 
-ruby vulpes.rb "$@"
+ruby vulpes.rb $@

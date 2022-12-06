@@ -41,5 +41,7 @@ module Vulpes
       def self.isKeyOK?(key)
          key =~ /^[a-zA-Z0-9_]+$/
       end
+
+      private_class_method :isKeyOK?
    end
 end

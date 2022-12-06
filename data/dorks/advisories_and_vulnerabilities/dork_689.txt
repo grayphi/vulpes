@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/689
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2004-11-18
+Author:           anonymous
+GoogleDork:       inurl:/SiteChassisManager/
+Description:      inurl:/SiteChassisManager/
+
+
+Unknown SQL injection and XSS vulnerabilities in DMXReady Site Chassis Manager.http://www.securityfocus.com/bid/11434/discussion/

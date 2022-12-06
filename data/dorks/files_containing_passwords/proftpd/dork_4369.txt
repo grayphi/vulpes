@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4369
+Severity:		  4 
+Category:         files_containing_passwords.proftpd
+Published Date:   2016-12-05
+Author:           anonymous
+GoogleDork:       inurl:proftpdpasswd
+Description:      inurl:proftpdpasswd
+
+
+Dork of proftpd passwords!. Have Fun!. Dork by Rootkit Pentester.

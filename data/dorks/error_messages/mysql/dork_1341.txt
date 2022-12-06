@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1341
+Severity:		  4 
+Category:         error_messages.mysql
+Published Date:   2006-04-25
+Author:           anonymous
+GoogleDork:       "Warning: mysql_connect(): Access denied for user: '*@*" "on line" -help -forum
+Description:      "Warning: mysql_connect(): Access denied for user: '*@*" "on line" -help -forum
+
+
+This dork reveals logins to databases that were denied for some reason.

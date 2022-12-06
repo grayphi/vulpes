@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6188
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2020-06-04
+Author:           Abhi Chitkara
+GoogleDork:       intext:"Index of /password"
+Description:      intext:"Index of /password"
+
+
+Dork: intext:"Index of /password"
+ Description: This google dorks lists out password folders on web servers.
+ Author: Abhi Chitkara
+ 

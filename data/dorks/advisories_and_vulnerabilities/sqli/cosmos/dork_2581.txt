@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/2581
+Severity:		  6
+Category:         advisories_and_vulnerabilities.sqli.cosmos
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       "Webdesign Cosmos Solutions"
+Description:      "Webdesign Cosmos Solutions"
+
+
+Cosmos Solutions cms SQL Injection Vulnerability ( id= / page= ): https://www.exploit-db.com/exploits/12794

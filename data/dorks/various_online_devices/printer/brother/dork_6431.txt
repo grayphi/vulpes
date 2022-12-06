@@ -1,0 +1,20 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6431
+Severity:		  6 
+Category:         various_online_devices.printer.brother
+Published Date:   2020-07-21
+Author:           Prasad Lingamaiah
+GoogleDork:       inurl:"/general/status.html"
+Description:      inurl:"/general/status.html"
+
+
+Dorks: inurl:/frameprop.htm
+ 
+ Category: Sensitive Information
+ 
+ Summary:
+ A Google dork that gives information about the Brother Printers Printer.
+ 
+ -- 
+ Thanks & Regards,
+ Prasad Lingamaiah
+ 

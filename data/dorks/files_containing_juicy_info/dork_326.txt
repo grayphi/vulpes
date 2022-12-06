@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/326
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2004-07-12
+Author:           anonymous
+GoogleDork:       private key files (.csr)
+Description:      private key files (.csr)
+
+
+This search will find private key files... Private key files are supposed to be, well... private.

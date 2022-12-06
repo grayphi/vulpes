@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1351
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2006-05-03
+Author:           anonymous
+GoogleDork:       intitle:"Employee Intranet Login"
+Description:      intitle:"Employee Intranet Login"
+
+
+Intranet login pages by decentrix.com

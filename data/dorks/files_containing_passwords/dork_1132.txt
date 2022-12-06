@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1132
+Severity:		  4 
+Category:         files_containing_passwords
+Published Date:   2005-09-25
+Author:           anonymous
+GoogleDork:       "admin account info" filetype:log
+Description:      "admin account info" filetype:log
+
+
+searches for logs containing admin server account information such as username and password.

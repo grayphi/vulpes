@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1090
+Severity:		  6 
+Category:         files_containing_passwords
+Published Date:   2005-08-31
+Author:           anonymous
+GoogleDork:       ext:inc "pwd=" "UID="
+Description:      ext:inc "pwd=" "UID="
+
+
+Database connection strings including passwords

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3805
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2012-11-02
+Author:           anonymous
+GoogleDork:       filetype:xls "username | password"
+Description:      filetype:xls "username | password"
+
+
+filetype:xls "username | password" This search reveals usernames and/or passwords of the xls documents. by Stakewinner00 

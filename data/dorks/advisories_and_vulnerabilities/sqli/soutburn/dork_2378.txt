@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/2378
+Severity:		  6
+Category:         advisories_and_vulnerabilities.sqli.soutburn
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       "Powered by: Southburn"
+Description:      "Powered by: Southburn"
+
+
+southburn Web (products.php) Sql Injection Vulnerability: https://www.exploit-db.com/exploits/11430

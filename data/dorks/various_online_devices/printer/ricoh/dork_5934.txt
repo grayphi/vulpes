@@ -1,0 +1,12 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5934
+Severity:		  5 
+Category:         various_online_devices.printer.ricoh
+Published Date:   2020-04-21
+Author:           Nicholas Doropoulos
+GoogleDork:       inurl:mainFrame.cgi intext:"RICOH"
+Description:      inurl:mainFrame.cgi intext:"RICOH"
+
+
+Severity: 5 
+Category: Various Online Devices
+ Nicholas Doropoulos

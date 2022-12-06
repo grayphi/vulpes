@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6335
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-30
+Author:           Alexandros Pappas
+GoogleDork:       intitle:"index of" ./bash_history
+Description:      intitle:"index of" ./bash_history
+
+
+# Google Dork: intitle:"index of" ./bash_history
+ # Juicy info and sensitive directories.
+ # Date: 30/06/2020
+ # Author: Alexandros Pappas
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/49
+Severity:		  4 
+Category:         files_containing_passwords
+Published Date:   2003-07-29
+Author:           anonymous
+GoogleDork:       inurl:config.php dbuname dbpass
+Description:      inurl:config.php dbuname dbpass
+
+
+The old config.php script. This puppy should be held very closely. It should never be viewable to your web visitors because it contains CLEARTEXT usernames and passwords!The hishest of all googledorks ratings!

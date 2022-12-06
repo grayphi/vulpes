@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/448
+Severity:		  4 
+Category:         vulnerable_servers.phpmyadmin
+Published Date:   2004-08-21
+Author:           anonymous
+GoogleDork:       intitle:phpMyAdmin "Welcome to phpMyAdmin ***" "running on * as root@*"
+Description:      intitle:phpMyAdmin "Welcome to phpMyAdmin ***" "running on * as root@*"
+
+
+search for phpMyAdmin installations that are configured to run the MySQL database with root priviledges.

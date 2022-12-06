@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5778
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-03-09
+Author:           Reza Abasi
+GoogleDork:       intitle:"index of" "settings.py"
+Description:      intitle:"index of" "settings.py"
+
+
+files containing juicy info:
+ 
+ intitle:"index of" "settings.py"
+ 
+ Reza Abasi(Turku)
+ 

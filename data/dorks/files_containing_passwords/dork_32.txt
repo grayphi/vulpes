@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/32
+Severity:		  4 
+Category:         files_containing_passwords
+Published Date:   2003-06-27
+Author:           anonymous
+GoogleDork:       passlist
+Description:      passlist
+
+
+I'm not sure what uses this, but the passlist and passlist.txt files contain passwords in CLEARTEXT! That's right, no decoding/decrypting/encrypting required. How easy is this?*sigh*Supreme googledorkage

@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5927
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2020-04-20
+Author:           Alexandros Pappas
+GoogleDork:       "-----BEGIN CERTIFICATE-----" ext:pem -git
+Description:      "-----BEGIN CERTIFICATE-----" ext:pem -git
+
+
+# Google Dork: "-----BEGIN CERTIFICATE-----" ext:pem -git
+ 
+ # Various certificates including ssl, root, X509, etc.
+ 
+ # Date: 20/04/2020
+ 
+ # Author: Alexandros Pappas
+ 

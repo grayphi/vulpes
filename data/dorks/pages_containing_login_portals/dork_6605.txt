@@ -1,0 +1,21 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6605
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-10-12
+Author:           Sanu Jose M
+GoogleDork:       inurl:weblogin.cgi?=1
+Description:      inurl:weblogin.cgi?=1
+
+
+#Exploit Title : Displays login portals.
+ 
+ #Google Dork : inurl:weblogin.cgi?=1
+ 
+ #Date : 10/10/2020
+ 
+ #Exploit Author : Sanu Jose M
+ 
+ Thanks & Regards,
+ 
+ Sanu Jose M
+ 

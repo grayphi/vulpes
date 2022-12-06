@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/221
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2004-05-12
+Author:           anonymous
+GoogleDork:       filetype:eml eml +intext:"Subject" +intext:"From" +intext:"To"
+Description:      filetype:eml eml +intext:"Subject" +intext:"From" +intext:"To"
+
+
+These are oulook express email files which contain emails, with full headers. The information in these emails can be useful for information gathering about a target.

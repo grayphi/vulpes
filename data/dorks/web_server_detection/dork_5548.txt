@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5548
+Severity:		  6 
+Category:         web_server_detection
+Published Date:   2019-09-24
+Author:           Reza Abasi
+GoogleDork:       site:*/server-status intext:"Apache server status for"
+Description:      site:*/server-status intext:"Apache server status for"
+
+
+Files containing Juicy info:
+ 
+ site:*/server-status intext:"Apache server status for"
+ site:*/server-info intext:"Apache server Information"
+ 
+ Reza Abasi(Turku)
+ 

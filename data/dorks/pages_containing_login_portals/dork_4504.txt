@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4504
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2017-05-29
+Author:           anonymous
+GoogleDork:       inurl:"/siteadmin/index.php"
+Description:      inurl:"/siteadmin/index.php"
+
+
+Finds admin control panels Dxtroyer

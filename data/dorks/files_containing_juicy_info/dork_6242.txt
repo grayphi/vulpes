@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6242
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-08
+Author:           Ashish More
+GoogleDork:       "phpMyAdmin MySQL-Dump" "INSERT INTO" -"the"
+Description:      "phpMyAdmin MySQL-Dump" "INSERT INTO" -"the"
+
+
+# Dork: "phpMyAdmin MySQL-Dump" "INSERT INTO" -"the"
+ 
+ Thank you
+ Ashish More
+ 
