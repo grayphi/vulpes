@@ -23,7 +23,7 @@ module Cache
     end
 
     def cache_dork(dork)
-      Vulpes::Logger.debug("cacheing:: #{dork}")
+      Vulpes::Logger.debug("Caching:: #{dork.name}")
       if !dork.nil? && dork.is_a?(Vulpes::Dork)
         if dork.is_valid?
           case @db_type
