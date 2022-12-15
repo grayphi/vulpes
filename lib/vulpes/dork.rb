@@ -13,8 +13,8 @@ module Vulpes
          @category = obj[:category] || ""
          @publish_date = obj[:publish_date] || ""
          @author = obj[:author] || ""
-         @dork = obj[:dork].chomp || ""
-         @description = obj[:description].chomp || ""
+         @dork = (obj[:dork] || "").chomp
+         @description = (obj[:description] || "").chomp
       end
 
       def edit(dork=nil)
@@ -25,7 +25,7 @@ module Vulpes
 
          editor = Vulpes::Config.get('editor')
 
-         if (editor.nil? || editor.empty?)
+         if editor.nil? || editor.empty?
             Vulpes::Logger.debug("No editor defined, Using Terminal to read.")
             Vulpes::Logger.newline
             Vulpes::Logger.log("[#{Vulpes::Prettify.as_cyan('Current Dork')}]: ", @dork)
@@ -57,6 +57,16 @@ module Vulpes
          end
       end
 
+      def is_valid?
+         flag = true
+
+         flag = false if @severity.nil? || @severity.to_s.empty? \
+            || @severity.to_i < 1 || @severity.to_i > 10 || @category.nil? \
+            || @category.empty? || @dork.nil? || @dork.empty?
+
+         flag
+      end
+
       def to_s
          @dork
       end
@@ -66,6 +76,12 @@ module Vulpes
 
       def self.get_instance
          @instance ||= new
+      end
+
+      def self.create_dork(obj={})
+         return nil if obj.nil?
+
+         new obj
       end
 
       private_class_method :new

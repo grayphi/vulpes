@@ -83,5 +83,9 @@ Vulpes::Config.loadConfig options[:config_obj]
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
-Vulpes::Logger.debug('=========================================================' + \
-   '====================================================================')
+
+
+
+
+# This must be the last call to close all opened objects
+Vulpes::GC.close_vulpes

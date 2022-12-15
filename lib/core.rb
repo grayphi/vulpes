@@ -17,3 +17,5 @@ require 'vulpes/module'
 require 'vulpes/dork'
 
 require 'cache/manager'
+
+require 'vulpes/gc'
