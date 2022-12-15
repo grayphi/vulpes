@@ -16,4 +16,4 @@ Vulpes::Config.configLoader
 require 'vulpes/module'
 require 'vulpes/dork'
 
-require 'db/manager'
+require 'cache/manager'
