@@ -5,7 +5,7 @@ module Dorks
          super({
             name: "Dork 251",
             ghdb_url: "https://www.exploit-db.com/ghdb/251",
-            severity: "",
+            severity: "3",
             category: "files_containing_juicy_info",
             publish_date: "2004-05-24",
             author: "anonymous",

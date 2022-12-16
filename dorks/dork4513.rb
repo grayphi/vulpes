@@ -5,7 +5,7 @@ module Dorks
          super({
             name: "Dork 4513",
             ghdb_url: "https://www.exploit-db.com/ghdb/4513",
-            severity: "",
+            severity: "5",
             category: "advisories_and_vulnerabilities",
             publish_date: "2017-06-07",
             author: "Dxtroyer",

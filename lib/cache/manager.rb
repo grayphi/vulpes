@@ -23,18 +23,33 @@ module Cache
     end
 
     def cache_dork(dork)
-      Vulpes::Logger.debug("Caching:: #{dork.name}")
+      Vulpes::Logger.debug("Caching Dork:")
       if !dork.nil? && dork.is_a?(Vulpes::Dork)
-        if dork.is_valid?
-          case @db_type
-            when "mysql"
-              mysql_persist_dork dork
-          end unless @db_instance.nil?
-        else
-          raise InvalidDork, "Dork is invalid to persist."
-        end
+        raise InvalidDork, "Dork is invalid to persist." unless dork.is_valid?
+
+        case @db_type
+          when "mysql"
+            mysql_persist_dorks [dork]
+        end unless @db_instance.nil?
       else      
         raise InvalidObjectType, "Object is not a Vulpes::Dork Type." unless dork.nil?
+      end
+    end
+
+    def cache_dorks(dorks)
+      Vulpes::Logger.debug("Caching Dorks:")
+      if !dorks.nil? && dorks.kind_of?(Array)
+        dorks.each do |dork|
+          raise InvalidObjectType, "List contains invalid object to persist." unless dork.is_a?(Vulpes::Dork)
+          raise InvalidDork, "List contains invalid dork to persist." unless dork.is_valid?
+        end
+
+        case @db_type
+          when "mysql"
+            mysql_persist_dorks dorks
+        end unless @db_instance.nil?
+      else
+        raise InvalidObjectType, "Object is not array of Vulpes::Dork"
       end
     end
 
@@ -54,27 +69,32 @@ module Cache
           raise InvalidDatabaseError, "invaild database '#{@db_type}' in configuration."
       end
 
-      Vulpes::Logger.debug("Acquired DB connector of type(#{@db_instance})")
+      Vulpes::Logger.debug("Acquired DB connection of type(#{@db_instance})")
     end
 
-    def mysql_persist_dork(dork)
+    def mysql_persist_dorks(dorks)
       prep_st = "insert into cache_dorks (name, ghdb_url, severity, " \
         + "category, publish_date, author, dork, description) values " \
         + "(?, ?, ?, ?, ?, ?, ?, ?);"
-        
-      Vulpes::Logger.debug ("prepared statement:: #{prep_st}")
-      ps = @db_instance.prepare prep_st
 
-      ps.execute dork.name || '', \
-        dork.ghdb_url || '', \
-        dork.severity.to_i, \
-        dork.category, \
-        dork.publish_date || '', \
-        dork.author || '', \
-        dork.dork, \
-        dork.description || ''
-      
-      ps.close
+      begin
+        ps = @db_instance.prepare prep_st
+
+        dorks.each do |dork|
+          Vulpes::Logger.debug("Persisting dork: #{dork.name}")
+
+          ps.execute dork.name || '', \
+            dork.ghdb_url || '', \
+            dork.severity.to_i, \
+            dork.category, \
+            dork.publish_date || '', \
+            dork.author || '', \
+            dork.dork, \
+            dork.description || ''
+        end
+      ensure
+        ps.close if ps
+      end
     end
 
 

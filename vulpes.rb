@@ -77,6 +77,8 @@ Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
 Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
 Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
 
+begin
+
 Vulpes::Config.loadFile options[:config_file]
 Vulpes::Config.loadConfig options[:config_obj]
 
@@ -85,6 +87,13 @@ Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
 
+require_relative 'scripts/cache/build_cache'
+CacheBuilder.build
 
-# This must be the last call to close all opened objects
-Vulpes::GC.close_vulpes
+
+
+
+ensure
+   # This must be the last call to close all opened objects
+   Vulpes::GC.close_vulpes
+end
