@@ -87,10 +87,6 @@ Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
 
-require_relative 'scripts/cache/build_cache'
-CacheBuilder.build
-
-
 
 
 ensure
