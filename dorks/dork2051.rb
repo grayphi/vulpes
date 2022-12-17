@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2010-11-15",
             author: "anonymous",
             dork: <<~EDORK,
-CrÃ©Ã© par Narfight, ClanLite V2.2006.05.20 Â© 2000-2005
+Cr par Narfight, ClanLite V2.2006.05.20 2000-2005
 EDORK
             description: <<~EDESC
 ClanLite 2.x (SQL Injection/XSS) Multiple Remote Vulnerabilities - CVE: 2008-5215: https://www.exploit-db.com/exploits/5595

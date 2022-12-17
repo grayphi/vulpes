@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2010-11-15",
             author: "anonymous",
             dork: <<~EDORK,
-PHPGÃ©nÃ©alogie fonctionne sur un serveur PHP
+PHPGenealogie fonctionne sur un serveur PHP
 EDORK
             description: <<~EDESC
 PHPGenealogy 2.0 (DataDirectory) RFI Vulnerability - CVE: 2009-3541: https://www.exploit-db.com/exploits/9155

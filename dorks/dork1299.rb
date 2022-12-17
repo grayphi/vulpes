@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2006-02-08",
             author: "anonymous",
             dork: <<~EDORK,
-intitle:"b2evo installer" intext:"Installer fÃƒÆ’Ã‚Â¼r Version"
+intitle:"b2evo installer" intext:"Installer for Version"
 EDORK
             description: <<~EDESC
 this page lets you to know some interesting info on target machine, database name, username... it lets you to see phpinfo() and, if you know database password, lets you to inject arbitrary code in blogs/conf/_config.php, regardless of magic_quotes_gpc settings and launch commands wrote a simple dictionary attack tool fot this: http://retrogod.altervista.org/b2evo_16alpha_bf.html

@@ -14,7 +14,7 @@ intitle:"Directory Listing, Index of /*/"
 EDORK
             description: <<~EDESC
 intitle:"Directory Listing, Index of /*/"
-Vendor page:"Einfache HTTP-Server-Software fÃƒÆ’Ã‚Â¼r privates Homepage-Hosting oder groÃƒÆ’Ã…Â¸e Uploads."small HTTP server software for private hompage hosting or big uploads.
+Vendor page:"Einfache HTTP-Server-Software for privates Homepage-Hosting oder groe Uploads."small HTTP server software for private hompage hosting or big uploads.
 EDESC
          })
 

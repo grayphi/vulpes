@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2005-11-28",
             author: "anonymous",
             dork: <<~EDORK,
-"powered by GuppY v4"|"Site crÃƒÆ’Ã‚Â©ÃƒÆ’Ã‚Â© avec GuppY v4"
+"powered by GuppY v4"|"Site cr avec GuppY v4"
 EDORK
             description: <<~EDESC
 Guppy remote code execution / various arbitrary inclusion issuesadvisory & poc exploit:http://rgod.altervista.org/guppy459_xpl.html

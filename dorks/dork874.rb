@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2005-02-12",
             author: "anonymous",
             dork: <<~EDORK,
-intext:"Please enter correct password for Administrator Access. Thank you" "Copyright Ãƒâ€šÃ‚Â© 2003 SMC Networks, Inc. All rights reserved."
+intext:"Please enter correct password for Administrator Access. Thank you" "Copyright 2003 SMC Networks, Inc. All rights reserved."
 EDORK
             description: <<~EDESC
 Finds SMC Routers.

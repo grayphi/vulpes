@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2006-02-13",
             author: "anonymous",
             dork: <<~EDORK,
-("This DragonflyÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ installation was" | "Thanks for downloading Dragonfly") -inurl:demo -inurl:cpgnuke.com
+("This Dragonfly installation was" | "Thanks for downloading Dragonfly") -inurl:demo -inurl:cpgnuke.com
 EDORK
             description: <<~EDESC
 exploit and short explaination: http://retrogod.altervista.org/dragonfly9.0.6.1_incl_xpl.html

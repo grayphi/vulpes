@@ -14,7 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 ("Fiery WebTools" inurl:index2.html) | "WebTools enable * * observe, *, * * * flow * print jobs"
-Fiery WebTools offers many of the same capabilities of the Command WorkStationÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢, via a Java-enabled Web browser. All job control options such as job merging, edition and previews, as well as information on the status of the jobs are accessible through Fiery WebTools.
+Fiery WebTools offers many of the same capabilities of the Command WorkStation, via a Java-enabled Web browser. All job control options such as job merging, edition and previews, as well as information on the status of the jobs are accessible through Fiery WebTools.
 EDESC
          })
 

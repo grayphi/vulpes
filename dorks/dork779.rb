@@ -13,7 +13,7 @@ module Dorks
 intitle:"Novell Web Services" intext:"Select a service and a language."
 EDORK
             description: <<~EDESC
-"NovellÃƒâ€šÃ‚Â® GroupWise is an enterprise collaboration system that provides secure e-mail, calendaring, scheduling, and instant messaging. GroupWise also includes task management, contact management, document management, and other productivity tools. GroupWise can be used on your desktop on Linux, Windows*, or Macintosh; in a Web browser anywhere you have an Internet connection; and even on wireless devices. Your GroupWise system can be set up on NetWareÃƒâ€šÃ‚Â®, Linux, Windows, or any combination of these operating systems."
+"Novell GroupWise is an enterprise collaboration system that provides secure e-mail, calendaring, scheduling, and instant messaging. GroupWise also includes task management, contact management, document management, and other productivity tools. GroupWise can be used on your desktop on Linux, Windows*, or Macintosh; in a Web browser anywhere you have an Internet connection; and even on wireless devices. Your GroupWise system can be set up on NetWare, Linux, Windows, or any combination of these operating systems."
 EDESC
          })
 

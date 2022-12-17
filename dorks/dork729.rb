@@ -13,7 +13,7 @@ module Dorks
 inurl:"ipp/pdisplay.htm"
 EDORK
             description: <<~EDESC
-Providing a standout printing solution, Novell iPrint offers secure print services that extend across multiple networks and operating systemsÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Âbringing the power of the Net to your business environment. This search locates various online printers.
+Providing a standout printing solution, Novell iPrint offers secure print services that extend across multiple networks and operating systems bringing the power of the Net to your business environment. This search locates various online printers.
 EDESC
          })
 

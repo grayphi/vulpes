@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2004-11-18",
             author: "anonymous",
             dork: <<~EDORK,
-intext:("UBB.threadsÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ 6.2"|"UBB.threadsÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ 6.3") intext:"You * not logged *" -site:ubbcentral.com
+intext:("UBB.threads 6.2"|"UBB.threads 6.3") intext:"You * not logged *" -site:ubbcentral.com
 EDORK
             description: <<~EDESC
 UBB.Threads 6.2.*-6.3.* one char bruteforce vulnerability:http://www.k-otik.com/exploits/20041116.r57ubb.pl.php

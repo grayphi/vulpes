@@ -13,7 +13,7 @@ module Dorks
 intext:"Storage Management Server for" intitle:"Server Administration"
 EDORK
             description: <<~EDESC
-These pages can reveal information about the operating system and patch level, as well as providing a login portal for hackers to attack. "As part of the IBM TotalStorageÃƒâ€šÃ‚Â® Open Software Family, IBM Tivoli Storage (ADSM) Manager protects your organization's data from hardware failures and other errors by storing backup and archive copies of data on offline storage."
+These pages can reveal information about the operating system and patch level, as well as providing a login portal for hackers to attack. "As part of the IBM TotalStorage Open Software Family, IBM Tivoli Storage (ADSM) Manager protects your organization's data from hardware failures and other errors by storing backup and archive copies of data on offline storage."
 EDESC
          })
 

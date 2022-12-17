@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2006-03-15",
             author: "anonymous",
             dork: <<~EDORK,
-(intitle:"WordPress ÃƒÂ¢Ã¢â€šÂ¬Ã‚Âº Setup Configuration File")|(inurl:"setup-config.php?step=")
+(intitle:"WordPress Setup Configuration File")|(inurl:"setup-config.php?step=")
 EDORK
             description: <<~EDESC
 Alter setup configuration files.add ?step=1

@@ -10,10 +10,10 @@ module Dorks
             publish_date: "2004-07-22",
             author: "anonymous",
             dork: <<~EDORK,
-Xerox PhaserÃƒâ€šÃ‚Â® 840 Color Printer
+Xerox Phaser 840 Color Printer
 EDORK
             description: <<~EDESC
-This product is supported but no longer sold by Xerox in the United States. Support and supplies for this product continue to be available online. Replacement Product: PhaserÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ 8400This search finds the PhaserLinkTM Printer Management Software for the PhaserÃƒâ€šÃ‚Â® 840 Color Printer. It seems at least the "Print DEMO" page works without authentication.
+This product is supported but no longer sold by Xerox in the United States. Support and supplies for this product continue to be available online. Replacement Product: Phaser 8400This search finds the PhaserLinkTM Printer Management Software for the Phaser 840 Color Printer. It seems at least the "Print DEMO" page works without authentication.
 EDESC
          })
 

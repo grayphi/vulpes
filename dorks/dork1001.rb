@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2005-06-03",
             author: "anonymous",
             dork: <<~EDORK,
-intitle:"PowerDownload" ("PowerDownload v3.0.2 Ãƒâ€šÃ‚Â©" | "PowerDownload v3.0.3 Ãƒâ€šÃ‚Â©" ) -site:powerscripts.org
+intitle:"PowerDownload" ("PowerDownload v3.0.2" | "PowerDownload v3.0.3" ) -site:powerscripts.org
 EDORK
             description: <<~EDESC
 The PowerDownload program (version 3.0.2 and 3.0.3) contains a serious vulnerability. Vulnerability discovery: SoulBlack - Security Research (http://soulblack.com.ar)Date: 05/31/2005Severity: High. Remote Users Can Execute Arbitrary Code.Affected version: v3.0.2 & v3.0.3vendor: http://www.powerscripts.org/* Fix *Contact the Vendor* References *http://www.soulblack.com.ar/repo/papers/advisory/powerdownload_advisory.txt

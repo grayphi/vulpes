@@ -13,7 +13,7 @@ module Dorks
 seyeon FlexWATCH cameras
 EDORK
             description: <<~EDESC
-seyeon provides various type of products and software to build up a remote video monitoring and surveillance system over the TCP/IP network. FlexWATCHÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ Network video server series has built-in Web server based on TCP/IP technology. It also has an embedded RTOS.The admin pages are at http://[sitename]/admin/aindex.htm.
+seyeon provides various type of products and software to build up a remote video monitoring and surveillance system over the TCP/IP network. FlexWATCH Network video server series has built-in Web server based on TCP/IP technology. It also has an embedded RTOS.The admin pages are at http://[sitename]/admin/aindex.htm.
 EDESC
          })
 
