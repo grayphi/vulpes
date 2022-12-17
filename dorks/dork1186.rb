@@ -13,7 +13,7 @@ module Dorks
 "iCONECT 4.1 :: Login"
 EDORK
             description: <<~EDESC
-This search finds the login page for iCONECTnxt, it enables firms to search, organize, and review electronic and document discovery information ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â including email, native files, and images ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â from anywhere in the world for easy collaboration with outside counsel, branch offices, and consultants. LAN and Web solutions available.
+This search finds the login page for iCONECTnxt, it enables firms to search, organize, and review electronic and document discovery information ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â including email, native files, and images ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â from anywhere in the world for easy collaboration with outside counsel, branch offices, and consultants. LAN and Web solutions available.
 EDESC
          })
 
