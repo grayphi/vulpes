@@ -184,7 +184,7 @@ module Cache
         ps = @db_instance.prepare prep_st
 
         rs = ps.execute(*args)
-        dorks = []
+        dorks = [] unless block_given?
 
         rs.each do |d|
           dork = {}
@@ -211,218 +211,49 @@ module Cache
       end
     end
 
-    def mysql_get_dorks_by_name(name)
+    def mysql_get_dorks_by_name(name, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where name like ?;"
 
-      begin
-        ps = @db_instance.prepare prep_st
-
-        rs = ps.execute "%#{name}%"
-        dorks = []
-
-        rs.each do |d|
-          dork = {}
-
-          dork[:name] = d['name']
-          dork[:ghdb_url] = d['ghdb_url']
-          dork[:severity] = d['severity']
-          dork[:category] = d['category']
-          dork[:publish_date] = d['publish_date']
-          dork[:author] = d['author']
-          dork[:dork] = d['dork']
-          dork[:description] = d['description']
-
-          if block_given?
-            yield Vulpes::Dork.create_dork dork
-          else
-            dorks.push(Vulpes::Dork.create_dork dork)
-          end
-        end
-
-        dorks unless block_given?
-      ensure
-        ps.close if ps
-      end
+      mysql_get_dorks prep_st, "%#{name}%", &block
     end
 
-    def mysql_get_dorks_by_severity(severity)
+    def mysql_get_dorks_by_severity(severity, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where severity = ?;"
 
-      begin
-        ps = @db_instance.prepare prep_st
-
-        rs = ps.execute severity
-        dorks = []
-
-        rs.each do |d|
-          dork = {}
-
-          dork[:name] = d['name']
-          dork[:ghdb_url] = d['ghdb_url']
-          dork[:severity] = d['severity']
-          dork[:category] = d['category']
-          dork[:publish_date] = d['publish_date']
-          dork[:author] = d['author']
-          dork[:dork] = d['dork']
-          dork[:description] = d['description']
-
-          if block_given?
-            yield Vulpes::Dork.create_dork dork
-          else
-            dorks.push(Vulpes::Dork.create_dork dork)
-          end
-        end
-
-        dorks unless block_given?
-      ensure
-        ps.close if ps
-      end
+      mysql_get_dorks prep_st, severity, &block
     end
 
-    def mysql_get_dorks_by_category(category)
+    def mysql_get_dorks_by_category(category, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where category like ?;"
 
-      begin
-        ps = @db_instance.prepare prep_st
-
-        rs = ps.execute "%#{category}%"
-        dorks = []
-
-        rs.each do |d|
-          dork = {}
-
-          dork[:name] = d['name']
-          dork[:ghdb_url] = d['ghdb_url']
-          dork[:severity] = d['severity']
-          dork[:category] = d['category']
-          dork[:publish_date] = d['publish_date']
-          dork[:author] = d['author']
-          dork[:dork] = d['dork']
-          dork[:description] = d['description']
-
-          if block_given?
-            yield Vulpes::Dork.create_dork dork
-          else
-            dorks.push(Vulpes::Dork.create_dork dork)
-          end
-        end
-
-        dorks unless block_given?
-      ensure
-        ps.close if ps
-      end
+      mysql_get_dorks prep_st, "%#{category}%", &block
     end
 
-    def mysql_get_dorks_by_author(author)
+    def mysql_get_dorks_by_author(author, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where author like ?;"
 
-      begin
-        ps = @db_instance.prepare prep_st
-
-        rs = ps.execute "%#{author}%"
-        dorks = []
-
-        rs.each do |d|
-          dork = {}
-
-          dork[:name] = d['name']
-          dork[:ghdb_url] = d['ghdb_url']
-          dork[:severity] = d['severity']
-          dork[:category] = d['category']
-          dork[:publish_date] = d['publish_date']
-          dork[:author] = d['author']
-          dork[:dork] = d['dork']
-          dork[:description] = d['description']
-
-          if block_given?
-            yield Vulpes::Dork.create_dork dork
-          else
-            dorks.push(Vulpes::Dork.create_dork dork)
-          end
-        end
-
-        dorks unless block_given?
-      ensure
-        ps.close if ps
-      end
+      mysql_get_dorks prep_st, "%#{author}%", &block
     end
 
-    def mysql_get_dorks_by_url(url)
+    def mysql_get_dorks_by_url(url, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where ghdb_url like ?;"
 
-      begin
-        ps = @db_instance.prepare prep_st
-
-        rs = ps.execute "%#{url}%"
-        dorks = []
-
-        rs.each do |d|
-          dork = {}
-
-          dork[:name] = d['name']
-          dork[:ghdb_url] = d['ghdb_url']
-          dork[:severity] = d['severity']
-          dork[:category] = d['category']
-          dork[:publish_date] = d['publish_date']
-          dork[:author] = d['author']
-          dork[:dork] = d['dork']
-          dork[:description] = d['description']
-
-          if block_given?
-            yield Vulpes::Dork.create_dork dork
-          else
-            dorks.push(Vulpes::Dork.create_dork dork)
-          end
-        end
-
-        dorks unless block_given?
-      ensure
-        ps.close if ps
-      end
+      mysql_get_dorks prep_st, "%#{url}%", &block
     end
 
-    def mysql_find_dorks(sterm)
+    def mysql_find_dorks(sterm, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where name like ? " \
         + "or ghdb_url like ? or category like ? or author like ? or " \
         + "dork like ? or description like ? or publish_date like ?"
 
-      begin
-        ps = @db_instance.prepare prep_st
-
-        rs = ps.execute "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", \
-          "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%"
-
-        dorks = []
-
-        rs.each do |d|
-          dork = {}
-
-          dork[:name] = d['name']
-          dork[:ghdb_url] = d['ghdb_url']
-          dork[:severity] = d['severity']
-          dork[:category] = d['category']
-          dork[:publish_date] = d['publish_date']
-          dork[:author] = d['author']
-          dork[:dork] = d['dork']
-          dork[:description] = d['description']
-
-          if block_given?
-            yield Vulpes::Dork.create_dork dork
-          else
-            dorks.push(Vulpes::Dork.create_dork dork)
-          end
-        end
-
-        dorks unless block_given?
-      ensure
-        ps.close if ps
-      end
+      mysql_get_dorks prep_st, "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", \
+        "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", &block
     end
 
 
