@@ -179,6 +179,38 @@ module Cache
       end
     end
 
+    def mysql_get_dorks(prep_st, *args)
+      begin
+        ps = @db_instance.prepare prep_st
+
+        rs = ps.execute(*args)
+        dorks = []
+
+        rs.each do |d|
+          dork = {}
+
+          dork[:name] = d['name']
+          dork[:ghdb_url] = d['ghdb_url']
+          dork[:severity] = d['severity']
+          dork[:category] = d['category']
+          dork[:publish_date] = d['publish_date']
+          dork[:author] = d['author']
+          dork[:dork] = d['dork']
+          dork[:description] = d['description']
+
+          if block_given?
+            yield Vulpes::Dork.create_dork dork
+          else
+            dorks.push(Vulpes::Dork.create_dork dork)
+          end
+        end
+
+        dorks unless block_given?
+      ensure
+        ps.close if ps
+      end
+    end
+
     def mysql_get_dorks_by_name(name)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where name like ?;"
@@ -283,6 +315,116 @@ module Cache
         ps.close if ps
       end
     end
+
+    def mysql_get_dorks_by_author(author)
+      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where author like ?;"
+
+      begin
+        ps = @db_instance.prepare prep_st
+
+        rs = ps.execute "%#{author}%"
+        dorks = []
+
+        rs.each do |d|
+          dork = {}
+
+          dork[:name] = d['name']
+          dork[:ghdb_url] = d['ghdb_url']
+          dork[:severity] = d['severity']
+          dork[:category] = d['category']
+          dork[:publish_date] = d['publish_date']
+          dork[:author] = d['author']
+          dork[:dork] = d['dork']
+          dork[:description] = d['description']
+
+          if block_given?
+            yield Vulpes::Dork.create_dork dork
+          else
+            dorks.push(Vulpes::Dork.create_dork dork)
+          end
+        end
+
+        dorks unless block_given?
+      ensure
+        ps.close if ps
+      end
+    end
+
+    def mysql_get_dorks_by_url(url)
+      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where ghdb_url like ?;"
+
+      begin
+        ps = @db_instance.prepare prep_st
+
+        rs = ps.execute "%#{url}%"
+        dorks = []
+
+        rs.each do |d|
+          dork = {}
+
+          dork[:name] = d['name']
+          dork[:ghdb_url] = d['ghdb_url']
+          dork[:severity] = d['severity']
+          dork[:category] = d['category']
+          dork[:publish_date] = d['publish_date']
+          dork[:author] = d['author']
+          dork[:dork] = d['dork']
+          dork[:description] = d['description']
+
+          if block_given?
+            yield Vulpes::Dork.create_dork dork
+          else
+            dorks.push(Vulpes::Dork.create_dork dork)
+          end
+        end
+
+        dorks unless block_given?
+      ensure
+        ps.close if ps
+      end
+    end
+
+    def mysql_find_dorks(sterm)
+      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where name like ? " \
+        + "or ghdb_url like ? or category like ? or author like ? or " \
+        + "dork like ? or description like ? or publish_date like ?"
+
+      begin
+        ps = @db_instance.prepare prep_st
+
+        rs = ps.execute "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", \
+          "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%"
+
+        dorks = []
+
+        rs.each do |d|
+          dork = {}
+
+          dork[:name] = d['name']
+          dork[:ghdb_url] = d['ghdb_url']
+          dork[:severity] = d['severity']
+          dork[:category] = d['category']
+          dork[:publish_date] = d['publish_date']
+          dork[:author] = d['author']
+          dork[:dork] = d['dork']
+          dork[:description] = d['description']
+
+          if block_given?
+            yield Vulpes::Dork.create_dork dork
+          else
+            dorks.push(Vulpes::Dork.create_dork dork)
+          end
+        end
+
+        dorks unless block_given?
+      ensure
+        ps.close if ps
+      end
+    end
+
 
     private_class_method :new
 
