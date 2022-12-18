@@ -75,6 +75,25 @@ module Cache
           mysql_get_dorks_by_severity severity, &block
       end unless @db_instance.nil?
     end
+
+    def get_dorks_in_severities(min, max, &block)
+      Vulpes::Logger.debug("Selecting dorks in severities(#{min}, #{max}):")
+
+      return [] if min.nil? || max.nil? || min.to_s.empty? || max.to_s.empty? \
+        || min.to_i < 1 || min.to_i > 10 || max.to_i < 1 || max.to_i > 10 || \
+        min > max
+
+      dorks = [] unless block_given?
+      min.upto max do |severity|
+        if block_given?
+          get_dorks_by_severity severity, &block
+        else
+          get_dorks_by_severity(severity).each {|dork| dorks << dork}
+        end
+      end
+
+      dorks unless block_given?
+    end
     
     def get_dorks_by_category(category, &block)
       Vulpes::Logger.debug("Selecting dorks for category(#{category}):")
@@ -87,11 +106,37 @@ module Cache
       end unless @db_instance.nil?
     end
 
-    def find_dorks(name=nil, ghdb_url=nil, severity=nil, category=nil, \
-      publish_date=nil, author=nil, dork=nil, description=nil)
-    
+    def get_dorks_by_author(author, &block)
+      Vulpes::Logger.debug("Selecting dorks for author(#{author}):")
 
-    
+      return [] if author.nil? || author.empty?
+
+      case @db_type
+        when "mysql"
+          mysql_get_dorks_by_author author, &block
+      end unless @db_instance.nil?
+    end
+
+    def get_dorks_by_url(url, &block)
+      Vulpes::Logger.debug("Selecting dorks for url(#{url}):")
+
+      return [] if url.nil? || url.empty?
+
+      case @db_type
+        when "mysql"
+          mysql_get_dorks_by_url url, &block
+      end unless @db_instance.nil?
+    end
+
+    def find_dorks(sterm, &block)
+      Vulpes::Logger.debug("Searching dorks by term(#{sterm}):")
+
+      return [] if sterm.nil? || sterm.empty?
+
+      case @db_type
+        when "mysql"
+          mysql_find_dorks sterm, &block
+      end unless @db_instance.nil?
     end
 
 
@@ -133,7 +178,6 @@ module Cache
         ps.close if ps
       end
     end
-
 
     def mysql_get_dorks_by_name(name)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
