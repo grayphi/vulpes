@@ -13,7 +13,7 @@ module Dorks
 "Microsoft CRM : Unsupported Browser Version"
 EDORK
             description: <<~EDESC
-Microsoft CRM Login portal.MS says:Microsoft CRM integrates with Microsoft Office, Microsoft Business Solutions for Financial Management, and other business systems to give employees a complete view of customer information. The ease of integration with Microsoft Office is of particular valueÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Âenabling staff to access Microsoft CRM information from Microsoft Office Outlook and work online or offline with access to sales functionality.
+Microsoft CRM Login portal.MS says:Microsoft CRM integrates with Microsoft Office, Microsoft Business Solutions for Financial Management, and other business systems to give employees a complete view of customer information. The ease of integration with Microsoft Office is of particular value enabling staff to access Microsoft CRM information from Microsoft Office Outlook and work online or offline with access to sales functionality.
 EDESC
          })
 

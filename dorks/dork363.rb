@@ -10,10 +10,10 @@ module Dorks
             publish_date: "2004-07-22",
             author: "anonymous",
             dork: <<~EDORK,
-Xerox PhaserÃƒâ€šÃ‚Â® 740 Color Printer
+Xerox Phaser 740 Color Printer
 EDORK
             description: <<~EDESC
-This product is supported but no longer sold by Xerox in the United States. Replacement Product: PhaserÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ 6250.Configuration pages are password protected.
+This product is supported but no longer sold by Xerox in the United States. Replacement Product: Phaser 6250.Configuration pages are password protected.
 EDESC
          })
 

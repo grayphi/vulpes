@@ -7,7 +7,7 @@ module Dorks
          super({
             name: "Example Dork",
             ghdb_url: "",
-            severity: "0",
+            severity: "1",
             category: "example",
             publish_date: "2022-10-20",
             author: "Vulpes",

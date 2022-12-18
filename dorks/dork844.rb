@@ -13,7 +13,7 @@ module Dorks
 inurl:"8003/Display?what="
 EDORK
             description: <<~EDESC
-Norton AntiVirus for GatewaysEasily administered from anywhere via an HTML interface, it scans compressed and encoded files at the SMTP gateway, including a nearly unlimited number of file extensions in ZIPÃƒâ€šÃ‚Â®, UUENCODE, and MIME formats. Administrators have flexible options for handling infected files, scheduling virus definition updates via LiveUpdateÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢, and generating reports.
+Norton AntiVirus for GatewaysEasily administered from anywhere via an HTML interface, it scans compressed and encoded files at the SMTP gateway, including a nearly unlimited number of file extensions in ZIP, UUENCODE, and MIME formats. Administrators have flexible options for handling infected files, scheduling virus definition updates via LiveUpdate, and generating reports.
 EDESC
          })
 

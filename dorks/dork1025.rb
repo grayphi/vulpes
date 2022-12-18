@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2005-06-24",
             author: "anonymous",
             dork: <<~EDORK,
-intext:"Calendar Program Ãƒâ€šÃ‚Â© Copyright 1999 Matt Kruse" "Add an event"
+intext:"Calendar Program Copyright 1999 Matt Kruse" "Add an event"
 EDORK
             description: <<~EDESC
 This search finds all pages that allow you to add events in Mark Kruse's CalendarScript. This script seems to be VERY vulnerable to HTML injection techniques.

@@ -13,7 +13,7 @@ module Dorks
 intitle:"SFXAdmin - sfx_global" | intitle:"SFXAdmin - sfx_local" | intitle:"SFXAdmin - sfx_test"
 EDORK
             description: <<~EDESC
-Just another logon page search, this one is for SFXÃƒâ€šÃ‚Â®, a link server from Ex Libris, delivers linking services in the scholarly information environment. SFX is also a component in the management of electronic resources in a library.
+Just another logon page search, this one is for SFX, a link server from Ex Libris, delivers linking services in the scholarly information environment. SFX is also a component in the management of electronic resources in a library.
 EDESC
          })
 

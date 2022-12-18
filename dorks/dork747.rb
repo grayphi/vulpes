@@ -13,7 +13,7 @@ module Dorks
 inurl:"sitescope.html" intitle:"sitescope" intext:"refresh" -demo
 EDORK
             description: <<~EDESC
-Mercury SiteScope designed to ensure the availability and performance of distributed IT infrastructures ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â e.g., servers, operating systems, network devices, network services, applications, and components. Some pages may be IP restricted.
+Mercury SiteScope designed to ensure the availability and performance of distributed IT infrastructures e.g., servers, operating systems, network devices, network services, applications, and components. Some pages may be IP restricted.
 EDESC
          })
 

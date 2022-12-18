@@ -13,7 +13,7 @@ module Dorks
 intitle:"Admin Login" "admin login" "blogware"
 EDORK
             description: <<~EDESC
-Blogware Login Portal: "An exciting and innovative tool for creating or enhancing your web presence. It is your key to easy publishing on the World Wide Web ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ share pictures, video, links, documents, newsletters, opinions and more, with family, friends and colleagues. Now you can have a website without being a Webmaster. ItÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s simple! There is no HTML to learn and no new software to download and install."
+Blogware Login Portal: "An exciting and innovative tool for creating or enhancing your web presence. It is your key to easy publishing on the World Wide Web share pictures, video, links, documents, newsletters, opinions and more, with family, friends and colleagues. Now you can have a website without being a Webmaster. Its simple! There is no HTML to learn and no new software to download and install."
 EDESC
          })
 

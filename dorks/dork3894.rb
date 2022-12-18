@@ -5,7 +5,7 @@ module Dorks
          super({
             name: "Dork 3894",
             ghdb_url: "https://www.exploit-db.com/ghdb/3894",
-            severity: "",
+            severity: "3",
             category: "various_online_devices",
             publish_date: "2013-09-24",
             author: "anonymous",

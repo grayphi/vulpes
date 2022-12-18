@@ -13,7 +13,7 @@ module Dorks
 "Powered by DWMail" password intitle:dwmail
 EDORK
             description: <<~EDESC
-What is DWmailÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢?: DWmailÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ is an 'intelligent' Web based email application written in the scripting language, PHP. DWmailÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ allows you and your visitors to access, manage and send email using any POP3 or IMAP4 compliant email account. Simply enter your email address and password to check your email.
+What is DWmail?: DWmail is an 'intelligent' Web based email application written in the scripting language, PHP. DWmail allows you and your visitors to access, manage and send email using any POP3 or IMAP4 compliant email account. Simply enter your email address and password to check your email.
 EDESC
          })
 

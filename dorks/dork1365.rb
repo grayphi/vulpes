@@ -13,7 +13,7 @@ module Dorks
 intitle:"Device Status Summary Page" -demo
 EDORK
             description: <<~EDESC
-hxxp://www.netbotz.com/products/index.htmlNetwork/server/room security and enviromental alarm device.O yea, they have cameras on them, fun to watch IT people...... wooIncludes:Temperature (Ãƒâ€šÃ‚Â°F)Humidity (%)Air Flow (ft/min)Audio Alarm:Door Switch:
+hxxp://www.netbotz.com/products/index.htmlNetwork/server/room security and enviromental alarm device.O yea, they have cameras on them, fun to watch IT people...... wooIncludes:Temperature (F)Humidity (%)Air Flow (ft/min)Audio Alarm:Door Switch:
 EDESC
          })
 

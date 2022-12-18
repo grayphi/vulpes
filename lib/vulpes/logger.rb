@@ -10,6 +10,10 @@ module Vulpes
          @@pp = Vulpes::Prettify.get_printer
       end
 
+      def self.close
+         # TODO: close logger files
+      end
+
       def self.debug(msg)
          prompt = @@pp.as_yellow(@@pp.as_bold 'DEBUG')
          puts "[#{prompt}]: #{msg}" if Vulpes::Constants.get("debug")

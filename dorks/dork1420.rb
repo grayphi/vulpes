@@ -13,7 +13,7 @@ module Dorks
 intitle:"Net2Phone Init Page"
 EDORK
             description: <<~EDESC
-Net2Phone CommCenterÃƒâ€šÃ‚Â® is software that allows you to make phone calls and send faxes to anywhere in the world.
+Net2Phone CommCenter is software that allows you to make phone calls and send faxes to anywhere in the world.
 EDESC
          })
 

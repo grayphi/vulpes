@@ -10,7 +10,7 @@ module Dorks
             publish_date: "2010-11-15",
             author: "anonymous",
             dork: <<~EDORK,
-"propulsÃ© par JBlog"
+"propulse par JBlog"
 EDORK
             description: <<~EDESC
 JBlog 1.0 Create / Delete Admin Authentication Bypass - CVE: 2007-3973: https://www.exploit-db.com/exploits/4211

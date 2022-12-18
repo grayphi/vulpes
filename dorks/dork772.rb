@@ -13,7 +13,7 @@ module Dorks
 intitle:"MX Control Console" "If you can't remember"
 EDORK
             description: <<~EDESC
-MX LogicÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s customizable and easy-to-use MX Control ConsoleSM is a centralized email threat management policy platform that provides you with one interface for managing all corporate-wide email threats, protection and security. With the MX Control Console, you can easily configure and control your email protection and security based on your overall corporate email policies.
+MX Logics customizable and easy-to-use MX Control ConsoleSM is a centralized email threat management policy platform that provides you with one interface for managing all corporate-wide email threats, protection and security. With the MX Control Console, you can easily configure and control your email protection and security based on your overall corporate email policies.
 EDESC
          })
 

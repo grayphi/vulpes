@@ -13,7 +13,7 @@ module Dorks
 intext:SQLiteManager inurl:main.php
 EDORK
             description: <<~EDESC
-sQLiteManager is a tool Web multi-language of management of data bases SQLite. # Management of several data base (Creation, access or upload basic) # Management of the attached bases of donnÃƒÆ’Ã‚Â¨es # Creation, modification and removal of tables and index. # Insertion, modification, suppression of recording in these tables
+sQLiteManager is a tool Web multi-language of management of data bases SQLite. # Management of several data base (Creation, access or upload basic) # Management of the attached bases of donnes # Creation, modification and removal of tables and index. # Insertion, modification, suppression of recording in these tables
 EDESC
          })
 

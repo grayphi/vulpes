@@ -11,3 +11,7 @@ class VulpesConfigError < VulpesError; end
 class InvalidKeyError < VulpesConfigError; end
 
 class InvalidDatabaseError < VulpesError; end
+
+class InvalidObjectType < VulpesError; end
+
+class InvalidDork < InvalidObjectType; end

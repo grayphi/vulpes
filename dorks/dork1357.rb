@@ -13,7 +13,7 @@ module Dorks
 intitle:("TrackerCam Live Video")|("TrackerCam Application Login")|("Trackercam Remote") -trackercam.com
 EDORK
             description: <<~EDESC
-"TrackerCamÃƒâ€šÃ‚Â® is a software application that lets you put your webcam on the web, use it for surveillance, and do things like access its video from a cell phone or upload its images to an FTP-server."
+"TrackerCam is a software application that lets you put your webcam on the web, use it for surveillance, and do things like access its video from a cell phone or upload its images to an FTP-server."
 EDESC
          })
 

@@ -1,5 +1,5 @@
 GHDB URL:         https://www.exploit-db.com/ghdb/4513
-everity:		  5 
+Severity:		  5 
 Category:         advisories_and_vulnerabilities
 Published Date:   2017-06-07
 Author:           Dxtroyer
