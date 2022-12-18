@@ -250,7 +250,7 @@ module Cache
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
         + "author, dork, description from cache_dorks where name like ? " \
         + "or ghdb_url like ? or category like ? or author like ? or " \
-        + "dork like ? or description like ? or publish_date like ?"
+        + "dork like ? or description like ? or publish_date like ?;"
 
       mysql_get_dorks prep_st, "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", \
         "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", &block
