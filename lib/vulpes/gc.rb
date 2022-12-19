@@ -1,7 +1,7 @@
 module Vulpes
    class GC < Vulpes::Object
       def initialize
-        super("Garbage Collector")
+        super("GarbageCollector")
       end
 
       def self.get_instance

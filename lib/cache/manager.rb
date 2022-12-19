@@ -3,7 +3,7 @@ module Cache
     @@initialized = false
 
     def initialize
-      super("Cache Manager")
+      super("CacheManager")
       @db_type = Vulpes::Config.get('db_type')
       create_db_instance
       @@initialized = true
