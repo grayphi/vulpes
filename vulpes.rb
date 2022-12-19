@@ -88,6 +88,7 @@ Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
 
+
 ensure
    # This must be the last call to close all opened objects
    Vulpes::GC.close_vulpes
