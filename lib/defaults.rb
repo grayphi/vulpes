@@ -51,6 +51,15 @@ module Vulpes
          end
       end
 
+      module Web
+         @useragent = "Vulpes/#{Vulpes::Version::VERSION} Crawler (#{RUBY_PLATFORM}; #{RUBY_ENGINE}/#{RUBY_VERSION})"
+         @min_delay = 1
+         @max_delay = 1
+
+         class << self
+            attr_reader :useragent, :min_delay, :max_delay
+         end
+      end
 
    end
 end

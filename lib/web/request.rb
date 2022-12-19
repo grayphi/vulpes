@@ -32,15 +32,14 @@ module Web
       end
 
       def add_dork(dork)
-         return if dork.nil? || dork.strip.empty?
+         return if dork.nil? || dork.to_s.strip.empty?
 
-         @dork = dork
+         @dork = dork.to_s
       end
 
       def execute
          
       end
-
 
 
       private_class_method :new
