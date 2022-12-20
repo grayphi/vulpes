@@ -74,6 +74,19 @@ def parseargs(args)
       opts[:wait] = t
    end
 
+   opt.on('--timeout', Integer, 'Request timeout(sec).') do |t|
+      raise UsageError, 'Invalid timeout provided, value must be > 0' if t <= 0
+      opts[:timeout] = t
+   end
+
+   opt.on('--no-ssl-check', 'Disable certificates check.') do
+      opts[:no_ssl_check] = true
+   end
+
+   opt.on('-p', '--proxy PROXY', String, 'Specify proxy to use.') do |p|
+      opts[:proxy] = p
+   end
+
 
    begin
       opt.parse!(args)
@@ -97,6 +110,8 @@ Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
 Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
 Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
 Vulpes::Constants.add('useragent', options[:useragent]) if options[:useragent]
+Vulpes::Constants.add('ssl_check', false) if options[:no_ssl_check]
+Vulpes::Constants.add('proxy', options[:proxy]) if options[:proxy]
 
 if options[:wait]
    Vulpes::Constants.add('min_delay', options[:wait])
@@ -120,6 +135,8 @@ if options[:max_delay] && options[:min_delay] && options[:min_delay] <= options[
    Vulpes::Constants.add('max_delay', options[:max_delay])
 end
 
+Vulpes::Constants.add('timeout', options[:timeout]) if options[:timeout]
+
 
 begin
 
@@ -130,6 +147,18 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
+d = Cache::Manager.get_instance.get_dorks_by_severity(9).pop
+Vulpes::Logger.info d
+
+req = Web::Request.create Web::Crawler::Google.type
+req.add_dork d
+req.add_query_string "-github"
+
+Vulpes::Logger.info "req== #{req}"
+
+res = req.execute
+
+Vulpes::Logger.info "response:: #{res}"
 
 
 

@@ -55,9 +55,11 @@ module Vulpes
          @useragent = "Vulpes/#{Vulpes::Version::VERSION} Crawler (#{RUBY_PLATFORM}; #{RUBY_ENGINE}/#{RUBY_VERSION})"
          @min_delay = 1
          @max_delay = 1
+         @timeout = 90
+         @ssl_check = true
 
          class << self
-            attr_reader :useragent, :min_delay, :max_delay
+            attr_reader :useragent, :min_delay, :max_delay, :timeout, :ssl_check
          end
       end
 
