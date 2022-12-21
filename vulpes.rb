@@ -147,20 +147,6 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
-d = Cache::Manager.get_instance.get_dorks_by_severity(9).pop
-Vulpes::Logger.info d
-
-req = Web::Request.create Web::Crawler::Google.type
-req.add_dork d
-req.add_query_string "-github"
-
-Vulpes::Logger.info "req== #{req}"
-
-res = req.execute
-
-Vulpes::Logger.info "response:: #{res}"
-
-
 
 ensure
    # This must be the last call to close all opened objects

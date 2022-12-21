@@ -37,31 +37,30 @@ module Web
          @dork = dork.to_s.strip
       end
 
-      def execute
+      def execute(&block)
          raise ImproperWebRequest, "Request is not valid to execute." unless is_valid?
 
-         @crawler = create_crawler
+         @crawler ||= create_crawler
+         @crawler.set_page_size @page_size
 
-         @crawler.fetch
+         @response ||= Web::Response.create self, @crawler
+         
+         @crawler.fetch &block
+
+         @response
+      end
+
+      def get_response
+         @response
+      end
+
+      def set_page_size(s)
+         @page_size = s.to_i
       end
 
       def is_valid?
          (@dork || @query_strings) ? true : false
       end
-
-      def create_crawler
-         case @sengine
-            when Web::Crawler::Google.type
-               Web::Crawler::Google.create get_query_string
-         end
-      end
-
-      def to_s
-         "#{@sengine}, #{@dork}, #{@query_strings}"
-      end
-
-
-      private
 
       def get_query_string
          q = []
@@ -71,7 +70,19 @@ module Web
          q.join ' '
       end
 
+      def get_dork
+         @dork
+      end
+      
 
+      private
+
+      def create_crawler
+         case @sengine
+            when Web::Crawler::Google.type
+               Web::Crawler::Google.create get_query_string
+         end
+      end
 
       private_class_method :new
    end
