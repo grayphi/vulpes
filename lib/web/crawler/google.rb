@@ -47,7 +47,6 @@ module Web
                   'User-Agent' => Vulpes::Constants.get('useragent'), \
                   'Accept' => 'text/html,application/xhtml+xml,application/xml; q=0.9,*/*;q=0.8', \
                   'Accept-Language' => 'en-US,en;q=0.5', \
-                  'Accept-Encoding' => 'gzip, deflate', \
                   'Referer' => 'https://www.google.com/', \
                   'DNT' => '1', \
                   'Connection' => 'keep-alive', \
@@ -79,7 +78,7 @@ module Web
             url_pat = 'https://www.google.com/search?gbv=1&q=%s&btnG=Google+' \
                + 'Search&start=%s&num=%s'
 
-            url_pat = 'http://192.168.2.106:4444/search?gbv=1&q=%s&btnG=Google+Search&start=%s&num=%s'
+            #url_pat = 'http://192.168.2.106:4444/search?gbv=1&q=%s&btnG=Google+Search&start=%s&num=%s'
 
             url_pat % [get_encoded_qstring, (@page_no == 1 ? '' : \
                (@page_no - 1) * @page_size), @page_size]

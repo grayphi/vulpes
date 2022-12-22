@@ -21,7 +21,14 @@ module Web
       end
 
       def raw_body
-         @crawler.response.string if has_response?
+         reutrn unless has_response?
+
+         if @crawler.response.respond_to?(:string)
+            @crawler.response.string
+         elsif @crawler.response.respond_to?(:read)
+            @crawler.response.seek 0
+            @crawler.response.read
+         end
       end
 
       def get_server_headers
@@ -73,10 +80,15 @@ module Web
       end
 
       def get_links
-         return [] unless is_results_page?
+         links = []
+         return links unless is_results_page?
+         
+         raw_body.scan %r{\s+href="/url\?q=([^"&]*)[^"]*"[^>]*>}mi do |m|
+            links << Web::Utils::URLUtils.decode_url(m[0]) unless \
+               m[0].match? %r{\Ahttp(s)?://(www\.)?[^.]*\.google\.com}i
+         end
 
-
-
+         links
       end
 
       def cache_response
@@ -86,11 +98,11 @@ module Web
       private
 
       def is_http_success?
-         is_fetched? && @crawler.status.is_a? Array && @crawler.status[0].eql? "200"
+         is_fetched? && @crawler.status.is_a?(Array) && @crawler.status[0].eql?("200")
       end
 
       def is_response_exception?
-         is_fetched? && @crawler.status.is_a? Exception
+         is_fetched? && @crawler.status.is_a?(Exception)
       end
 
       def is_fetched?
@@ -102,15 +114,15 @@ module Web
       end
 
       def has_captcha?
-
+         false
       end
 
       def has_error?
-
+         false
       end
 
       def has_next?
-         raw_body.match? /aria-label="Next page"[^>]*>((Next &gt;)|(<span [^>]*>&gt;</span>))<\/a>/
+         raw_body.match? %r{aria-label="Next page"[^>]*>((Next &gt;)|(<span [^>]*>&gt;</span>))</a>}i
       end
 
       private_class_method :new

@@ -1,9 +1,10 @@
+require 'web/utils/urlutils'
+
 require 'vulpes/crawler'
 require 'web/crawler/google'
 
 require 'web/request'
 require 'web/response'
-
 
 Vulpes::Constants.add('useragent', Vulpes::Defaults::Web.useragent) unless Vulpes::Constants.has 'useragent'
 Vulpes::Constants.add('min_delay', Vulpes::Defaults::Web.min_delay) unless Vulpes::Constants.has 'min_delay'

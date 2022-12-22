@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'openssl'
-require 'cgi'
 
 module Vulpes
    class Crawler < Vulpes::Object
@@ -27,7 +26,7 @@ module Vulpes
       end
       
       def get_encoded_qstring
-         CGI::escape @query_string
+         Web::Utils::URLUtils.encode_url @query_string
       end
 
    end
