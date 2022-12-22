@@ -1,5 +1,3 @@
-require 'cgi'
-
 module Web
    module Crawler
       class Google < Vulpes::Crawler
@@ -12,6 +10,7 @@ module Web
             @page_size = 30
             @page_no = 1
             @response = nil
+            @status = nil
          end
 
          def self.create(query)
@@ -35,31 +34,32 @@ module Web
          end
 
          def fetch(&block)
-            url_pat = 'https://www.google.com/search?gbv=1&q=%s&btnG=Google+Search&start=%s&num=%s'
-
-            url = url_pat % [get_encoded_qstring, (@page_no == 1 ? '' : \
-               (@page_no - 1) * @page_size), @page_size]
-
-            Vulpes::Logger.debug "Fetching: #{url}"
+            Vulpes::Logger.debug "Fetching: #{get_url}"
             
             @response.close if @response && !@response.closed?
 
-            @response = fetch_url(url, :open_timeout => Vulpes::Constants.get('timeout'), \
-               :read_timeout => Vulpes::Constants.get('read_timeout'), \
-               :ssl_verify_mode => verify_ssl?, \
-               :proxy => Vulpes::Constants.get('proxy'), \
-               'Host' => 'www.google.com', \
-               'User-Agent' => Vulpes::Constants.get('useragent'), \
-               'Accept' => 'text/html,application/xhtml+xml,application/xml; q=0.9,*/*;q=0.8', \
-               'Accept-Language' => 'en-US,en;q=0.5', \
-               'Accept-Encoding' => 'gzip, deflate', \
-               'Referer' => 'https://www.google.com/', \
-               'DNT' => '1', \
-               'Connection' => 'keep-alive', \
-               'Upgrade-Insecure-Requests' => '1', \
-               'Cache-Control' => 'max-age=0, no-cache', \
-               'Pragma' => 'no-cache', \
-               'TE' => 'Trailers', &block)
+            begin
+               @response = fetch_url(get_url, :open_timeout => Vulpes::Constants.get('timeout'), \
+                  :read_timeout => Vulpes::Constants.get('read_timeout'), \
+                  :ssl_verify_mode => verify_ssl?, \
+                  :proxy => Vulpes::Constants.get('proxy'), \
+                  'Host' => 'www.google.com', \
+                  'User-Agent' => Vulpes::Constants.get('useragent'), \
+                  'Accept' => 'text/html,application/xhtml+xml,application/xml; q=0.9,*/*;q=0.8', \
+                  'Accept-Language' => 'en-US,en;q=0.5', \
+                  'Accept-Encoding' => 'gzip, deflate', \
+                  'Referer' => 'https://www.google.com/', \
+                  'DNT' => '1', \
+                  'Connection' => 'keep-alive', \
+                  'Upgrade-Insecure-Requests' => '1', \
+                  'Cache-Control' => 'max-age=0, no-cache', \
+                  'Pragma' => 'no-cache', \
+                  'TE' => 'Trailers', &block)
+            rescue => e
+               @status = e
+            else
+               @status = @response.status
+            end
          end
 
          def next_page(&block)
@@ -75,13 +75,17 @@ module Web
             fetch &block
          end
 
-         attr_reader :page_size, :response
+         def get_url
+            url_pat = 'https://www.google.com/search?gbv=1&q=%s&btnG=Google+' \
+               + 'Search&start=%s&num=%s'
 
-         private
+            url_pat = 'http://192.168.2.106:4444/search?gbv=1&q=%s&btnG=Google+Search&start=%s&num=%s'
 
-         def get_encoded_qstring
-            CGI::escape @query_string
+            url_pat % [get_encoded_qstring, (@page_no == 1 ? '' : \
+               (@page_no - 1) * @page_size), @page_size]
          end
+
+         attr_reader :page_size, :response, :status
 
          private_class_method :new
       end
