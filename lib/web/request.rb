@@ -3,6 +3,7 @@ module Web
       def initialize(se)
          super("WebRequest")
          @sengine = se
+         @response = nil
       end
 
       def self.create(setype)
@@ -22,7 +23,6 @@ module Web
          @sengine
       end
       
-
       def add_query_string(qs)
          return if qs.nil? || qs.to_s.strip.empty?
 

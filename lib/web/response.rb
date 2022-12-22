@@ -20,14 +20,23 @@ module Web
          @crawler.response
       end
 
-      def raw_body
-         reutrn unless has_response?
+      def raw_page
+         return unless has_response?
 
          if @crawler.response.respond_to?(:string)
             @crawler.response.string
          elsif @crawler.response.respond_to?(:read)
             @crawler.response.seek 0
             @crawler.response.read
+         end
+      end
+
+      def error_page
+         return if has_response? || get_status.nil?
+
+         if get_status.is_a?(OpenURI::HTTPError) && get_status.respond_to?(:io)
+            get_status.io.seek 0
+            get_status.io.read
          end
       end
 
@@ -60,7 +69,7 @@ module Web
       end
 
       def is_results_page?
-         !(is_captcha_page? || is_error_page?)
+         is_http_success? && has_response? && !(is_captcha_page? || is_error_page?)
       end
 
       def is_ok?
@@ -68,11 +77,11 @@ module Web
       end
 
       def is_captcha_page?
-         is_http_success? && has_response? && has_captcha?
+         is_http_429? && has_captcha?
       end
 
       def is_error_page?
-         is_http_success? && has_response? && has_error?
+         is_http_404 && has_error?
       end
 
       def has_more_pages?
@@ -83,7 +92,7 @@ module Web
          links = []
          return links unless is_results_page?
          
-         raw_body.scan %r{\s+href="/url\?q=([^"&]*)[^"]*"[^>]*>}mi do |m|
+         raw_page.scan %r{\s+href="/url\?q=([^"&]*)[^"]*"[^>]*>}mi do |m|
             links << Web::Utils::URLUtils.decode_url(m[0]) unless \
                m[0].match? %r{\Ahttp(s)?://(www\.)?[^.]*\.google\.com}i
          end
@@ -101,6 +110,18 @@ module Web
          is_fetched? && @crawler.status.is_a?(Array) && @crawler.status[0].eql?("200")
       end
 
+      def is_http_429?
+         !get_status.nil? && get_status.is_a?(OpenURI::HTTPError) \
+            && get_status.respond_to?(:message) \
+            && get_status.message.eql?("429 Too Many Requests")
+      end
+
+      def is_http_404?
+         !get_status.nil? && get_status.is_a?(OpenURI::HTTPError) \
+            && get_status.respond_to?(:message) \
+            && get_status.message.eql?("404 Not Found")
+      end
+
       def is_response_exception?
          is_fetched? && @crawler.status.is_a?(Exception)
       end
@@ -114,15 +135,15 @@ module Web
       end
 
       def has_captcha?
-         false
+         error_page.match? %q{Our systems have detected unusual traffic from your computer network\.  This page checks to see if it&#39;s really you sending the requests, and not a robot\.  <a href="#" onclick="document\.getElementById\('infoDiv'\)\.style\.display='block';">Why did this happen\?</a><br><br>}
       end
 
       def has_error?
-         false
+         error_page.match? %q{<a href=//www\.google\.com/><span id=logo aria-label=Google></span></a>\n  <p><b>404\.</b> <ins>That’s an error\.</ins>}
       end
 
       def has_next?
-         raw_body.match? %r{aria-label="Next page"[^>]*>((Next &gt;)|(<span [^>]*>&gt;</span>))</a>}i
+         raw_page.match? %r{aria-label="Next page"[^>]*>((Next &gt;)|(<span [^>]*>&gt;</span>))</a>}i
       end
 
       private_class_method :new

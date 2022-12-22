@@ -57,7 +57,7 @@ module Web
             rescue => e
                @status = e
             else
-               @status = @response.status
+               @status = @response.status if @response
             end
          end
 
@@ -75,10 +75,8 @@ module Web
          end
 
          def get_url
-            url_pat = 'https://www.google.com/search?gbv=1&q=%s&btnG=Google+' \
+            url_pat = 'https://www.google.com/search?gbv=1&client=vulpes&q=%s&btnG=Google+' \
                + 'Search&start=%s&num=%s'
-
-            #url_pat = 'http://192.168.2.106:4444/search?gbv=1&q=%s&btnG=Google+Search&start=%s&num=%s'
 
             url_pat % [get_encoded_qstring, (@page_no == 1 ? '' : \
                (@page_no - 1) * @page_size), @page_size]
