@@ -81,7 +81,7 @@ module Web
       end
 
       def is_error_page?
-         is_http_404 && has_error?
+         is_http_404? && has_error?
       end
 
       def has_more_pages?

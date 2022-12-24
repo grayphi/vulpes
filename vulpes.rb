@@ -148,6 +148,34 @@ Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
 
+
+
+
+
+
+
+d = Cache::Manager.get_instance.get_dorks_by_severity(9).pop
+Vulpes::Logger.info d
+
+req = Web::Request.create Web::Crawler::Google.type
+req.add_dork 'sd'
+req.add_query_string "-github"
+
+Vulpes::Logger.info "req== #{req}"
+
+res = req.execute
+
+Vulpes::Logger.info "response:: #{res}"
+#Vulpes::Logger.info "raw_body:: #{res.raw_page}"
+#Vulpes::Logger.info "error_body:: #{res.error_page}"
+
+Vulpes::Logger.info "get_response:: #{res.get_server_response}"
+Vulpes::Logger.debug "status :: #{res.get_status}"
+Vulpes::Logger.debug "headers :: #{res.get_server_headers}"
+Vulpes::Logger.debug "links :: #{res.get_links}"
+
+
+
 ensure
    # This must be the last call to close all opened objects
    Vulpes::GC.close_vulpes
