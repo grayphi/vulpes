@@ -16,6 +16,9 @@ EDORK
 Typesetter CMS dorks
 Bruno Schmid
 https://ch.linkedin.com/in/schmidbruno
+# Typesetter CMS 5.1 - 'Site Title' Persistent Cross-Site Scripting.
+https://www.exploit-db.com/exploits/48852
+# Date: 2/10/2020
 EDESC
          })
 

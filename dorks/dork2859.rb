@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 My PHP Dating (success_story.php id) SQL Injection Vulnerability - CVE: 2008-4705: https://www.exploit-db.com/exploits/6754
+infoware SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12714
 EDESC
          })
 

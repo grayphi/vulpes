@@ -18,6 +18,10 @@ plugins.
 Ref: https://wpvulndb.com/vulnerabilities/10298
 Thanks,
 Tanmay Bhattacharjee
+Description: This google dork lists out Advisories and Vulnerabilities
+regarding the knight-lab-timelinejs wordpress plugin. Ref:
+https://wpvulndb.com/vulnerabilities/10298
+- Abhi Chitkara
 EDESC
          })
 

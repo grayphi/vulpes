@@ -14,6 +14,7 @@ intitle:"DEFAULT_CONFIG - HP"
 EDORK
             description: <<~EDESC
 searches for the web interface of HP switches.
+High scalable Ethernet switches by HP running in the default configuration
 EDESC
          })
 

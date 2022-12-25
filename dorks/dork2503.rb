@@ -14,6 +14,7 @@ inurl:/_blogadata/
 EDORK
             description: <<~EDESC
 Blogator-script 0.95 (id_art) Remote SQL Injection Vulnerability - CVE: 2008-1763: https://www.exploit-db.com/exploits/5368
+Blogator-script 0.95 Change User Password Vulnerability - CVE: 2008-6473: https://www.exploit-db.com/exploits/5370
 EDESC
          })
 

@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 XMB 1.9.6 Final basename() Remote Command Execution - CVE: 2006-4191: https://www.exploit-db.com/exploits/2178
+CVE: 2006-3994 EDB-ID: 2105 This search can potentially identify vulnerable installations of XMB
 EDESC
          })
 

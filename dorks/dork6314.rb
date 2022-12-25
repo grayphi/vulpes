@@ -18,6 +18,11 @@ EDORK
 # existing exploit (CVE : CVE-2020-7246):
 # https://www.exploit-db.com/exploits/47954
 # Date: 18/06/2020
+# Google Dork: intitle:qdPM 9.1. Copyright © 2020 qdpm.net
+# Sites vulnerable to qdPM < 9.1 - Remote Code Execution. This dork is
+linked to the following existing exploit:
+https://www.exploit-db.com/exploits/48146
+# Date: 2/05/2020
 EDESC
          })
 

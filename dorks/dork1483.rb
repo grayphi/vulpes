@@ -14,6 +14,7 @@ content_by_cat.asp?contentid ''catid''
 EDORK
             description: <<~EDESC
 ASPapp Knowledge Base Remote SQL Injection Vulnerability - CVE: 2008-1430: https://www.exploit-db.com/exploits/5286
+ASPapp KnowledgeBase (catid) Remote SQL Injection Vulnerability: https://www.exploit-db.com/exploits/6590
 EDESC
          })
 

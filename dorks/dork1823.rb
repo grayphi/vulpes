@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Yamamah Photo Gallery 1.00 (download.php) Local File Disclosure Vulnerability - CVE: 2010-2334: https://www.exploit-db.com/exploits/13856
+Yamamah Photo Gallery 1.00 SQL Injection Vulnerability: https://www.exploit-db.com/exploits/13857
 EDESC
          })
 

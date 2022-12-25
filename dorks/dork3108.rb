@@ -14,6 +14,7 @@ inurl:com_jejob
 EDORK
             description: <<~EDESC
 Joomla Component com_jejob 1.0 (catid) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12782
+Joomla JE Job Component com_jejob LFI Vulnerability: https://www.exploit-db.com/exploits/14063
 EDESC
          })
 

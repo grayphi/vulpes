@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 greeting card Remote Upload Vulnerability: https://www.exploit-db.com/exploits/13751
+Greeting card SQL Injection Vulnerability: https://www.exploit-db.com/exploits/13983
 EDESC
          })
 

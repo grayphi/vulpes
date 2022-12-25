@@ -14,6 +14,7 @@ Copyright 2006 Â© Flax Article Manager v1.1
 EDORK
             description: <<~EDESC
 Flax Article Manager 1.1 (cat_id) SQL Injection Vulnerability - CVE: 2009-0284: https://www.exploit-db.com/exploits/7862
+Flax Article Manager 1.1 Remote PHP Script Upload Vulnerability: https://www.exploit-db.com/exploits/7884
 EDESC
          })
 

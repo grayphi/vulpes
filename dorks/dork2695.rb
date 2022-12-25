@@ -14,6 +14,8 @@ module Dorks
 EDORK
             description: <<~EDESC
 Free PHP photo gallery script Remote File inclusion Vulnerability: https://www.exploit-db.com/exploits/14438
+ValidForm Builder script Remote Command Execution Vulnerability: https://www.exploit-db.com/exploits/14454
+Free PHP photo gallery script Remote Command Execution Vulnerability: https://www.exploit-db.com/exploits/14437
 EDESC
          })
 

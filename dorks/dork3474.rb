@@ -14,6 +14,7 @@ intitle:"login to cacti"
 EDORK
             description: <<~EDESC
 Cacti 0.8.6i cmd.php popen() Remote Injection: https://www.exploit-db.com/exploits/3029
+Cacti 0.8.6i (copy_cacti_user.php) SQL Injection: https://www.exploit-db.com/exploits/3045
 EDESC
          })
 

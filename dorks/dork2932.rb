@@ -14,6 +14,7 @@ Powered by eLitius Version 1.0
 EDORK
             description: <<~EDESC
 eLitius 1.0 (banner-details.php id) SQL Injection Vulnerability - CVE: 2009-1506: https://www.exploit-db.com/exploits/8563
+eLitius 1.0 (manage-admin.php) Add Admin/Change Password: https://www.exploit-db.com/exploits/8459
 EDESC
          })
 

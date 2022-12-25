@@ -14,6 +14,8 @@ Powered by CMScout (c)2005 CMScout Group
 EDORK
             description: <<~EDESC
 CMScout 2.06 SQL Injection/Local File Inclusion Vulnerabilities - CVE: 2008-6725: https://www.exploit-db.com/exploits/7625
+CMScout 2.08 SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12407
+CMScout (XSS/HTML Injection) Multiple Vulnerabilities - CVE: 2010-2154: https://www.exploit-db.com/exploits/12806
 EDESC
          })
 

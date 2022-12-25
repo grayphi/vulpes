@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Magician Blog 1.0 (Auth Bypass) SQL injection Vulnerability: https://www.exploit-db.com/exploits/9283
+Magician Blog 1.0 (ids) Remote SQL Injection Vulnerability: https://www.exploit-db.com/exploits/9282
 EDESC
          })
 

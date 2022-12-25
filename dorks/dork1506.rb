@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 FubarForum 1.6 Admin Bypass Change User Password Vulnerability: https://www.exploit-db.com/exploits/7606
+FubarForum 1.6 Arbitrary Admin Bypass Vulnerability: https://www.exploit-db.com/exploits/7595
 EDESC
          })
 

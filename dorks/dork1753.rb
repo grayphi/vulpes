@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Quick.Cms.Lite 0.5 (id) Remote SQL Injection Vulnerability - CVE: 2009-1410: https://www.exploit-db.com/exploits/8505
+Quick.Cms.Lite 0.3 (Cookie sLanguage) Local File Include - CVE: 2006-5834: https://www.exploit-db.com/exploits/2719
 EDESC
          })
 

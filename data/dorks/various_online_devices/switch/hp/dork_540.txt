@@ -8,3 +8,4 @@ Description:      intitle:"DEFAULT_CONFIG - HP"
 
 
 searches for the web interface of HP switches.
+High scalable Ethernet switches by HP running in the default configuration

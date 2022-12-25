@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 ILIAS 3.7.4 (ref_id) Blind SQL Injection Vulnerability - CVE: 2008-5816: https://www.exploit-db.com/exploits/7570
+ILIAS LMS 3.9.9/3.10.7 Arbitrary Edition/Info Disclosure Vulns: https://www.exploit-db.com/exploits/9151
 EDESC
          })
 

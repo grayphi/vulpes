@@ -14,6 +14,7 @@ inurl:"/plugins/ImageManager/manager.php"
 EDORK
             description: <<~EDESC
 Wordpress Image Manager Plugins Shell Upload Vulnerability: https://www.exploit-db.com/exploits/10325
+Author: PenetraDz Shell Upload Vuln: manager/media/editor/plugins/ImageManager/manager.php
 EDESC
          })
 

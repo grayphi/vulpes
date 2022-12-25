@@ -14,6 +14,8 @@ inurl:"printable_pedigree.php"
 EDORK
             description: <<~EDESC
 Dog Pedigree Online Database 1.0.1b Multiple SQL Injection: https://www.exploit-db.com/exploits/8738
+Dog Pedigree Online Database 1.0.1b Blind SQL Injection: https://www.exploit-db.com/exploits/8740
+Dog Pedigree Online Database 1.0.1b Insecure Cookie Handling: https://www.exploit-db.com/exploits/8739
 EDESC
          })
 

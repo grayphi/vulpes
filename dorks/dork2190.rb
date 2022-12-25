@@ -14,6 +14,7 @@ Powered by: Zanfi Solutions
 EDORK
             description: <<~EDESC
 Zanfi CMS lite 1.2 Multiple Local File Inclusion Vulnerabilities - CVE: 2008-4158: https://www.exploit-db.com/exploits/6413
+Zanfi CMS lite / Jaw Portal free (page) SQL Injection Vulnerability - CVE: 2008-4159: https://www.exploit-db.com/exploits/6423
 EDESC
          })
 

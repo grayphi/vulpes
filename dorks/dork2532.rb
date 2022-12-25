@@ -14,6 +14,7 @@ inurl:"track.php?id="
 EDORK
             description: <<~EDESC
 phpstore Wholesale (track.php?id) SQL Injection Vulnerability - CVE: 2008-5493: https://www.exploit-db.com/exploits/7134
+SFS EZ BIZ PRO (track.php id) Remote SQL Injection Vulnerability - CVE: 2008-6245: https://www.exploit-db.com/exploits/6910
 EDESC
          })
 

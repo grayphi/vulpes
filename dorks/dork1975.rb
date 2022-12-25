@@ -14,6 +14,7 @@ Powered by: Maian Uploader v4.0
 EDORK
             description: <<~EDESC
 Maian Uploader 4.0 Insecure Cookie Handling Vulnerability - CVE: 2008-3321: https://www.exploit-db.com/exploits/6065
+Maian Uploader v4.0 Shell Upload Vulnerability: https://www.exploit-db.com/exploits/11571
 EDESC
          })
 

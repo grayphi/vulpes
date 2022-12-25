@@ -14,6 +14,8 @@ module Dorks
 EDORK
             description: <<~EDESC
 ClanTiger 1.1.1 (Auth Bypass) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/8472
+ClanTiger 1.1.1 (slug) Blind SQL Injection: https://www.exploit-db.com/exploits/8473
+ClanTiger 1.1.1 Multiple Cookie Handling Vulnerabilities: https://www.exploit-db.com/exploits/8471
 EDESC
          })
 

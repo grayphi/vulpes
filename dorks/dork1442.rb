@@ -14,6 +14,7 @@ inurl:"section.php?name=singers"
 EDORK
             description: <<~EDESC
 6rbScript 3.3 (section.php name) Local File Inclusion Vulnerability - CVE: 2008-6453: https://www.exploit-db.com/exploits/6520
+6rbScript 3.3 (singerid) Remote SQL Injection Vulnerability - CVE: 2008-6454: https://www.exploit-db.com/exploits/6511
 EDESC
          })
 

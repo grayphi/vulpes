@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 S-CMS 2.0b3 Multiple Local File Inclusion Vulnerabilities: https://www.exploit-db.com/exploits/8913
+S-CMS 2.0b3 Multiple SQL Injection Vulnerabilities: https://www.exploit-db.com/exploits/8914
 EDESC
          })
 

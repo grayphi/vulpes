@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Nukedit 4.9.8 Remote Database Disclosure Vulnerability - CVE: 2008-5773: https://www.exploit-db.com/exploits/7491
+Nukedit 4.9.x Remote Create Admin Exploit - CVE: 2008-5582: https://www.exploit-db.com/exploits/5192
 EDESC
          })
 

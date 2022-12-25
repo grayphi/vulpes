@@ -14,6 +14,9 @@ module Dorks
 EDORK
             description: <<~EDESC
 Online Grades & Attendance 3.2.6 Blind SQL Injection - CVE: 2009-2598: https://www.exploit-db.com/exploits/8854
+Online Grades & Attendance 3.2.6 Credentials Changer SQL injection: https://www.exploit-db.com/exploits/8843
+Online Grades & Attendance 3.2.6 Multiple Local File Inclusion Vulns - CVE: 2009-2037: https://www.exploit-db.com/exploits/8853
+Online Grades & Attendance 3.2.6 Multiple SQL Injection Vulnerabilities - CVE: 2009-2598: https://www.exploit-db.com/exploits/8844
 EDESC
          })
 

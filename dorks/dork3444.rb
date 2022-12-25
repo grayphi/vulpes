@@ -14,6 +14,7 @@ FhImage, powered by Flash-here.com
 EDORK
             description: <<~EDESC
 Fhimage 1.2.1 Remote Index Change: https://www.exploit-db.com/exploits/7820
+Fhimage 1.2.1 Remote Command Execution: https://www.exploit-db.com/exploits/7821
 EDESC
          })
 

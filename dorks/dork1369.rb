@@ -14,6 +14,7 @@ intext:"This site is using phpGraphy" | intitle:"my phpgraphy site"
 EDORK
             description: <<~EDESC
 found this: a remote user can have access to some edit functionalities to "modify" html. Impact: cross site scripting, denial of service references:http://retrogod.altervista.org/phpgraphy_0911_adv.htmlhttp://secunia.com/advisories/19705
+PHPGraphy 0.9.12 Privilege Escalation / Commands Execution: https://www.exploit-db.com/exploits/2867
 EDESC
          })
 

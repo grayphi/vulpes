@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 AlumniServer 1.0.1 (Auth Bypass) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/9019
+AlumniServer 1.0.1 (resetpwemail) Blind SQL Injection: https://www.exploit-db.com/exploits/9020
 EDESC
          })
 

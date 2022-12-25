@@ -14,6 +14,10 @@ inurl:/jobsearchengine/
 EDORK
             description: <<~EDESC
 i-netsolution Job Search Engine SQL Injection Vulnerability - CVE: 2010-2611: https://www.exploit-db.com/exploits/14079
+I-net Multi User Email Script SQLi Vulnerability: https://www.exploit-db.com/exploits/14129
+I-net Multi User Email Script SQLi Vulnerability: https://www.exploit-db.com/exploits/14095
+I-net Multi User Email Script SQLi Vulnerability: https://www.exploit-db.com/exploits/14114
+I-Net MLM Script Engine SQL Injection Vulnerability: https://www.exploit-db.com/exploits/14080
 EDESC
          })
 

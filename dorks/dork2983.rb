@@ -14,6 +14,7 @@ Powered by Guruscript.com
 EDORK
             description: <<~EDESC
 Freelancer Marketplace Script Upload Vulnerability: https://www.exploit-db.com/exploits/14390
+Freelancers Marketplace Script Persistent XSS Vulnerability: https://www.exploit-db.com/exploits/14389
 EDESC
          })
 

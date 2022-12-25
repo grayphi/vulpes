@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 ProjectCMS 1.0b (index.php sn) Remote SQL Injection Vulnerability - CVE: 2009-1500: https://www.exploit-db.com/exploits/8565
+ProjectCMS 1.1b Multiple Remote Vulnerabilities: https://www.exploit-db.com/exploits/8608
 EDESC
          })
 

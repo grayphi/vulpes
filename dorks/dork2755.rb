@@ -14,6 +14,7 @@ album.asp?pic= .jpg cat=
 EDORK
             description: <<~EDESC
 aspWebAlbum 3.2 Multiple Remote Vulnerabilities - CVE: 2008-6977: https://www.exploit-db.com/exploits/6420
+aspWebAlbum 3.2 (Upload/SQL/XSS) Multiple Remote Vulnerabilities - CVE: 2008-6977: https://www.exploit-db.com/exploits/6357
 EDESC
          })
 
