@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS cache_dorks (
-    id int NOT NULL,
+    id int NOT NULL AUTO_INCREMENT,
     name varchar(128) NOT NULL,
     ghdb_url varchar(1024),
     severity int NOT NULL,

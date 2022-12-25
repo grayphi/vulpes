@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS links (
-    id int NOT NULL,
+    id int NOT NULL AUTO_INCREMENT,
     ref_hash varchar(40) NOT NULL,
     url varchar(20000) NOT NULL,
     origin varchar(255) NOT NULL,
