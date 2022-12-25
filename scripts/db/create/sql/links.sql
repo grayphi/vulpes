@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS links (
     ref_hash char(40) NOT NULL,
     url varchar(20000) NOT NULL,
     origin varchar(255) NOT NULL,
-    fetched binary(1) NOT NULL DEFAULT b'0',
+    fetched bit(1) NOT NULL DEFAULT b'0',
     url_hash char(40) AS (SHA1(concat(ref_hash, ':', url))) PERSISTENT,
 
     PRIMARY KEY (url_hash),
