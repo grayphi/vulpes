@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS search_terms (
     id int NOT NULL,
-    dork_hash char(40) NOT NULL,
+    dork_hash varchar(40) NOT NULL,
     search_term varchar(10000) NOT NULL,
-    search_term_hash char(40) AS (SHA1(concat(dork_hash, ':', search_term))) PERSISTENT UNIQUE,
+    search_term_hash varchar(40) AS (SHA1(concat(dork_hash, ':', search_term))) PERSISTENT UNIQUE,
 
     PRIMARY KEY (id),
 
@@ -14,4 +14,5 @@ CREATE TABLE IF NOT EXISTS search_terms (
     CONSTRAINT non_empty_search_term
         CHECK (LENGTH(TRIM(search_term)) > 0)
 );
+
 

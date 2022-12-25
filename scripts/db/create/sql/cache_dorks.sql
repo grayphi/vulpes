@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS cache_dorks (
     author varchar(128),
     dork varchar(4000) NOT NULL,
     description varchar(10000),
-    dork_hash char(40) AS (SHA1(dork)) PERSISTENT UNIQUE,
+    dork_hash varchar(40) AS (SHA1(dork)) PERSISTENT UNIQUE,
 
     PRIMARY KEY (id),
 
