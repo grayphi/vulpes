@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS cache_dorks (
+    id int NOT NULL,
     name varchar(128) NOT NULL,
     ghdb_url varchar(1024),
     severity int NOT NULL,
@@ -7,9 +8,9 @@ CREATE TABLE IF NOT EXISTS cache_dorks (
     author varchar(128),
     dork varchar(4000) NOT NULL,
     description varchar(10000),
-    dork_hash char(40) AS (SHA1(dork)) PERSISTENT,
+    dork_hash char(40) AS (SHA1(dork)) PERSISTENT UNIQUE,
 
-    PRIMARY KEY (dork_hash),
+    PRIMARY KEY (id),
 
     CONSTRAINT non_empty_name
         CHECK (LENGTH(TRIM(name)) > 0),
