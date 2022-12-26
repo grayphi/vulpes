@@ -101,7 +101,13 @@ module Web
       end
 
       def cache_response
+         return unless is_results_page?
 
+         dork = @request.get_dork
+         search_terms = @request.get_search_string
+         fetched_links = get_links
+
+         Cache::Manager.get_instance.cache_response_page dork, search_terms, fetched_links
       end
 
       private

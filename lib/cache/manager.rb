@@ -53,6 +53,12 @@ module Cache
       end
     end
 
+    def cache_response_page(dork, search_terms, links)
+      
+
+
+    end
+
     def get_dorks_by_name(name, &block)
       Vulpes::Logger.debug("Selecting dorks for name(#{name}):")
 
@@ -197,6 +203,7 @@ module Cache
           dork[:author] = d['author']
           dork[:dork] = d['dork']
           dork[:description] = d['description']
+          dork[:dork_hash] = d['dork_hash']
 
           if block_given?
             yield Vulpes::Dork.create_dork dork
@@ -213,42 +220,42 @@ module Cache
 
     def mysql_get_dorks_by_name(name, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where name like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where name like ?;"
 
       mysql_get_dorks prep_st, "%#{name}%", &block
     end
 
     def mysql_get_dorks_by_severity(severity, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where severity = ?;"
+        + "author, dork, description, dork_hash from cache_dorks where severity = ?;"
 
       mysql_get_dorks prep_st, severity, &block
     end
 
     def mysql_get_dorks_by_category(category, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where category like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where category like ?;"
 
       mysql_get_dorks prep_st, "%#{category}%", &block
     end
 
     def mysql_get_dorks_by_author(author, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where author like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where author like ?;"
 
       mysql_get_dorks prep_st, "%#{author}%", &block
     end
 
     def mysql_get_dorks_by_url(url, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where ghdb_url like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where ghdb_url like ?;"
 
       mysql_get_dorks prep_st, "%#{url}%", &block
     end
 
     def mysql_find_dorks(sterm, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where name like ? " \
+        + "author, dork, description, dork_hash from cache_dorks where name like ? " \
         + "or ghdb_url like ? or category like ? or author like ? or " \
         + "dork like ? or description like ? or publish_date like ?;"
 

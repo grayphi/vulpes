@@ -15,6 +15,7 @@ module Vulpes
          @author = obj[:author] || ""
          @dork = (obj[:dork] || "").chomp
          @description = (obj[:description] || "").chomp
+         @dork_hash = obj[:dork_hash] || ""
       end
 
       def edit(dork=nil)
@@ -72,7 +73,7 @@ module Vulpes
       end
 
       attr_reader :name, :ghdb_url, :severity, :category, :publish_date, \
-         :author, :dork, :description
+         :author, :dork, :description, :dork_hash
 
       def self.get_instance
          @instance ||= new

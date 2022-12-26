@@ -1,13 +1,15 @@
 module Web
    class Request < Vulpes::Object
-      def initialize(se)
+      def initialize(se, dork)
          super("WebRequest")
          @sengine = se
+         @dork = dork
          @response = nil
       end
 
-      def self.create(setype)
-         return if setype.nil? || setype.empty?
+      def self.create(setype, dork)
+         return if setype.nil? || setype.empty? || dork.nil? || \
+            !dork.is_a?(Vulpes::Dork) || !dork.is_valid?
          
          se = case setype
             when Web::Crawler::Google.type
@@ -16,14 +18,14 @@ module Web
                return
             end
 
-         new se
+         new se, dork
       end
 
       def get_sengine
          @sengine
       end
       
-      def add_query_string(qs)
+      def add_search_string(qs)
          return if qs.nil? || qs.to_s.strip.empty?
 
          @query_strings = [] unless @query_strings
@@ -31,14 +33,9 @@ module Web
          @query_strings << qs.to_s.strip
       end
 
-      def add_dork(dork)
-         return if dork.nil? || dork.to_s.strip.empty?
-
-         @dork = dork.to_s.strip
-      end
-
       def execute(&block)
-         raise ImproperWebRequest, "Request is not valid to execute." unless is_valid?
+         raise ImproperWebRequest, "Request is not valid to execute. " + \
+            "(Contains invalid dork)" unless @dork.is_valid?
 
          @crawler ||= create_crawler
          @crawler.set_page_size @page_size
@@ -58,15 +55,11 @@ module Web
          @page_size = s.to_i
       end
 
-      def is_valid?
-         (@dork || @query_strings) ? true : false
-      end
-
       def get_query_string
          q = []
          q = @query_strings.clone if @query_strings
-         q.unshift @dork if @dork
-
+         q.unshift @dork.dork
+         
          q.join ' '
       end
 
@@ -74,6 +67,13 @@ module Web
          @dork
       end
       
+      def get_search_string
+         q = ""
+         q = @query_strings.join(' ') if @query_strings
+
+         q
+      end
+
 
       private
 
