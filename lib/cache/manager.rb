@@ -54,101 +54,55 @@ module Cache
     end
 
     def cache_response_page(dork, search_terms, links)
-      Vulpes::Logger.debug "cache_response_page"
-      Vulpes::Logger.debug "dork: #{dork}"
-      Vulpes::Logger.debug "search_terms: #{search_terms}"
-      Vulpes::Logger.debug "links: #{links}"
-      
       raise InvalidDork, "Invalid dork object to persist." if dork.nil? || !dork.is_a?(Vulpes::Dork)
 
-
-      # try saving dork, if dork is created, or has improper hash
-      if dork.dork_hash.empty? || !dork.dork_hash.match?(%r([a-zA-Z0-9]{40}))
-        begin
-          cache_dork dork
-        rescue Mysql2::Error => e
-          # ignore unique constraint error
-          raise e unless e.message.match? %r(\ADuplicate entry '[a-zA-Z0-9]{40}' for key 'dork_hash'\Z)
-        end
-
-        # reload the dork
-        prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description, dork_hash from cache_dorks where dork = ?"
-
-        dork = (mysql_get_dorks(prep_st, dork.dork)).pop
+      # try saving dork
+      begin
+        cache_dork dork
+      rescue Mysql2::Error => e
+        # ignore unique constraint error
+        raise e unless e.message.match? %r(\ADuplicate entry '[a-zA-Z0-9]{40}' for key 'dork_hash'\Z)
       end
 
-      ref_hash = ""
-      retry_flag = true
+      # reload the dork
+      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
+      + "author, dork, description, dork_hash from cache_dorks where dork = ?"
 
+      dork = (mysql_get_dorks(prep_st, dork.dork)).pop
+
+      ref_hash = nil
 
       # try saving search terms
-      if search_terms.nil? || search_terms.strip.empty?
-        # FIXME If dork is created and not fetched then dork_hash can be manipulated
-        # to be non-existent
+      if search_terms.nil? || search_terms.strip.empty?        
         ref_hash = dork.dork_hash
       else
+        Vulpes::Logger.debug "Persisting search term: #{search_terms}"
+
         prep_st = "insert into search_terms (dork_hash, search_term) values (?, ?)"
         ps = @db_instance.prepare prep_st
 
         begin
           ps.execute dork.dork_hash, search_terms.strip
         rescue Mysql2::Error => e
-          if e.message.match? %r(\ADuplicate entry '[a-zA-Z0-9]{40}' for key 'search_term_hash'\Z)
-
-            # search term already exists, try getting its search_term_hash value
-            prep_st = "select search_term_hash from search_terms where dork_hash = ? and search_term = ?"
-
-            begin
-              ps2 = @db_instance.prepare prep_st
-              rs = ps2.execute dork.dork_hash, search_terms.strip
-
-              ref_hash = (rs.entries.pop)["search_term_hash"]
-            ensure
-              ps2.close
-            end
-          elsif e.message.start_with? "Cannot add or update a child row: a foreign key constraint fails"
-
-            # we have invalid/unsaved dork, try reloading it
-            begin
-              cache_dork dork
-            rescue Mysql2::Error => e
-              # ignore unique constraint error
-              raise e unless e.message.match? %r(\ADuplicate entry '[a-zA-Z0-9]{40}' for key 'dork_hash'\Z)
-            end
-
-            # reload the dork
-            prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-            + "author, dork, description, dork_hash from cache_dorks where dork = ?"
-
-            dork = (mysql_get_dorks(prep_st, dork.dork)).pop
-
-            retry if retry_flag && !(retry_flag = false)
-
-            # this should not be executed, if this does, we must be in loop, something
-            # is wrong, clear the ref_hash
-            ref_hash = nil
-          else
-            raise e
-          end
-        else
-          # search term saved, try getting its search_term_hash value
-          prep_st = "select search_term_hash from search_terms where dork_hash = ? and search_term = ?"
-
-          begin
-            ps2 = @db_instance.prepare prep_st
-            rs = ps2.execute dork.dork_hash, search_terms.strip
-
-            ref_hash = (rs.entries.pop)["search_term_hash"]
-          ensure
-            ps2.close
-          end
+          raise e unless e.message.match? %r(\ADuplicate entry '[a-zA-Z0-9]{40}' for key 'search_term_hash'\Z)
         ensure
           ps.close
         end
+
+        # search term saved/exists, try getting its search_term_hash value
+        prep_st = "select search_term_hash from search_terms where dork_hash = ? and search_term = ?"
+
+        begin
+          ps2 = @db_instance.prepare prep_st
+          rs = ps2.execute dork.dork_hash, search_terms.strip
+
+          ref_hash = (rs.entries.pop)["search_term_hash"]
+        ensure
+          ps2.close
+        end
       end
 
-      # ref_hash should not be nill, something is wrong
+      # ref_hash should not be nil, something is wrong
       return if ref_hash.nil?
       
       # try saving links
