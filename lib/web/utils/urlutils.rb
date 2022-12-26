@@ -1,4 +1,5 @@
 require 'cgi'
+require 'uri'
 
 module Web
    module Utils
@@ -22,6 +23,14 @@ module Web
             CGI::unescape url
          end
 
+         def self.get_host(url)
+            return if url.nil? || url.strip.empty?
+
+            url = url.strip
+            url = 'http://' + url unless url.match? %r{\Ahttp(s)?://}
+
+            URI(url).authority
+         end
 
          private_class_method :new
       end

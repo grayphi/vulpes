@@ -147,33 +147,30 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
+dork = {}
+dork[:name] = "d['name']"
+dork[:ghdb_url] = "d['ghdb_url']"
+dork[:severity] = 5
+dork[:category] = "d['category']"
+dork[:publish_date] = "d['publish_date']"
+dork[:author] = "d['author']"
+dork[:dork] = "'dork'"
+dork[:description] = "d['description']"
+dork[:dork_hash] = "e695b2830df15b35c1b620d5673d26f93a5b111b"
 
 
+d = Vulpes::Dork.create_dork dork
 
 
-
-
-
-d = Cache::Manager.get_instance.get_dorks_by_severity(9).pop
-Vulpes::Logger.info d
-
-req = Web::Request.create Web::Crawler::Google.type
-req.add_dork 'sd'
-req.add_query_string "-github"
+req = Web::Request.create Web::Crawler::Google.type, d
+req.add_search_string "-github -stack"
 
 Vulpes::Logger.info "req== #{req}"
 
 res = req.execute
 
 Vulpes::Logger.info "response:: #{res}"
-#Vulpes::Logger.info "raw_body:: #{res.raw_page}"
-#Vulpes::Logger.info "error_body:: #{res.error_page}"
-
-Vulpes::Logger.info "get_response:: #{res.get_server_response}"
-Vulpes::Logger.debug "status :: #{res.get_status}"
-Vulpes::Logger.debug "headers :: #{res.get_server_headers}"
-Vulpes::Logger.debug "links :: #{res.get_links}"
-
+res.cache_response
 
 
 ensure

@@ -7,20 +7,20 @@ module Vulpes
       def initialize(obj={})
          super("VulpesDork")
 
-         @name = obj[:name] || ""
-         @ghdb_url = obj[:ghdb_url]  || ""
-         @severity = obj[:severity] || ""
-         @category = obj[:category] || ""
-         @publish_date = obj[:publish_date] || ""
-         @author = obj[:author] || ""
-         @dork = (obj[:dork] || "").chomp
-         @description = (obj[:description] || "").chomp
-         @dork_hash = obj[:dork_hash] || ""
+         @name = (obj[:name] || "").strip
+         @ghdb_url = (obj[:ghdb_url]  || "").strip
+         @severity = (obj[:severity].to_s || "").strip
+         @category = (obj[:category] || "").strip
+         @publish_date = (obj[:publish_date] || "").strip
+         @author = (obj[:author] || "").strip
+         @dork = (obj[:dork] || "").chomp.strip
+         @description = (obj[:description] || "").chomp.strip
+         @dork_hash = (obj[:dork_hash] || "").strip
       end
 
       def edit(dork=nil)
          if !dork.nil?
-            @dork=dork
+            @dork=dork.strip
             return
          end
 
@@ -33,7 +33,7 @@ module Vulpes
             Vulpes::Logger.newline
             Vulpes::Logger.log("[#{Vulpes::Prettify.as_cyan('New Dork')}]: ")
             dork = $stdin.readline.chomp!
-            @dork = dork
+            @dork = dork.strip
          else
             file = Tempfile.new
             
@@ -54,16 +54,15 @@ module Vulpes
             end
 
             file.unlink
-            @dork = dork
+            @dork = dork.strip
          end
       end
 
       def is_valid?
          flag = true
 
-         flag = false if @severity.nil? || @severity.to_s.empty? \
-            || @severity.to_i < 1 || @severity.to_i > 10 || @category.nil? \
-            || @category.empty? || @dork.nil? || @dork.empty?
+         flag = false if @severity.empty? || @severity.to_i < 1 || \
+            @severity.to_i > 10 || @category.empty? || @dork.empty?
 
          flag
       end
