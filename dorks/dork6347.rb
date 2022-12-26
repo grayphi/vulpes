@@ -18,6 +18,9 @@ maker by 10Web *plugin.
 Ref: https://wpvulndb.com/vulnerabilities/10237
 Form Maker by 10Web < 1.13.36 - Authenticated SQL Injection
 LinkedIn: https://www.linkedin.com/in/ritik-kumar-jain-57675419b/
+Description: This google dork lists out Advisories and Vulnerabilities
+regarding the form-maker wordpress plugin. Ref:
+https://wpvulndb.com/vulnerabilities/10305
 EDESC
          })
 

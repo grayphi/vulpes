@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 AJ Forum 1.0 (topic_title.php) Remote SQL Injection - CVE: 2007-1295: https://www.exploit-db.com/exploits/3411
+AJ Auction Pro All Versions (subcat.php) Remote SQL Injection - CVE: 2007-1298: https://www.exploit-db.com/exploits/3408
 EDESC
          })
 

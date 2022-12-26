@@ -14,6 +14,7 @@ inurl:"com_portfol"
 EDORK
             description: <<~EDESC
 Joomla Component Portfol (vcatid) SQL Injection Vulnerability - CVE: 2009-0494: https://www.exploit-db.com/exploits/7734
+Joomla Component com_portfol SQL Injection Vulnerability: https://www.exploit-db.com/exploits/10844
 EDESC
          })
 

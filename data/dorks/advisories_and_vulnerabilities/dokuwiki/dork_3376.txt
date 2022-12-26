@@ -8,3 +8,4 @@ Description:      "Driven by DokuWiki"
 
 
 DokuWiki 2006-03-09b (dwpage.php) System Disclosure: https://www.exploit-db.com/exploits/2322
+DokuWiki 2006-03-09b (dwpage.php) Remote Code Execution: https://www.exploit-db.com/exploits/2321

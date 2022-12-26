@@ -14,6 +14,7 @@ allinurl:com_pccookbook
 EDORK
             description: <<~EDESC
 Joomla Component com_pccookbook (user_id) SQL Injection Vulnerability - CVE: 2008-0844: https://www.exploit-db.com/exploits/5145
+pc_cookbook Mambo Component 0.3 Include Vulnerability - CVE: 2006-3530: https://www.exploit-db.com/exploits/2024
 EDESC
          })
 

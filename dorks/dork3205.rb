@@ -14,6 +14,7 @@ allinurl:offers_buy.php?id=
 EDORK
             description: <<~EDESC
 EC21 Clone 3.0 (id) SQL Injection Vulnerability - CVE: 2010-1726: https://www.exploit-db.com/exploits/12459
+Alibaba Clone Platinum (offers_buy.php) SQL Injection Vulnerability - CVE: 2010-1725: https://www.exploit-db.com/exploits/12468
 EDESC
          })
 

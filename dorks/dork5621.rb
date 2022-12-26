@@ -16,6 +16,9 @@ EDORK
 Sophos XG Firewall Login pages
 # Date: [5-11-2019]
 # Author: [Mohammed*_*]
+# Various Sophos Login page. Attacker may use https://www.exploit-db.com/exploits/48683 to exploit those pages
+# Date: 23/07/2020
+# Exploit Author: *Dharmveer Singh*
 EDESC
          })
 

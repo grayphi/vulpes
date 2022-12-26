@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Uploader by CeleronDude 5.3.0 Shell Upload: https://www.exploit-db.com/exploits/10523
+Uploader by CeleronDude 5.3.0 - Upload Vulnerability: https://www.exploit-db.com/exploits/11166
 EDESC
          })
 

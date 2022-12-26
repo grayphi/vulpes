@@ -14,6 +14,7 @@ intext:"Design by BB Media.Org"
 EDORK
             description: <<~EDESC
 BBMedia Design's SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12711
+BBMedia Design's (news_more.php) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12718
 EDESC
          })
 

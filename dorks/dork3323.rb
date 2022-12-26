@@ -14,6 +14,7 @@ insite: SmarterMail Enterprise 7.1
 EDORK
             description: <<~EDESC
 SmarterMail 7.1.3876 Directory Traversal Vulnerability - CVE: 2010-3486: https://www.exploit-db.com/exploits/15048
+https://www.exploit-db.com/exploits/15185/
 EDESC
          })
 

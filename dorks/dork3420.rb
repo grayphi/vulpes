@@ -14,6 +14,8 @@ module Dorks
 EDORK
             description: <<~EDESC
 MiniTwitter 0.2b Remote User Options Change - CVE: 2009-2574: https://www.exploit-db.com/exploits/8587
+MiniTwitter 0.3-Beta (SQL/XSS) Multiple Remote Vulnerabilities: https://www.exploit-db.com/exploits/8778
+MiniTwitter 0.2b Multiple SQL Injection Vulnerabilities - CVE: 2009-2573: https://www.exploit-db.com/exploits/8586
 EDESC
          })
 

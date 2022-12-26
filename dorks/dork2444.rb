@@ -14,6 +14,7 @@ allinurl:"/questcms/"
 EDORK
             description: <<~EDESC
 Questcms (XSS/Directory Traversal/SQL) Multiple Remote Vulnerabilities - CVE: 2008-4773: https://www.exploit-db.com/exploits/6853
+QuestCMS (main.php) Remote File Include Vulnerability: https://www.exploit-db.com/exploits/2137
 EDESC
          })
 

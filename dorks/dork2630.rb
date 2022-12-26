@@ -14,6 +14,7 @@ allintext:"Powered By Buddy Zone"
 EDORK
             description: <<~EDESC
 Buddy Zone 1.5 (view_sub_cat.php cat_id) SQL Injection Vulnerability - CVE: 2007-3549: https://www.exploit-db.com/exploits/4127
+Buddy Zone 1.5 Multiple SQL Injection Vulnerabilities - CVE: 2007-3526: https://www.exploit-db.com/exploits/4128
 EDESC
          })
 

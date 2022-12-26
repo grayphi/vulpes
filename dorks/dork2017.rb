@@ -14,6 +14,7 @@ pages.php?id= "Multi Vendor Mall"
 EDORK
             description: <<~EDESC
 Multi Vendor Mall (itemdetail.php & shop.php) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12755
+Multi Vendor Mall (pages.php) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12748
 EDESC
          })
 

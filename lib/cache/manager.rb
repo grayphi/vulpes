@@ -3,7 +3,7 @@ module Cache
     @@initialized = false
 
     def initialize
-      super("Cache Manager")
+      super("CacheManager")
       @db_type = Vulpes::Config.get('db_type')
       create_db_instance
       @@initialized = true
@@ -50,6 +50,83 @@ module Cache
         end unless @db_instance.nil?
       else
         raise InvalidObjectType, "Object is not array of Vulpes::Dork"
+      end
+    end
+
+    def cache_response_page(dork, search_terms, links)
+      raise InvalidDork, "Invalid dork object to persist." if dork.nil? || !dork.is_a?(Vulpes::Dork)
+
+      # try saving dork
+      begin
+        cache_dork dork
+      rescue Mysql2::Error => e
+        # ignore unique constraint error
+        raise e unless e.message.match? %r(\ADuplicate entry '[a-zA-Z0-9]{40}' for key 'dork_hash'\Z)
+      end
+
+      # reload the dork
+      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
+      + "author, dork, description, dork_hash from cache_dorks where dork = ?"
+
+      dork = (mysql_get_dorks(prep_st, dork.dork)).pop
+
+      ref_hash = nil
+
+      # try saving search terms
+      if search_terms.nil? || search_terms.strip.empty?        
+        ref_hash = dork.dork_hash
+      else
+        Vulpes::Logger.debug "Persisting search term: #{search_terms}"
+
+        prep_st = "insert into search_terms (dork_hash, search_term) values (?, ?)"
+        ps = @db_instance.prepare prep_st
+
+        begin
+          ps.execute dork.dork_hash, search_terms.strip
+        rescue Mysql2::Error => e
+          raise e unless e.message.match? %r(\ADuplicate entry '[a-zA-Z0-9]{40}' for key 'search_term_hash'\Z)
+        ensure
+          ps.close
+        end
+
+        # search term saved/exists, try getting its search_term_hash value
+        prep_st = "select search_term_hash from search_terms where dork_hash = ? and search_term = ?"
+
+        begin
+          ps2 = @db_instance.prepare prep_st
+          rs = ps2.execute dork.dork_hash, search_terms.strip
+
+          ref_hash = (rs.entries.pop)["search_term_hash"]
+        ensure
+          ps2.close
+        end
+      end
+
+      # ref_hash should not be nil, something is wrong
+      return if ref_hash.nil?
+      
+      # try saving links
+      Vulpes::Logger.debug "Persisting #{links ? links.size : 0} link(s)."
+      return if links.nil? || links.empty?
+
+      prep_st = "insert into links (ref_hash, url, origin) values (?, ?, ?)"
+      ps = @db_instance.prepare prep_st
+
+      begin
+        links.each do |link|
+          if link
+            origin = Web::Utils::URLUtils.get_host(link)
+            origin = url unless origin
+            
+            begin
+              ps.execute ref_hash, link, origin
+            rescue Mysql2::Error => e
+              raise e unless e.message.match? %r(Duplicate entry '[a-zA-Z0-9]{40}' for key 'url_hash')
+            end
+          end
+        end
+      ensure
+        ps.close
       end
     end
 
@@ -157,7 +234,7 @@ module Cache
     def mysql_persist_dorks(dorks)
       prep_st = "insert into cache_dorks (name, ghdb_url, severity, " \
         + "category, publish_date, author, dork, description) values " \
-        + "(?, ?, ?, ?, ?, ?, ?, ?);"
+        + "(?, ?, ?, ?, ?, ?, ?, ?)"
 
       begin
         ps = @db_instance.prepare prep_st
@@ -197,6 +274,7 @@ module Cache
           dork[:author] = d['author']
           dork[:dork] = d['dork']
           dork[:description] = d['description']
+          dork[:dork_hash] = d['dork_hash']
 
           if block_given?
             yield Vulpes::Dork.create_dork dork
@@ -213,44 +291,44 @@ module Cache
 
     def mysql_get_dorks_by_name(name, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where name like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where name like ?"
 
       mysql_get_dorks prep_st, "%#{name}%", &block
     end
 
     def mysql_get_dorks_by_severity(severity, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where severity = ?;"
+        + "author, dork, description, dork_hash from cache_dorks where severity = ?"
 
       mysql_get_dorks prep_st, severity, &block
     end
 
     def mysql_get_dorks_by_category(category, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where category like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where category like ?"
 
       mysql_get_dorks prep_st, "%#{category}%", &block
     end
 
     def mysql_get_dorks_by_author(author, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where author like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where author like ?"
 
       mysql_get_dorks prep_st, "%#{author}%", &block
     end
 
     def mysql_get_dorks_by_url(url, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where ghdb_url like ?;"
+        + "author, dork, description, dork_hash from cache_dorks where ghdb_url like ?"
 
       mysql_get_dorks prep_st, "%#{url}%", &block
     end
 
     def mysql_find_dorks(sterm, &block)
       prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description from cache_dorks where name like ? " \
+        + "author, dork, description, dork_hash from cache_dorks where name like ? " \
         + "or ghdb_url like ? or category like ? or author like ? or " \
-        + "dork like ? or description like ? or publish_date like ?;"
+        + "dork like ? or description like ? or publish_date like ?"
 
       mysql_get_dorks prep_st, "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", \
         "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", &block

@@ -14,6 +14,7 @@ inurl:option=com_huruhelpdesk
 EDORK
             description: <<~EDESC
 joomla component allvideos BLIND SQL injection Vulnerability: https://www.exploit-db.com/exploits/12137
+joomla component huruhelpdesk SQL injection Vulnerability: https://www.exploit-db.com/exploits/12124
 EDESC
          })
 

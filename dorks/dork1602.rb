@@ -14,6 +14,7 @@ allinurl: "index.php?p=gallerypic img_id"
 EDORK
             description: <<~EDESC
 Koobi Pro v6.1 gallery (img_id) - CVE: 2008-6210: https://www.exploit-db.com/exploits/10751
+Koobi 4.4/5.4 gallery Remote SQL Injection Vulnerability - CVE: 2008-6210: https://www.exploit-db.com/exploits/5415
 EDESC
          })
 

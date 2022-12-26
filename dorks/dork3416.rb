@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Leap CMS 0.1.4 (SQL/XSS/SU) Multiple Remote Vulnerabilities - CVE: 2009-1615: https://www.exploit-db.com/exploits/8577
+Leap CMS 0.1.4 (searchterm) Blind SQL Injection - CVE: 2009-1613: https://www.exploit-db.com/exploits/8576
 EDESC
          })
 

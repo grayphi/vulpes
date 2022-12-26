@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Gradman 0.1.3 (info.php tabla) Local File Inclusion Vulnerability - CVE: 2008-0393: https://www.exploit-db.com/exploits/4936
+Gradman 0.1.3 (agregar_info.php) Local File Inclusion - CVE: 2008-0361: https://www.exploit-db.com/exploits/4926
 EDESC
          })
 

@@ -14,6 +14,7 @@ inurl:"com_ckforms"
 EDORK
             description: <<~EDESC
 Joomla Component com_ckforms Multiple Vulnerabilities - CVE: 2010-1344: https://www.exploit-db.com/exploits/11785
+Joomla Component (com_ckforms) Local File Inclusion Vulnerability: https://www.exploit-db.com/exploits/15453
 EDESC
          })
 

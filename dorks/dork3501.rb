@@ -15,6 +15,7 @@ EDORK
             description: <<~EDESC
 "Powered by Burning Board Lite 1.0.2 * 2001-2004"
 Woltlab Burning Board Lite 1.0.2 Blind SQL Injection: https://www.exploit-db.com/exploits/2842
+Woltlab Burning Board Lite 1.0.2 decode_cookie() SQL Injection - CVE: 2006-6237: https://www.exploit-db.com/exploits/2841
 EDESC
          })
 

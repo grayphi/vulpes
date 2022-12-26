@@ -14,6 +14,7 @@ inurl:"article.download.php"
 EDORK
             description: <<~EDESC
 Star Articles 6.0 Remote Blind SQL Injection Vulnerability - CVE: 2008-7075: https://www.exploit-db.com/exploits/7240
+Star Articles 6.0 Remote Blind SQL Injection - CVE: 2008-7075: https://www.exploit-db.com/exploits/7243
 EDESC
          })
 

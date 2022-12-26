@@ -14,6 +14,7 @@ inurl:"product_desc.php?id=" Powered by Zeeways.com
 EDORK
             description: <<~EDESC
 Zeeways Script Multiple Vulnerabilities - CVE: 2010-2144: https://www.exploit-db.com/exploits/12805
+ZeeWays Script SQL Injection Vulnerability: https://www.exploit-db.com/exploits/11087
 EDESC
          })
 

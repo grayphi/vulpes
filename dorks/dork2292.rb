@@ -14,6 +14,7 @@ Powered By AJ Auction
 EDORK
             description: <<~EDESC
 AJ Auction Pro Platinum (seller_id) SQL Injection Vulnerability - CVE: 2008-6004: https://www.exploit-db.com/exploits/6561
+AJ Auction v1 (id) Remote SQL Injection Vulnerability: https://www.exploit-db.com/exploits/5868
 EDESC
          })
 

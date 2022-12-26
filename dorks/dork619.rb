@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 published Oct 20, 2004, updated Oct 20, 2004vulnerable:Coppermine Photo Gallery Coppermine Photo Gallery 1.0Coppermine Photo Gallery Coppermine Photo Gallery 1.1Coppermine Photo Gallery Coppermine Photo Gallery 1.2Coppermine Photo Gallery Coppermine Photo Gallery 1.2.1Coppermine Photo Gallery Coppermine Photo Gallery 1.3Coppermine Photo Gallery Coppermine Photo Gallery 1.3.1Coppermine Photo Gallery Coppermine Photo Gallery 1.3.2Coppermine Photo Gallery is reported prone to a design error that may allow users to cast multiple votes for a picture.All versions of Coppermine Photo Gallery are considered vulnerable at the moment.http://www.securityfocus.com/bid/11485
+Coppermine Photo Gallery 1.4.18 LFI / Remote Code Execution - CVE: 2008-3481: https://www.exploit-db.com/exploits/6178
 EDESC
          })
 

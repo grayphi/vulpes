@@ -8,3 +8,4 @@ Description:      inurl:"/plugins/ImageManager/manager.php"
 
 
 Wordpress Image Manager Plugins Shell Upload Vulnerability: https://www.exploit-db.com/exploits/10325
+Author: PenetraDz Shell Upload Vuln: manager/media/editor/plugins/ImageManager/manager.php

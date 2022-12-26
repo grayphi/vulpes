@@ -14,6 +14,9 @@ inurl:tr.php?id=
 EDORK
             description: <<~EDESC
 Downline Goldmine Builder (tr.php id) Remote SQL Injection Vulnerability - CVE: 2008-4178: https://www.exploit-db.com/exploits/6946
+Downline Goldmine newdownlinebuilder (tr.php id) SQL Injection Vuln: https://www.exploit-db.com/exploits/6951
+Downline Goldmine Category Addon (id) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/6947
+Downline Goldmine paidversion (tr.php id) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/6950
 EDESC
          })
 

@@ -14,6 +14,7 @@ inurl:sysinfo.cgi ext:cgi
 EDORK
             description: <<~EDESC
 dork:inurl:sysinfo.cgi ext:cgi exploit: http://www.milw0rm.com/exploits/1677 I found this command execution vulnerability in 1.2.1 but other versions maybe vulnerable toohowever, u can see version in google results
+SysInfo 1.21 (sysinfo.cgi) Remote Command Execution - CVE: 2006-1831: https://www.exploit-db.com/exploits/1677
 EDESC
          })
 

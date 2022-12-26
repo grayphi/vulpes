@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 e-webtech (new.asp?id=) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12547
+e-webtech (page.asp) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12571
 EDESC
          })
 

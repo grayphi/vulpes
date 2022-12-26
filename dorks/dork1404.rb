@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 this is for Sendcard remote commands execution,advisory/ poc exploit: http://retrogod.altervista.org/sendcard_340_xpl.html
+Sendcard 3.4.1 (sendcard.php form) Local File Inclusion Vulnerability - CVE: 2007-2471: https://www.exploit-db.com/exploits/3827
 EDESC
          })
 

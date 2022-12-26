@@ -14,6 +14,8 @@ module Dorks
 EDORK
             description: <<~EDESC
 DB[CMS] Sql Injection Vulnerability: https://www.exploit-db.com/exploits/12654
+DB[CMS] (article.php) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12666
+DB[CMS] (section.php) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12659
 EDESC
          })
 

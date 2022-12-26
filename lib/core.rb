@@ -18,4 +18,8 @@ require 'vulpes/dork'
 
 require 'cache/manager'
 
+require 'vulpes/web'
+
+
+
 require 'vulpes/gc'

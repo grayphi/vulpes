@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Realtor WebSite System E-Commerce idfestival SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12776
+Realtor WebSite System E-Commerce SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12772
 EDESC
          })
 

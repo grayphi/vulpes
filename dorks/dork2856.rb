@@ -14,6 +14,7 @@ Copyright 2010. Software Index
 EDORK
             description: <<~EDESC
 PishBini Footbal XSS and SQL Injection Vulnerability: https://www.exploit-db.com/exploits/14000
+Software Index (Remote File Upload) Exploit: https://www.exploit-db.com/exploits/13999
 EDESC
          })
 

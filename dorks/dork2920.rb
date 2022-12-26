@@ -14,6 +14,7 @@ inurl:ratelink.php?lnkid=
 EDORK
             description: <<~EDESC
 Link Trader (ratelink.php lnkid) Remote SQL Injection Vulnerability - CVE: 2008-6102: https://www.exploit-db.com/exploits/6650
+Link Trader (lnkid) Remote SQL Injection Vulnerability: https://www.exploit-db.com/exploits/10834
 EDESC
          })
 

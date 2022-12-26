@@ -14,6 +14,8 @@ filetype:reg reg HKEY_CURRENT_USER SSHHOSTKEYS
 EDORK
             description: <<~EDESC
 This search reveals SSH host key fro the Windows Registry. These files contain information about where the user connects including hostnames and port numbers, and shows sensitive information such as the SSH host key in use by that client.
+This search locates private SSHHostkeys. Author: loganWHD
+this dork locates registry dumps
 EDESC
          })
 

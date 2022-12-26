@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Flatnuke 2.5.8 file() Priv Escalation / Code Execution: https://www.exploit-db.com/exploits/2498
+Flatnuke 2.5.8 (userlang) Local Inclusion / Delete All Users: https://www.exploit-db.com/exploits/2499
 EDESC
          })
 

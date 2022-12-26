@@ -14,6 +14,7 @@ intitle:asterisk.management.portal web-access
 EDORK
             description: <<~EDESC
 Coalescent Systems Inc. launched The Asterisk Management Portal project to bring together best-of-breed applications to produce a "canned" (but fully functional) turn-key small business phone system based on The Asterisk Open Source PBX.
+VOXBOX Asterisk web management. Allows to manage Asterisk configuration like calls and SIP settings.
 EDESC
          })
 

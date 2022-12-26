@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Easy Photo Gallery 2.1 Arbitrary Add Admin / remove user Vulnerability - CVE: 2008-4167: https://www.exploit-db.com/exploits/6437
+Easy Photo Gallery 2.1 XSS/FD/Bypass/SQL Injection - CVE: 2008-6988: https://www.exploit-db.com/exploits/6428
 EDESC
          })
 

@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 Moa Gallery 1.2.0 Multiple Remote File Inclusion Vulnerabilities - CVE: 2009-4614: https://www.exploit-db.com/exploits/9522
+Autonomous LAN party 0.98.3 Remote File Inclusion Vulnerability: https://www.exploit-db.com/exploits/9460
 EDESC
          })
 

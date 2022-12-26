@@ -14,6 +14,7 @@ inurl:index.php?mod=jeuxflash
 EDORK
             description: <<~EDESC
 KwsPHP Module jeuxflash (cat) Remote SQL Injection Vulnerability - CVE: 2008-1759: https://www.exploit-db.com/exploits/5352
+KwsPHP Module jeuxflash 1.0 (id) Remote SQL Injection Vulnerability - CVE: 2007-4922: https://www.exploit-db.com/exploits/4400
 EDESC
          })
 

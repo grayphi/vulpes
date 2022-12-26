@@ -6,7 +6,7 @@ module Db
          @instance = nil
 
          def initialize
-            super("SQL Connector")
+            super("MySQLConnector")
             get_sql_connection
          end
 

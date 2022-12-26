@@ -14,6 +14,7 @@ inurl:"nabopoll/"
 EDORK
             description: <<~EDESC
 nabopoll 1.2 (survey.inc.php path) Remote File Include Vulnerability - CVE: 2005-2157: https://www.exploit-db.com/exploits/3315
+nabopoll 1.2 Remote Unprotected Admin Section Vulnerability - CVE: 2007-0873: https://www.exploit-db.com/exploits/3305
 EDESC
          })
 

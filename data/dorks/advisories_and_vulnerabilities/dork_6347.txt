@@ -15,4 +15,6 @@ Google Dork: inurl:wp-content/plugins/form-maker
  
  Author: Ritik Kumar Jain (Dasagreeva)
  LinkedIn: https://www.linkedin.com/in/ritik-kumar-jain-57675419b/
- 
+ Description: This google dork lists out Advisories and Vulnerabilities
+regarding the form-maker wordpress plugin. Ref:
+https://wpvulndb.com/vulnerabilities/10305

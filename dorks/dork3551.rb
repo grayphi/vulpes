@@ -14,6 +14,7 @@ module Dorks
 EDORK
             description: <<~EDESC
 MercuryBoard 1.1.5 (login.php) Remote Blind SQL Injection - CVE: 2008-6632: https://www.exploit-db.com/exploits/5653
+MercuryBoard 1.1.4 (User-Agent) Remote SQL Injection: https://www.exploit-db.com/exploits/2247
 EDESC
          })
 
