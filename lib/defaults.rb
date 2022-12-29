@@ -66,5 +66,22 @@ module Vulpes
          end
       end
 
+      module Rules
+         class URLRules
+            @s_urls = "urls"
+            @s_ftypes = "filetypes"
+            @s_qstrings = "querystrings"
+            @s_frags = "fragments"
+            @s_text = "text"
+            @s_order = "order"
+
+            @order = [@s_urls, @s_ftypes, @s_qstrings, @s_frags, @s_text]
+
+            class << self
+               attr_reader :s_urls, :s_ftypes, :s_qstrings, :s_frags, :s_text, :s_order, :order
+            end
+         end
+      end
+
    end
 end
