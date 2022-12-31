@@ -67,7 +67,13 @@ module Vulpes
       end
 
       module Rules
-         class URLRules
+         class RulesLoader
+            @s_protocols = "protocols"
+            @s_ports = "ports"
+            @s_uname = "uname"
+            @s_passwd = "passwd"
+            @s_subdomains = "subdomains"
+            @s_override_by = "override_by"
             @s_urls = "urls"
             @s_ftypes = "filetypes"
             @s_qstrings = "querystrings"
@@ -75,10 +81,13 @@ module Vulpes
             @s_text = "text"
             @s_order = "order"
 
-            @order = [@s_urls, @s_ftypes, @s_qstrings, @s_frags, @s_text]
+            @order = [ @s_protocols, @s_ports, @s_uname, @s_passwd, @s_subdomains, 
+               @s_urls, @s_ftypes, @s_qstrings, @s_frags, @s_text ]
 
             class << self
-               attr_reader :s_urls, :s_ftypes, :s_qstrings, :s_frags, :s_text, :s_order, :order
+               attr_reader :s_protocols, :s_ports, :s_uname, :s_passwd, :s_subdomains,
+                  :s_override_by, :s_urls, :s_ftypes, :s_qstrings, :s_frags, :s_text,
+                  :s_order, :order
             end
          end
       end

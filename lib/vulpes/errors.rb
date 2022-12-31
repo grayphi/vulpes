@@ -19,3 +19,5 @@ class InvalidDork < InvalidObjectType; end
 class InvalidObject < VulpesError; end
 
 class ImproperWebRequest < InvalidObject; end
+
+class InvalidRules < VulpesError; end

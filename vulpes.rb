@@ -147,10 +147,13 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
+require 'rules/rulesloader'
 
+robj = Rules::RulesLoader.load "/home/dinesh/Workspace/projects/git/vulpes/rules/wlst.rules"
 
-
-
+robj.each do |x,y|
+   Vulpes::Logger.info "section: #{x}, rule: #{y}"
+end
 
 
 ensure
