@@ -67,7 +67,7 @@ module Vulpes
       end
 
       module Rules
-         class RulesLoader
+         module RulesLoader
             @s_protocols = "protocols"
             @s_ports = "ports"
             @s_uname = "uname"
@@ -91,6 +91,9 @@ module Vulpes
             end
          end
       end
+
+
+      
 
    end
 end

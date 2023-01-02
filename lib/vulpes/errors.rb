@@ -12,12 +12,14 @@ class InvalidKeyError < VulpesConfigError; end
 
 class InvalidDatabaseError < VulpesError; end
 
-class InvalidObjectType < VulpesError; end
+class InvalidObject < VulpesError; end
+
+class InvalidObjectType < InvalidObject; end
 
 class InvalidDork < InvalidObjectType; end
-
-class InvalidObject < VulpesError; end
 
 class ImproperWebRequest < InvalidObject; end
 
 class InvalidRules < VulpesError; end
+
+class InvalidURL < VulpesError; end
