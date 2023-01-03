@@ -52,7 +52,6 @@ module Web
             raise InvalidURL, "Invalid/Improper url #{url.dump}" unless md
  
                obj[:protocol] = md[:scheme]
-               obj[:has_www] = true if md[:domain_name] && md[:domain_name].start_with?('www.')
                obj[:uname] = md[:username]
                obj[:passwd] = md[:password]
                obj[:host] = md[:host]
@@ -62,11 +61,22 @@ module Web
                obj[:qs] = md[:query]
                obj[:frag] = md[:fragment]
 
-               obj[:fname] = obj[:path].split('/').last if obj[:path] && \
-                  !obj[:path].empty? && !obj[:path].end_with?('/')
-               
-               obj[:subdomain] = obj[:domain].split('.')[..-3].join('.') if \
-                  obj[:domain] && !obj[:domain].empty?
+               if md[:path] && !md[:path].empty? && !md[:path].end_with?('/')
+                  d = md[:path].split('/')
+
+                  obj[:fname] = d.pop
+                  obj[:path] = d.join '/'
+               end
+
+               if obj[:domain] && !obj[:domain].empty?
+                  d = obj[:domain].split('.')
+
+                  if d[0].eql?('www')
+                     obj[:has_www] = true
+                     d.shift
+                  end
+                  obj[:subdomain] = d[...-2].join('.')
+               end
 
             new obj
          end
