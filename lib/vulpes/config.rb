@@ -97,10 +97,8 @@ module Vulpes
                Vulpes::Logger.debug(" > Processing line <#{line}>")
 
                # split with delimiter as one from := : =
-               kvs = line.split(/(:=|:|=)/)
-               key = kvs[0].strip
-               sep = kvs[1]
-               val = kvs[2..].join unless kvs[2].nil?
+               key, sep, val = line.split(/(:=|:|=)/, 2)
+               key.strip!
 
                Vulpes::Logger.debug("  >> Got Key: <#{key}>, sep: <#{sep}>, value: <#{val}>")
 
