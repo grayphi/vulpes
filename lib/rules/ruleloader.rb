@@ -1,7 +1,7 @@
 module Rules
-   class RulesLoader < Vulpes::Object
+   class RuleLoader < Vulpes::Object
       def initialize(opts = {})
-         super("VulpesRulesLoader")
+         super("VulpesRuleLoader")
 
          @protocols = opts[:protocols]
          @ports = opts[:ports]
@@ -38,27 +38,27 @@ module Rules
             line.strip!
 
             case line
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_protocols}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_protocols}]"
                   section = (protocols = protocols || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_ports}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_ports}]"
                   section = (ports = ports || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_uname}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_uname}]"
                   section = (unames = unames || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_passwd}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_passwd}]"
                   section = (passwds = passwds || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_subdomains}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_subdomains}]"
                   section = (subdomains = subdomains || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_urls}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_urls}]"
                   section = (urls = urls || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_ftypes}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_ftypes}]"
                   section = (ftypes = ftypes || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_qstrings}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_qstrings}]"
                   section = (qstrings = qstrings || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_frags}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_frags}]"
                   section = (frags = frags || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_text}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_text}]"
                   section = (texts = texts || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_order}]"
+               when "[#{Vulpes::Defaults::Rules::RuleLoader.s_order}]"
                   section = (orders = orders || [])
                else
                   raise InvalidRules, "Orphan Rule (#{line}) found." if section.nil?
@@ -131,43 +131,52 @@ module Rules
       def each(&block)
          return unless block_given?
 
+         each_by_type do |type, ref|
+            ref.each do |pattern|
+               yield type, pattern
+            end
+         end
+      end
+
+      def each_by_type(&block)
+         return unless block_given?
+
          get_orders.each do |type|
             ref = nil
 
             case type
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_protocols}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_protocols}"
                   ref = get_protocols
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_ports}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_ports}"
                   ref = get_ports
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_uname}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_uname}"
                   ref = get_unames
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_passwd}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_passwd}"
                   ref = get_passwds
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_subdomains}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_subdomains}"
                   ref = get_subdomains
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_urls}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_urls}"
                   ref = get_urls
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_ftypes}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_ftypes}"
                   ref = get_filetypes
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_qstrings}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_qstrings}"
                   ref = get_querystrings
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_frags}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_frags}"
                   ref = get_fragments
-               when "#{Vulpes::Defaults::Rules::RulesLoader.s_text}"
+               when "#{Vulpes::Defaults::Rules::RuleLoader.s_text}"
                   ref = get_texts
             end
 
-            ref.each do |pattern|
-               yield type, pattern
-            end unless ref.nil?
+            yield type, ref unless ref.nil?
          end
       end
 
 
+
       def do_override(robj)
          raise InvalidObjectType, "Invalid object to override. Expected " + \
-            "RulesLoader's object." if robj.nil? || \
-            !robj.kind_of?(Rules::RulesLoader)
+            "RuleLoader's object." if robj.nil? || \
+            !robj.kind_of?(Rules::RuleLoader)
 
          @protocols = robj.get_protocols unless robj.get_protocols.nil?
          @ports = robj.get_ports unless robj.get_ports.nil?
@@ -188,18 +197,18 @@ module Rules
 
       def load_orders(o)
          ord = []
-         return Vulpes::Defaults::Rules::RulesLoader.order if o.nil?
+         return Vulpes::Defaults::Rules::RuleLoader.order if o.nil?
 
-         l_vals = [ Vulpes::Defaults::Rules::RulesLoader.s_protocols,
-            Vulpes::Defaults::Rules::RulesLoader.s_ports,
-            Vulpes::Defaults::Rules::RulesLoader.s_uname,
-            Vulpes::Defaults::Rules::RulesLoader.s_passwd,
-            Vulpes::Defaults::Rules::RulesLoader.s_subdomains,
-            Vulpes::Defaults::Rules::RulesLoader.s_urls,
-            Vulpes::Defaults::Rules::RulesLoader.s_ftypes,
-            Vulpes::Defaults::Rules::RulesLoader.s_qstrings,
-            Vulpes::Defaults::Rules::RulesLoader.s_frags,
-            Vulpes::Defaults::Rules::RulesLoader.s_text ]
+         l_vals = [ Vulpes::Defaults::Rules::RuleLoader.s_protocols,
+            Vulpes::Defaults::Rules::RuleLoader.s_ports,
+            Vulpes::Defaults::Rules::RuleLoader.s_uname,
+            Vulpes::Defaults::Rules::RuleLoader.s_passwd,
+            Vulpes::Defaults::Rules::RuleLoader.s_subdomains,
+            Vulpes::Defaults::Rules::RuleLoader.s_urls,
+            Vulpes::Defaults::Rules::RuleLoader.s_ftypes,
+            Vulpes::Defaults::Rules::RuleLoader.s_qstrings,
+            Vulpes::Defaults::Rules::RuleLoader.s_frags,
+            Vulpes::Defaults::Rules::RuleLoader.s_text ]
 
          o.each do |i|
             case i
@@ -207,7 +216,7 @@ module Rules
                   ord << i
                else
                   Vulpes::Logger.debug "Ignoring incorrect value(#{i}) in " + \
-                     "[#{Vulpes::Defaults::Rules::RulesLoader.s_order}] section."
+                     "[#{Vulpes::Defaults::Rules::RuleLoader.s_order}] section."
             end
          end
 

@@ -1,5 +1,4 @@
 require "rules/domainloader"
-require 'web/utils/urlparser'
 
 module Rules
    class Manager < Vulpes::Object
@@ -24,7 +23,8 @@ module Rules
 
       def has_next?
          return @links_enum.nil? ? false : begin 
-            a = @links_enum.peek
+            @links_enum.peek
+            
             true
          rescue StopIteration
             false
