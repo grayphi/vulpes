@@ -67,13 +67,22 @@ module Vulpes
       end
 
       module Rules
+         @rules_dir = '~/.vulpes/rules'
+         @file_blist = 'blst.rules'
+         @file_wlist = 'wlst.rules'
+
+         class << self
+            attr_reader :rules_dir, :file_wlist, :file_blist
+         end
+      end
+
+      module Rules
          module RulesLoader
             @s_protocols = "protocols"
             @s_ports = "ports"
             @s_uname = "uname"
             @s_passwd = "passwd"
             @s_subdomains = "subdomains"
-            @s_override_by = "override_by"
             @s_urls = "urls"
             @s_ftypes = "filetypes"
             @s_qstrings = "querystrings"
@@ -86,14 +95,10 @@ module Vulpes
 
             class << self
                attr_reader :s_protocols, :s_ports, :s_uname, :s_passwd, :s_subdomains,
-                  :s_override_by, :s_urls, :s_ftypes, :s_qstrings, :s_frags, :s_text,
-                  :s_order, :order
+                  :s_urls, :s_ftypes, :s_qstrings, :s_frags, :s_text, :s_order, :order
             end
          end
       end
-
-
-      
 
    end
 end

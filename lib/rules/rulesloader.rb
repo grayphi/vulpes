@@ -8,7 +8,6 @@ module Rules
          @unames = opts[:unames]
          @passwds = opts[:paswds]
          @subdomains = opts[:subdomains]
-         @override_by = opts[:override_by]
          @urls = opts[:urls]
          @filetypes = opts[:ftypes]
          @querystrings = opts[:qstrings]
@@ -18,14 +17,15 @@ module Rules
       end
       
       def self.load(file)
-         return if file.nil? || file.strip.empty?
+         return if file.nil? || file.strip.empty? || !File.exists?(file)
 
+         Vulpes::Logger.debug "Loading Rules file: #{file}"
+         
          protocols = nil
          ports = nil
          unames = nil
          passwds = nil
          subdomains = nil
-         override_by = nil
          urls = nil
          ftypes = nil
          qstrings = nil
@@ -48,8 +48,6 @@ module Rules
                   section = (passwds = passwds || [])
                when "[#{Vulpes::Defaults::Rules::RulesLoader.s_subdomains}]"
                   section = (subdomains = subdomains || [])
-               when "[#{Vulpes::Defaults::Rules::RulesLoader.s_override_by}]"
-                  section = (override_by = override_by || [])
                when "[#{Vulpes::Defaults::Rules::RulesLoader.s_urls}]"
                   section = (urls = urls || [])
                when "[#{Vulpes::Defaults::Rules::RulesLoader.s_ftypes}]"
@@ -79,8 +77,8 @@ module Rules
          end
 
          obj = {:protocols => protocols, :ports => ports, :unames => unames,
-            :paswds => passwds, :subdomains => subdomains, :override_by => override_by,
-            :urls => urls, :ftypes => ftypes, :qstrings => qstrings, :frags => frags,
+            :paswds => passwds, :subdomains => subdomains, :urls => urls, 
+            :ftypes => ftypes, :qstrings => qstrings, :frags => frags,
             :texts => texts, :orders => orders}
 
          new obj
@@ -104,10 +102,6 @@ module Rules
 
       def get_subdomains
          @subdomains
-      end
-
-      def get_override_by
-         @override_by
       end
 
       def get_urls
@@ -169,6 +163,26 @@ module Rules
          end
       end
 
+
+      def do_override(robj)
+         raise InvalidObjectType, "Invalid object to override. Expected " + \
+            "RulesLoader's object." if robj.nil? || \
+            !robj.kind_of?(Rules::RulesLoader)
+
+         @protocols = robj.get_protocols unless robj.get_protocols.nil?
+         @ports = robj.get_ports unless robj.get_ports.nil?
+         @unames = robj.get_unames unless robj.get_unames.nil?
+         @passwds = robj.get_passwds unless robj.get_passwds.nil?
+         @subdomains = robj.get_subdomains unless robj.get_subdomains.nil?
+         @urls = robj.get_urls unless robj.get_urls.nil?
+         @filetypes = robj.get_filetypes unless robj.get_filetypes.nil?
+         @querystrings = robj.get_querystrings unless robj.get_querystrings.nil?
+         @fragments = robj.get_fragments unless robj.get_fragments.nil?
+         @texts = robj.get_texts unless robj.get_texts.nil?
+         @orders = robj.get_orders unless robj.get_orders.nil?
+
+         self
+      end
 
       private
 

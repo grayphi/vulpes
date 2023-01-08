@@ -216,6 +216,23 @@ module Cache
       end unless @db_instance.nil?
     end
 
+    def get_links_by_domain_enum(domain)
+      return if domain.nil? || domain.strip.empty?
+
+      domain.strip!
+
+      prep_st = "select url, fetched from links where origin like ?"
+      begin
+        ps = @db_instance.prepare prep_st
+        domain = "%#{domain}"
+
+        rs = ps.execute domain
+        rs.lazy
+      ensure
+        ps.close if ps
+      end
+    end
+
 
     private
       

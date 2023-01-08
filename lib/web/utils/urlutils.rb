@@ -1,5 +1,5 @@
 require 'cgi'
-require 'uri'
+require 'web/utils/urlparser'
 
 module Web
    module Utils
@@ -24,12 +24,9 @@ module Web
          end
 
          def self.get_host(url)
-            return if url.nil? || url.strip.empty?
-
-            url = url.strip
-            url = 'http://' + url unless url.match? %r{\Ahttp(s)?://}
-
-            URI(url).authority
+            uobj = Web::Utils::URLParser.parse(url)
+            
+            return uobj.host unless uobj.nil?
          end
 
          private_class_method :new

@@ -147,7 +147,8 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
-
+rm = Rules::Manager.get_instance "www.stackoverflow.com"
+rm.init
 
 
 
