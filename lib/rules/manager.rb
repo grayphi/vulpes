@@ -32,12 +32,9 @@ module Rules
       end
 
       def get_next
-         return if @links_enum.nil?
+         return if @links_enum.nil? || @dl_obj.nil?
 
-         obj = @links_enum.next
-
-         # test on obj
-         # return fail,success message obj
+         @dl_obj.match @links_enum.next["url"]
       end
 
       def get_next_failed

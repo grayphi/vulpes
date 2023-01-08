@@ -229,7 +229,7 @@ module Cache
         rs = ps.execute domain
         rs.lazy
       ensure
-        ps.close if ps
+        ps.close if ps # FIXME
       end
     end
 

@@ -102,7 +102,7 @@ module Rules
             end
 
             ref.each do |pattern|
-               if pattern.match? ref_string
+               if pattern.match?(ref_string)
                   ref_array << [type, pattern, ref_string]
                   flag = true
                   break
@@ -157,7 +157,7 @@ module Rules
 
             flag_sec = false
             ref.each do |pattern|
-               if pattern.match? ref_string
+               if pattern.match?(ref_string)
                   ref_array << [type, pattern, ref_string]
                   flag_sec = true
                   break
@@ -171,12 +171,6 @@ module Rules
          md_obj[:wl_matched] = flag
          
          Rules::MatchData.create md_obj
-      end
-
-      def match?(url)
-         md = match(url)
-
-         
       end
 
       private_class_method :new

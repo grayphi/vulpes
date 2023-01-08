@@ -171,8 +171,6 @@ module Rules
          end
       end
 
-
-
       def do_override(robj)
          raise InvalidObjectType, "Invalid object to override. Expected " + \
             "RuleLoader's object." if robj.nil? || \
