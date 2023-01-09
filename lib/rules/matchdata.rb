@@ -3,15 +3,17 @@ module Rules
       def initialize(obj)
          super('RulesMatchData')
          
-         @bl_match = obj[:bl_match] || []
+         @bl_match = obj[:bl_match] || {}
          @bl_matched = obj[:bl_matched]
-         @wl_match = obj[:wl_match] || []
+         @wl_match = obj[:wl_match] || {}
          @wl_matched = obj[:wl_matched]
       end
 
       def self.create(obj)
          return if obj.nil?
          return unless obj.kind_of?(Hash) && (obj.has_key?(:bl_match) || obj.has_key?(:wl_match))
+        
+         puts obj
          new obj
       end
 
@@ -45,6 +47,14 @@ module Rules
 
       def succeed?
          !failed?
+      end
+
+      def to_s
+         puts "blist match count: #{blist_matched_count}, wlist match count: #{wlist_matched_count}, status: #{failed? ? 'failed' : 'succeed'}"
+
+         puts get_blist_matches
+         puts get_wlist_matches
+
       end
 
       private_class_method :new

@@ -24,7 +24,6 @@ module Rules
       def has_next?
          return @links_enum.nil? ? false : begin 
             @links_enum.peek
-            
             true
          rescue StopIteration
             false

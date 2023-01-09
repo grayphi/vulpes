@@ -8,7 +8,7 @@ module Rules
          super("VulpesDomainLoader")
          
          @blist_rules = obj[:blist]
-         @wlist_rules = obj[:wlsit]
+         @wlist_rules = obj[:wlist]
       end
 
       def self.load(domain)
@@ -62,56 +62,51 @@ module Rules
       def match(url)
          return if url.nil? || url.strip.empty?
 
+         Vulpes::Logger.debug "Matching rules against url(#{url})"
+
          url_obj = Web::Utils::URLParser.parse url
          md_obj = {}
 
          b_obj = {}
          flag = false
          get_blist_rules.each_by_type do |type, ref|
-            ref_array = nil
             ref_string = nil
 
             case type
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_protocols}"
                   ref_string = url_obj.protocol
-                  ref_array = (b_obj[:protocol] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ports}"
                   ref_string = url_obj.port
-                  ref_array = (b_obj[:port] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_uname}"
                   ref_string = url_obj.username
-                  ref_array = (b_obj[:username] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_passwd}"
                   ref_string = url_obj.password
-                  ref_array = (b_obj[:password] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_subdomains}"
                   ref_string = url_obj.subdomain
-                  ref_array = (b_obj[:subdomain] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_urls}"
                   ref_string = url_obj.path
-                  ref_array = (b_obj[:path] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ftypes}"
                   ref_string = url_obj.filename
-                  ref_array = (b_obj[:filename] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_qstrings}"
                   ref_string = url_obj.querystring
-                  ref_array = (b_obj[:querystring] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_frags}"
                   ref_string = url_obj.fragment
-                  ref_array = (b_obj[:fragment] = [])
             end
 
             ref.each do |pattern|
-               if pattern.match?(ref_string)
-                  ref_array << [type, pattern, ref_string]
+               Vulpes::Logger.debug "file => blst.rules, section => #{type}, " + \
+               "pattern => #{pattern}, url_string => #{ref_string}"
+
+               if !ref_string.nil? && pattern.match?(ref_string)
+                  (b_obj[:"#{type}"] ||= []) << [pattern, ref_string]
                   flag = true
                   break
                end
-            end unless ref_array.nil?
+            end
 
             break if flag
          end unless get_blist_rules.nil?
-         
+
          md_obj[:bl_match] = b_obj
          md_obj[:bl_matched] = flag
 
@@ -122,47 +117,40 @@ module Rules
          w_obj = {}
          flag = true
          get_wlist_rules.each_by_type do |type, ref|
-            ref_array = nil
             ref_string = nil
 
             case type
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_protocols}"
                   ref_string = url_obj.protocol
-                  ref_array = (w_obj[:protocol] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ports}"
                   ref_string = url_obj.port
-                  ref_array = (w_obj[:port] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_uname}"
                   ref_string = url_obj.username
-                  ref_array = (w_obj[:username] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_passwd}"
                   ref_string = url_obj.password
-                  ref_array = (w_obj[:password] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_subdomains}"
                   ref_string = url_obj.subdomain
-                  ref_array = (w_obj[:subdomain] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_urls}"
                   ref_string = url_obj.path
-                  ref_array = (w_obj[:path] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ftypes}"
                   ref_string = url_obj.filename
-                  ref_array = (w_obj[:filename] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_qstrings}"
                   ref_string = url_obj.querystring
-                  ref_array = (w_obj[:querystring] = [])
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_frags}"
                   ref_string = url_obj.fragment
-                  ref_array = (w_obj[:fragment] = [])
             end
 
             flag_sec = false
             ref.each do |pattern|
-               if pattern.match?(ref_string)
-                  ref_array << [type, pattern, ref_string]
+               Vulpes::Logger.debug "file => wlst.rules, section => #{type}, " + \
+               "pattern => #{pattern}, url_string => #{ref_string}"
+
+               if !ref_string.nil? && pattern.match?(ref_string)
+                  (w_obj[:"#{type}"] ||= []) << [pattern, ref_string]
                   flag_sec = true
                   break
                end
-            end unless ref_array.nil?
+            end
 
             flag = (flag && flag_sec) unless ref.empty?
          end unless get_wlist_rules.nil?
