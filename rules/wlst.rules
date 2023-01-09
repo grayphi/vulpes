@@ -2,50 +2,15 @@
 http
 https
 
-[uname]
-uname1
-uname2
-
-[passwd]
-passwd1
-passwd2
 
 [subdomains]
-s1
-s2
+www
 
-[ports]
-p1
-p2
 
 [urls]
-string:url1
-regex:url2
-
+/Dork-Diaries-Rachel-Renee-Russell/dp
 
 [filetypes]
-string:ftype1
-string:ftype2
-                 
-                 
+regex:.*\..*
+regex:[^.]*
 
-[querystrings]
-regex:qstring1
-regex:qstring2
-
-
-[fragments]
-fragment1
-fragment2
-
-
-[text]
-regex:text1
-regex:text2
-
-[order]
-urls
-filetypes
-querystrings
-fragments
-text

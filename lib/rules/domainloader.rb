@@ -9,6 +9,7 @@ module Rules
          
          @blist_rules = obj[:blist]
          @wlist_rules = obj[:wlist]
+         @domain = obj[:domain]
       end
 
       def self.load(domain)
@@ -23,7 +24,7 @@ module Rules
 
          Vulpes::Logger.debug "Using rules directory: #{rules_dir}"
 
-         obj = {:blist => nil, :wlist => nil}
+         obj = {:blist => nil, :wlist => nil, :domain => domain}
 
          wlfile = rules_dir + '/' + Vulpes::Defaults::Rules.file_wlist
          blfile = rules_dir + '/' + Vulpes::Defaults::Rules.file_blist
@@ -64,7 +65,8 @@ module Rules
 
          Vulpes::Logger.debug "Matching rules against url(#{url})"
 
-         url_obj = Web::Utils::URLParser.parse url
+         url_obj = Web::Utils::URLParser.parse(url, @domain)
+         Vulpes::Logger.error "#{url_obj}"
          md_obj = {}
 
          b_obj = {}
@@ -97,7 +99,9 @@ module Rules
                Vulpes::Logger.debug "file => blst.rules, section => #{type}, " + \
                "pattern => #{pattern}, url_string => #{ref_string}"
 
-               if !ref_string.nil? && pattern.match?(ref_string)
+               if ref_string && (pattern.kind_of?(Regexp) ? \
+                  pattern.match?(ref_string) : pattern.eql?(ref_string))
+
                   (b_obj[:"#{type}"] ||= []) << [pattern, ref_string]
                   flag = true
                   break
@@ -145,7 +149,9 @@ module Rules
                Vulpes::Logger.debug "file => wlst.rules, section => #{type}, " + \
                "pattern => #{pattern}, url_string => #{ref_string}"
 
-               if !ref_string.nil? && pattern.match?(ref_string)
+               if ref_string && (pattern.kind_of?(Regexp) ? \
+                  pattern.match?(ref_string) : pattern.eql?(ref_string))
+               
                   (w_obj[:"#{type}"] ||= []) << [pattern, ref_string]
                   flag_sec = true
                   break

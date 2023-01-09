@@ -147,13 +147,6 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
-rm = Rules::Manager.get_instance "www.amazon.in"
-rm.init
-
-while rm.has_next?
-   Vulpes::Logger.debug "status ==> #{rm.get_next}"
-end
-
 
 
 
