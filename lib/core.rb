@@ -20,6 +20,7 @@ require 'cache/manager'
 
 require 'vulpes/web'
 
+require 'rules/manager'
 
 
 require 'vulpes/gc'

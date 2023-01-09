@@ -5,7 +5,6 @@ module Web
             super("VulpesURLParser")
 
             @protocol = obj[:protocol]
-            @has_www = obj[:has_www]
             @host = obj[:host]
             @domain_name = obj[:domain]
             @subdomain = obj[:subdomain]
@@ -18,15 +17,15 @@ module Web
             @fragment = obj[:frag]
          end
 
-         def self.parse(url)
+         def self.parse(url, for_domain = nil)
             return if url.nil? || url.strip.empty?
 
             raise InvalidURL, "URL must be ascii only #{url.dump}" unless url.ascii_only?
 
             url.strip!
-            obj = { :protocol => "", :has_www => false, :uname => "", 
-               :passwd => "", :subdomain => "", :domain => "", :port => "",
-               :path => "", :fname => "", :qs => "", :frag => "" }
+            obj = { :protocol => "", :uname => "", :passwd => "", 
+               :subdomain => "", :domain => "", :port => "", :path => "", 
+               :fname => "", :qs => "", :frag => "" }
 
             # This code follows <RFC:3986> to break down URL into each of its part.
             reg_scheme = %r{(?<scheme>[A-Za-z][A-Za-z0-9+\-.]*)}
@@ -69,19 +68,21 @@ module Web
                end
 
                if obj[:domain] && !obj[:domain].empty?
-                  d = obj[:domain].split('.')
+                  for_domain.strip! if for_domain
 
-                  if d[0].eql?('www')
-                     obj[:has_www] = true
-                     d.shift
+                  if for_domain.nil? || for_domain.empty?
+                     obj[:subdomain] = obj[:domain].split('.')[...-2].join('.')
+                  else
+                     t = obj[:domain].delete_suffix for_domain
+                     obj[:subdomain] = t.delete_suffix '.'
                   end
-                  obj[:subdomain] = d[...-2].join('.')
                end
 
             new obj
          end
 
-         attr_reader :protocol, :has_www, :host, :domain_name, :subdomain, :port,
+
+         attr_reader :protocol, :host, :domain_name, :subdomain, :port,
             :username, :password, :path, :filename, :querystring, :fragment
 
          private_class_method :new

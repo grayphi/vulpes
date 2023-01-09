@@ -14,8 +14,6 @@ passwd2
 s1
 s2
 
-[overide_by]
-s2
 
 [ports]
 p1
@@ -24,6 +22,7 @@ p2
 [urls]
 string:url1
 regex:url2
+/Dork-Diaries-Rachel-Renee-Russell/dip
 
 
 [filetypes]

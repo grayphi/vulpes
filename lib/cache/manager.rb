@@ -7,6 +7,7 @@ module Cache
       @db_type = Vulpes::Config.get('db_type')
       create_db_instance
       @@initialized = true
+      @closeables = []
     end
 
     def self.get_instance
@@ -17,7 +18,17 @@ module Cache
       @@initialized
     end
 
+    def clean
+      Vulpes::Logger.debug "Closing #{@closeables.nil? ? 0 : @closeables.length} db objects."
+      until @closeables.nil? || @closeables.empty?
+        obj = @closeables.shift
+        obj.close if !obj.nil? && obj.respond_to?(:close)
+      end
+    end
+
     def close
+      clean
+
       Vulpes::Logger.debug("Closing Db instance.")
       @db_instance.close
     end
@@ -214,6 +225,32 @@ module Cache
         when "mysql"
           mysql_find_dorks sterm, &block
       end unless @db_instance.nil?
+    end
+
+    def get_links_by_domain_enum(domain)
+      return if domain.nil? || domain.strip.empty?
+
+      domain.strip!
+
+      # TODO: disable cache_rows for large queries
+      prep_st = "select url, fetched from links where origin like ?"
+      flag_err = false
+      begin
+        ps = @db_instance.prepare prep_st
+        domain = "%#{domain}"
+
+        rs = ps.execute domain
+        rs.lazy
+      rescue Exception => e
+        flag_err = true
+        raise e
+      ensure
+        if flag_err
+          ps.close
+        else
+          @closeables << ps # FIXME 
+        end if ps
+      end
     end
 
 
