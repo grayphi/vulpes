@@ -227,13 +227,19 @@ module Cache
       end unless @db_instance.nil?
     end
 
-    def get_links_by_domain_enum(domain)
+    def get_links_by_domain_enum(domain, updates_only = false)
       return if domain.nil? || domain.strip.empty?
 
       domain.strip!
 
       # TODO: disable cache_rows for large queries
-      prep_st = "select url, cast(fetched as int) as fetched, url_hash from links where origin like ?"
+      prep_st = ""
+      if updates_only && updates_only.kind_of?(TrueClass)
+        prep_st = "select url, cast(fetched as int) as fetched, url_hash from links where origin like ? and fetched = 0"
+      else
+        prep_st = "select url, cast(fetched as int) as fetched, url_hash from links where origin like ?"
+      end
+
       flag_err = false
       begin
         ps = @db_instance.prepare prep_st

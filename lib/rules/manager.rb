@@ -2,25 +2,29 @@ require "rules/domainloader"
 
 module Rules
    class Manager < Vulpes::Object
-      def initialize(domain)
+      def initialize(domain, updates_only)
          super('VulpesRulesManager')
 
          @domain = domain
          @dl_obj = nil
          @links_enum = nil
+         @updates_only = updates_only
 
          @initialized = false
       end
 
-      def self.get_instance(domain)
+      def self.get_instance(domain, updates_only = false)
          return if domain.nil? || domain.strip.empty?
 
-         new domain.strip
+         updates_only = (updates_only && updates_only.kind_of?(TrueClass)) ? true : false
+
+         new domain.strip, updates_only
       end
 
       def init
          @dl_obj = Rules::DomainLoader.load @domain
-         @links_enum = Cache::Manager.get_instance.get_links_by_domain_enum @domain
+         @links_enum = Cache::Manager.get_instance.get_links_by_domain_enum( \
+            @domain, @updates_only)
 
          @initialized = true unless (@links_enum.nil? || @dl_obj.nil?)
       end
