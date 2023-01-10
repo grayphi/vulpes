@@ -233,7 +233,7 @@ module Cache
       domain.strip!
 
       # TODO: disable cache_rows for large queries
-      prep_st = "select url, fetched from links where origin like ?"
+      prep_st = "select url, cast(fetched as int) as fetched, url_hash from links where origin like ?"
       flag_err = false
       begin
         ps = @db_instance.prepare prep_st

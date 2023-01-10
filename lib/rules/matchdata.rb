@@ -7,12 +7,15 @@ module Rules
          @bl_matched = obj[:bl_matched]
          @wl_match = obj[:wl_match] || {}
          @wl_matched = obj[:wl_matched]
+         @url = obj[:url]
+         @fetched = obj[:fetched]
+         @url_hash = obj[:url_hash]
       end
 
       def self.create(obj)
          return if obj.nil?
          return unless obj.kind_of?(Hash) && (obj.has_key?(:bl_match) || obj.has_key?(:wl_match))
-        
+
          new obj
       end
 
@@ -82,6 +85,18 @@ module Rules
 
       def succeed?
          !failed?
+      end
+
+      def url_reported?
+         (@fetched && @fetched.to_i == 1) ? true : false
+      end
+
+      def matched_url
+         @url
+      end
+
+      def url_hash
+         @url_hash
       end
 
 

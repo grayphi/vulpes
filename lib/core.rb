@@ -16,11 +16,10 @@ Vulpes::Config.configLoader
 require 'vulpes/module'
 require 'vulpes/dork'
 
-require 'cache/manager'
-
 require 'vulpes/web'
 
-require 'rules/manager'
+require 'cache/manager'
 
+require 'rules/manager'
 
 require 'vulpes/gc'
