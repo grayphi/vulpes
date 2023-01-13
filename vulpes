@@ -3,6 +3,14 @@
 __FILE__=$(readlink -f $0)
 __DIR__=$(dirname $__FILE__)
 
+if [[ "$KERNEL_DBG" -eq 1 ]]; then
+    KERNEL_DBG=1
+else
+    KERNEL_DBG=0
+fi
+
+EXEC_DIR=$(realpath '.')
+
 cd $__DIR__
 
-ruby vulpes.rb $@
+KERNEL_DBG=$KERNEL_DBG EXEC_DIR=$EXEC_DIR ruby vulpes.rb $@

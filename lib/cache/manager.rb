@@ -1,12 +1,9 @@
 module Cache
-  class Manager < Vulpes::Object
-    @@initialized = false
-
+  class Manager < Vulpes::Closeable
     def initialize
       super("CacheManager")
       @db_type = Vulpes::Config.get('db_type')
       create_db_instance
-      @@initialized = true
       @closeables = []
     end
 
@@ -14,19 +11,17 @@ module Cache
       @instance ||= new
     end
 
-    def self.initialized?
-      @@initialized
-    end
-
     def clean
       Vulpes::Logger.debug "Closing #{@closeables.nil? ? 0 : @closeables.length} db objects."
       until @closeables.nil? || @closeables.empty?
-        obj = @closeables.shift
-        obj.close if !obj.nil? && obj.respond_to?(:close)
+        obj = @closeables.pop
+        obj.close if obj && obj.respond_to?(:close)
       end
     end
 
     def close
+      Vulpes::Logger.debug "Closing Cache Manager."
+
       clean
 
       Vulpes::Logger.debug("Closing Db instance.")
@@ -254,7 +249,7 @@ module Cache
         if flag_err
           ps.close
         else
-          @closeables << ps # FIXME 
+          close_on_exit(ps) # FIXME 
         end if ps
       end
     end
@@ -377,6 +372,9 @@ module Cache
         "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", &block
     end
 
+    def close_on_exit(obj)
+      @closeables.push(obj) unless obj.nil?
+    end
 
     private_class_method :new
 

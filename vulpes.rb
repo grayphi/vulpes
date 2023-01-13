@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+if ENV['KERNEL_DBG'] && ENV['KERNEL_DBG'] == 1
+   $KERNEL_DEBUG = true
+else
+   $KERNEL_DEBUG = false
+end
+
 require 'optparse'
 require_relative 'lib/core'
 
@@ -87,6 +93,24 @@ def parseargs(args)
       opts[:proxy] = p
    end
 
+   opt.on('-0', 'Use null character as line seperator in output datafiles.') do
+      opts[:null_sep] = true
+   end
+
+   opt.on('-O', '--out-dir OUTDIR', String, 'Specify output directory to generate report.') do |d|
+      d.strip!
+      # relative to current dir
+      if d.start_with? './'
+         d = ENV['EXEC_DIR'] + d.delete_prefix('.') if ENV['EXEC_DIR']
+      elsif d.start_with? '~'
+         # do nothing
+      elsif !d.start_with?('/') # not absolute, must be relative to current dir
+         d = ENV['EXEC_DIR'] + '/' + d if ENV['EXEC_DIR']
+      end
+
+      opts[:outdir] = File.expand_path(d + '/report')
+   end
+
 
    begin
       opt.parse!(args)
@@ -136,6 +160,12 @@ if options[:max_delay] && options[:min_delay] && options[:min_delay] <= options[
 end
 
 Vulpes::Constants.add('timeout', options[:timeout]) if options[:timeout]
+Vulpes::Constants.add('line_seperator', options[:null_sep] ? "\0" : "\n")
+# if output_dir is nil then throw everything at stdout
+Vulpes::Constants.add('output_dir', options[:outdir] ? options[:outdir] : \
+   (ENV['EXEC_DIR'] ? ENV['EXEC_DIR'] + '/report' : nil))
+
+
 
 
 begin
@@ -147,9 +177,16 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
+#rm = Rules::Manager.get_instance "amazon.in", true
+#rm.init
+#rm.each do |md|
+#   Vulpes::Logger.debug md
+#end
 
+
+rm = Report::Manager.get_instance
 
 ensure
    # This must be the last call to close all opened objects
-   Vulpes::GC.close_vulpes
+   Vulpes::GC.get_instance.close_vulpes
 end
