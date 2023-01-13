@@ -10,7 +10,9 @@ class VulpesConfigError < VulpesError; end
 
 class InvalidKeyError < VulpesConfigError; end
 
-class InvalidDatabaseError < VulpesError; end
+class DatabaseError < VulpesError; end
+
+class InvalidDatabaseError < DatabaseError; end
 
 class InvalidObject < VulpesError; end
 

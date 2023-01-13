@@ -177,14 +177,16 @@ Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 
-#rm = Rules::Manager.get_instance "amazon.in", true
-#rm.init
-#rm.each do |md|
-#   Vulpes::Logger.debug md
-#end
+rm = Rules::Manager.get_instance "amazon.in", true
+rm.init
+rman = Report::Manager.get_instance
+rm.each do |md|
+   rman.add md
+end
 
 
-rm = Report::Manager.get_instance
+
+
 
 ensure
    # This must be the last call to close all opened objects

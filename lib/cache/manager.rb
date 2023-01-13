@@ -12,7 +12,7 @@ module Cache
     end
 
     def clean
-      Vulpes::Logger.debug "Closing #{@closeables.nil? ? 0 : @closeables.length} db objects."
+      Vulpes::Logger.debug "Closing #{@closeables.nil? ? 0 : @closeables.length} db object(s)."
       until @closeables.nil? || @closeables.empty?
         obj = @closeables.pop
         obj.close if obj && obj.respond_to?(:close)
@@ -249,8 +249,47 @@ module Cache
         if flag_err
           ps.close
         else
-          close_on_exit(ps) # FIXME 
+          close_on_exit(ps) # FIXME
         end if ps
+      end
+    end
+
+
+    def get_details_by_url_hash(url_hash)
+      return if url_hash.nil? || url_hash.strip.empty?
+      url_hash.strip!
+
+      prep_st = <<-EOQ
+        select T1.severity as severity, T1.dork as dork, T1.description as description, T4.search_term as search_term
+        from cache_dorks T1 inner join (select T2.search_term as search_term, T2.dork_hash as dork_hash
+          from search_terms T2 inner join links T3
+          on T2.search_term_hash = T3.ref_hash
+          and T3.url_hash = ? ) T4
+        on T1.dork_hash = T4.dork_hash
+        union
+        select T5.severity as severity, T5.dork as dork, T5.description as description, '' as search_term
+        from cache_dorks T5 inner join links T6
+        on T5.dork_hash = T6.ref_hash
+        and T6.url_hash = ?
+      EOQ
+
+      begin
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute url_hash, url_hash
+        
+        raise DatabaseError, "Invalid url_hash provided, fetched result " + \
+          "count should be 1, but got #{rs.count}." if rs.count != 1
+
+        obj = []
+        rs.each do |robj|
+          obj << {:severity => robj['severity'], :dork => robj['dork'], \
+            :description => robj['description'], :search_term => \
+            robj['search_term']}
+        end
+
+        obj.pop
+      ensure
+        ps.close if ps
       end
     end
 
