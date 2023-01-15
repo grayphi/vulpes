@@ -93,7 +93,7 @@ def parseargs(args)
       opts[:proxy] = p
    end
 
-   opt.on('-0', 'Use null character as line seperator in output datafiles.') do
+   opt.on('-0', '-z', 'Use null character as line seperator in output datafiles.') do
       opts[:null_sep] = true
    end
 
@@ -109,6 +109,10 @@ def parseargs(args)
       end
 
       opts[:outdir] = File.expand_path(d + '/report')
+   end
+
+   opt.on('--rA', 'Report all the match findings, instead of only reporting new findings.') do
+      opts[:report_all] = true
    end
 
 
@@ -165,6 +169,7 @@ Vulpes::Constants.add('line_seperator', options[:null_sep] ? "\0" : "\n")
 Vulpes::Constants.add('output_dir', options[:outdir] ? options[:outdir] : \
    (ENV['EXEC_DIR'] ? ENV['EXEC_DIR'] + '/report' : nil))
 
+Vulpes::Constants.add('report_all', options[:report_all]) if options[:report_all]
 
 
 
@@ -179,10 +184,11 @@ Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 rm = Rules::Manager.get_instance "amazon.in", true
 rm.init
-rman = Report::Manager.get_instance
+rman = Report::Manager.get_instance 'csv'
 rm.each do |md|
    rman.add md
 end
+
 
 
 
