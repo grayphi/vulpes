@@ -188,7 +188,7 @@ rman = Report::Manager.get_instance 'csv'
 rm.each do |md|
    rman.add md
 end
-
+rman.generate_report
 
 
 

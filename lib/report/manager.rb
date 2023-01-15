@@ -132,27 +132,24 @@ module Report
          close_csv_file
 
          CSV.foreach(@datafile_loc, :headers => true, \
-            :row_sep => Vulpes::Constants.get('line_seperator')) do |row|
-            obj = {}
-            obj[:url_ref] = row["url_ref"]
-            obj[:url] =  row["url"]
-            obj[:reported] = row["reported"]
-            obj[:pattern] = row["pattern"]
-            obj[:severity] = row["severity"]
-            obj[:search_term] = row["search_term"]
-            obj[:description] = row["description"]
-            obj[:blist] = {}
-            obj[:wlist] = {}
+            :row_sep => Vulpes::Constants.get('line_seperator'), \
+            :header_converters => :symbol) do |row|
 
-            CSV.parse_line(row["blist"]).map {|r| CSV.parse_line r}.each do |l|
+            obj = row.to_h
+            
+            tmp = {}
+            CSV.parse_line(obj[:blist]).map {|r| CSV.parse_line r}.each do |l|
                k = l.shift
-               obj[:blist][:"#{k}"] = l
+               tmp[:"#{k}"] = l
             end
+            obj[:blist] = tmp
 
-            CSV.parse_line(row["wlist"]).map {|r| CSV.parse_line r}.each do |l|
+            tmp = {}
+            CSV.parse_line(obj[:wlist]).map {|r| CSV.parse_line r}.each do |l|
                k = l.shift
-               obj[:wlist][:"#{k}"] = l
+               tmp[:"#{k}"] = l
             end
+            obj[:wlist] = tmp
 
             yield obj
          end
