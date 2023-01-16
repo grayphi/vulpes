@@ -184,7 +184,7 @@ Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 rm = Rules::Manager.get_instance "amazon.in", true
 rm.init
-rman = Report::Manager.get_instance 'csv'
+rman = Report::Manager.get_instance 'json'
 rm.each do |md|
    rman.add md
 end

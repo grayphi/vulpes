@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'csv'
+require  'json'
 
 module Report
    class Manager < Vulpes::Closeable
@@ -71,20 +72,40 @@ module Report
          df_robj[:severity] = dobj[:severity]
          df_robj[:search_term] = dobj[:search_term]
          df_robj[:description] = dobj[:description]
-         
+
          tobj1 = {}
          md.get_blist_matches do |section, pattern, _|
-            tobj1[:"#{section}"] ||=  [section]
+            tobj1[:"#{section}"] ||=  case @datafiletype
+               when "csv"
+                  [section]
+               when "json"
+                  []
+               end
             tobj1[:"#{section}"] << pattern
          end
-         df_robj[:blist] = (tobj1.values.map {|r| r.to_csv}).to_csv
+         df_robj[:blist] = case @datafiletype
+            when "csv"
+               (tobj1.values.map {|r| r.to_csv}).to_csv
+            when "json"
+               tobj1
+            end
 
          tobj1 = {}
          md.get_wlist_matches do |section, pattern, _|
-            tobj1[:"#{section}"] ||=  [section]
+            tobj1[:"#{section}"] ||=  case @datafiletype
+               when "csv"
+                  [section]
+               when "json"
+                  []
+               end
             tobj1[:"#{section}"] << pattern
          end
-         df_robj[:wlist] = (tobj1.values.map {|r| r.to_csv}).to_csv
+         df_robj[:wlist] = case @datafiletype
+            when "csv"
+               (tobj1.values.map {|r| r.to_csv}).to_csv
+            when "json"
+               tobj1
+            end
 
          case @datafiletype
          when "csv"
@@ -104,7 +125,27 @@ module Report
       private
 
       def dump_json_data(row)
-         
+         return if row.nil?
+
+         @datafile << JSON.generate(row)
+         @datafile << Vulpes::Constants.get('line_seperator')
+      end
+
+      def close_json_file
+         @datafile.close if @datafile && !@datafile.closed?
+      end
+
+      def close_write_and_read_json
+         return unless block_given?
+
+         # FIXME TODO needs to fix this, as this will be a mess in non-sync operations
+         close_json_file
+
+         File.foreach(@datafile_loc, Vulpes::Constants.get('line_seperator')) do |line|
+            line.strip!
+
+            yield JSON.parse(line, :symbolize_names => true)
+         end
       end
 
       def dump_csv_data(row)
