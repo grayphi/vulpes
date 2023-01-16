@@ -10,7 +10,7 @@ module Vulpes
       end
 
       def close_vulpes
-         Vulpes::Logger.debug "Closing #{@closeables.length} Object(s)."
+         Vulpes::Logger.debug "Closing #{@closeables.length} GC Object(s)."
          until @closeables.empty?
             obj = @closeables.pop
             obj.close if obj && obj.respond_to?(:close)

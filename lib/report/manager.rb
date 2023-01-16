@@ -14,14 +14,12 @@ module Report
          if outdir
             FileUtils.mkdir_p outdir
             ts = Time.now.to_i
-            @datafile_loc = "#{outdir}/data_#{ts}.#{datafiletype}"
-            @reportfile_loc = "#{outdir}/report_#{ts}.#{reportfiletype}"
-
-            @datafile = File.new(@datafile_loc, 'w')
-            @reportfile = File.new(@reportfile_loc, 'w')
+            @datafile = File.new("#{outdir}/data_#{ts}.#{datafiletype}", 'w+')
+            @reportfile = File.new("#{outdir}/report_#{ts}.#{reportfiletype}", 'w+')
          else
             @datafile = $stdout
             @reportfile = $stdout
+            @flag_stddev = true
          end
       end
 
@@ -43,8 +41,7 @@ module Report
 
       def close
          Vulpes::Logger.debug "Closing ReportManager."
-         unless Vulpes::Constants.get('output_dir').nil?
-            close_csv_file
+         unless @flag_stddev
             @datafile.close if @datafile && !@datafile.closed?
             @reportfile.close if @reportfile && !@reportfile.closed?
          end
@@ -126,22 +123,20 @@ module Report
 
       def dump_json_data(row)
          return if row.nil?
+         
+         @datafile.seek 0, IO::SEEK_END unless @flag_stddev
 
          @datafile << JSON.generate(row)
          @datafile << Vulpes::Constants.get('line_seperator')
       end
 
-      def close_json_file
-         @datafile.close if @datafile && !@datafile.closed?
-      end
-
-      def close_write_and_read_json
+      def read_json_data
          return unless block_given?
 
-         # FIXME TODO needs to fix this, as this will be a mess in non-sync operations
-         close_json_file
+         return if @flag_stddev
 
-         File.foreach(@datafile_loc, Vulpes::Constants.get('line_seperator')) do |line|
+         @datafile.seek 0
+         File.foreach(@datafile, Vulpes::Constants.get('line_seperator')) do |line|
             line.strip!
 
             yield JSON.parse(line, :symbolize_names => true)
@@ -150,6 +145,8 @@ module Report
 
       def dump_csv_data(row)
          return if row.nil?
+
+         @datafile.seek 0, IO::SEEK_END unless @flag_stddev
 
          unless @csv_initiallized
             @csv = CSV.new @datafile, row_sep: \
@@ -162,17 +159,14 @@ module Report
          @csv << row.values
       end
 
-      def close_csv_file
-         @csv.close if @csv && !@csv.closed?
-      end
-
-      def close_write_and_read_csv
+      def read_csv_data
          return unless block_given?
 
-         # FIXME TODO needs to fix this, as this will be a mess in non-sync operations
-         close_csv_file
+         return if @flag_stddev
 
-         CSV.foreach(@datafile_loc, :headers => true, \
+         @datafile.seek 0
+
+         CSV.foreach(@datafile, :headers => true, \
             :row_sep => Vulpes::Constants.get('line_seperator'), \
             :header_converters => :symbol) do |row|
 
@@ -194,7 +188,6 @@ module Report
 
             yield obj
          end
-
       end
 
       def collect_stats(row)
