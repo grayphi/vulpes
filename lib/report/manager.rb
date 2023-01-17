@@ -202,17 +202,27 @@ module Report
          @stats_var ||= {}
 
          sev = row[:severity].to_i
-         @stats_var[sev] ||= []
+         @stats_var[sev] ||= {:length => 0, :unreported => 0}
+         obj = @stats_var[sev]
 
-         @stats_var[sev] << { :url_ref => row[:url_ref],
-            :reported => row[:reported] }
+         obj[:length] = obj[:length] + 1
+         obj[:unreported] = obj[:unreported] + 1 if row[:reported].kind_of?(FalseClass)               
       end
 
       def create_html_report
+         # header
          hrb = Report::Manager::HtmlReportBinder.new
          hrb.add_stats_obj @stats_var
 
-         File.open Vulpes::Defaults::Report.html_template, 'r' do |ht|
+         File.open Vulpes::Defaults::Report.html_template_header, 'r' do |ht|
+            html_out = ERB.new ht.read
+            @reportfile.write(html_out.result(hrb.get_binding))
+         end
+
+         # body
+
+         # footer
+         File.open Vulpes::Defaults::Report.html_template_footer, 'r' do |ht|
             html_out = ERB.new ht.read
             @reportfile.write(html_out.result(hrb.get_binding))
          end
@@ -223,6 +233,10 @@ module Report
       end
 
       class HtmlReportBinder < Vulpes::Object
+         def initialize
+            @timestamp = Time.now.strftime '%d/%m/%Y %H:%M:%S %p %:z'
+         end
+
          def add_stats_obj(sobj)
             return if sobj.nil?
 
