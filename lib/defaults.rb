@@ -100,5 +100,13 @@ module Vulpes
          end
       end
 
+      module Report
+         @html_template = 'data/templates/report/report.html.erb'
+
+         class << self
+            attr_reader :html_template
+         end
+      end
+
    end
 end

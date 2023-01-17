@@ -184,17 +184,13 @@ Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
 rm = Rules::Manager.get_instance "amazon.in", true
 rm.init
-rman = Report::Manager.get_instance 'csv'
+rman = Report::Manager.get_instance 'csv', 'html'
 
 rm.each do |md|
    rman.add md
 end
 
 rman.generate_report
-
-
-
-
 
 ensure
    # This must be the last call to close all opened objects

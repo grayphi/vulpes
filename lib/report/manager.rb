@@ -1,6 +1,7 @@
 require 'fileutils'
 require 'csv'
-require  'json'
+require 'json'
+require 'erb'
 
 module Report
    class Manager < Vulpes::Closeable
@@ -115,7 +116,12 @@ module Report
       end
 
       def generate_report
-
+         case @reportfiletype
+            when "html"
+               create_html_report
+            when "pdf"
+               create_pdf_report
+         end
       end
 
 
@@ -191,15 +197,41 @@ module Report
       end
 
       def collect_stats(row)
+         return if row.nil?
 
+         @stats_var ||= {}
+
+         sev = row[:severity].to_i
+         @stats_var[sev] ||= []
+
+         @stats_var[sev] << { :url_ref => row[:url_ref],
+            :reported => row[:reported] }
       end
 
       def create_html_report
+         hrb = Report::Manager::HtmlReportBinder.new
+         hrb.add_stats_obj @stats_var
 
+         File.open Vulpes::Defaults::Report.html_template, 'r' do |ht|
+            html_out = ERB.new ht.read
+            @reportfile.write(html_out.result(hrb.get_binding))
+         end
       end
 
       def create_pdf_report
+         
+      end
 
+      class HtmlReportBinder < Vulpes::Object
+         def add_stats_obj(sobj)
+            return if sobj.nil?
+
+            @stats = sobj
+         end
+
+         def get_binding
+            binding
+         end
       end
 
       private_class_method :new
