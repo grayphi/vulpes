@@ -102,11 +102,13 @@ module Vulpes
 
       module Report
          @html_template_header = 'data/templates/report/report_header.html.erb'
-         @html_template_body = 'data/templates/report/report_body.html.erb'
+         @html_template_body_1 = 'data/templates/report/report_body_1.html.erb'
+         @html_template_body_2 = 'data/templates/report/report_body_2.html.erb'
          @html_template_footer = 'data/templates/report/report_footer.html.erb'
 
          class << self
-            attr_reader :html_template_header, :html_template_body, :html_template_footer
+            attr_reader :html_template_header, :html_template_body_1,
+            :html_template_body_2, :html_template_footer
          end
       end
 

@@ -21,15 +21,79 @@
         }
         
         .section-header {
-            /*display: block;
-            font-weight: bold;
-            font-size: 1.1em;*/
             text-align: center;
             background-color: #ccddff;
         }
         
         .rsum_th {
             width: 33%;
+        }
+
+        .item-head {
+            background-color: rgb(170, 238, 255);
+            margin-bottom: unset;
+        }
+
+        .big-text {
+            font-size: 1.25em;
+            font-weight: bolder;
+        }
+
+        .descriptor {
+            background-color: #dbebef;
+            display: block;
+        }
+
+        .mark-text {
+            background-color: #ffff7e;
+        }
+
+        .flag-error {
+            background-color: #ff3b3b;
+        }
+
+        .flag-okay {
+            background-color: #97ff97;
+        }
+
+        .severity-10 {
+            background-color: red;
+        }
+
+        .severity-9 {
+            background-color: orangered;
+        }
+        
+        .severity-8 {
+            background-color: rgb(255, 84, 0);
+        }
+        
+        .severity-7 {
+            background-color: orange;
+        }
+        
+        .severity-6 {
+            background-color: rgb(255, 210, 0);
+        }
+        
+        .severity-5 {
+            background-color: yellow;
+        }
+        
+        .severity-4 {
+            background-color: rgb(230, 255, 0);
+        }
+        
+        .severity-3 {
+            background-color: rgb(180, 255, 0);
+        }
+        
+        .severity-2 {
+            background-color: rgb(100, 255, 0);
+        }
+        
+        .severity-1 {
+            background-color: green;
         }
     </style>
 </head>
@@ -55,8 +119,8 @@
                 length = obj[sev][:length]
                 unreported = obj[sev][:unreported]
             end %>
-            <tr id="rsum_sev_<%= sev %>" class="severity-<%= sev %> center">
-                <td class="bold"><%= sev %></td>
+            <tr id="rsum_sev_<%= sev %>" class="center">
+                <td class="bold severity-<%= sev %>"><%= sev %></td>
                 <td><%= length %></td>
                 <td><%= unreported %></td>
             </tr>

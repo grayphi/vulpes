@@ -2,6 +2,7 @@ require 'fileutils'
 require 'csv'
 require 'json'
 require 'erb'
+require 'tempfile'
 require 'report/reportbinder'
 
 module Report
@@ -23,6 +24,9 @@ module Report
             @reportfile = $stdout
             @flag_stddev = true
          end
+
+         @sev_tmp_files = {}
+         @report_binder_obj = nil
       end
 
       def self.get_instance(datafiletype = 'json', reportfiletype = 'html')
@@ -46,6 +50,13 @@ module Report
          unless @flag_stddev
             @datafile.close if @datafile && !@datafile.closed?
             @reportfile.close if @reportfile && !@reportfile.closed?
+         end
+
+         1.upto 10 do |i|
+            if @sev_tmp_files[i]
+               @sev_tmp_files[i].close
+               @sev_tmp_files[i].unlink
+            end
          end
       end
 
@@ -210,38 +221,52 @@ module Report
          obj[:length] = obj[:length] + 1
          obj[:unreported] = obj[:unreported] + 1 if row[:reported].kind_of?(FalseClass)
 
+         @sev_tmp_files ||= {}
+         @sev_tmp_files[sev] ||= Tempfile.new
+         @report_binder_obj ||= Report::ReportBinder.new
 
+         @report_binder_obj.iterate_row_obj(row)
+         File.open Vulpes::Defaults::Report.html_template_body_1, 'r' do |ht|
+            html_out = ERB.new ht.read
+            @sev_tmp_files[sev].write(html_out.result(@report_binder_obj.get_binding))
+         end
 
-
+         @report_binder_obj.unset_row_obj
       end
 
       def create_html_report
-         # header
-         hrb = Report::ReportBinder.new
-         hrb.status_obj=(@stats_var)
+         # head
+         @report_binder_obj ||= Report::ReportBinder.new
+         @report_binder_obj.set_status_obj @stats_var
 
          File.open Vulpes::Defaults::Report.html_template_header, 'r' do |ht|
             html_out = ERB.new ht.read
-            @reportfile.write(html_out.result(hrb.get_binding))
+            @reportfile.write(html_out.result(@report_binder_obj.get_binding))
          end
+
+         @report_binder_obj.unset_status_obj
 
          # body
          10.downto 1 do |i|
-            hrb.set_cur_severity=(i)
+            @report_binder_obj.set_severity i
+            
+            if @sev_tmp_files[i]
+               File.open Vulpes::Defaults::Report.html_template_body_2, 'r' do |ht|
+                  html_out = ERB.new ht.read
+                  @sev_tmp_files[i].write(html_out.result(@report_binder_obj.get_binding))
+               end
 
-            File.open Vulpes::Defaults::Report.html_template_body, 'r' do |ht|
-               html_out = ERB.new ht.read
-               @reportfile.write(html_out.result(hrb.get_binding))
+               @sev_tmp_files[i].rewind
+               @reportfile.write(@sev_tmp_files[i].read)
             end
-
-            @reportfile.write('</div>')
          end
 
-
-         # footer
+         @report_binder_obj.unset_row_obj
+         
+         # foot
          File.open Vulpes::Defaults::Report.html_template_footer, 'r' do |ht|
             html_out = ERB.new ht.read
-            @reportfile.write(html_out.result(hrb.get_binding))
+            @reportfile.write(html_out.result(@report_binder_obj.get_binding))
          end
       end
 
