@@ -1,0 +1,36 @@
+<% unless self.severity_initialized?(self.get_cur_severity) %>
+   <div id="results_detailed_item">
+      <div id="results_detailed_item_summary">
+         <span>Severity</span><br/>
+         <span><%= self.get_cur_severity %></span><br/>
+         <span>Severity Description</span><br/>
+         <span>{{ severity_description }}</span><br/>
+         <span>Risk Factor</span><br/>
+         <span>{{ risk_factor }}</span><br/>
+      </div>
+   <% self.initialized_severity(self.get_cur_severity) %>
+<% end %>
+      <div id="results_detailed_item_url_<%= self.get_count_for_severity(self.get_cur_severity) %>">
+         <span>URL</span><br/>
+         <span>{{ url }}</span><br/>
+         <span>Pattern Used</span><br/>
+         <span>{{ dork }}</span><br/>
+         <span>Search Term Used</span><br/>
+         <span>{{ search_term }}</span><br/>
+         <span>Pattern Desription</span><br/>
+         <span>{{ dork_desctiption }}</span><br/>
+         <span>Succedd</span><br/>
+         <span>{{ succedd }}</span><br/>
+         <span>Reason of Include</span><br/>
+         <span>{{ inclusion_reason }}</span><br/>
+         <span>blacklist rules matches</span><br/>
+         <span>{{ blist_matches_section }}</span><br/>
+         <span>{{ blist_pattern_matched }}</span><br/>
+         <span>whitelist rules matches</span><br/>
+         <span>{{ wlist_matches_section }}</span><br/>
+         <span>{{ wlist_pattern_matched }}</span><br/>
+         <span>whitelist rule un-matched</span><br/>
+         <span>{{ wlist_un-matched_Section }}</span><br/>
+         <span>{{ wlist_un-matched_url_ref_string }}</span><br/>
+      </div>
+   <!--</div>-->

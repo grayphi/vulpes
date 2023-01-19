@@ -2,6 +2,7 @@ require 'fileutils'
 require 'csv'
 require 'json'
 require 'erb'
+require 'report/reportbinder'
 
 module Report
    class Manager < Vulpes::Closeable
@@ -65,6 +66,7 @@ module Report
 
          df_robj[:url_ref] = md.url_hash
          df_robj[:url] = md.matched_url
+         df_robj[:success] = md.succeed?
          df_robj[:reported] = md.url_reported?
          df_robj[:pattern] = dobj[:dork]
          df_robj[:severity] = dobj[:severity]
@@ -206,13 +208,17 @@ module Report
          obj = @stats_var[sev]
 
          obj[:length] = obj[:length] + 1
-         obj[:unreported] = obj[:unreported] + 1 if row[:reported].kind_of?(FalseClass)               
+         obj[:unreported] = obj[:unreported] + 1 if row[:reported].kind_of?(FalseClass)
+
+
+
+
       end
 
       def create_html_report
          # header
-         hrb = Report::Manager::HtmlReportBinder.new
-         hrb.add_stats_obj @stats_var
+         hrb = Report::ReportBinder.new
+         hrb.status_obj=(@stats_var)
 
          File.open Vulpes::Defaults::Report.html_template_header, 'r' do |ht|
             html_out = ERB.new ht.read
@@ -220,6 +226,17 @@ module Report
          end
 
          # body
+         10.downto 1 do |i|
+            hrb.set_cur_severity=(i)
+
+            File.open Vulpes::Defaults::Report.html_template_body, 'r' do |ht|
+               html_out = ERB.new ht.read
+               @reportfile.write(html_out.result(hrb.get_binding))
+            end
+
+            @reportfile.write('</div>')
+         end
+
 
          # footer
          File.open Vulpes::Defaults::Report.html_template_footer, 'r' do |ht|
@@ -232,21 +249,6 @@ module Report
          
       end
 
-      class HtmlReportBinder < Vulpes::Object
-         def initialize
-            @timestamp = Time.now.strftime '%d/%m/%Y %H:%M:%S %p %:z'
-         end
-
-         def add_stats_obj(sobj)
-            return if sobj.nil?
-
-            @stats = sobj
-         end
-
-         def get_binding
-            binding
-         end
-      end
 
       private_class_method :new
    end

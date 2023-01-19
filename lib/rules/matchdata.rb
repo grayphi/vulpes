@@ -7,6 +7,7 @@ module Rules
          @bl_matched = obj[:bl_matched]
          @wl_match = obj[:wl_match] || {}
          @wl_matched = obj[:wl_matched]
+         #TODO wl_unmatched
          @url = obj[:url]
          @fetched = obj[:fetched]
          @url_hash = obj[:url_hash]

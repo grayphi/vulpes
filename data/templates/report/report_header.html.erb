@@ -21,9 +21,9 @@
         }
         
         .section-header {
-            display: block;
+            /*display: block;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.1em;*/
             text-align: center;
             background-color: #ccddff;
         }
@@ -36,10 +36,10 @@
 
 <body>
     <h1><span class="block center">Vulpes Report</span></h1>
-    <h2 id="report_timestamp"><span class="block center no-bold"><%= @timestamp %></span></h2>
+    <h2 id="report_timestamp"><span class="block center no-bold"><%= self.get_timestamp %></span></h2>
 
     <section id="results_summary">
-        <span class="section-header">Results Summary (Executive)</span>
+        <h3 class="section-header">Results Summary (Executive)</h3>
 
         <table>
             <tr>
@@ -50,10 +50,10 @@
         <% 10.downto 1 do |sev|
             length = 0
             unreported = 0
-
-            if @stats[sev]
-                length = @stats[sev][:length]
-                unreported = @stats[sev][:unreported]
+            obj = self.get_status_obj
+            if obj && obj[sev]
+                length = obj[sev][:length]
+                unreported = obj[sev][:unreported]
             end %>
             <tr id="rsum_sev_<%= sev %>" class="severity-<%= sev %> center">
                 <td class="bold"><%= sev %></td>
@@ -66,4 +66,5 @@
     </section>
 
     <section id="results_detailed">
-        <span class="section-header">Results Detailed</span>
+        <h3 class="section-header">Results Detailed</h3>
+        <div id="results_detailed_items">
