@@ -271,7 +271,8 @@ module Report
       end
 
       def create_pdf_report
-         
+         # TODO FIXME implement this for html to pdf or pdf from scratch
+         create_html_report
       end
 
 
