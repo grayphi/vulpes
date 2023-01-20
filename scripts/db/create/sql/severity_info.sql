@@ -20,13 +20,13 @@ CREATE TABLE IF NOT EXISTS severity_info (
 INSERT INTO severity_info
     (severity, risk_factor, description) 
 VALUES
-    (1, 'Very Informational', 'No Risk & No Impact.\n'),
-    (2, 'Informational', 'No Risk & No Impact.\n'),
-    (3, 'Low', 'Low Risk & Low Impact.\n'),
-    (4, 'Unlikely', 'Low Risk & Low Impact.\n'),
-    (5, 'Possible', 'Moderate Risk & Moderate Impact.\nMore description\nYetmore.\n and done.'),
-    (6, 'Moderate', 'Moderate Risk & Moderate Impact.\n'),
-    (7, 'Sensitive', 'High Risk & High Impact.\n'),
-    (8, 'High', 'High Risk & High Impact.\n'),
-    (9, 'Very High', 'High Risk & High Impact.\n'),
-    (10, 'Critical', 'High Risk & High Impact.\n');
+    (1, 'Highly Informational', 'No Risk & No Impact.\nThis severity patterns mostly contains informational urls.\nInformation present here can sometimes feed to information-hungry tools to support already existing information; however, these information contains high noise. These usually do not raise risks and can be safely ignored, if not needed.'),
+    (2, 'Informational', 'Low Risk & No Impact.\nThis severity patterns mostly contains informational urls.\nInformation present here can be feed to information-hungry tools to support already existing information; however, these information usually contains high noise. These usually do not raise risks and can be safely ignored, if not needed.'),
+    (3, 'Low', 'Low Risk & Low Impact.\nThis severity patterns mostly contain informational urls. However, obtained information can sometimes lead to important data disclosure.\nMaking Risks to appear at level 2 or more, with level 1 being the urls themselves.\nInformation present here can only be feed to information-hungry tools to try to create new usable information and patterns.'),
+    (4, 'Unlikely', 'Low Risk & Low Impact.\nThis severity patterns sometimes contains mixes of informational urls with juicy urls. And information obtained can lead to important data disclosure.\nMaking Risks to appear at level 2 or more, with level 1 being the urls themselves.\nInformation present here can be feed to information-hungry tools to try to create new usable information and patterns.'),
+    (5, 'Possible', 'Moderate Risk & Moderate Impact.\nThis severity patterns usually contains mixes of informational urls with juicy urls. And often information obtained can lead to important data disclosure.\nMaking Risks to appear at level 2 or more, with level 1 being the urls themselves.\nInformation present here usually feed to information-hungry tools to make new usable information.'),
+    (6, 'Moderate', 'Moderate Risk & Moderate Impact.\nThis severity patterns usually contains mixes of informational urls with juicy urls. And often information obtained can lead to important data disclosure.\nMaking Risks to appear at level 1 or more, with level 1 being the urls themselves.\nInformation present here usually feed to information-hungry tools to make new usable information.'),
+    (7, 'Sensitive', 'High Risk & High Impact.\nThis severity patterns contains mixes of informational urls with juicy & sensitive urls. And information obtained here usually leads to important data disclosure.\nMaking Risks to appear at level 1 or more, with level 1 being the urls themselves.\nInformation present here can be directly feed to action-first tools or information-hungry tools to make new usable information.\nIt is usually a good choice to analyze the information present here.'),
+    (8, 'High', 'High Risk & High Impact.\nThis severity patterns usually contain juicy & sensitive urls and sometimes informational urls. And information obtained here usually leads to important data disclosure.\nMaking Risks to appear at level 1, with level 1 being the urls themselves.\nThose urls are the risks in themselves.\nInformation present here can be directly feed to action-first tools to make decisions and create impact.\nIt is recommended to analyze & control the information present here.'),
+    (9, 'Very High', 'High Risk & High Impact.\nThis severity patterns contain juicy & sensitive urls. And information obtained here are the risks in themselves.\nInformation present here can be directly feed to action-first tools to make decisions and create impact.\nIt is highly recommended to analyze & control the information present here.'),
+    (10, 'Critical', 'High Risk & High Impact.\nThis severity patterns contain juicy & sensitive urls. And information obtained here are the risks in themselves.\nInformation present here can be directly feed to action-first tools to make decisions and create impact.\nIt is highly recommended to analyze & control the information present here.');
