@@ -4,11 +4,11 @@
       <h4 class="item-head">Severity Details</h4>
       <div id="results_detailed_item_summary">
          <span class="descriptor">Severity</span>
-         <span class="big-text block severity-<%= self.get_severity %>"><%= self.get_severity %></span>
+         <span class="big-text block descriptor-data severity-<%= self.get_severity %>"><%= self.get_severity %></span>
          <span class="descriptor">Severity Description</span>
-         <pre class="no-up-down-margin"><%= self.get_escaped_severity_description %></pre>
+         <pre class="no-up-down-margin descriptor-data"><%= self.get_escaped_severity_description %></pre>
          <span class="descriptor">Risk Factor</span>
-         <pre class="no-up-down-margin <%= self.get_severity > 6 ? 'bold' : '' %> "><%= self.get_escaped_risk_factor %></pre>
+         <pre class="no-up-down-margin descriptor-data <%= self.get_severity > 6 ? 'bold' : '' %> "><%= self.get_escaped_risk_factor %></pre>
       </div>
       <h4 class="item-head">URLs Details</h4>
    <% self.initialized_severity %>
@@ -16,29 +16,29 @@
 <% count = self.get_count %>
 <div id="results_detailed_item_url_<%= count %>" class="upper-border">
    <span class="descriptor">S.No.</span>
-   <span class="bold"><%= count %></span><br/>
+   <span class="bold descriptor-data"><%= count %></span><br/>
    <span class="descriptor">URL</span>
-   <span><a href="<%= self.get_escaped_url %>"><%= self.get_escaped_url %></a></span><br/>
+   <span class="descriptor-data"><a href="<%= self.get_escaped_url %>"><%= self.get_escaped_url %></a></span><br/>
    <span class="descriptor">Pattern Used</span>
-   <span class="mark-text"><%= self.get_escaped_pattern %></span><br/>
+   <span class="mark-text descriptor-data"><%= self.get_escaped_pattern %></span><br/>
    <span class="descriptor">Search Term Used</span>
-   <span class="mark-text"><%= self.get_escaped_search_term %></span><br/>
+   <span class="mark-text descriptor-data"><%= self.get_escaped_search_term %></span><br/>
    <span class="descriptor">Pattern Desription</span>
-   <span><%= self.get_escaped_pattern_description %></span><br/>
+   <span class="descriptor-data"><%= self.get_escaped_pattern_description %></span><br/>
    <span class="descriptor">Succeed?</span>
-   <span class="<%= self.is_succeed? ? 'flag-okay' : 'flag-error' %>"><%= self.is_succeed? %></span><br/>
+   <span class="descriptor-data <%= self.is_succeed? ? 'flag-okay' : 'flag-error' %>"><%= self.is_succeed? %></span><br/>
    <span class="descriptor">Reported?</span>
-   <span class="<%= self.is_reported? ? 'flag-okay' : 'flag-error' %>"><%= self.is_reported? %></span><br/>
+   <span class="descriptor-data <%= self.is_reported? ? 'flag-okay' : 'flag-error' %>"><%= self.is_reported? %></span><br/>
    <span class="descriptor">Reason of Include</span>
-   <span><%= self.get_escaped_reason_of_include %></span><br/>
+   <span class="descriptor-data"><%= self.get_escaped_reason_of_include %></span><br/>
    <span class="descriptor">blacklist rules matches</span>
-   <span>{{ blist_matches_section }}</span><br/>
-   <span>{{ blist_pattern_matched }}</span><br/>
+   <span class="descriptor-data">{{ blist_matches_section }}</span><br/>
+   <span class="descriptor-data">{{ blist_pattern_matched }}</span><br/>
    <span class="descriptor">whitelist rules matches</span>
-   <span>{{ wlist_matches_section }}</span><br/>
-   <span>{{ wlist_pattern_matched }}</span><br/>
+   <span class="descriptor-data">{{ wlist_matches_section }}</span><br/>
+   <span class="descriptor-data">{{ wlist_pattern_matched }}</span><br/>
    <span class="descriptor">whitelist rule un-matched</span>
-   <span>{{ wlist_un-matched_Section }}</span><br/>
-   <span>{{ wlist_un-matched_url_ref_string }}</span><br/>
+   <span class="descriptor-data">{{ wlist_un-matched_Section }}</span><br/>
+   <span class="descriptor-data">{{ wlist_un-matched_url_ref_string }}</span><br/>
 </div>
 <br/>
