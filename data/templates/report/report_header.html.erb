@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Vulpes Report</title>
+    <style>
+        .block {
+            display: block;
+        }
+
+        .no-bold {
+            font-weight: normal;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .section-header {
+            text-align: center;
+            background-color: #ccddff;
+        }
+        
+        .rsum_th {
+            width: 33%;
+        }
+
+        .item-head {
+            background-color: rgb(170, 238, 255);
+            margin-bottom: unset;
+        }
+
+        .upper-border {
+            border-top: 2px solid darkgreen;
+        }
+
+        .big-text {
+            font-size: 1.5em;
+            font-weight: bolder;
+        }
+
+        .descriptor {
+            background-color: #dbebef;
+            display: block;
+            font-family: serif;
+        }
+
+        .descriptor-data {
+            font-family: monospace;
+        }
+
+        .mark-text {
+            background-color: #ffff7e;
+        }
+
+        .flag-error {
+            background-color: #ff3b3b;
+        }
+
+        .flag-okay {
+            background-color: #97ff97;
+        }
+
+        .severity-10 {
+            background-color: red;
+        }
+
+        .severity-9 {
+            background-color: orangered;
+        }
+        
+        .severity-8 {
+            background-color: rgb(255, 84, 0);
+        }
+        
+        .severity-7 {
+            background-color: orange;
+        }
+        
+        .severity-6 {
+            background-color: rgb(255, 210, 0);
+        }
+        
+        .severity-5 {
+            background-color: yellow;
+        }
+        
+        .severity-4 {
+            background-color: rgb(230, 255, 0);
+        }
+        
+        .severity-3 {
+            background-color: rgb(180, 255, 0);
+        }
+        
+        .severity-2 {
+            background-color: rgb(100, 255, 0);
+        }
+        
+        .severity-1 {
+            background-color: green;
+        }
+
+        .no-up-down-margin {
+            margin-top: unset;
+            margin-bottom: unset;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><span class="block center">Vulpes Report</span></h1>
+    <h2 id="report_timestamp"><span class="block center no-bold"><%= self.get_timestamp %></span></h2>
+
+    <section id="results_summary">
+        <h3 class="section-header">Results Summary (Executive)</h3>
+
+        <table>
+            <tr>
+                <th class="rsum_th">Severity</th>
+                <th class="rsum_th">Total URLs found</th>
+                <th class="rsum_th">Unreported URLs count</th>
+            </tr>
+        <% 10.downto 1 do |sev|
+            length = 0
+            unreported = 0
+            obj = self.get_status_obj
+            if obj && obj[sev]
+                length = obj[sev][:length]
+                unreported = obj[sev][:unreported]
+            end %>
+            <tr id="rsum_sev_<%= sev %>" class="center">
+                <td class="bold severity-<%= sev %>"><%= sev %></td>
+                <td><%= length %></td>
+                <td><%= unreported %></td>
+            </tr>
+        <% end %>
+        </table>
+        <!-- TODO add charts here -->
+    </section>
+
+    <section id="results_detailed">
+        <h3 class="section-header">Results Detailed</h3>
+        <div id="results_detailed_items">

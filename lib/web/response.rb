@@ -1,5 +1,5 @@
 module Web
-   class Response < Vulpes::Object
+   class Response < Vulpes::Closeable
       def initialize(request, crawler)
          super("WebResponse")
          @request = request
@@ -45,6 +45,9 @@ module Web
       end
 
       def close
+         return if closed?
+         
+         Vulpes::Logger.debug "Closing Response Object."
          @crawler.response.close if has_response?
       end
 

@@ -60,14 +60,17 @@ module Rules
          @wlist_rules
       end
 
-      def match(url)
+      def match(url, meta = {})
          return if url.nil? || url.strip.empty?
 
          Vulpes::Logger.debug "Matching rules against url(#{url})"
 
          url_obj = Web::Utils::URLParser.parse(url, @domain)
-         Vulpes::Logger.error "#{url_obj}"
-         md_obj = {}
+
+         md_obj = {:url => url}
+
+         md_obj.merge!({:fetched => meta[:fetched], :url_hash => \
+            meta[:url_hash]}) if meta && meta.kind_of?(Hash)
 
          b_obj = {}
          flag = false

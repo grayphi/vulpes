@@ -1,6 +1,8 @@
 require_relative 'vulpes/loader'
 
 require 'vulpes/object'
+require 'vulpes/gc'
+require 'vulpes/closeable'
 require 'vulpes/constants'
 require 'defaults'
 
@@ -16,11 +18,10 @@ Vulpes::Config.configLoader
 require 'vulpes/module'
 require 'vulpes/dork'
 
-require 'cache/manager'
-
 require 'vulpes/web'
+
+require 'cache/manager'
 
 require 'rules/manager'
 
-
-require 'vulpes/gc'
+require 'report/manager'

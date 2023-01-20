@@ -1,7 +1,7 @@
 require 'vulpes/prettify'
 
 module Vulpes
-   class Logger < Vulpes::Object
+   class Logger < Vulpes::Closeable
       def initialize
          super("VulpesLogger")
       end
@@ -11,6 +11,7 @@ module Vulpes
       end
 
       def self.close
+         Vulpes::Logger.debug "Closing Logger."
          # TODO: close logger files
       end
 

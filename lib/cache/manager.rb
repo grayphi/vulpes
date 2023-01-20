@@ -1,12 +1,9 @@
 module Cache
-  class Manager < Vulpes::Object
-    @@initialized = false
-
+  class Manager < Vulpes::Closeable
     def initialize
       super("CacheManager")
       @db_type = Vulpes::Config.get('db_type')
       create_db_instance
-      @@initialized = true
       @closeables = []
     end
 
@@ -14,19 +11,17 @@ module Cache
       @instance ||= new
     end
 
-    def self.initialized?
-      @@initialized
-    end
-
     def clean
-      Vulpes::Logger.debug "Closing #{@closeables.nil? ? 0 : @closeables.length} db objects."
+      Vulpes::Logger.debug "Closing #{@closeables.nil? ? 0 : @closeables.length} db object(s)."
       until @closeables.nil? || @closeables.empty?
-        obj = @closeables.shift
-        obj.close if !obj.nil? && obj.respond_to?(:close)
+        obj = @closeables.pop
+        obj.close if obj && obj.respond_to?(:close)
       end
     end
 
     def close
+      Vulpes::Logger.debug "Closing Cache Manager."
+
       clean
 
       Vulpes::Logger.debug("Closing Db instance.")
@@ -227,13 +222,19 @@ module Cache
       end unless @db_instance.nil?
     end
 
-    def get_links_by_domain_enum(domain)
+    def get_links_by_domain_enum(domain, updates_only = false)
       return if domain.nil? || domain.strip.empty?
 
       domain.strip!
 
       # TODO: disable cache_rows for large queries
-      prep_st = "select url, fetched from links where origin like ?"
+      prep_st = ""
+      if updates_only && updates_only.kind_of?(TrueClass)
+        prep_st = "select url, cast(fetched as int) as fetched, url_hash from links where origin like ? and fetched = 0"
+      else
+        prep_st = "select url, cast(fetched as int) as fetched, url_hash from links where origin like ?"
+      end
+
       flag_err = false
       begin
         ps = @db_instance.prepare prep_st
@@ -248,9 +249,72 @@ module Cache
         if flag_err
           ps.close
         else
-          @closeables << ps # FIXME 
+          close_on_exit(ps) # FIXME
         end if ps
       end
+    end
+
+
+    def get_details_by_url_hash(url_hash)
+      return if url_hash.nil? || url_hash.strip.empty?
+      url_hash.strip!
+
+      prep_st = <<-EOQ
+        select T1.severity as severity, T1.dork as dork, T1.description as description, T4.search_term as search_term
+        from cache_dorks T1 inner join (select T2.search_term as search_term, T2.dork_hash as dork_hash
+          from search_terms T2 inner join links T3
+          on T2.search_term_hash = T3.ref_hash
+          and T3.url_hash = ? ) T4
+        on T1.dork_hash = T4.dork_hash
+        union
+        select T5.severity as severity, T5.dork as dork, T5.description as description, '' as search_term
+        from cache_dorks T5 inner join links T6
+        on T5.dork_hash = T6.ref_hash
+        and T6.url_hash = ?
+      EOQ
+
+      begin
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute url_hash, url_hash
+        
+        raise DatabaseError, "Invalid url_hash provided, fetched result " + \
+          "count should be 1, but got #{rs.count}." if rs.count != 1
+
+        obj = []
+        rs.each do |robj|
+          obj << {:severity => robj['severity'], :dork => robj['dork'], \
+            :description => robj['description'], :search_term => \
+            robj['search_term']}
+        end
+
+        obj.pop
+      ensure
+        ps.close if ps
+      end
+    end
+
+    def get_severity_details(sev)
+      return if sev.nil? || sev.to_i < 1 || sev.to_i > 10
+
+      sev = sev.to_i
+
+      prep_st = "select severity, risk_factor, description from severity_info where severity = ?"
+      obj = nil
+
+      begin
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute sev
+
+        # This will execute only one time or never at all
+        rs.each do |r|
+          obj = { :severity => r["severity"],
+            :description => r["description"],
+            :risk_factor => r["risk_factor"] }
+        end
+      ensure
+        ps.close if ps
+      end
+      obj
     end
 
 
@@ -371,6 +435,9 @@ module Cache
         "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", &block
     end
 
+    def close_on_exit(obj)
+      @closeables.push(obj) unless obj.nil?
+    end
 
     private_class_method :new
 
