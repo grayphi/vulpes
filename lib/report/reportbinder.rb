@@ -67,19 +67,35 @@ module Report
       end
 
       def get_escaped_url
-         CGI.escape_html @url
+         u = get_url
+         CGI.escape_html u if u
       end
 
       def get_pattern
          @pattern
       end
 
+      def get_escaped_pattern
+         pat = get_pattern
+         CGI.escape_html pat if pat
+      end
+
       def get_search_term
          @search_term
       end
 
+      def get_escaped_search_term
+         st = get_search_term
+         CGI.escape_html st if st
+      end
+
       def get_pattern_description
          @pattern_description
+      end
+
+      def get_escaped_pattern_description
+         pd = get_pattern_description
+         CGI.escape_html pd if pd
       end
 
       def is_succeed?
@@ -113,12 +129,49 @@ module Report
          '{{ reason of include }}'
       end
 
+      def get_escaped_reason_of_include
+         roi = get_reason_of_include
+         CGI.escape_html roi if roi
+      end
+
       def get_severity_description
-         '{{ severity description }}'
+         return if @severity.nil?
+
+         fetch_severity_info
+         @severity_info[@severity][:description] if @severity_info[@severity]
+      end
+
+      def get_escaped_severity_description
+         desc = get_severity_description
+         CGI.escape_html desc if desc
       end
 
       def get_risk_factor
-         '{{ risk factor }}'
+         return if @severity.nil?
+
+         fetch_severity_info
+         @severity_info[@severity][:risk_factor] if @severity_info[@severity]
       end
+
+      def get_escaped_risk_factor
+         rfactor = get_risk_factor
+         CGI.escape_html rfactor if rfactor
+      end
+
+      private
+
+      def fetch_severity_info
+         return if @severity.nil?
+
+         @severity_info ||= {}
+
+         unless @severity_info[@severity]
+            sd_obj = Cache::Manager.get_instance.get_severity_details @severity
+
+            @severity_info[@severity] = { :description => sd_obj[:description],
+               :risk_factor => sd_obj[:risk_factor] } if sd_obj
+         end
+      end
+
    end
 end

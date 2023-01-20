@@ -293,6 +293,30 @@ module Cache
       end
     end
 
+    def get_severity_details(sev)
+      return if sev.nil? || sev.to_i < 1 || sev.to_i > 10
+
+      sev = sev.to_i
+
+      prep_st = "select severity, risk_factor, description from severity_info where severity = ?"
+      obj = nil
+
+      begin
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute sev
+
+        # This will execute only one time or never at all
+        rs.each do |r|
+          obj = { :severity => r["severity"],
+            :description => r["description"],
+            :risk_factor => r["risk_factor"] }
+        end
+      ensure
+        ps.close if ps
+      end
+      obj
+    end
+
 
     private
       

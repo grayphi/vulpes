@@ -6,9 +6,9 @@
          <span class="descriptor">Severity</span>
          <span class="big-text block severity-<%= self.get_severity %>"><%= self.get_severity %></span>
          <span class="descriptor">Severity Description</span>
-         <span><%= self.get_severity_description %></span><br/>
+         <pre class="no-up-down-margin"><%= self.get_escaped_severity_description %></pre>
          <span class="descriptor">Risk Factor</span>
-         <span><%= self.get_risk_factor %></span><br/>
+         <pre class="no-up-down-margin <%= self.get_severity > 6 ? 'bold' : '' %> "><%= self.get_escaped_risk_factor %></pre>
       </div>
       <h4 class="item-head">URLs Details</h4>
    <% self.initialized_severity %>
@@ -20,17 +20,17 @@
    <span class="descriptor">URL</span>
    <span><a href="<%= self.get_escaped_url %>"><%= self.get_escaped_url %></a></span><br/>
    <span class="descriptor">Pattern Used</span>
-   <span class="mark-text"><%= self.get_pattern %></span><br/>
+   <span class="mark-text"><%= self.get_escaped_pattern %></span><br/>
    <span class="descriptor">Search Term Used</span>
-   <span class="mark-text"><%= self.get_search_term %></span><br/>
+   <span class="mark-text"><%= self.get_escaped_search_term %></span><br/>
    <span class="descriptor">Pattern Desription</span>
-   <span><%= self.get_pattern_description %></span><br/>
+   <span><%= self.get_escaped_pattern_description %></span><br/>
    <span class="descriptor">Succeed?</span>
    <span class="<%= self.is_succeed? ? 'flag-okay' : 'flag-error' %>"><%= self.is_succeed? %></span><br/>
    <span class="descriptor">Reported?</span>
    <span class="<%= self.is_reported? ? 'flag-okay' : 'flag-error' %>"><%= self.is_reported? %></span><br/>
    <span class="descriptor">Reason of Include</span>
-   <span><%= self.get_reason_of_include %></span><br/>
+   <span><%= self.get_escaped_reason_of_include %></span><br/>
    <span class="descriptor">blacklist rules matches</span>
    <span>{{ blist_matches_section }}</span><br/>
    <span>{{ blist_pattern_matched }}</span><br/>
