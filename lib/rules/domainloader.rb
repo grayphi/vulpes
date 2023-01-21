@@ -121,6 +121,7 @@ module Rules
          #  fail early
          return Rules::MatchData.create md_obj if flag
 
+         wl_unmatched = {}
          w_obj = {}
          flag = true
          get_wlist_rules.each_by_type do |type, ref|
@@ -160,6 +161,11 @@ module Rules
                   break
                end
             end
+            
+            unless flag_sec
+               wl_unmatched[:"#{type}"] ||= []
+               wl_unmatched[:"#{type}"] << ref_string
+            end unless ref.empty?
 
             flag = (flag && flag_sec) unless ref.empty?
          end unless get_wlist_rules.nil?
@@ -167,6 +173,8 @@ module Rules
          md_obj[:wl_match] = w_obj
          md_obj[:wl_matched] = flag
          
+         md_obj[:wl_unmatched] = wl_unmatched
+
          Rules::MatchData.create md_obj
       end
 

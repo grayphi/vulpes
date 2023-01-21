@@ -25,8 +25,50 @@
             background-color: #ccddff;
         }
         
-        .rsum_th {
+        .tcol-33p {
             width: 33%;
+        }
+
+        .table-100p {
+            width: 100%;
+        }
+
+        .tcol-10p {
+            width: 10%;
+        }
+
+        .tcol-20p {
+            width: 20%;
+        }
+
+        .tcol-80p {
+            width: 80%;
+        }
+
+        .tcol-45p {
+            width: 45%;
+        }
+
+        .tr-even {
+            background-color: unset;
+        }
+
+        .tr-odd {
+            background-color: #f0f0f0;
+        }
+
+        .multilined {
+            line-break: anywhere;
+            word-break: break-all;
+            white-space: unset;
+        }
+
+        .fixed-page-table {
+            table-layout: fixed;
+        }
+
+        tr:hover {
+          background-color: #ffff99;
         }
 
         .item-head {
@@ -54,7 +96,7 @@
         }
 
         .mark-text {
-            background-color: #ffff7e;
+            background-color: #ffff99;
         }
 
         .flag-error {
@@ -120,10 +162,10 @@
         <h3 class="section-header">Results Summary (Executive)</h3>
 
         <table>
-            <tr>
-                <th class="rsum_th">Severity</th>
-                <th class="rsum_th">Total URLs found</th>
-                <th class="rsum_th">Unreported URLs count</th>
+            <tr class="center">
+                <th class="tcol-33p">Severity</th>
+                <th class="tcol-33p">Total URLs found</th>
+                <th class="tcol-33p">Unreported URLs count</th>
             </tr>
         <% 10.downto 1 do |sev|
             length = 0
@@ -133,7 +175,7 @@
                 length = obj[sev][:length]
                 unreported = obj[sev][:unreported]
             end %>
-            <tr id="rsum_sev_<%= sev %>" class="center">
+            <tr id="rsum_sev_<%= sev %>" class="center <%= sev % 2 == 0 ? 'tr-even' : 'tr-odd' %>">
                 <td class="bold severity-<%= sev %>"><%= sev %></td>
                 <td><%= length %></td>
                 <td><%= unreported %></td>
