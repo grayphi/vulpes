@@ -40,6 +40,25 @@ module Report
          @pattern = robj[:pattern]
          @search_term = robj[:search_term]
          @pattern_description = robj[:description]
+
+         md = robj[:matchdata]
+
+         @blist = {}
+         md.get_blist_matches do |section, pattern, ref_string|
+            @blist[:"#{section}"] ||= []
+            @blist[:"#{section}"] << [pattern, ref_string]
+         end
+
+         @wlist = {}
+         md.get_wlist_matches do |section, pattern, ref_string|
+            @wlist[:"#{section}"] ||= []
+            @wlist[:"#{section}"] << [pattern, ref_string]
+         end
+
+         unless @success
+            @blmatched = md.blist_matched?
+            @wlmatched = md.wlist_matched?
+         end
       end
 
       def unset_row_obj
@@ -126,7 +145,13 @@ module Report
       end
 
       def get_reason_of_include
-         '{{ reason of include }}'
+         if @success
+            'None'
+         elsif !@blmatched.nil? && @blmatched.kind_of?(TrueClass)
+            'Matches with blacklist rule(s).'
+         elsif !@wlmatched.nil? && @wlmatched.kind_of?(FalseClass)
+            'Failed to match with all of the whitelist rules.'
+         end
       end
 
       def get_escaped_reason_of_include
