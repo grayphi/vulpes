@@ -70,9 +70,10 @@ module Vulpes
          @rules_dir = '~/.vulpes/rules'
          @file_blist = 'blst.rules'
          @file_wlist = 'wlst.rules'
+         @rules_override_as = 'merge'
 
          class << self
-            attr_reader :rules_dir, :file_wlist, :file_blist
+            attr_reader :rules_dir, :file_wlist, :file_blist, :rules_override_as
          end
       end
 
