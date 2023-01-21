@@ -27,7 +27,7 @@ module Report
       end
 
       def get_timestamp
-         Time.now.strftime '%d/%m/%Y %H:%M:%S %p %:z'
+         Time.now.strftime '%d/%m/%Y %I:%M:%S %p %:z'
       end
 
       def iterate_row_obj(robj)
@@ -40,6 +40,26 @@ module Report
          @pattern = robj[:pattern]
          @search_term = robj[:search_term]
          @pattern_description = robj[:description]
+
+         md = robj[:matchdata]
+
+         @blist = {}
+         md.get_blist_matches do |section, pattern, ref_string|
+            @blist[:"#{section}"] ||= []
+            @blist[:"#{section}"] << [pattern, ref_string]
+         end
+
+         @wlist = {}
+         md.get_wlist_matches do |section, pattern, ref_string|
+            @wlist[:"#{section}"] ||= []
+            @wlist[:"#{section}"] << [pattern, ref_string]
+         end
+
+         unless @success
+            @blmatched = md.blist_matched?
+            @wlmatched = md.wlist_matched?
+            @wl_unmatched = md.get_wlist_unmatched
+         end
       end
 
       def unset_row_obj
@@ -50,6 +70,11 @@ module Report
          @pattern = nil
          @search_term = nil
          @pattern_description = nil
+         @blmatched = nil
+         @wlmatched = nil
+         @blist = nil
+         @wlist = nil
+         @wl_unmatched = nil
       end
 
       def set_severity(sev)
@@ -67,8 +92,7 @@ module Report
       end
 
       def get_escaped_url
-         u = get_url
-         CGI.escape_html u if u
+         do_html_escape get_url
       end
 
       def get_pattern
@@ -76,8 +100,7 @@ module Report
       end
 
       def get_escaped_pattern
-         pat = get_pattern
-         CGI.escape_html pat if pat
+         do_html_escape get_pattern
       end
 
       def get_search_term
@@ -85,8 +108,7 @@ module Report
       end
 
       def get_escaped_search_term
-         st = get_search_term
-         CGI.escape_html st if st
+         do_html_escape get_search_term
       end
 
       def get_pattern_description
@@ -94,8 +116,7 @@ module Report
       end
 
       def get_escaped_pattern_description
-         pd = get_pattern_description
-         CGI.escape_html pd if pd
+         do_html_escape(get_pattern_description).gsub(/\n/, '<br/>')
       end
 
       def is_succeed?
@@ -126,12 +147,17 @@ module Report
       end
 
       def get_reason_of_include
-         '{{ reason of include }}'
+         if @success
+            'None'
+         elsif !@blmatched.nil? && @blmatched.kind_of?(TrueClass)
+            'Matches with blacklist rule(s).'
+         elsif !@wlmatched.nil? && @wlmatched.kind_of?(FalseClass)
+            'Failed to match with all of the whitelist rules.'
+         end
       end
 
       def get_escaped_reason_of_include
-         roi = get_reason_of_include
-         CGI.escape_html roi if roi
+         do_html_escape get_reason_of_include
       end
 
       def get_severity_description
@@ -142,8 +168,7 @@ module Report
       end
 
       def get_escaped_severity_description
-         desc = get_severity_description
-         CGI.escape_html desc if desc
+         do_html_escape(get_severity_description).gsub(/\n/, '<br/>')
       end
 
       def get_risk_factor
@@ -154,9 +179,98 @@ module Report
       end
 
       def get_escaped_risk_factor
-         rfactor = get_risk_factor
-         CGI.escape_html rfactor if rfactor
+         do_html_escape get_risk_factor
       end
+
+      def get_blist
+         @blist
+      end
+
+      def get_matched_wlist
+         @wlist
+      end
+
+      def get_escaped_blist_table
+         table = ""
+
+         if get_blist && get_blist.length > 0
+            table << "<table class='table-100p fixed-page-table'><tr><th class='tcol-10p'>Section</th><th class='tcol-45p'>Pattern Matched</th><th class='tcol-45p'>Matched URL String</th></tr>"
+
+            i = 0
+            get_blist.each do |section, l1|
+               flag = false
+               l1.each do |l2|
+                  i = i + 1
+                  table << "<tr class='center #{i % 2 == 0 ? "tr-even" : "tr-odd"}'>"
+                  unless flag
+                     table << %Q[<td #{l1.length > 1 ? "rowspan='#{l1.length}'" : ''}>#{do_html_escape(section.to_s)}</td>]
+                     flag = true
+                  end
+                  table << "<td>#{do_html_escape(l2[0].to_s)}</td>"
+                  table << "<td>#{do_html_escape(l2[1].to_s)}</td></tr>"
+               end
+            end
+
+            table << "</table>"
+         end
+         table << " " if table.empty?
+
+         table
+      end
+
+      def get_escaped_wlist_table
+         table = ""
+
+         if get_matched_wlist && get_matched_wlist.length > 0
+            table << "<table class='table-100p fixed-page-table'><tr><th class='tcol-10p'>Section</th><th class='tcol-45p'>Pattern Matched</th><th class='tcol-45p'>Matched URL String</th></tr>"
+
+            i = 0
+            get_matched_wlist.each do |section, l1|
+               flag = false
+               l1.each do |l2|
+                  i = i + 1
+                  table << "<tr class='center #{i % 2 == 0 ? "tr-even" : "tr-odd"}'>"
+                  unless flag
+                     table << %Q[<td #{l1.length > 1 ? "rowspan='#{l1.length}'" : ''}>#{do_html_escape(section.to_s)}</td>]
+                     flag = true
+                  end
+                  table << "<td>#{do_html_escape(l2[0].to_s)}</td>"
+                  table << "<td>#{do_html_escape(l2[1].to_s)}</td></tr>"
+               end
+            end
+
+            table << "</table>"
+         end
+         table << " " if table.empty?
+
+         table
+      end
+
+      def get_escaped_unmatched_wlist_table
+         table = ""
+
+         if @wl_unmatched && @wl_unmatched.length > 0
+            table << "<table class='fixed-page-table table-100p'><tr><th class='tcol-20p'>Unmatched sections</th><th class='tcol-80p'>URL string that unmatched</th></tr>"
+            i = 0
+            @wl_unmatched.each do |section, l1|
+               flag = false
+               l1.each do |pat|
+                  i = i + 1
+                  table << "<tr class='center #{i % 2 == 0 ? "tr-even" : "tr-odd"}'>"
+                  unless flag
+                     table << "<td #{l1.length > 1 ? "rowspan='#{l1.length}'" : ''}>#{do_html_escape(section.to_s)}</td>"
+                     flag = true
+                  end
+                  table << "<td>#{do_html_escape pat.to_s}</td></tr>"
+               end
+            end
+            table << "</table>"
+         end
+         table = " " if table.empty?
+
+         table
+      end
+
 
       private
 
@@ -171,6 +285,12 @@ module Report
             @severity_info[@severity] = { :description => sd_obj[:description],
                :risk_factor => sd_obj[:risk_factor] } if sd_obj
          end
+      end
+
+      def do_html_escape(str)
+         return '' if str.nil?
+
+         CGI.escape_html str
       end
 
    end

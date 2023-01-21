@@ -75,40 +75,46 @@ module Rules
          b_obj = {}
          flag = false
          get_blist_rules.each_by_type do |type, ref|
-            ref_string = nil
+            ref_list = []
 
             case type
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_protocols}"
-                  ref_string = url_obj.protocol
+                  ref_list << url_obj.protocol
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ports}"
-                  ref_string = url_obj.port
+                  ref_list << url_obj.port
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_uname}"
-                  ref_string = url_obj.username
+                  ref_list << url_obj.username
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_passwd}"
-                  ref_string = url_obj.password
+                  ref_list << url_obj.password
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_subdomains}"
-                  ref_string = url_obj.subdomain
+                  ref_list << url_obj.subdomain
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_urls}"
-                  ref_string = url_obj.path
+                  ref_list << url_obj.path
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ftypes}"
-                  ref_string = url_obj.filename
+                  ref_list << url_obj.filename
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_qstrings}"
-                  ref_string = url_obj.querystring
+                  ref_list = ref_list + url_obj.querystring.split('&') if url_obj.querystring
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_frags}"
-                  ref_string = url_obj.fragment
+                  ref_list << url_obj.fragment
             end
 
-            ref.each do |pattern|
-               Vulpes::Logger.debug "file => blst.rules, section => #{type}, " + \
-               "pattern => #{pattern}, url_string => #{ref_string}"
+            ref_list.each do |ref_string|
+               ref.each do |pattern|
+                  Vulpes::Logger.debug "file => blst.rules, section => #{type}, " + \
+                  "pattern => #{pattern}, url_string => #{ref_string}"
 
-               if ref_string && (pattern.kind_of?(Regexp) ? \
-                  pattern.match?(ref_string) : pattern.eql?(ref_string))
+                  # empty value allows check for missing of required/important values
+                  ref_string = "" if ref_string.nil?
+                  if (pattern.kind_of?(Regexp) ? \
+                     pattern.match?(ref_string) : pattern.eql?(ref_string))
 
-                  (b_obj[:"#{type}"] ||= []) << [pattern, ref_string]
-                  flag = true
-                  break
+                     (b_obj[:"#{type}"] ||= []) << [pattern, ref_string]
+                     flag = true
+                     break
+                  end
                end
+
+               break if flag
             end
 
             break if flag
@@ -121,52 +127,65 @@ module Rules
          #  fail early
          return Rules::MatchData.create md_obj if flag
 
+         wl_unmatched = {}
          w_obj = {}
          flag = true
          get_wlist_rules.each_by_type do |type, ref|
-            ref_string = nil
+            ref_list = []
 
             case type
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_protocols}"
-                  ref_string = url_obj.protocol
+                  ref_list << url_obj.protocol
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ports}"
-                  ref_string = url_obj.port
+                  ref_list << url_obj.port
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_uname}"
-                  ref_string = url_obj.username
+                  ref_list << url_obj.username
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_passwd}"
-                  ref_string = url_obj.password
+                  ref_list << url_obj.password
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_subdomains}"
-                  ref_string = url_obj.subdomain
+                  ref_list << url_obj.subdomain
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_urls}"
-                  ref_string = url_obj.path
+                  ref_list << url_obj.path
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_ftypes}"
-                  ref_string = url_obj.filename
+                  ref_list << url_obj.filename
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_qstrings}"
-                  ref_string = url_obj.querystring
+                  ref_list = ref_list + url_obj.querystring.split('&') if url_obj.querystring
                when "#{Vulpes::Defaults::Rules::RuleLoader.s_frags}"
-                  ref_string = url_obj.fragment
+                  ref_list << url_obj.fragment
             end
 
-            flag_sec = false
-            ref.each do |pattern|
-               Vulpes::Logger.debug "file => wlst.rules, section => #{type}, " + \
-               "pattern => #{pattern}, url_string => #{ref_string}"
+            ref_list.each do |ref_string|
+               flag_sec = false
 
-               if ref_string && (pattern.kind_of?(Regexp) ? \
-                  pattern.match?(ref_string) : pattern.eql?(ref_string))
-               
-                  (w_obj[:"#{type}"] ||= []) << [pattern, ref_string]
-                  flag_sec = true
-                  break
+               ref.each do |pattern|
+                  Vulpes::Logger.debug "file => wlst.rules, section => #{type}, " + \
+                  "pattern => #{pattern}, url_string => #{ref_string}"
+
+                  # empty value allows check for missing of required/important values
+                  ref_string = "" if ref_string.nil?
+                  if (pattern.kind_of?(Regexp) ? \
+                     pattern.match?(ref_string) : pattern.eql?(ref_string))
+
+                     (w_obj[:"#{type}"] ||= []) << [pattern, ref_string]
+                     flag_sec = true
+                     break
+                  end
                end
-            end
 
-            flag = (flag && flag_sec) unless ref.empty?
+               unless flag_sec
+                  wl_unmatched[:"#{type}"] ||= []
+                  wl_unmatched[:"#{type}"] << ref_string
+               end unless ref.empty?
+
+               flag = (flag && flag_sec) unless ref.empty?
+            end
          end unless get_wlist_rules.nil?
          
          md_obj[:wl_match] = w_obj
          md_obj[:wl_matched] = flag
          
+         md_obj[:wl_unmatched] = wl_unmatched
+
          Rules::MatchData.create md_obj
       end
 

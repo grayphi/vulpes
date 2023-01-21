@@ -125,7 +125,7 @@ module Report
             dump_json_data df_robj
          end
 
-         collect_stats df_robj
+         collect_stats(df_robj.merge({:matchdata => md}))
       end
 
       def generate_report

@@ -176,17 +176,45 @@ module Rules
             "RuleLoader's object." if robj.nil? || \
             !robj.kind_of?(Rules::RuleLoader)
 
-         @protocols = robj.get_protocols unless robj.get_protocols.nil?
-         @ports = robj.get_ports unless robj.get_ports.nil?
-         @unames = robj.get_unames unless robj.get_unames.nil?
-         @passwds = robj.get_passwds unless robj.get_passwds.nil?
-         @subdomains = robj.get_subdomains unless robj.get_subdomains.nil?
-         @urls = robj.get_urls unless robj.get_urls.nil?
-         @filetypes = robj.get_filetypes unless robj.get_filetypes.nil?
-         @querystrings = robj.get_querystrings unless robj.get_querystrings.nil?
-         @fragments = robj.get_fragments unless robj.get_fragments.nil?
-         @texts = robj.get_texts unless robj.get_texts.nil?
-         @orders = robj.get_orders unless robj.get_orders.nil?
+         override_type = case Vulpes::Config.get('rules_override_as')
+            when "replace"
+               'replace'
+            when "merge"
+               'merge'
+            else
+               Vulpes::Defaults::Rules.rules_override_as
+            end
+
+         Vulpes::Logger.debug "Using overriding method: #{override_type}"
+
+         case override_type
+            when "replace"
+               @protocols = robj.get_protocols unless robj.get_protocols.nil?
+               @ports = robj.get_ports unless robj.get_ports.nil?
+               @unames = robj.get_unames unless robj.get_unames.nil?
+               @passwds = robj.get_passwds unless robj.get_passwds.nil?
+               @subdomains = robj.get_subdomains unless robj.get_subdomains.nil?
+               @urls = robj.get_urls unless robj.get_urls.nil?
+               @filetypes = robj.get_filetypes unless robj.get_filetypes.nil?
+               @querystrings = robj.get_querystrings unless robj.get_querystrings.nil?
+               @fragments = robj.get_fragments unless robj.get_fragments.nil?
+               @texts = robj.get_texts unless robj.get_texts.nil?
+            when "merge"
+               @protocols = (@protocols ? @protocols : []) | (robj.get_protocols ? robj.get_protocols : [])
+               @ports = ( @ports ? @ports : []) | ( robj.get_ports ? robj.get_ports : [])
+               @unames = ( @unames ? @unames : []) | ( robj.get_unames ? robj.get_unames : [])
+               @passwds = ( @passwds ? @passwds : []) | (robj.get_passwds ? robj.get_passwds : [])
+               @subdomains = ( @subdomains ? @subdomains : []) | ( robj.get_subdomains ? robj.get_subdomains : [])
+               @urls = ( @urls ? @urls : []) | ( robj.get_urls ? robj.get_urls : [])
+               @filetypes = ( @filetypes ? @filetypes : []) | ( robj.get_filetypes ? robj.get_filetypes : [])
+               @querystrings = ( @querystrings ? @querystrings : []) | ( robj.get_querystrings ? robj.get_querystrings : [])
+               @fragments = ( @fragments ? @fragments : []) | ( robj.get_fragments ? robj.get_fragments : [])
+               @texts = ( @texts ? @texts : []) | ( robj.get_texts ? robj.get_texts : [])
+            end
+
+            # orders section shouldn't be merged, this should be the last specified
+            # orders in the hierarchy
+            @orders = robj.get_orders unless robj.get_orders.nil?
 
          self
       end
