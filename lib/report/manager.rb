@@ -65,6 +65,18 @@ module Report
          raise InvalidObjectType, 'Invalid object. Required Rules::MatchData object.' \
             unless md.kind_of? Rules::MatchData
 
+         dobj = Cache::Manager.get_instance.get_details_by_url_hash(md.url_hash)
+
+         @stats_var ||= {}
+         sev = dobj[:severity].to_i
+         @stats_var[sev] ||= {:length => 0, :unreported => 0}
+
+         obj = @stats_var[sev]
+         obj[:length] = obj[:length] + 1
+         obj[:unreported] = obj[:unreported] + 1 if md.url_reported?.kind_of?(FalseClass)
+
+         # This should be the first check but to update count for each severity
+         # this should comes after db fetch
          unless Vulpes::Constants.has('report_all') && \
             Vulpes::Constants.get('report_all').kind_of?(TrueClass)
 
@@ -72,8 +84,6 @@ module Report
          end
 
          df_robj = {}
-
-         dobj = Cache::Manager.get_instance.get_details_by_url_hash(md.url_hash)
 
          df_robj[:url_ref] = md.url_hash
          df_robj[:url] = md.matched_url
@@ -237,14 +247,7 @@ module Report
       def collect_stats(row)
          return if row.nil?
 
-         @stats_var ||= {}
-
          sev = row[:severity].to_i
-         @stats_var[sev] ||= {:length => 0, :unreported => 0}
-         obj = @stats_var[sev]
-
-         obj[:length] = obj[:length] + 1
-         obj[:unreported] = obj[:unreported] + 1 if row[:reported].kind_of?(FalseClass)
 
          @sev_tmp_files ||= {}
          @sev_tmp_files[sev] ||= Tempfile.new
