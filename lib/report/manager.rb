@@ -137,6 +137,31 @@ module Report
          end
       end
 
+      def mark_as_fetched
+         if @flag_stddev
+            Vulpes::Logger.error "Can't read from \$STDOUT, save output in a file to support this functionality."
+            return
+         end
+
+         Cache::Manager.get_instance.mark_link_as_fetched do |ps|
+            read_data do |obj|
+               url_ref = obj[:url_ref]
+               Vulpes::Logger.debug "Marking url => #{obj[:url]}, ref => #{url_ref} as reported."
+               ps.execute url_ref.strip if url_ref
+            end
+         end
+      end
+
+      def read_data(&block)
+         return unless block_given?
+
+         case @datafiletype
+         when "csv"
+            read_csv_data &block
+         when "json"
+            read_json_data &block
+         end
+      end
 
       private
 
@@ -149,7 +174,7 @@ module Report
          @datafile << Vulpes::Constants.get('line_seperator')
       end
 
-      def read_json_data
+      def read_json_data(&block)
          return unless block_given?
 
          return if @flag_stddev
@@ -178,7 +203,7 @@ module Report
          @csv << row.values
       end
 
-      def read_csv_data
+      def read_csv_data(&block)
          return unless block_given?
 
          return if @flag_stddev
@@ -274,7 +299,6 @@ module Report
          # TODO FIXME implement this for html to pdf or pdf from scratch
          create_html_report
       end
-
 
       private_class_method :new
    end

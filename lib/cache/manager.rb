@@ -317,6 +317,24 @@ module Cache
       obj
     end
 
+    def mark_link_as_fetched(url_hash = nil, &block)
+      prep_st = "update links set fetched = 1 where url_hash = ?"
+      begin
+        ps = @db_instance.prepare prep_st
+
+        if block_given?
+          yield ps
+        else
+          unless url_hash.nil? || url_hash.to_s.strip.empty?
+            url_hash.strip!
+            ps.execute url_hash
+          end
+        end
+      ensure
+        ps.close if ps
+      end
+    end
+
 
     private
       
