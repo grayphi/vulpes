@@ -254,7 +254,6 @@ module Cache
       end
     end
 
-
     def get_details_by_url_hash(url_hash)
       return if url_hash.nil? || url_hash.strip.empty?
       url_hash.strip!
@@ -332,6 +331,126 @@ module Cache
         end
       ensure
         ps.close if ps
+      end
+    end
+
+    def get_dork_state(ref_hash, search_engine_type)
+      return if ref_hash.nil? || ref_hash.to_s.strip.empty? || ref_hash.to_s.strip.length != 40
+      return if search_engine_type.nil? || search_engine_type.to_s.strip.empty?
+
+      dsobj = nil
+
+      prep_st = "select ref_hash, search_engine, skipped_page from " + \
+        "dork_state_skips where ref_hash = ? and search_engine = ? order by " + \
+        "skipped_page asc limit 1"
+
+      begin
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute ref_hash, search_engine_type
+        rs.each do |sobj|
+          dsobj = {}
+          dsobj[:ref_hash] = sobj['ref_hash']
+          dsobj[:search_engine_type] = sobj['search_engine']
+          dsobj[:last_page_fetched] = sobj['skipped_page'].to_i - 1
+          dsobj[:has_next] = true
+        end
+      ensure
+        ps.close if ps
+      end
+
+      return dsobj unless dsobj.nil? || dsobj.empty?
+
+      # okay, we didn't find state saved in skips then search dork_state table
+      prep_st = "select ref_hash, search_engine, last_page_fetched, " + \
+        "cast(has_next as int) has_next from dork_state where ref_hash = ? " + \
+        " and search_engine = ?"
+
+      begin
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute ref_hash, search_engine_type
+
+        # this will run either single time or not at all
+        rs.each do |sobj|
+          dsobj = {}
+          dsobj[:ref_hash] = sobj['ref_hash']
+          dsobj[:search_engine_type] = sobj['search_engine']
+          dsobj[:last_page_fetched] = sobj['last_page_fetched'].to_i
+          dsobj[:has_next] = sobj['has_next'] == 1 ? true : false
+        end
+      ensure
+        ps.close if ps
+      end
+
+      dsobj
+    end
+
+    def update_dork_state(ref_hash, search_engine_type, page_fetched, has_next = true)
+      return if ref_hash.nil? || ref_hash.to_s.strip.empty? || ref_hash.to_s.strip.length != 40
+      return if search_engine_type.nil? || search_engine_type.to_s.strip.empty?
+      return if page_fetched.nil? || page_fetched.to_i <= 0
+
+      has_next = has_next && has_next.kind_of?(TrueClass) ? 1 : 0
+
+      oldstate = nil
+      prep_st = "select ref_hash, search_engine, last_page_fetched, " + \
+        "cast(has_next as int) has_next from dork_state where ref_hash = ? " + \
+        " and search_engine = ?"
+
+      begin
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute ref_hash, search_engine_type
+
+        # this will run either single time or not at all
+        rs.each do |sobj|
+          oldstate = {}
+          oldstate[:ref_hash] = sobj['ref_hash']
+          oldstate[:search_engine_type] = sobj['search_engine']
+          oldstate[:last_page_fetched] = sobj['last_page_fetched'].to_i
+          oldstate[:has_next] = sobj['has_next'] == 1 ? true : false
+        end
+      ensure
+        ps.close if ps
+      end
+
+      if oldstate.nil? || oldstate.empty?
+        # state not exists, this must be a new dork
+        prep_st = "insert into dork_state (ref_hash, search_engine, " + \
+          "last_page_fetched, has_next) values (?,?,?,?)"
+
+        begin
+          ps = @db_instance.prepare prep_st
+          ps.execute ref_hash, search_engine_type, page_fetched, has_next
+        ensure
+          ps.close if ps
+        end
+
+        record_dork_page_skips ref_hash, search_engine_type, 0, page_fetched
+      else
+        if oldstate[:ref_hash].eql?(ref_hash) && \
+          oldstate[:search_engine_type].eql?(search_engine_type)
+
+          # save only if latest page_no is bigger then old state's page_no
+          if oldstate[:last_page_fetched].to_i < page_fetched.to_i
+            prep_st = "update dork_state set last_page_fetched = ?, " + \
+              "has_next = ? where ref_hash = ? and search_engine = ?"
+
+            begin
+              ps = @db_instance.prepare prep_st
+              ps.execute page_fetched, has_next, ref_hash, search_engine_type
+            ensure
+              ps.close if ps
+            end
+
+            record_dork_page_skips ref_hash, search_engine_type, oldstate[:last_page_fetched], page_fetched
+          else
+            delete_skipped_dork_page ref_hash, search_engine_type, page_fetched
+          end
+        else
+          # something wrong, old state should have matched, it should have never come here
+          Vulpes::Logger.error "Something wrong, fetched dork_state object is not what we desire."
+          Vulpes::Logger.error "  dork_state object = #{oldstate}"
+          Vulpes::Logger.error "  returning without saving anything."
+        end
       end
     end
 
@@ -453,9 +572,64 @@ module Cache
         "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", &block
     end
 
+    def record_dork_page_skips(ref_hash, search_engine_type, old_page_no, new_page_no)
+      return if ref_hash.nil? || ref_hash.to_s.strip.empty? || ref_hash.to_s.strip.length != 40
+      return if search_engine_type.nil? || search_engine_type.to_s.strip.empty?
+      return if old_page_no.nil? || old_page_no.to_i < 0
+      return if new_page_no.nil? || new_page_no.to_i <= 0
+      return if old_page_no.to_i >= new_page_no.to_i
+
+      old_page_no = old_page_no.to_i
+      new_page_no = new_page_no.to_i
+
+      # list of values skipped both ends i.e. set of (old_page_no, new_page_no)
+      # [old_page_no, new_page_no) - old_page_no = (old_page_no, new_page_no)
+      skipped_pages = (old_page_no...new_page_no).to_a - [ old_page_no ]
+
+      begin
+        prep_st = "select distinct skipped_page from dork_state_skips where ref_hash = ? and search_engine = ?"
+
+        ps = @db_instance.prepare prep_st
+        rs = ps.execute ref_hash, search_engine_type
+
+        rs.each do |sobj|
+          skipped_pages = skipped_pages - [ sobj['skipped_page'] ]
+        end
+      ensure
+        ps.close if ps
+      end
+
+      begin
+        prep_st = "insert into dork_state_skips (ref_hash, search_engine, skipped_page) values (?, ?, ?)"
+
+        ps = @db_instance.prepare prep_st
+        skipped_pages.each do |page_no|
+          ps.execute ref_hash, search_engine_type, page_no
+        end
+      ensure
+        ps.close if ps
+      end
+    end
+
+    def delete_skipped_dork_page(ref_hash, search_engine_type, page_no)
+      return if ref_hash.nil? || ref_hash.to_s.strip.empty? || ref_hash.to_s.strip.length != 40
+      return if search_engine_type.nil? || search_engine_type.to_s.strip.empty?
+      return if page_no.nil? || page_no.to_i <= 0
+
+      begin
+        prep_st = "delete from dork_state_skips where ref_hash = ? and search_engine = ? and skipped_page = ?"
+
+        ps = @db_instance.prepare prep_st
+        ps.execute ref_hash, search_engine_type, page_no
+      ensure
+        ps.close if ps
+      end
+    end
+
     def close_on_exit(obj)
       @closeables.push(obj) unless obj.nil?
     end
+
 
     private_class_method :new
 
