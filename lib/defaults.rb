@@ -58,11 +58,11 @@ module Vulpes
          @max_delay = 1
          @timeout = 90
          @ssl_check = true
-         @proxy = nil
          @read_timeout = 90
 
          class << self
-            attr_reader :useragent, :min_delay, :max_delay, :timeout, :ssl_check, :proxy, :read_timeout
+            attr_reader :useragent, :min_delay, :max_delay, :timeout, :ssl_check, 
+               :read_timeout
          end
       end
 

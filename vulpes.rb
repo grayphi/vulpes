@@ -90,7 +90,25 @@ def parseargs(args)
    end
 
    opt.on('-p', '--proxy PROXY', String, 'Specify proxy to use.') do |p|
-      opts[:proxy] = p
+      opts[:proxy] = p.strip
+   end
+
+   opt.on('-pF', '--proxy-file FILE', String, 'Specify file to read proxies.') do |f|
+      f.strip!
+
+      # relative to current dir
+      if f.start_with? './'
+         f = ENV['EXEC_DIR'] + f.delete_prefix('.') if ENV['EXEC_DIR']
+      elsif f.start_with? '~'
+         # do nothing
+      elsif !f.start_with?('/') # not absolute, must be relative to current dir
+         f = ENV['EXEC_DIR'] + '/' + f if ENV['EXEC_DIR']
+      end
+      f = File.expand_path f
+
+      raise UsageError, "Proxy file doesn't exists." unless File.exists?(f)
+
+      opts[:proxy_file] = f
    end
 
    opt.on('-0', '-z', 'Use null character as line seperator in output datafiles.') do
@@ -140,6 +158,7 @@ Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
 Vulpes::Constants.add('useragent', options[:useragent]) if options[:useragent]
 Vulpes::Constants.add('ssl_check', false) if options[:no_ssl_check]
 Vulpes::Constants.add('proxy', options[:proxy]) if options[:proxy]
+Vulpes::Constants.add('proxy_file', options[:proxy_file]) if options[:proxy_file]
 
 if options[:wait]
    Vulpes::Constants.add('min_delay', options[:wait])
@@ -171,8 +190,6 @@ Vulpes::Constants.add('output_dir', options[:outdir] ? options[:outdir] : \
 
 Vulpes::Constants.add('report_all', options[:report_all]) if options[:report_all]
 
-
-
 begin
 
 Vulpes::Config.loadFile options[:config_file]
@@ -180,6 +197,9 @@ Vulpes::Config.loadConfig options[:config_obj]
 
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
+
+
+
 
 
 
