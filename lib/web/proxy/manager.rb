@@ -21,7 +21,7 @@ module Web
 
             plist.uniq!
 
-            plist.each { |p| @proxylist << Vulpes::Proxy.get_instance p }
+            plist.each { |p| @proxylist << Vulpes::Proxy.get_instance(p) }
          end
 
          def self.get_instance

@@ -93,7 +93,7 @@ def parseargs(args)
       opts[:proxy] = p.strip
    end
 
-   opt.on('-pF', '--proxy-file FILE', String, 'Specify file to read proxies.') do |f|
+   opt.on('--proxy-file FILE', String, 'Specify file to read proxies.') do |f|
       f.strip!
 
       # relative to current dir
@@ -129,21 +129,24 @@ def parseargs(args)
       opts[:outdir] = File.expand_path(d + '/report')
    end
 
-   opt.on('--rA', 'Report all the match findings, instead of only reporting new findings.') do
+   opt.on('--report-all', 'Report all the match findings, instead of only reporting new findings.') do
       opts[:report_all] = true
    end
 
 
    begin
       opt.parse!(args)
-   rescue OptionParser::InvalidOption => e
-      raise UsageError, "Invalid option\n#{opt}"
-   rescue OptionParser::MissingArgument => e
-      raise UsageError, "Missing required argument for option\n#{opt}"
-   end
 
-   if opts.empty?
-      raise UsageError, "No options\n#{opt}"
+      if opts.empty?
+         STDERR.puts "No options Specified.\n"
+         exit
+      end
+   rescue OptionParser::InvalidOption => e
+      STDERR.puts "Invalid option. Tried help?\n"
+      exit
+   rescue OptionParser::MissingArgument => e
+      STDERR.puts "Missing required argument for option.\n"
+      exit
    end
 
    opts
