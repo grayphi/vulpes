@@ -129,8 +129,21 @@ def parseargs(args)
       opts[:outdir] = File.expand_path(d + '/report')
    end
 
-   opt.on('--report-all', 'Report all the match findings, instead of only reporting new findings.') do
-      opts[:report_all] = true
+   opt.on('-r', '--report FLAG', "By default, report include un-matched('M' to include) and " + \
+      "un-reported('R' to include) only, use 'A' to include both.") do |f|
+      
+      f = f.strip
+
+      case f
+         when "M"
+            opts[:report_flag] = 'M'
+         when "R"
+            opts[:report_flag] = 'R'
+         when "A"
+            opts[:report_flag] = 'A'
+         else
+            opts[:report_flag] = ''
+      end
    end
 
 
@@ -191,7 +204,20 @@ Vulpes::Constants.add('line_seperator', options[:null_sep] ? "\0" : "\n")
 Vulpes::Constants.add('output_dir', options[:outdir] ? options[:outdir] : \
    (ENV['EXEC_DIR'] ? ENV['EXEC_DIR'] + '/report' : nil))
 
-Vulpes::Constants.add('report_all', options[:report_all]) if options[:report_all]
+
+if options[:report_flag]
+   case options[:report_flag]
+      when "M"
+         Vulpes::Constants.add('report_matched', true)
+      when "R"
+         Vulpes::Constants.add('report_reported', true)
+      when "A"
+         Vulpes::Constants.add('report_all', true)         
+   end
+end
+
+
+
 
 begin
 
