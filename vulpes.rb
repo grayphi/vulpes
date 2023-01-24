@@ -142,7 +142,7 @@ def parseargs(args)
          when "A"
             opts[:report_flag] = 'A'
          else
-            opts[:report_flag] = ''
+            raise OptionParser::ParseError, 'Invalid value.'
       end
    end
 
@@ -159,6 +159,9 @@ def parseargs(args)
       exit
    rescue OptionParser::MissingArgument => e
       STDERR.puts "Missing required argument for option.\n"
+      exit
+   rescue => e
+      STDERR.puts "#{e.message}\n"
       exit
    end
 
@@ -204,7 +207,6 @@ Vulpes::Constants.add('line_seperator', options[:null_sep] ? "\0" : "\n")
 Vulpes::Constants.add('output_dir', options[:outdir] ? options[:outdir] : \
    (ENV['EXEC_DIR'] ? ENV['EXEC_DIR'] + '/report' : nil))
 
-
 if options[:report_flag]
    case options[:report_flag]
       when "M"
@@ -215,9 +217,6 @@ if options[:report_flag]
          Vulpes::Constants.add('report_all', true)         
    end
 end
-
-
-
 
 begin
 
