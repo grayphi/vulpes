@@ -128,7 +128,33 @@ def parseargs(args)
       opts[:pattern_find] = ps
    end
 
-   # crawler stop conditions
+   # crawler & stop conditions
+   opt.on('--Cengine SENGINE', String, 'Search Engine to use. google(default).') do |ce|
+      ce.strip!
+      raise UsageError, "Search engine can't be empty." if ce.empty?
+
+      case ce.downcase
+      when "google"
+         opts[:search_engine] = 'google'
+      else
+         raise UsageError, "Illegal search-engine value(#{ce})." if ce.empty?
+      end
+   end
+
+   opt.on('--Csearch STEXT', String, 'Search Text to add with patterns while crawling.') do |ct|
+      ct.strip!
+      raise UsageError, "Search text can't be empty." if ct.empty?
+
+      opts[:search_text] ||= []
+
+      opts[:search_text] << ct
+   end
+
+   opt.on('--Cpage PSIZE', Integer, 'Set Page Size(>0) for no of links to fetch in one request.') do |ps|
+      raise UsageError, "Page size can't be non-positive number." if ps < 1
+
+      opts[:search_page_size] = ps
+   end
 
 
 
@@ -250,16 +276,35 @@ Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
 Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
 Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
 
-pattern_opts = { :name => nil, :severity_min => nil, :severity_max => nil,
+pattern_obj = { :name => nil, :severity_min => nil, :severity_max => nil,
    :category => nil, :author => nil, :url => nil, :find_string => nil }
 
-pattern_opts[:name] = options[:pattern_name] if options[:pattern_name]
-pattern_opts[:severity_min] = options[:pattern_severity_min] ? options[:pattern_severity_min] : 1
-pattern_opts[:severity_max] = options[:pattern_severity_max] ? options[:pattern_severity_max] : 10
-pattern_opts[:category] = options[:pattern_category] if options[:pattern_category]
-pattern_opts[:author] = options[:pattern_author] if options[:pattern_author]
-pattern_opts[:url] = options[:pattern_url] if options[:pattern_url]
-pattern_opts[:find_string] = options[:pattern_find] if options[:pattern_find]
+pattern_obj[:name] = options[:pattern_name] if options[:pattern_name]
+pattern_obj[:severity_min] = options[:pattern_severity_min] if options[:pattern_severity_min]
+pattern_obj[:severity_max] = options[:pattern_severity_max] if options[:pattern_severity_max]
+
+if pattern_obj[:severity_min].nil? && pattern_obj[:severity_max].nil?
+   # do nothing
+elsif pattern_obj[:severity_min].nil?
+   pattern_obj[:severity_min] = 1
+elsif pattern_obj[:severity_max].nil?
+   pattern_obj[:severity_max] = 10
+else
+   if pattern_obj[:severity_min] > pattern_obj[:severity_max]
+      temp = pattern_obj[:severity_min]
+      pattern_obj[:severity_min] = pattern_obj[:severity_max]
+      pattern_obj[:severity_max] = temp
+   end
+end
+
+pattern_obj[:category] = options[:pattern_category] if options[:pattern_category]
+pattern_obj[:author] = options[:pattern_author] if options[:pattern_author]
+pattern_obj[:url] = options[:pattern_url] if options[:pattern_url]
+pattern_obj[:find_string] = options[:pattern_find] if options[:pattern_find]
+
+search_engine = options[:search_engine] ? options[:search_engine] : Vulpes::Defaults::Web.search_engine
+search_text = options[:search_text] ? options[:search_text] : []
+search_page_size = options[:search_page_size] ? options[:search_page_size] : Vulpes::Defaults::Web.page_size
 
 Vulpes::Constants.add('useragent', options[:useragent]) if options[:useragent]
 Vulpes::Constants.add('ssl_check', false) if options[:no_ssl_check]
@@ -313,12 +358,28 @@ Vulpes::Config.loadConfig options[:config_obj]
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
-# get dorks
+search_engine = case search_engine
+   when "google"
+      Web::Crawler::Google.type
+   else
+      Web::Crawler::Google.type
+end
 
-Vulpes::Logger.error "PATTERN OPTS::: #{pattern_opts}"
+Cache::Manager.get_instance.get_dorks pattern_obj do |dork|
+   request = Web::Request.create search_engine, dork
+   request.set_page_size search_page_size
+   search_text.each { |text| request.add_search_string text }
+
+   response = request.execute
+
+   response.cache_response
+   while STOP_CONDITION && response.has_more_pages?
+      response.next_page
+      response.cache_response
+   end
+end
 
 
-# set stop condition
 # find info
 # once stopped starts rules manager for domain
 # generate report
