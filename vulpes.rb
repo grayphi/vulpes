@@ -20,6 +20,7 @@ def parseargs(args)
    opt.separator('')
    opt.separator('Options:')
 
+   # flags/switches/general options
    opt.on('-h', '--help', 'Print this menu.') do
       puts "#{opt}"
       exit
@@ -46,6 +47,7 @@ def parseargs(args)
       opts[:no_pretty] = true
    end
 
+   # config options
    opt.on('--config-file FILE', String,'Read config from file.') do |f|
       opts[:config_file] = f
    end
@@ -61,6 +63,78 @@ def parseargs(args)
       opts[:config_obj] = kvp
    end
 
+   # patterns selecting options
+   opt.on('--Pname NAME', String, 'Search pattern(s) by name.') do |pn|
+      pn.strip!
+      raise UsageError, "Pattern name can't be an empty string." if pn.empty?
+
+      opts[:pattern_name] = pn
+   end
+
+   opt.on('--Pseverity SEVERITY', Integer, 'Search pattern(s) by severity.') do |ps|
+      raise UsageError, "Severity value must be in betwen [1,10]." if ps < 1 || ps > 10
+
+      opts[:pattern_severity_min] = ps
+      opts[:pattern_severity_max] = ps
+   end
+
+   opt.on('--Pseverity-min SEVERITY', Integer, 'Search pattern(s) by atleast severity (inclusive).') do |ps|
+      raise UsageError, "Severity value must be in betwen [1,10]." if ps < 1 || ps > 10
+
+      opts[:pattern_severity_min] = ps
+   end
+
+   opt.on('--Pseverity-max SEVERITY', Integer, 'Search pattern(s) by atmost severity (inclusive).') do |ps|
+      raise UsageError, "Severity value must be in betwen [1,10]." if ps < 1 || ps > 10
+
+      opts[:pattern_severity_max] = ps
+   end
+
+   opt.on('--Pseverity-range RANGE', Array, 'Search pattern(s) in between severity (min,max).') do |pr|
+      raise UsageError, 'Severity range must contains only two values seperated by comma(,).' if pr.length != 2
+
+      pr.each do |ps|
+         raise UsageError, "Severity value must be in betwen [1,10]." if ps.to_s.strip.to_i < 1 || ps.to_s.strip.to_i > 10
+      end
+      opts[:pattern_severity_min] = pr[0].to_s.strip.to_i
+      opts[:pattern_severity_max] = pr[1].to_s.strip.to_i
+   end
+
+   opt.on('--Pcategory CATEGORY', String, 'select pattern(s) by category.') do |pc|
+      pc.strip!
+      raise UsageError, "Pattern category can't be an empty string." if pc.empty?
+
+      opts[:pattern_category] = pc
+   end
+
+   opt.on('--Pauthor AUTHOR', String, 'Search pattern(s) by author.') do |pn|
+      pn.strip!
+      raise UsageError, "Pattern author can't be an empty string." if pn.empty?
+
+      opts[:pattern_author] = pn
+   end
+
+   opt.on('--Purl URL', String, 'Search pattern(s) by url.') do |pu|
+      pu.strip!
+      raise UsageError, "Pattern url can't be an empty string." if pu.empty?
+
+      opts[:pattern_url] = pu
+   end
+
+   opt.on('--Pfind STRING', String, 'Search pattern(s) by string.') do |ps|
+      ps.strip!
+      raise UsageError, "Pattern string can't be an empty string." if ps.empty?
+
+      opts[:pattern_find] = ps
+   end
+
+   # crawler stop conditions
+
+
+
+   #threading options
+
+   # web options
    opt.on('--user-agent UA', String, 'Specify UserAgent.') do |ua|
       opts[:useragent] = ua
    end
@@ -111,6 +185,7 @@ def parseargs(args)
       opts[:proxy_file] = f
    end
 
+   # report/output options
    opt.on('-0', '-z', 'Use null character as line seperator in output datafiles.') do
       opts[:null_sep] = true
    end
@@ -155,7 +230,7 @@ def parseargs(args)
          exit
       end
    rescue OptionParser::InvalidOption => e
-      STDERR.puts "Invalid option. Tried help?\n"
+      STDERR.puts "#{e.message.capitalize}. Tried help?\n"
       exit
    rescue OptionParser::MissingArgument => e
       STDERR.puts "Missing required argument for option.\n"
@@ -174,6 +249,18 @@ Vulpes::Constants.add('no_pretty', options[:no_pretty]) if options[:no_pretty]
 Vulpes::Constants.add('debug', options[:debug]) if options[:debug]
 Vulpes::Constants.add('disable_warnings', options[:disable_warnings]) if options[:disable_warnings]
 Vulpes::Constants.add('verbose', options[:verbose]) if options[:verbose]
+
+pattern_opts = { :name => nil, :severity_min => nil, :severity_max => nil,
+   :category => nil, :author => nil, :url => nil, :find_string => nil }
+
+pattern_opts[:name] = options[:pattern_name] if options[:pattern_name]
+pattern_opts[:severity_min] = options[:pattern_severity_min] ? options[:pattern_severity_min] : 1
+pattern_opts[:severity_max] = options[:pattern_severity_max] ? options[:pattern_severity_max] : 10
+pattern_opts[:category] = options[:pattern_category] if options[:pattern_category]
+pattern_opts[:author] = options[:pattern_author] if options[:pattern_author]
+pattern_opts[:url] = options[:pattern_url] if options[:pattern_url]
+pattern_opts[:find_string] = options[:pattern_find] if options[:pattern_find]
+
 Vulpes::Constants.add('useragent', options[:useragent]) if options[:useragent]
 Vulpes::Constants.add('ssl_check', false) if options[:no_ssl_check]
 Vulpes::Constants.add('proxy', options[:proxy]) if options[:proxy]
@@ -226,10 +313,15 @@ Vulpes::Config.loadConfig options[:config_obj]
 Vulpes::Logger.debug("Config:: #{Vulpes::Config.all}")
 Vulpes::Logger.debug("Constants:: #{Vulpes::Constants.all}")
 
+# get dorks
+
+Vulpes::Logger.error "PATTERN OPTS::: #{pattern_opts}"
 
 
-
-
+# set stop condition
+# find info
+# once stopped starts rules manager for domain
+# generate report
 
 
 ensure
