@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS cache_dorks (
     publish_date varchar(64),
     author varchar(128),
     dork varchar(4000) NOT NULL,
-    description varchar(10000),
+    description text,
     dork_hash varchar(40) AS (SHA1(dork)) PERSISTENT UNIQUE,
 
     PRIMARY KEY (id),
@@ -20,5 +20,5 @@ CREATE TABLE IF NOT EXISTS cache_dorks (
         CHECK (LENGTH(TRIM(category)) > 0),
     CONSTRAINT non_empty_dork
         CHECK (LENGTH(TRIM(dork)) > 0)
-);
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

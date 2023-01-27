@@ -365,18 +365,35 @@ search_engine = case search_engine
       Web::Crawler::Google.type
 end
 
-Cache::Manager.get_instance.get_dorks pattern_obj do |dork|
-   request = Web::Request.create search_engine, dork
-   request.set_page_size search_page_size
-   search_text.each { |text| request.add_search_string text }
 
-   response = request.execute
 
-   response.cache_response
-   while STOP_CONDITION && response.has_more_pages?
-      response.next_page
-      response.cache_response
-   end
+
+
+
+Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
+   Vulpes::Logger.debug "name: #{dork.name}"
+   Vulpes::Logger.debug "ghdb_url: #{dork.ghdb_url}"
+   Vulpes::Logger.debug "severity: #{dork.severity}"
+   Vulpes::Logger.debug "category: #{dork.category}"
+   Vulpes::Logger.debug "publish_date: #{dork.publish_date}"
+   Vulpes::Logger.debug "author: #{dork.author}"
+   Vulpes::Logger.debug "dork: #{dork.dork}"
+   Vulpes::Logger.debug "description: #{dork.description}"
+   Vulpes::Logger.debug "dork_hash: #{dork.dork_hash}"
+   Vulpes::Logger.debug "===================================================================================="
+
+
+#   request = Web::Request.create search_engine, dork
+#   request.set_page_size search_page_size
+#   search_text.each { |text| request.add_search_string text }
+#
+#   response = request.execute
+#
+#   response.cache_response
+#   while STOP_CONDITION && response.has_more_pages?
+#      response.next_page
+#      response.cache_response
+#   end
 end
 
 

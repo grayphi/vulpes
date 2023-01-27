@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS dork_state_skips (
         CHECK (skipped_page > 0),
     CONSTRAINT legal_ref_hash
         CHECK (LENGTH(TRIM(ref_hash)) = 40)
-);
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
