@@ -454,6 +454,82 @@ module Cache
       end
     end
 
+    def get_dorks_by_obj(obj, &block)
+      return if obj.nil? || !obj.kind_of?(Hash)
+
+      prev_flag = false
+      prep_st_vals = []
+      prep_st = "select distinct dork_hash, name, ghdb_url, severity, category, " + \
+        "publish_date, author, dork, description from cache_dorks where "
+
+      unless obj[:find_string].nil? || obj[:find_string].strip.empty?
+        prep_st << " (name like ? or ghdb_url like ? or category like ? "
+        prep_st << " or author like ? or dork like ? or description like ? or publish_date like ?) "
+
+        7.times {prep_st_vals << "%#{obj[:find_string]}%" }
+        prev_flag = true
+      end
+
+      unless obj[:name].nil? || obj[:name].strip.empty?
+        prep_st << " and " if prev_flag.kind_of?(TrueClass)
+        prep_st << " (name like ? ) "
+
+        prep_st_vals << "%#{obj[:name]}%"
+        prev_flag = true
+      end
+
+      unless obj[:severity_min].nil? && obj[:severity_max].nil?
+        prep_st << " and " if prev_flag.kind_of?(TrueClass)
+        prep_st << " (severity between ? and ?) "
+
+        if !obj[:severity_min].nil? && !obj[:severity_max].nil?
+          prep_st_vals << obj[:severity_min]
+          prep_st_vals << obj[:severity_max]
+        elsif obj[:severity_min].nil?
+          prep_st_vals << 1
+          prep_st_vals << obj[:severity_max]
+        elsif obj[:severity_max].nil?
+          prep_st_vals << obj[:severity_min]
+          prep_st_vals << 10
+        end
+        prev_flag = true
+      end
+
+      unless obj[:category].nil? || obj[:category].strip.empty?
+        prep_st << " and " if prev_flag.kind_of?(TrueClass)
+        prep_st << " (category like ? ) "
+
+        prep_st_vals << "%#{obj[:category]}%"
+        prev_flag = true
+      end
+
+      unless obj[:author].nil? || obj[:author].strip.empty?
+        prep_st << " and " if prev_flag.kind_of?(TrueClass)
+        prep_st << " (author like ? ) "
+
+        prep_st_vals << "%#{obj[:author]}%"
+        prev_flag = true
+      end
+
+      unless obj[:url].nil? || obj[:url].strip.empty?
+        prep_st << " and " if prev_flag.kind_of?(TrueClass)
+        prep_st << " (ghdb_url like ? ) "
+
+        prep_st_vals << "%#{obj[:url]}%"
+        prev_flag = true
+      end
+
+      prep_st << ' order by severity desc ' if prev_flag
+
+      return if prev_flag.kind_of?(FalseClass)
+
+      Vulpes::Logger.debug "prep_st :: #{prep_st}"
+      Vulpes::Logger.debug "prep_st_vals :: #{prep_st_vals}"
+
+      mysql_get_dorks prep_st, *prep_st_vals, &block
+    end
+
+
 
     private
       
