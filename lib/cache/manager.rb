@@ -604,45 +604,45 @@ module Cache
     end
 
     def mysql_get_dorks_by_name(name, &block)
-      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description, dork_hash from cache_dorks where name like ?"
+      prep_st = "select distinct dork_hash, name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where name like ? order by severity desc"
 
       mysql_get_dorks prep_st, "%#{name}%", &block
     end
 
     def mysql_get_dorks_by_severity(severity, &block)
-      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description, dork_hash from cache_dorks where severity = ?"
+      prep_st = "select distinct dork_hash, name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where severity = ?"
 
       mysql_get_dorks prep_st, severity, &block
     end
 
     def mysql_get_dorks_by_category(category, &block)
-      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description, dork_hash from cache_dorks where category like ?"
+      prep_st = "select distinct dork_hash, name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where category like ? order by severity desc"
 
       mysql_get_dorks prep_st, "%#{category}%", &block
     end
 
     def mysql_get_dorks_by_author(author, &block)
-      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description, dork_hash from cache_dorks where author like ?"
+      prep_st = "select distinct dork_hash, name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where author like ? order by severity desc"
 
       mysql_get_dorks prep_st, "%#{author}%", &block
     end
 
     def mysql_get_dorks_by_url(url, &block)
-      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description, dork_hash from cache_dorks where ghdb_url like ?"
+      prep_st = "select distinct dork_hash, name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where ghdb_url like ? order by severity desc"
 
       mysql_get_dorks prep_st, "%#{url}%", &block
     end
 
     def mysql_find_dorks(sterm, &block)
-      prep_st = "select name, ghdb_url, severity, category, publish_date, " \
-        + "author, dork, description, dork_hash from cache_dorks where name like ? " \
+      prep_st = "select distinct dork_hash, name, ghdb_url, severity, category, publish_date, " \
+        + "author, dork, description from cache_dorks where name like ? " \
         + "or ghdb_url like ? or category like ? or author like ? or " \
-        + "dork like ? or description like ? or publish_date like ?"
+        + "dork like ? or description like ? or publish_date like ? order by severity desc"
 
       mysql_get_dorks prep_st, "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", \
         "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", "%#{sterm}%", &block
