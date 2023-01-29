@@ -529,6 +529,37 @@ module Cache
       mysql_get_dorks prep_st, *prep_st_vals, &block
     end
 
+    def get_search_term_obj(dork_hash, search_term)
+      return if dork_hash.nil? || dork_hash.strip.empty?
+      return if search_term.nil? || search_term.strip.empty?
+
+      dork_hash.strip!
+      search_term.strip!
+
+      prep_st = 'select dork_hash, search_term, search_term_hash from search_terms where dork_hash = ? and search_term = ?'
+
+      st_obj = nil
+      begin
+        ps = @db_instance.prepare prep_st
+
+        rs = ps.execute dork_hash, search_term
+
+        # this will execute only one time
+        rs.each do |row|
+          st_obj = {}
+
+          st_obj[:dork_hash] = row["dork_hash"]
+          st_obj[:search_term] = row["search_term"]
+          st_obj[:search_term_hash] = row["search_term_hash"]
+        end
+
+      ensure
+        ps.close if ps
+      end
+
+      st_obj
+    end
+
 
 
     private

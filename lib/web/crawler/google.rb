@@ -81,6 +81,12 @@ module Web
             fetch &block
          end
 
+         def set_page_no(n)
+            return if n.nil? || n.to_i <= 0
+
+            @page_no = n.to_i
+         end
+
          def get_url
             url_pat = 'https://www.google.com/search?gbv=1&client=vulpes&q=%s&btnG=Google+' \
                + 'Search&start=%s&num=%s'

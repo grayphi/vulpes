@@ -61,10 +61,11 @@ module Vulpes
          @read_timeout = 90
          @search_engine = 'google'
          @page_size = 30
+         @crawler_state = 'resume'
 
          class << self
             attr_reader :useragent, :min_delay, :max_delay, :timeout, :ssl_check, 
-               :read_timeout, :search_engine, :page_size
+               :read_timeout, :search_engine, :page_size, :crawler_state
          end
       end
 

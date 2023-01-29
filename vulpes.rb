@@ -129,13 +129,13 @@ def parseargs(args)
    end
 
    # crawler & stop conditions
-   opt.on('--Cengine SENGINE', String, 'Search Engine to use. google(default).') do |ce|
+   opt.on('--Cengine SENGINE', String, 'Search Engine to use. [google(default)].') do |ce|
       ce.strip!
       raise UsageError, "Search engine can't be empty." if ce.empty?
 
       case ce.downcase
       when "google"
-         opts[:search_engine] = 'google'
+         opts[:crawler_search_engine] = 'google'
       else
          raise UsageError, "Illegal search-engine value(#{ce})." if ce.empty?
       end
@@ -145,15 +145,29 @@ def parseargs(args)
       ct.strip!
       raise UsageError, "Search text can't be empty." if ct.empty?
 
-      opts[:search_text] ||= []
+      opts[:crawler_search_text] ||= []
 
-      opts[:search_text] << ct
+      opts[:crawler_search_text] << ct
    end
 
    opt.on('--Cpage PSIZE', Integer, 'Set Page Size(>0) for no of links to fetch in one request.') do |ps|
       raise UsageError, "Page size can't be non-positive number." if ps < 1
 
-      opts[:search_page_size] = ps
+      opts[:crawler_search_page_size] = ps
+   end
+
+   opt.on('--Cstate STATE', String, "Set crawler's state. [resume(default), new]") do |cs|
+      cs.strip!
+      raise UsageError, "Crawler's state can't be empty." if cs.empty?
+
+      case cs
+      when "resume"
+         opts[:crawler_state] = cs
+      when "new"
+         opts[:crawler_state] = cs
+      else
+         raise UsageError, "Illegal crawler's state value(#{cs})."
+      end
    end
 
 
@@ -302,9 +316,10 @@ pattern_obj[:author] = options[:pattern_author] if options[:pattern_author]
 pattern_obj[:url] = options[:pattern_url] if options[:pattern_url]
 pattern_obj[:find_string] = options[:pattern_find] if options[:pattern_find]
 
-search_engine = options[:search_engine] ? options[:search_engine] : Vulpes::Defaults::Web.search_engine
-search_text = options[:search_text] ? options[:search_text] : []
-search_page_size = options[:search_page_size] ? options[:search_page_size] : Vulpes::Defaults::Web.page_size
+search_engine = options[:crawler_search_engine] ? options[:crawler_search_engine] : Vulpes::Defaults::Web.search_engine
+search_text = options[:crawler_search_text] ? options[:crawler_search_text] : []
+search_page_size = options[:crawler_search_page_size] ? options[:crawler_search_page_size] : Vulpes::Defaults::Web.page_size
+Vules::Constants.add('crawler_state', options[:crawler_state] ? options[:crawler_state] : Vulpes::Defaults::Web.crawler_state)
 
 Vulpes::Constants.add('useragent', options[:useragent]) if options[:useragent]
 Vulpes::Constants.add('ssl_check', false) if options[:no_ssl_check]
@@ -365,35 +380,23 @@ search_engine = case search_engine
       Web::Crawler::Google.type
 end
 
-
-
-
-
-
 Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
-   Vulpes::Logger.debug "name: #{dork.name}"
-   Vulpes::Logger.debug "ghdb_url: #{dork.ghdb_url}"
-   Vulpes::Logger.debug "severity: #{dork.severity}"
-   Vulpes::Logger.debug "category: #{dork.category}"
-   Vulpes::Logger.debug "publish_date: #{dork.publish_date}"
-   Vulpes::Logger.debug "author: #{dork.author}"
-   Vulpes::Logger.debug "dork: #{dork.dork}"
-   Vulpes::Logger.debug "description: #{dork.description}"
-   Vulpes::Logger.debug "dork_hash: #{dork.dork_hash}"
-   Vulpes::Logger.debug "===================================================================================="
+   request = Web::Request.create search_engine, dork
+
+   request.set_page_size search_page_size
+   search_text.each { |text| request.add_search_string text }
+
+   response = request.execute
+   response.cache_response
 
 
-#   request = Web::Request.create search_engine, dork
-#   request.set_page_size search_page_size
-#   search_text.each { |text| request.add_search_string text }
-#
-#   response = request.execute
-#
-#   response.cache_response
-#   while STOP_CONDITION && response.has_more_pages?
-#      response.next_page
-#      response.cache_response
-#   end
+
+
+
+   while STOP_CONDITION && response.has_more_pages?
+      response.next_page
+      response.cache_response
+   end
 end
 
 
