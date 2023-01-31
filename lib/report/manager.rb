@@ -300,6 +300,8 @@ module Report
 
       def create_pdf_report
          # TODO FIXME implement this for html to pdf or pdf from scratch
+         Vulpes::Logger.debug "PDF format is NOT YET IMPLEMENTED. Generating in HTML instead."
+
          create_html_report
       end
 

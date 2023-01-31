@@ -247,6 +247,10 @@ def parseargs(args)
    end
 
    # report/output options
+   opt.on('--no-report', 'Do not generate report.') do
+      opts[:no_report] = true
+   end
+
    opt.on('-0', '-z', 'Use null character as line seperator in output datafiles.') do
       opts[:null_sep] = true
    end
@@ -265,9 +269,50 @@ def parseargs(args)
       opts[:outdir] = File.expand_path(d + '/report')
    end
 
+   opt.on('--Rdomain DOMAIN', String, 'Generate report for domain.') do |d|
+      d.strip!
+      raise UsageError, "domain name can't be empty." if d.empty?
+
+      opts[:report_domain] = d
+   end
+
+   opt.on('--Rtest-all', 'Test rules on all available links for domain, even previously tested and marked.') do
+      opts[:report_test_all] = true
+   end
+
+   opt.on('--Rdatafile FORMAT', String, 'Datafile format. [csv, json(default)]') do |dff|
+      dff.strip!
+      raise UsageError, "Datafile format can't be empty." if dff.empty?
+
+      lval = ["csv", 'json']
+      case dff
+         when *lval
+            opts[:report_datafile_fmt] = dff
+         else
+            raise OptionParser::ParseError, 'Invalid datafile format value.'
+      end
+   end
+
+   opt.on('--Rreportfile FORMAT', String, 'Reportfile format. [html(default)]') do |rff|
+      rff.strip!
+      raise UsageError, "Reportfile format can't be empty." if rff.empty?
+
+      lval = ["html", 'pdf']
+      case rff
+         when *lval
+            opts[:report_reportfile_fmt] = rff
+         else
+            raise OptionParser::ParseError, 'Invalid reportfile format value.'
+      end
+   end
+
+   opt.on('--Rno-mark', 'Do not mark processed links as tested/fetched.') do
+      opts[:report_no_mark] = true
+   end
+
    opt.on('-r', '--report FLAG', "By default, report include un-matched('M' to include) and " + \
       "un-reported('R' to include) only, use 'A' to include both.") do |f|
-      
+
       f = f.strip
 
       case f
@@ -341,9 +386,9 @@ search_engine = options[:crawler_search_engine] || Vulpes::Defaults::Web.search_
 search_text = options[:crawler_search_text] || []
 search_page_size = options[:crawler_search_page_size] || Vulpes::Defaults::Web.page_size
 Vules::Constants.add('crawler_state', options[:crawler_state] || Vulpes::Defaults::Web.crawler_state)
-dorks_count = options[:crawler_dorks_count] || nil
+dorks_count = options[:crawler_dorks_count]
 pages_per_dork = options[:crawler_pages_per_dork] || Vulpes::Defaults::Web.pages_per_dork
-pages_total = options[:crawler_pages_total] || nil
+pages_total = options[:crawler_pages_total]
 
 Vulpes::Constants.add('threads_count', options[:threads_count] || Vulpes::Defaults::Core.threads_count)
 
@@ -390,6 +435,16 @@ if options[:report_flag]
          Vulpes::Constants.add('report_all', true)         
    end
 end
+
+generate_report_flag = !(options[:no_report] || false)
+report_domain = options[:report_domain]
+report_test_all = options[:report_test_all] || Vulpes::Defaults::Rules.test_all
+datafile_fmt = options[:report_datafile_fmt] || Vulpes::Defaults::Report.datafile_format
+reportfile_fmt = options[:report_reportfile_fmt] || Vulpes::Defaults::Report.reportfile_format
+mark_fetched_flag = !(options[:report_no_mark] || false)
+
+
+
 
 begin
 
@@ -441,11 +496,17 @@ Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
    # thread ends
 end
 
+if generate_report_flag && !(report_domain.nil? || report_domain.strip.empty?)
+   rules_man = Rules::Manager.get_instance report_domain, !report_test_all
+   report_man = Report::Manager.get_instance datafile_fmt, reportfile_fmt
 
-# find info
-# once stopped starts rules manager for domain
-# generate report
-
+   rules_man.init
+   rules_man.each do |md|
+      report_man.add md
+   end
+   report_man.generate_report
+   report_man.mark_as_fetched if mark_fetched_flag
+end
 
 ensure
    # This must be the last call to close all opened objects

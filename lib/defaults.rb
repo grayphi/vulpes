@@ -77,9 +77,11 @@ module Vulpes
          @file_blist = 'blst.rules'
          @file_wlist = 'wlst.rules'
          @rules_override_as = 'merge'
+         @test_all = false
 
          class << self
-            attr_reader :rules_dir, :file_wlist, :file_blist, :rules_override_as
+            attr_reader :rules_dir, :file_wlist, :file_blist, :rules_override_as,
+               :test_all
          end
       end
 
@@ -112,10 +114,13 @@ module Vulpes
          @html_template_body_1 = 'data/templates/report/report_body_1.html.erb'
          @html_template_body_2 = 'data/templates/report/report_body_2.html.erb'
          @html_template_footer = 'data/templates/report/report_footer.html.erb'
+         @datafile_format = 'json'
+         @reportfile_format = 'html'
 
          class << self
             attr_reader :html_template_header, :html_template_body_1,
-            :html_template_body_2, :html_template_footer
+            :html_template_body_2, :html_template_footer, :datafile_format,
+            :reportfile_format
          end
       end
 
