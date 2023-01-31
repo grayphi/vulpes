@@ -176,14 +176,17 @@ module Rules
             "RuleLoader's object." if robj.nil? || \
             !robj.kind_of?(Rules::RuleLoader)
 
-         override_type = case Vulpes::Config.get('rules_override_as')
+         override_type = Vulpes::Constants.get('rules_override_as') || \
+            Vulpes::Config.get('rules_override_as')
+
+         override_type = case override_type
             when "replace"
                'replace'
             when "merge"
                'merge'
             else
                Vulpes::Defaults::Rules.rules_override_as
-            end
+         end
 
          Vulpes::Logger.debug "Using overriding method: #{override_type}"
 

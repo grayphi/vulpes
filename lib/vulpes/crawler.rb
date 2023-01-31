@@ -7,6 +7,9 @@ module Vulpes
 
       def initialize(*args)
          super("WebCrawler")
+
+         @last_used = nil
+         @lock = Mutex.new
       end
 
       def self.type
@@ -27,6 +30,26 @@ module Vulpes
       
       def get_encoded_qstring
          Web::Utils::URLUtils.encode_url @query_string
+      end
+
+      def wait_check
+         @lock.synchronize do
+            if @last_used
+               delay = Web::Utils::URLUtils.wait_for
+
+               loop do
+                  t = delay - (Time.now.to_i - @last_used)
+
+                  if t > 0
+                     sleep t
+                  else
+                     break
+                  end
+               end
+            end
+
+            @last_used = Time.now.to_i
+         end
       end
 
    end

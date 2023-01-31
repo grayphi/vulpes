@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS severity_info (
     id int NOT NULL AUTO_INCREMENT,
     severity int NOT NULL UNIQUE,
-    description varchar(10000) NOT NULL,
+    description text NOT NULL,
     risk_factor varchar(10000) NOT NULL,
 
     PRIMARY KEY (id),
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS severity_info (
         CHECK (LENGTH(TRIM(description)) > 0),
     CONSTRAINT non_empty_risk_factor
         CHECK (LENGTH(TRIM(risk_factor)) > 0)
-);
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 /* FIXED VALUES FOR TABLE */

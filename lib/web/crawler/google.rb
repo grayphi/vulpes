@@ -38,11 +38,18 @@ module Web
             
             @response.close if @response && !@response.closed?
 
+            proxy = Web::Proxy::Manager.get_instance.use_proxy
+
+            if proxy.nil?
+               proxy = ""
+               wait_check
+            end
+
             begin
                @response = fetch_url(get_url, :open_timeout => Vulpes::Constants.get('timeout'), \
                   :read_timeout => Vulpes::Constants.get('read_timeout'), \
                   :ssl_verify_mode => verify_ssl?, \
-                  :proxy => Vulpes::Constants.get('proxy'), \
+                  :proxy => proxy, \
                   'Host' => 'www.google.com', \
                   'User-Agent' => Vulpes::Constants.get('useragent'), \
                   'Accept' => 'text/html,application/xhtml+xml,application/xml; q=0.9,*/*;q=0.8', \
@@ -72,6 +79,12 @@ module Web
             @page_no = n.to_i
 
             fetch &block
+         end
+
+         def set_page_no(n)
+            return if n.nil? || n.to_i <= 0
+
+            @page_no = n.to_i
          end
 
          def get_url

@@ -13,6 +13,6 @@ CREATE TABLE IF NOT EXISTS search_terms (
         CHECK (LENGTH(TRIM(dork_hash)) > 0),
     CONSTRAINT non_empty_search_term
         CHECK (LENGTH(TRIM(search_term)) > 0)
-);
+) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 

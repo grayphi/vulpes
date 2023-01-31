@@ -19,9 +19,10 @@ module Vulpes
          end
 
          @vulpes_base = self.get_base
+         @threads_count = 5
 
          class << self
-            attr_reader :vulpes_base
+            attr_reader :vulpes_base, :threads_count
          end
 
          private_class_method :get_base
@@ -58,11 +59,16 @@ module Vulpes
          @max_delay = 1
          @timeout = 90
          @ssl_check = true
-         @proxy = nil
          @read_timeout = 90
+         @search_engine = 'google'
+         @page_size = 30
+         @crawler_state = 'resume'
+         @pages_per_dork = 3
 
          class << self
-            attr_reader :useragent, :min_delay, :max_delay, :timeout, :ssl_check, :proxy, :read_timeout
+            attr_reader :useragent, :min_delay, :max_delay, :timeout, :ssl_check, 
+               :read_timeout, :search_engine, :page_size, :crawler_state,
+               :pages_per_dork
          end
       end
 
@@ -71,9 +77,11 @@ module Vulpes
          @file_blist = 'blst.rules'
          @file_wlist = 'wlst.rules'
          @rules_override_as = 'merge'
+         @test_all = false
 
          class << self
-            attr_reader :rules_dir, :file_wlist, :file_blist, :rules_override_as
+            attr_reader :rules_dir, :file_wlist, :file_blist, :rules_override_as,
+               :test_all
          end
       end
 
@@ -106,10 +114,13 @@ module Vulpes
          @html_template_body_1 = 'data/templates/report/report_body_1.html.erb'
          @html_template_body_2 = 'data/templates/report/report_body_2.html.erb'
          @html_template_footer = 'data/templates/report/report_footer.html.erb'
+         @datafile_format = 'json'
+         @reportfile_format = 'html'
 
          class << self
             attr_reader :html_template_header, :html_template_body_1,
-            :html_template_body_2, :html_template_footer
+            :html_template_body_2, :html_template_footer, :datafile_format,
+            :reportfile_format
          end
       end
 
