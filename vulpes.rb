@@ -150,7 +150,7 @@ def parseargs(args)
       opts[:crawler_search_text] << ct
    end
 
-   opt.on('--Cpage PSIZE', Integer, 'Set Page Size(>0) for no of links to fetch in one request.') do |ps|
+   opt.on('--Cpage-size PSIZE', Integer, 'Set Page Size(>0) for no of links to fetch in one request.') do |ps|
       raise UsageError, "Page size can't be non-positive number." if ps < 1
 
       opts[:crawler_search_page_size] = ps
@@ -170,9 +170,30 @@ def parseargs(args)
       end
    end
 
+   opt.on('--Cpatterns-count N', Integer, 'Max no. of patterns to fetch.') do |mp|
+      raise UsageError, 'Invalid patterns count provided, value must be >= 0' if mp < 0
 
+      opts[:crawler_dorks_count] = mp
+   end
+
+   opt.on('--Cpages-count N', Integer, 'No. of pages to fetch per pattern.') do |pc|
+      raise UsageError, 'Invalid pages count provided, value must be >= 0' if pc < 0
+
+      opts[:crawler_pages_per_dork] = pc
+   end
+
+   opt.on('--Cpages-total N', Integer, 'Total no. of pages to fetch.') do |tp|
+      raise UsageError, 'Invalid total pages count provided, value must be >= 0' if tp < 0
+
+      opts[:crawler_pages_total] = tp
+   end
 
    #threading options
+   opt.on('--threads N', Integer, 'Max no. of parallel threads.') do |t|
+      raise UsageError, 'Invalid threads count provided, value must be >= 0' if t < 0
+
+      opts[:threads_count] = t
+   end
 
    # web options
    opt.on('--user-agent UA', String, 'Specify UserAgent.') do |ua|
@@ -316,10 +337,15 @@ pattern_obj[:author] = options[:pattern_author] if options[:pattern_author]
 pattern_obj[:url] = options[:pattern_url] if options[:pattern_url]
 pattern_obj[:find_string] = options[:pattern_find] if options[:pattern_find]
 
-search_engine = options[:crawler_search_engine] ? options[:crawler_search_engine] : Vulpes::Defaults::Web.search_engine
-search_text = options[:crawler_search_text] ? options[:crawler_search_text] : []
-search_page_size = options[:crawler_search_page_size] ? options[:crawler_search_page_size] : Vulpes::Defaults::Web.page_size
-Vules::Constants.add('crawler_state', options[:crawler_state] ? options[:crawler_state] : Vulpes::Defaults::Web.crawler_state)
+search_engine = options[:crawler_search_engine] || Vulpes::Defaults::Web.search_engine
+search_text = options[:crawler_search_text] || []
+search_page_size = options[:crawler_search_page_size] || Vulpes::Defaults::Web.page_size
+Vules::Constants.add('crawler_state', options[:crawler_state] || Vulpes::Defaults::Web.crawler_state)
+dorks_count = options[:crawler_dorks_count] || nil
+pages_per_dork = options[:crawler_pages_per_dork] || Vulpes::Defaults::Web.pages_per_dork
+pages_total = options[:crawler_pages_total] || nil
+
+Vulpes::Constants.add('threads_count', options[:threads_count] || Vulpes::Defaults::Core.threads_count)
 
 Vulpes::Constants.add('useragent', options[:useragent]) if options[:useragent]
 Vulpes::Constants.add('ssl_check', false) if options[:no_ssl_check]
@@ -380,7 +406,17 @@ search_engine = case search_engine
       Web::Crawler::Google.type
 end
 
+pt_count = 0
 Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
+   c_dork ||= 0
+   c_dork = c_dork + 1
+
+   break unless dorks_count.nil? || c_dork <= dorks_count
+
+   # thread starts
+   # sync this statement
+   break unless pages_total.nil? || pt_count < pages_total
+
    request = Web::Request.create search_engine, dork
 
    request.set_page_size search_page_size
@@ -389,14 +425,20 @@ Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
    response = request.execute
    response.cache_response
 
+   # sync this statement
+   pt_count = pt_count + 1
+   p_count = 1
+   while p_count < pages_per_dork && response.has_more_pages?
+      # sync these 2 statement
+      break unless pages_total.nil? || pt_count < pages_total
+      pt_count = pt_count + 1
+      p_count = p_count + 1
 
 
-
-
-   while STOP_CONDITION && response.has_more_pages?
       response.next_page
       response.cache_response
    end
+   # thread ends
 end
 
 

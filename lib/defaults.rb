@@ -19,9 +19,10 @@ module Vulpes
          end
 
          @vulpes_base = self.get_base
+         @threads_count = 5
 
          class << self
-            attr_reader :vulpes_base
+            attr_reader :vulpes_base, :threads_count
          end
 
          private_class_method :get_base
@@ -62,10 +63,12 @@ module Vulpes
          @search_engine = 'google'
          @page_size = 30
          @crawler_state = 'resume'
+         @pages_per_dork = 3
 
          class << self
             attr_reader :useragent, :min_delay, :max_delay, :timeout, :ssl_check, 
-               :read_timeout, :search_engine, :page_size, :crawler_state
+               :read_timeout, :search_engine, :page_size, :crawler_state,
+               :pages_per_dork
          end
       end
 
