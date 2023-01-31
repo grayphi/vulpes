@@ -71,20 +71,20 @@ def parseargs(args)
       opts[:pattern_name] = pn
    end
 
-   opt.on('--Pseverity SEVERITY', Integer, 'Search pattern(s) by severity.') do |ps|
+   opt.on('--Pseverity N', Integer, 'Search pattern(s) by severity.') do |ps|
       raise UsageError, "Severity value must be in betwen [1,10]." if ps < 1 || ps > 10
 
       opts[:pattern_severity_min] = ps
       opts[:pattern_severity_max] = ps
    end
 
-   opt.on('--Pseverity-min SEVERITY', Integer, 'Search pattern(s) by atleast severity (inclusive).') do |ps|
+   opt.on('--Pseverity-min N', Integer, 'Search pattern(s) by atleast severity (inclusive).') do |ps|
       raise UsageError, "Severity value must be in betwen [1,10]." if ps < 1 || ps > 10
 
       opts[:pattern_severity_min] = ps
    end
 
-   opt.on('--Pseverity-max SEVERITY', Integer, 'Search pattern(s) by atmost severity (inclusive).') do |ps|
+   opt.on('--Pseverity-max N', Integer, 'Search pattern(s) by atmost severity (inclusive).') do |ps|
       raise UsageError, "Severity value must be in betwen [1,10]." if ps < 1 || ps > 10
 
       opts[:pattern_severity_max] = ps
@@ -269,6 +269,33 @@ def parseargs(args)
       opts[:outdir] = File.expand_path(d + '/report')
    end
 
+   opt.on('--rules-dir DIR', String,  'Specify directory to read rules.') do |d|
+      d.strip!
+      # relative to current dir
+      if d.start_with? './'
+         d = ENV['EXEC_DIR'] + d.delete_prefix('.') if ENV['EXEC_DIR']
+      elsif d.start_with? '~'
+         # do nothing
+      elsif !d.start_with?('/') # not absolute, must be relative to current dir
+         d = ENV['EXEC_DIR'] + '/' + d if ENV['EXEC_DIR']
+      end
+
+      opts[:rules_dir] = File.expand_path d
+   end
+
+   opt.on('--Rrules_oflag FLAG', String, 'Specify how to override rules. [replace, merge(default)]') do |rf|
+      rf.strip!
+      raise UsageError, "rules override flag can't be empty." if rf.empty?
+
+      lval = ['replace', 'merge']
+      case rf
+         when *lval
+            opts[:report_rules_override_as] = rf
+         else
+            raise OptionParser::ParseError, 'Invalid rules override flag value.'
+      end
+   end
+
    opt.on('--Rdomain DOMAIN', String, 'Generate report for domain.') do |d|
       d.strip!
       raise UsageError, "domain name can't be empty." if d.empty?
@@ -278,6 +305,10 @@ def parseargs(args)
 
    opt.on('--Rtest-all', 'Test rules on all available links for domain, even previously tested and marked.') do
       opts[:report_test_all] = true
+   end
+
+   opt.on('--Rno-mark', 'Do not mark processed links as tested/fetched.') do
+      opts[:report_no_mark] = true
    end
 
    opt.on('--Rdatafile FORMAT', String, 'Datafile format. [csv, json(default)]') do |dff|
@@ -293,7 +324,7 @@ def parseargs(args)
       end
    end
 
-   opt.on('--Rreportfile FORMAT', String, 'Reportfile format. [html(default)]') do |rff|
+   opt.on('--Rreportfile FORMAT', String, 'Reportfile format. [html(default), pdf]') do |rff|
       rff.strip!
       raise UsageError, "Reportfile format can't be empty." if rff.empty?
 
@@ -303,27 +334,6 @@ def parseargs(args)
             opts[:report_reportfile_fmt] = rff
          else
             raise OptionParser::ParseError, 'Invalid reportfile format value.'
-      end
-   end
-
-   opt.on('--Rno-mark', 'Do not mark processed links as tested/fetched.') do
-      opts[:report_no_mark] = true
-   end
-
-   opt.on('-r', '--report FLAG', "By default, report include un-matched('M' to include) and " + \
-      "un-reported('R' to include) only, use 'A' to include both.") do |f|
-
-      f = f.strip
-
-      case f
-         when "M"
-            opts[:report_flag] = 'M'
-         when "R"
-            opts[:report_flag] = 'R'
-         when "A"
-            opts[:report_flag] = 'A'
-         else
-            raise OptionParser::ParseError, 'Invalid value.'
       end
    end
 
@@ -420,21 +430,13 @@ if options[:max_delay] && options[:min_delay] && options[:min_delay] <= options[
 end
 
 Vulpes::Constants.add('timeout', options[:timeout]) if options[:timeout]
+
 Vulpes::Constants.add('line_seperator', options[:null_sep] ? "\0" : "\n")
 # if output_dir is nil then throw everything at stdout
 Vulpes::Constants.add('output_dir', options[:outdir] ? options[:outdir] : \
    (ENV['EXEC_DIR'] ? ENV['EXEC_DIR'] + '/report' : nil))
-
-if options[:report_flag]
-   case options[:report_flag]
-      when "M"
-         Vulpes::Constants.add('report_matched', true)
-      when "R"
-         Vulpes::Constants.add('report_reported', true)
-      when "A"
-         Vulpes::Constants.add('report_all', true)         
-   end
-end
+Vulpes::Constants.add('rules_dir', options[:rules_dir]) if options[:rules_dir]
+Vulpes::Constants.add('rules_override_as', options[:report_rules_override_as]) if options[:report_rules_override_as]
 
 generate_report_flag = !(options[:no_report] || false)
 report_domain = options[:report_domain]
@@ -442,8 +444,6 @@ report_test_all = options[:report_test_all] || Vulpes::Defaults::Rules.test_all
 datafile_fmt = options[:report_datafile_fmt] || Vulpes::Defaults::Report.datafile_format
 reportfile_fmt = options[:report_reportfile_fmt] || Vulpes::Defaults::Report.reportfile_format
 mark_fetched_flag = !(options[:report_no_mark] || false)
-
-
 
 
 begin

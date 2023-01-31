@@ -75,14 +75,6 @@ module Report
          obj[:length] = obj[:length] + 1
          obj[:unreported] = obj[:unreported] + 1 if md.url_reported?.kind_of?(FalseClass)
 
-         # This should be the first check but to update count for each severity
-         # this should comes after db fetch
-         unless Vulpes::Constants.has('report_all') && \
-            Vulpes::Constants.get('report_all').kind_of?(TrueClass)
-
-            return if md.url_reported?
-         end
-
          df_robj = {}
 
          df_robj[:url_ref] = md.url_hash
@@ -300,7 +292,7 @@ module Report
 
       def create_pdf_report
          # TODO FIXME implement this for html to pdf or pdf from scratch
-         Vulpes::Logger.debug "PDF format is NOT YET IMPLEMENTED. Generating in HTML instead."
+         Vulpes::Logger.warn "PDF format is NOT YET IMPLEMENTED. Generating in HTML instead."
 
          create_html_report
       end

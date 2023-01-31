@@ -50,5 +50,9 @@ module Vulpes
          print "\n"
       end
 
+
+      class << self
+         alias_method :warn, :warning
+      end
    end
 end
