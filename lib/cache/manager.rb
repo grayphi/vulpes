@@ -523,9 +523,6 @@ module Cache
 
       return if prev_flag.kind_of?(FalseClass)
 
-      Vulpes::Logger.debug "prep_st :: #{prep_st}"
-      Vulpes::Logger.debug "prep_st_vals :: #{prep_st_vals}"
-
       mysql_get_dorks prep_st, *prep_st_vals, &block
     end
 

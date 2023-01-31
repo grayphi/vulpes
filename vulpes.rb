@@ -395,7 +395,7 @@ pattern_obj[:find_string] = options[:pattern_find] if options[:pattern_find]
 search_engine = options[:crawler_search_engine] || Vulpes::Defaults::Web.search_engine
 search_text = options[:crawler_search_text] || []
 search_page_size = options[:crawler_search_page_size] || Vulpes::Defaults::Web.page_size
-Vules::Constants.add('crawler_state', options[:crawler_state] || Vulpes::Defaults::Web.crawler_state)
+Vulpes::Constants.add('crawler_state', options[:crawler_state] || Vulpes::Defaults::Web.crawler_state)
 dorks_count = options[:crawler_dorks_count]
 pages_per_dork = options[:crawler_pages_per_dork] || Vulpes::Defaults::Web.pages_per_dork
 pages_total = options[:crawler_pages_total]

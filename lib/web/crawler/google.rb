@@ -40,10 +40,7 @@ module Web
 
             proxy = Web::Proxy::Manager.get_instance.use_proxy
 
-            if proxy.nil?
-               proxy = ""
-               wait_check
-            end
+            wait_check if proxy.nil?
 
             begin
                @response = fetch_url(get_url, :open_timeout => Vulpes::Constants.get('timeout'), \
@@ -66,6 +63,8 @@ module Web
             else
                @status = @response.status if @response
             end
+
+            Vulpes::Logger.debug "Fetched with status: #{@status}"
          end
 
          def next_page(&block)
