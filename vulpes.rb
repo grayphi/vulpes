@@ -7,6 +7,7 @@ else
 end
 
 require 'optparse'
+require 'concurrent'
 require_relative 'lib/core'
 
 options = {}
@@ -462,6 +463,9 @@ search_engine = case search_engine
       Web::Crawler::Google.type
 end
 
+tp_lock = Mutex.new
+thread_pool = Concurrent::FixedThreadPool.new(Vulpes::Constants.get('threads_count'), auto_terminate: false)
+
 pt_count = 0
 Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
    c_dork ||= 0
@@ -469,33 +473,36 @@ Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
 
    break unless dorks_count.nil? || c_dork <= dorks_count
 
-   # thread starts
-   # sync this statement
-   break unless pages_total.nil? || pt_count < pages_total
+   tp_lock.synchronize { break unless pages_total.nil? || pt_count < pages_total }
 
-   request = Web::Request.create search_engine, dork
+   thread_pool.post do
+      request = Web::Request.create search_engine, dork
 
-   request.set_page_size search_page_size
-   search_text.each { |text| request.add_search_string text }
+      request.set_page_size search_page_size
+      search_text.each { |text| request.add_search_string text }
 
-   response = request.execute
-   response.cache_response
-
-   # sync this statement
-   pt_count = pt_count + 1
-   p_count = 1
-   while p_count < pages_per_dork && response.has_more_pages?
-      # sync these 2 statement
-      break unless pages_total.nil? || pt_count < pages_total
-      pt_count = pt_count + 1
-      p_count = p_count + 1
-
-
-      response.next_page
+      response = request.execute
       response.cache_response
+
+      tp_lock.synchronize { pt_count = pt_count + 1 }
+
+      p_count = 1
+      while p_count < pages_per_dork && response.has_more_pages?
+
+         tp_lock.synchronize do
+            break unless pages_total.nil? || pt_count < pages_total
+            pt_count = pt_count + 1
+         end
+         p_count = p_count + 1
+
+         response.next_page
+         response.cache_response
+      end
    end
-   # thread ends
 end
+
+thread_pool.shutdown
+thread_pool.wait_for_termination
 
 if generate_report_flag && !(report_domain.nil? || report_domain.strip.empty?)
    rules_man = Rules::Manager.get_instance report_domain, !report_test_all
