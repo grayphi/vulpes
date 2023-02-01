@@ -43,7 +43,7 @@ module Web
          case Vulpes::Constants.get('crawler_state')
             when "resume"
                dork_hash = @dork.dork_hash
-               s_str = get_search_string.strip
+               s_str = get_search_string
                ref_hash = nil
 
                if s_str.nil? || s_str.empty?
@@ -69,7 +69,7 @@ module Web
          end
 
          @response ||= Web::Response.create self, @crawler
-         
+
          @crawler.fetch &block
 
          @response
@@ -88,7 +88,7 @@ module Web
          q = @query_strings.clone if @query_strings
          q.unshift @dork.dork
          
-         q.join ' '
+         q.join(' ').strip
       end
 
       def get_dork
@@ -99,7 +99,7 @@ module Web
          q = ""
          q = @query_strings.join(' ') if @query_strings
 
-         q
+         q.strip
       end
 
 

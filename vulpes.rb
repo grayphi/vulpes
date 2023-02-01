@@ -132,12 +132,14 @@ def parseargs(args)
    opt.on('--Cengine SENGINE', String, 'Search Engine to use. [google(default)].') do |ce|
       ce.strip!
       raise UsageError, "Search engine can't be empty." if ce.empty?
-
-      case ce.downcase
-      when "google"
-         opts[:crawler_search_engine] = 'google'
-      else
-         raise UsageError, "Illegal search-engine value(#{ce})." if ce.empty?
+      
+      ce.downcase!
+      lvals = ['google']
+      case ce
+         when *lvals
+            opts[:crawler_search_engine] = ce
+         else
+            raise UsageError, "Illegal search-engine value(#{ce})." if ce.empty?
       end
    end
 
@@ -160,13 +162,12 @@ def parseargs(args)
       cs.strip!
       raise UsageError, "Crawler's state can't be empty." if cs.empty?
 
+      lvals = ['resume', 'new']
       case cs
-      when "resume"
-         opts[:crawler_state] = cs
-      when "new"
-         opts[:crawler_state] = cs
-      else
-         raise UsageError, "Illegal crawler's state value(#{cs})."
+         when *lvals
+            opts[:crawler_state] = cs
+         else
+            raise UsageError, "Illegal crawler's state value(#{cs})."
       end
    end
 
@@ -287,9 +288,9 @@ def parseargs(args)
       rf.strip!
       raise UsageError, "rules override flag can't be empty." if rf.empty?
 
-      lval = ['replace', 'merge']
+      lvals = ['replace', 'merge']
       case rf
-         when *lval
+         when *lvals
             opts[:report_rules_override_as] = rf
          else
             raise OptionParser::ParseError, 'Invalid rules override flag value.'
@@ -315,9 +316,9 @@ def parseargs(args)
       dff.strip!
       raise UsageError, "Datafile format can't be empty." if dff.empty?
 
-      lval = ["csv", 'json']
+      lvals = ["csv", 'json']
       case dff
-         when *lval
+         when *lvals
             opts[:report_datafile_fmt] = dff
          else
             raise OptionParser::ParseError, 'Invalid datafile format value.'
@@ -328,9 +329,9 @@ def parseargs(args)
       rff.strip!
       raise UsageError, "Reportfile format can't be empty." if rff.empty?
 
-      lval = ["html", 'pdf']
+      lvals = ["html", 'pdf']
       case rff
-         when *lval
+         when *lvals
             opts[:report_reportfile_fmt] = rff
          else
             raise OptionParser::ParseError, 'Invalid reportfile format value.'

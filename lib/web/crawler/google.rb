@@ -94,7 +94,7 @@ module Web
                (@page_no - 1) * @page_size), @page_size]
          end
 
-         attr_reader :page_size, :response, :status
+         attr_reader :page_size, :response, :status, :page_no
 
          private_class_method :new
       end
