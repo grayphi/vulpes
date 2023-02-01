@@ -25,7 +25,7 @@ module Cache
       clean
 
       Vulpes::Logger.debug("Closing Db instance.")
-      @db_instance.close
+      @db_instance.close if @db_instance
     end
 
     def cache_dork(dork)
