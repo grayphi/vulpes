@@ -123,7 +123,7 @@ module Cache
           if link
             origin = Web::Utils::URLUtils.get_host(link)
             origin = url unless origin
-            
+
             begin
               ps.execute ref_hash, link, origin
             rescue Mysql2::Error => e
