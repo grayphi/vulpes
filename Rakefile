@@ -7,6 +7,8 @@ require 'vulpes/logger'
 require 'defaults'
 require 'vulpes/constants'
 require 'vulpes/config'
+require 'vulpes/dork'
+require 'scripts/cache/build_cache'
 
 Vulpes::Logger.init
 Vulpes::Config.configLoader
@@ -34,6 +36,7 @@ task :conf_post do
 
   Rake::Task["db_conf"].invoke unless ENV['skip_db']
   Rake::Task["db_build"].invoke
+  Rake::Task["cache_dorks"].invoke
 end
 
 task :db_conf do
@@ -83,3 +86,12 @@ task :db_rebuild do
   Rake::Task["db_build"].invoke
 end
 
+task :cache_dorks do
+  Vulpes::Logger.info('Loading patterns into db.')
+  CacheBuilder.build
+end
+
+task :db_reload do
+  Rake::Task["db_rebuild"].invoke
+  Rake::Task["cache_dorks"].invoke
+end

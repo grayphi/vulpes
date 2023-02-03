@@ -450,6 +450,7 @@ mark_fetched_flag = !(options[:report_no_mark] || false)
 
 begin
 
+Vulpes::Logger.info "Loading config."
 Vulpes::Config.loadFile options[:config_file]
 Vulpes::Config.loadConfig options[:config_obj]
 
@@ -466,6 +467,7 @@ end
 tp_lock = Mutex.new
 thread_pool = Concurrent::FixedThreadPool.new(Vulpes::Constants.get('threads_count'), auto_terminate: false)
 
+Vulpes::Logger.info "Searching patterns."
 pt_count = 0
 Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
    c_dork ||= 0
@@ -474,6 +476,8 @@ Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
    break unless dorks_count.nil? || c_dork <= dorks_count
 
    tp_lock.synchronize { break unless pages_total.nil? || pt_count < pages_total }
+
+   Vulpes::Logger.info "Got pattern: #{dork.to_s}"
 
    thread_pool.post do
       request = Web::Request.create search_engine, dork
@@ -505,6 +509,8 @@ thread_pool.shutdown
 thread_pool.wait_for_termination
 
 if generate_report_flag && !(report_domain.nil? || report_domain.strip.empty?)
+   Vulpes::Logger.info "Testing Rules."
+
    rules_man = Rules::Manager.get_instance report_domain, !report_test_all
    report_man = Report::Manager.get_instance datafile_fmt, reportfile_fmt
 
@@ -512,11 +518,14 @@ if generate_report_flag && !(report_domain.nil? || report_domain.strip.empty?)
    rules_man.each do |md|
       report_man.add md
    end
+
+   Vulpes::Logger.info "Generating Report."
    report_man.generate_report
    report_man.mark_as_fetched if mark_fetched_flag
 end
 
 ensure
+   Vulpes::Logger.info "Closing."
    # This must be the last call to close all opened objects
    Vulpes::GC.get_instance.close_vulpes
 end

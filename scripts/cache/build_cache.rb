@@ -1,3 +1,5 @@
+require 'cache/manager'
+
 class CacheBuilder
    def self.build
       require 'dorks/dork109'
