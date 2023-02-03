@@ -91,6 +91,7 @@ end
 task :cache_dorks do
   Vulpes::Logger.info('Loading patterns into db.')
   CacheBuilder.build
+  Vulpes::GC.get_instance.close_vulpes
 end
 
 task :db_reload do
