@@ -25,7 +25,7 @@ module Cache
       clean
 
       Vulpes::Logger.debug("Closing Db instance.")
-      @db_instance.close
+      @db_instance.close if @db_instance
     end
 
     def cache_dork(dork)
@@ -123,7 +123,7 @@ module Cache
           if link
             origin = Web::Utils::URLUtils.get_host(link)
             origin = url unless origin
-            
+
             begin
               ps.execute ref_hash, link, origin
             rescue Mysql2::Error => e
@@ -522,9 +522,6 @@ module Cache
       prep_st << ' order by severity desc ' if prev_flag
 
       return if prev_flag.kind_of?(FalseClass)
-
-      Vulpes::Logger.debug "prep_st :: #{prep_st}"
-      Vulpes::Logger.debug "prep_st_vals :: #{prep_st_vals}"
 
       mysql_get_dorks prep_st, *prep_st_vals, &block
     end

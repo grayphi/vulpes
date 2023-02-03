@@ -7,6 +7,7 @@ else
 end
 
 require 'optparse'
+require 'concurrent'
 require_relative 'lib/core'
 
 options = {}
@@ -132,12 +133,14 @@ def parseargs(args)
    opt.on('--Cengine SENGINE', String, 'Search Engine to use. [google(default)].') do |ce|
       ce.strip!
       raise UsageError, "Search engine can't be empty." if ce.empty?
-
-      case ce.downcase
-      when "google"
-         opts[:crawler_search_engine] = 'google'
-      else
-         raise UsageError, "Illegal search-engine value(#{ce})." if ce.empty?
+      
+      ce.downcase!
+      lvals = ['google']
+      case ce
+         when *lvals
+            opts[:crawler_search_engine] = ce
+         else
+            raise UsageError, "Illegal search-engine value(#{ce})." if ce.empty?
       end
    end
 
@@ -160,13 +163,12 @@ def parseargs(args)
       cs.strip!
       raise UsageError, "Crawler's state can't be empty." if cs.empty?
 
+      lvals = ['resume', 'new']
       case cs
-      when "resume"
-         opts[:crawler_state] = cs
-      when "new"
-         opts[:crawler_state] = cs
-      else
-         raise UsageError, "Illegal crawler's state value(#{cs})."
+         when *lvals
+            opts[:crawler_state] = cs
+         else
+            raise UsageError, "Illegal crawler's state value(#{cs})."
       end
    end
 
@@ -287,9 +289,9 @@ def parseargs(args)
       rf.strip!
       raise UsageError, "rules override flag can't be empty." if rf.empty?
 
-      lval = ['replace', 'merge']
+      lvals = ['replace', 'merge']
       case rf
-         when *lval
+         when *lvals
             opts[:report_rules_override_as] = rf
          else
             raise OptionParser::ParseError, 'Invalid rules override flag value.'
@@ -315,9 +317,9 @@ def parseargs(args)
       dff.strip!
       raise UsageError, "Datafile format can't be empty." if dff.empty?
 
-      lval = ["csv", 'json']
+      lvals = ["csv", 'json']
       case dff
-         when *lval
+         when *lvals
             opts[:report_datafile_fmt] = dff
          else
             raise OptionParser::ParseError, 'Invalid datafile format value.'
@@ -328,9 +330,9 @@ def parseargs(args)
       rff.strip!
       raise UsageError, "Reportfile format can't be empty." if rff.empty?
 
-      lval = ["html", 'pdf']
+      lvals = ["html", 'pdf']
       case rff
-         when *lval
+         when *lvals
             opts[:report_reportfile_fmt] = rff
          else
             raise OptionParser::ParseError, 'Invalid reportfile format value.'
@@ -395,7 +397,7 @@ pattern_obj[:find_string] = options[:pattern_find] if options[:pattern_find]
 search_engine = options[:crawler_search_engine] || Vulpes::Defaults::Web.search_engine
 search_text = options[:crawler_search_text] || []
 search_page_size = options[:crawler_search_page_size] || Vulpes::Defaults::Web.page_size
-Vules::Constants.add('crawler_state', options[:crawler_state] || Vulpes::Defaults::Web.crawler_state)
+Vulpes::Constants.add('crawler_state', options[:crawler_state] || Vulpes::Defaults::Web.crawler_state)
 dorks_count = options[:crawler_dorks_count]
 pages_per_dork = options[:crawler_pages_per_dork] || Vulpes::Defaults::Web.pages_per_dork
 pages_total = options[:crawler_pages_total]
@@ -448,6 +450,7 @@ mark_fetched_flag = !(options[:report_no_mark] || false)
 
 begin
 
+Vulpes::Logger.info "Loading config."
 Vulpes::Config.loadFile options[:config_file]
 Vulpes::Config.loadConfig options[:config_obj]
 
@@ -461,6 +464,10 @@ search_engine = case search_engine
       Web::Crawler::Google.type
 end
 
+tp_lock = Mutex.new
+thread_pool = Concurrent::FixedThreadPool.new(Vulpes::Constants.get('threads_count'), auto_terminate: false)
+
+Vulpes::Logger.info "Searching patterns."
 pt_count = 0
 Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
    c_dork ||= 0
@@ -468,35 +475,42 @@ Cache::Manager.get_instance.get_dorks_by_obj pattern_obj do |dork|
 
    break unless dorks_count.nil? || c_dork <= dorks_count
 
-   # thread starts
-   # sync this statement
-   break unless pages_total.nil? || pt_count < pages_total
+   tp_lock.synchronize { break unless pages_total.nil? || pt_count < pages_total }
 
-   request = Web::Request.create search_engine, dork
+   Vulpes::Logger.info "Got pattern: #{dork.to_s}"
 
-   request.set_page_size search_page_size
-   search_text.each { |text| request.add_search_string text }
+   thread_pool.post do
+      request = Web::Request.create search_engine, dork
 
-   response = request.execute
-   response.cache_response
+      request.set_page_size search_page_size
+      search_text.each { |text| request.add_search_string text }
 
-   # sync this statement
-   pt_count = pt_count + 1
-   p_count = 1
-   while p_count < pages_per_dork && response.has_more_pages?
-      # sync these 2 statement
-      break unless pages_total.nil? || pt_count < pages_total
-      pt_count = pt_count + 1
-      p_count = p_count + 1
-
-
-      response.next_page
+      response = request.execute
       response.cache_response
+
+      tp_lock.synchronize { pt_count = pt_count + 1 }
+
+      p_count = 1
+      while p_count < pages_per_dork && response.has_more_pages?
+
+         tp_lock.synchronize do
+            break unless pages_total.nil? || pt_count < pages_total
+            pt_count = pt_count + 1
+         end
+         p_count = p_count + 1
+
+         response.next_page
+         response.cache_response
+      end
    end
-   # thread ends
 end
 
+thread_pool.shutdown
+thread_pool.wait_for_termination
+
 if generate_report_flag && !(report_domain.nil? || report_domain.strip.empty?)
+   Vulpes::Logger.info "Testing Rules."
+
    rules_man = Rules::Manager.get_instance report_domain, !report_test_all
    report_man = Report::Manager.get_instance datafile_fmt, reportfile_fmt
 
@@ -504,11 +518,14 @@ if generate_report_flag && !(report_domain.nil? || report_domain.strip.empty?)
    rules_man.each do |md|
       report_man.add md
    end
+
+   Vulpes::Logger.info "Generating Report."
    report_man.generate_report
    report_man.mark_as_fetched if mark_fetched_flag
 end
 
 ensure
+   Vulpes::Logger.info "Closing."
    # This must be the last call to close all opened objects
    Vulpes::GC.get_instance.close_vulpes
 end

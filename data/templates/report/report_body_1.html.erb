@@ -26,9 +26,9 @@
    <span class="descriptor">Pattern Desription</span>
    <pre class="no-up-down-margin descriptor-data multilined"><%= self.get_escaped_pattern_description %></pre>
    <span class="descriptor">Succeed?</span>
-   <span class="descriptor-data <%= self.is_succeed? ? 'flag-okay' : 'flag-error' %>"><%= self.is_succeed? %></span><br/>
+   <span class="descriptor-data <%= self.is_succeed?.downcase.eql?('yes') ? 'flag-okay' : 'flag-error' %>"><%= self.is_succeed? %></span><br/>
    <span class="descriptor">Reported?</span>
-   <span class="descriptor-data <%= self.is_reported? ? 'flag-okay' : 'flag-error' %>"><%= self.is_reported? %></span><br/>
+   <span class="descriptor-data <%= self.is_reported?.downcase.eql?('yes') ? 'flag-okay' : 'flag-error' %>"><%= self.is_reported? %></span><br/>
    <span class="descriptor">Reason of Include</span>
    <pre class="no-up-down-margin descriptor-data multilined"><%= self.get_escaped_reason_of_include %></pre>
    <span class="descriptor">blacklist rules matches (If any).</span>
