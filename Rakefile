@@ -2,6 +2,7 @@
 
 require_relative 'lib/vulpes/loader'
 require 'vulpes/object'
+require 'vulpes/closeable'
 require 'vulpes/errors'
 require 'vulpes/logger'
 require 'defaults'
