@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5325
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2019-08-05
+Author:           Sathishshan
+GoogleDork:       intitle:"Index of" wp-admin
+Description:      intitle:"Index of" wp-admin
+
+
+Dork: intitle:"Index of" wp-admin
+ Author: Sathishshan
+ Info: Contains wordpress sensitive information & sensitive files
+ 

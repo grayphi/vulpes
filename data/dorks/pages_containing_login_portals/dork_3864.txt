@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3864
+Severity:		  4
+Category:         pages_containing_login_portals
+Published Date:   2013-08-08
+Author:           anonymous
+GoogleDork:       inurl:5000/webman/index.cgi
+Description:      inurl:5000/webman/index.cgi
+
+
+Synology nas login 

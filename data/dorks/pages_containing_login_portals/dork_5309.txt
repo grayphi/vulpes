@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5309
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-07-31
+Author:           Reza Abasi
+GoogleDork:       site:amazonaws.com inurl:login.php
+Description:      site:amazonaws.com inurl:login.php
+
+
+Finding login page of php sites
+ site:amazonaws.com inurl:login.php
+ 
+ Reza Abasi(Turku)
+ 

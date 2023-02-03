@@ -1,0 +1,19 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6553
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-09-21
+Author:           Sahil Saxena
+GoogleDork:       inurl:/ ims login
+Description:      inurl:/ ims login
+
+
+# Google Dork: inurl:/ ims login
+ # Description :- Dork shows admin pages of various sites and Information
+ # Managenment System login portals
+ # Date: 21/09/2020
+ # Author: Sahil Saxena
+ # LinkedIn: https://www.linkedin.com/in/sahil-saxena-1333b9174
+ 
+ Thanks,
+ Sahil Saxena
+ 

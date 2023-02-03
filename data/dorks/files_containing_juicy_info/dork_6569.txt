@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6569
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2020-09-24
+Author:           Alexandros Pappas
+GoogleDork:       intitle:"index of" "mysql.log" | "mysql.logs"
+Description:      intitle:"index of" "mysql.log" | "mysql.logs"
+
+
+# Google Dork: intitle:"index of" "mysql.log" | "mysql.logs"
+ # Files containing juicy info.
+ # Date: 24/09/2020
+ # Exploit Author: Alexandros Pappas
+ 

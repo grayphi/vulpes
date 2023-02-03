@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6130
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-05-27
+Author:           Anjali Prakash
+GoogleDork:       inurl:forgotpassword.asp
+Description:      inurl:forgotpassword.asp
+
+
+* Google Dork: *
+ 
+ inurl:forgotpassword.asp
+ 
+ *Various pages containing forgot password portals.*
+ 
+ *AUTHOR : ANJALI PRAKASH *
+ 

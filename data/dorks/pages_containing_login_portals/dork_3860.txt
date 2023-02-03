@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3860
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2013-08-08
+Author:           anonymous
+GoogleDork:       inurl:/secure/Dashboard.jspa intitle:"System Dashboard"
+Description:      inurl:/secure/Dashboard.jspa intitle:"System Dashboard"
+
+
+Finds login pages and system dashboards for Atlassian's JIRA. - Andy G - twitter.com/vxhex

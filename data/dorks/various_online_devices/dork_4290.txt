@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4290
+Severity:		  4 
+Category:         various_online_devices
+Published Date:   2016-05-30
+Author:           anonymous
+GoogleDork:       intext:"Powered by BOMGAR"
+Description:      intext:"Powered by BOMGAR"
+
+
+intext:"Powered by BOMGAR"

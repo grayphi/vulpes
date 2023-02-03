@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4865
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-06-22
+Author:           ManhNho
+GoogleDork:       intitle:"MyWebSQL" + "User ID: Password:"
+Description:      intitle:"MyWebSQL" + "User ID: Password:"
+
+
+intitle:"MyWebSQL" + "User ID: Password:"
+ 
+ MyWebSQL login pages
+ 
+ ManhNho
+ 

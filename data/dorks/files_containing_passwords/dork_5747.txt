@@ -1,0 +1,11 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5747
+Severity:		  7 
+Category:         files_containing_passwords
+Published Date:   2020-02-20
+Author:           Hilary Soita
+GoogleDork:       intext:"username=" AND "password=" ext:log
+Description:      intext:"username=" AND "password=" ext:log
+
+
+Log files containing credentials
+ 

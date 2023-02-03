@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/403
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-08-05
+Author:           anonymous
+GoogleDork:       filetype:fp3 fp3
+Description:      filetype:fp3 fp3
+
+
+These are FileMaker Pro version 3 Databases.

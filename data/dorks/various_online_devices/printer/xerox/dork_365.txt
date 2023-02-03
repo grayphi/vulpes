@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/365
+Severity:		  3 
+Category:         various_online_devices.printer.xerox
+Published Date:   2004-07-22
+Author:           anonymous
+GoogleDork:       Xerox Phaser 840 Color Printer
+Description:      Xerox Phaser 840 Color Printer
+
+
+This product is supported but no longer sold by Xerox in the United States. Support and supplies for this product continue to be available online. Replacement Product: Phaser 8400This search finds the PhaserLinkTM Printer Management Software for the Phaser 840 Color Printer. It seems at least the "Print DEMO" page works without authentication.

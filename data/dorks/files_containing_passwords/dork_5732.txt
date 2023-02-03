@@ -1,0 +1,18 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5732
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2020-02-12
+Author:           Sandesh Segu
+GoogleDork:       intitle:index.of "creds.txt"
+Description:      intitle:index.of "creds.txt"
+
+
+Dork:
+ intitle:index.of "creds.txt"
+ 
+ Description:
+ This dork queries google to find publicly available credential files.
+ 
+ Category:
+ Files Containing Juicy Info.
+ 

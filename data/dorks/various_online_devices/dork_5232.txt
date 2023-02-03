@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5232
+Severity:		  3 
+Category:         various_online_devices
+Published Date:   2019-05-30
+Author:           Fabio Stoll
+GoogleDork:       intitle:"Pi-hole Admin Console"
+Description:      intitle:"Pi-hole Admin Console"
+
+
+Description: Find Pi-Hole Admin Consoles
+ 
+ Author: Fabio Stoll (Fastor)
+ 

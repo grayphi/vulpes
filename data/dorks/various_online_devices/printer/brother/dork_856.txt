@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/856
+Severity:		  4 
+Category:         various_online_devices.printer.brother
+Published Date:   2005-02-04
+Author:           anonymous
+GoogleDork:       intitle:"Brother" intext:"View Configuration" intext:"Brother Industries, Ltd."
+Description:      intitle:"Brother" intext:"View Configuration" intext:"Brother Industries, Ltd."
+
+
+Finds a real bunch of Brother printers

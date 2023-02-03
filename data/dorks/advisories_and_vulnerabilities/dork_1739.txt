@@ -1,0 +1,11 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1739
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       "Uploader by CeleronDude."
+Description:      "Uploader by CeleronDude."
+
+
+Uploader by CeleronDude 5.3.0 Shell Upload: https://www.exploit-db.com/exploits/10523
+Uploader by CeleronDude 5.3.0 - Upload Vulnerability: https://www.exploit-db.com/exploits/11166

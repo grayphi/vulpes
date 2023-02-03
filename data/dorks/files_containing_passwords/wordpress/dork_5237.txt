@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5237
+Severity:		  7 
+Category:         files_containing_passwords.wordpress
+Published Date:   2019-06-03
+Author:           Prasad Borvankar
+GoogleDork:       intext:"wordpress" filetype:xls login & password
+Description:      intext:"wordpress" filetype:xls login & password
+
+
+Excel files containing the user names and passwords.
+ 
+ Google Dork: *intext:"wordpress" filetype:xls login & password*
+ 
+ Author: Prasad Borvankar.
+ 

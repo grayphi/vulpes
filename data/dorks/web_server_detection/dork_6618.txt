@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6618
+Severity:		  6 
+Category:         web_server_detection
+Published Date:   2020-10-19
+Author:           Sibi Mathew George
+GoogleDork:       inurl:/phpPgAdmin/browser.php
+Description:      inurl:/phpPgAdmin/browser.php
+
+
+Google Dork: inurl:/phpPgAdmin/browser.php
+ 
+ Description: This Google Dork is used for detecting phpPgAdmin PostgreSQL
+ Servers.
+ 
+ Author: Sibi Mathew George
+ 

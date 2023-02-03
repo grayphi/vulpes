@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3876
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2013-08-08
+Author:           anonymous
+GoogleDork:       inurl:8080 intitle:"Dashboard [Jenkins]"
+Description:      inurl:8080 intitle:"Dashboard [Jenkins]"
+
+
+#Summary: Acces to Jenkins Dashboard #Author: g00gl3 5c0u7

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4595
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2017-10-17
+Author:           anonymous
+GoogleDork:       ext:txt | ext:conf | ext:inc | ext:doc intext:php class JConfig
+Description:      ext:txt | ext:conf | ext:inc | ext:doc intext:php class JConfig
+
+
+Joomla configuration files! Author: Augusto Pereira http://www.augustopereira.com.br

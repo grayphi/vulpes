@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3723
+Severity:		  4 
+Category:         vulnerable_files
+Published Date:   2011-05-28
+Author:           anonymous
+GoogleDork:       inurl:loader-wizard ext:php
+Description:      ionCube Loader Wizard information disclosure
+
+
+inurl:loader-wizard ext:php This dork displays sensitive information Auth0r: MaXe

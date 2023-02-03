@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1712
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       inurl:"tradeCategory.php?id= "
+Description:      inurl:"tradeCategory.php?id= "
+
+
+Hampshire Trading Standards Script SQL Injection Vulnerability: https://www.exploit-db.com/exploits/12768

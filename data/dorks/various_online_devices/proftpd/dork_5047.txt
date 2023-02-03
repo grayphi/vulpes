@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5047
+Severity:		  6 
+Category:         various_online_devices.proftpd
+Published Date:   2018-12-04
+Author:           XLOMBOX
+GoogleDork:       intitle:ProFTPD Admin - V1.04
+Description:      intitle:ProFTPD Admin - V1.04
+
+
+intitle:ProFTPD Admin - V1.04
+ 
+ will show you admin page, no login needed
+ (by XLOMBOX)
+ 

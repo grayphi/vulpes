@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/405
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-08-05
+Author:           anonymous
+GoogleDork:       filetype:cfg auto_inst.cfg
+Description:      filetype:cfg auto_inst.cfg
+
+
+Mandrake auto-install configuration files. These contain information about the installed packages, networking setttings and even user accounts.

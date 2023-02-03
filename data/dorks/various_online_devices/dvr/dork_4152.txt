@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4152
+Severity:		  5 
+Category:         various_online_devices.dvr
+Published Date:   2015-12-14
+Author:           anonymous
+GoogleDork:       intitle:"CPPLUS DVR -Web View"
+Description:      intitle:"CPPLUS DVR -Web View"
+
+
+CPPLUS DVR - Stefano

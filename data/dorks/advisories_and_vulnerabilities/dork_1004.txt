@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1004
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2005-06-03
+Author:           anonymous
+GoogleDork:       +intext:"powered by MyBulletinBoard"
+Description:      +intext:"powered by MyBulletinBoard"
+
+
+MyBB is a powerful, efficient and free forum package developed in PHP and MySQL. There is an SQL Injection Exploit available for MyBulletinBoard (MyBB)

@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5151
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-03-11
+Author:           Lazy Hacker
+GoogleDork:       inurl:'/logon/logonServlet'
+Description:      inurl:'/logon/logonServlet'
+
+
+*Search: * SAP NetWeaver Application Server Java Login
+
+*Google Dorks: *inurl:'/logon/logonServlet'
+*Default Credentials:* TMSADM: $1Pawd2&
+
+*Author:* Rishabh Sharma (Lazy Hacker)

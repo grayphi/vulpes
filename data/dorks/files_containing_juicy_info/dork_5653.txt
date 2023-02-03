@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5653
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2019-11-21
+Author:           Ismail Tasdelen
+GoogleDork:       intext:"@outlook.com" ext:log
+Description:      intext:"@outlook.com" ext:log
+
+
+Files containing juicy nfo:
+ 
+ intext:"@outlook.com" ext:log
+ intext:"@hotmail.com" ext:log
+ 
+ Author : Ismail Tasdelen
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/411
+Severity:		  4 
+Category:         files_containing_passwords
+Published Date:   2004-08-06
+Author:           anonymous
+GoogleDork:       filetype:pass pass intext:userid
+Description:      filetype:pass pass intext:userid
+
+
+Generally, these are dbman password files. They are not cleartext, but still allow an attacker to harvest usernames and optionally crack passwords offline.

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4096
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2015-10-16
+Author:           anonymous
+GoogleDork:       inurl:/my.logon.php3?
+Description:      inurl:/my.logon.php3?
+
+
+f5 Network Remote Access Logins -Xploit

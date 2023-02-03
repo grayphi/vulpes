@@ -1,0 +1,20 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5818
+Severity:		  7 
+Category:         files_containing_juicy_info
+Published Date:   2020-03-20
+Author:           Alexandros Pappas
+GoogleDork:       intext:"dspace.cfg" "db.username = dspace"
+Description:      intext:"dspace.cfg" "db.username = dspace"
+
+
+# Google Dork: 
+ intext:"dspace.cfg" "db.username = dspace"
+ intext:"dspace.cfg" "db.username = dspace" "db.password ="
+ 
+ # By using this dork, usernames and passwords in configuration files can be
+ found.
+ 
+ # Date: 20/03/2020
+ 
+ # Exploit Author: Alexandros Pappas
+ 

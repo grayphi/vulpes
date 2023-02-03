@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4786
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-04-18
+Author:           Bruno Schmid
+GoogleDork:       inurl:default.aspx?ReturnUrl=/spssmr -stackoverflow -youtube.com -github
+Description:      inurl:default.aspx?ReturnUrl=/spssmr -stackoverflow -youtube.com -github
+
+
+IBM® SPSS® Data Collection Interviewer Server Administration login portals
+ 
+ 
+ Bruno Schmid
+ 
+ https://ch.linkedin.com/in/schmidbruno 
+ 

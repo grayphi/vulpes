@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5670
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2019-12-19
+Author:           berat isler
+GoogleDork:       inurl:/login.aspx site:com.tr intitle:yönetim
+Description:      inurl:/login.aspx site:com.tr intitle:yönetim
+
+
+Google Dork : inurl:/login.aspx site:com.tr intitle:yönetim
+ 
+ This one is finding some important login panel in my country . You can
+ change "yönetim" to "management" on global searching.
+ 

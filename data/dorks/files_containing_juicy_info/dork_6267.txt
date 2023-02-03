@@ -1,0 +1,16 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6267
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-10
+Author:           Mahesh Rai
+GoogleDork:       "index of sqlite"
+Description:      "index of sqlite"
+
+
+# Google Dork: "index of sqlite"
+ # Title: SQLITE file disclosure
+ # Date: 06/06/2020
+ # Author: Mahesh Rai
+ # LinkedIn: https://www.linkedin.com/in/mahesh-rai
+ # Bugcrowd: https://bugcrowd.com/Mahesh_Rai
+ 

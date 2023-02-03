@@ -1,0 +1,20 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6614
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-10-15
+Author:           Javier Bernardo
+GoogleDork:       intitle:"PowerMTA" inurl:logs
+Description:      intitle:"PowerMTA" inurl:logs
+
+
+Files Containing Juicy Info
+ 
+ # Google Dork: intitle:"PowerMTA" inurl:logs
+ # Date: 10/15/2020
+ # Exploit Author: Javier Bernardo
+ 
+ 
+ Javier Bernardo
+ *Ethical Hacker | Information Security Engineer*
+ 
+ 

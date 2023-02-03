@@ -1,0 +1,12 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6189
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-06-04
+Author:           Rajat Sharma
+GoogleDork:       inurl:.drone.yml intext:git config user.email
+Description:      inurl:.drone.yml intext:git config user.email
+
+
+Google Dork: inurl:.drone.yml intext:git config user.email
+ Author: Rajat Sharma
+ Date: 2020-06-04

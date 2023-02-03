@@ -1,0 +1,11 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5247
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2019-06-05
+Author:           Chris Rogers
+GoogleDork:       inurl:old "index of" "wp-config.php"
+Description:      inurl:old "index of" "wp-config.php"
+
+
+Finds wp-config files on old defunct WordPress installations
+ 

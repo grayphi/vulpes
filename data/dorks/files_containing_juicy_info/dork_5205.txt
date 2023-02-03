@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5205
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2019-05-07
+Author:           ManhNho
+GoogleDork:       jmeter.log filetype:log
+Description:      jmeter.log filetype:log
+
+
+jmeter.log filetype:log
+ 
+ Trace jmeter log files
+ 
+ ManhNho
+ 

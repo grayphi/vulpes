@@ -1,0 +1,21 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5618
+Severity:		  6
+Category:         advisories_and_vulnerabilities.xss.coldfusion
+Published Date:   2019-11-04
+Author:           Marcos Almeida
+GoogleDork:       inurl:"index.cfm?action=" intext:"Exception in onError"
+Description:      inurl:"index.cfm?action=" intext:"Exception in onError"
+
+
+I have found a vulnerability in error page of coldfusion,
+ 
+ Name of author: Marcos Almeida
+ 
+ PoC
+ 
+ XSS
+ https://victimwebsite.com/?action=./ERROR?">&fw1pk=3
+ 
+ HTMLI
+ https://victimwebsite.com/?action=./ERROR?">ERROR&fw1pk=3
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/722
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2004-11-28
+Author:           anonymous
+GoogleDork:       intitle:"PHP Advanced Transfer" inurl:"login.php"
+Description:      intitle:"PHP Advanced Transfer" inurl:"login.php"
+
+
+PHP Advacaned Transfer is GPL'd software that claims to be the "The ultimate PHP download & upload manager". This is a search for the login pages.

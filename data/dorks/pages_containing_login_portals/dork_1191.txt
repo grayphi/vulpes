@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1191
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2005-11-16
+Author:           anonymous
+GoogleDork:       inurl:webvpn.html "login" "Please enter your"
+Description:      inurl:webvpn.html "login" "Please enter your"
+
+
+The Cisco WebVPN Services Module is a high-speed, integrated Secure Sockets Layer (SSL) VPN services module for Cisco products.

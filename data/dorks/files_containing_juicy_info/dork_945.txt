@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/945
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2005-04-26
+Author:           anonymous
+GoogleDork:       ext:ics ics
+Description:      ext:ics ics
+
+
+ICalender Fileder that can contain a lot of useful information about a possible target.

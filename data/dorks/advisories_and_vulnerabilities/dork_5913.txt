@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5913
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2020-04-20
+Author:           Alexandros Pappas
+GoogleDork:       intitle:"My Book World Edition - MyBookWorld"
+Description:      intitle:"My Book World Edition - MyBookWorld"
+
+
+# Google Dork: intitle:"My Book World Edition - MyBookWorld"
+ 
+ # By using this dork, sites vulnerable to Western Digital My Book World II
+ NAS 

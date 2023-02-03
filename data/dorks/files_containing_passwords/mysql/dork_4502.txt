@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4502
+Severity:		  7 
+Category:         files_containing_passwords.mysql
+Published Date:   2017-05-29
+Author:           anonymous
+GoogleDork:       "mysqli_connect" ext:inc
+Description:      "mysqli_connect" ext:inc
+
+
+Finds scripts containing MySQL usernames and passwords Dxtroyer

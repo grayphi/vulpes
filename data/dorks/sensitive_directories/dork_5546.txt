@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5546
+Severity:		  6 
+Category:         sensitive_directories
+Published Date:   2019-09-18
+Author:           The Dexter
+GoogleDork:       intitle:index.of "admin" filetype:sql
+Description:      intitle:index.of "admin" filetype:sql
+
+
+Google Dork: intitle:index.of "admin" filetype:sql
+ Date: 09/17/2019
+ Exploit Author: th3d3xt3r
+ 

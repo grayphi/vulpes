@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1320
+Severity:		  3
+Category:         advisories_and_vulnerabilities
+Published Date:   2006-03-30
+Author:           anonymous
+GoogleDork:       "powered by claroline" -demo
+Description:      "powered by claroline" -demo
+
+
+this is for Claroline e-learning platform

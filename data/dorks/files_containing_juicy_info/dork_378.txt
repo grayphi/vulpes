@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/378
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-07-26
+Author:           anonymous
+GoogleDork:       inurl:profiles filetype:mdb
+Description:      inurl:profiles filetype:mdb
+
+
+Microsoft Access databases containing (user) profiles ..

@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5983
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2020-05-01
+Author:           Abhi Chitkara
+GoogleDork:       intitle:"index of" dataSources.local.xml
+Description:      intitle:"index of" dataSources.local.xml
+
+
+Dork: intitle:"index of" dataSources.local.xml
+ Description: This Google dork lists out sensitive local database
+ configuration parameters for a website.
+ Author: Abhi Chitkara
+ 

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3943
+Severity:		  5 
+Category:         files_containing_passwords.typo3
+Published Date:   2014-04-07
+Author:           anonymous
+GoogleDork:       inurl:typo3conf/localconf.php
+Description:      inurl:typo3conf/localconf.php
+
+
+typo3 passwords :-) Bruno Schmid

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/456
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-09-06
+Author:           anonymous
+GoogleDork:       filetype:qbb qbb
+Description:      filetype:qbb qbb
+
+
+This search will show QuickBooks Bakup Files. Quickbook is financial accounting software so storing these files in a webtree is not a smart idea.

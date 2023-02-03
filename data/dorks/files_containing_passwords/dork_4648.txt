@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4648
+Severity:		  6 
+Category:         files_containing_passwords
+Published Date:   2018-01-03
+Author:           Huijun Chen
+GoogleDork:       ext:config + " password=" + "
+Description:      ext:config + " password=" + "
+
+
+Google Dork: Files Containing Passwords
+ 
+ Huijun Chen
+ 
+ 

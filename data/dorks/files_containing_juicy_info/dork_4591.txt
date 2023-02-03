@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4591
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2017-10-17
+Author:           anonymous
+GoogleDork:       "OTL logfile" "by OldTimer" ext:txt
+Description:      "OTL logfile" "by OldTimer" ext:txt
+
+
+Finds logs of OldTimer ListIt (main log): "OTL logfile" "by OldTimer" ext:txt Finds logs of OldTimer ListIt (extra log): "OTL Extras logfile" "by OldTimer" ext:txt -- Dan Peretz

@@ -1,0 +1,11 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/783
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2004-12-19
+Author:           anonymous
+GoogleDork:       intitle:"Athens Authentication Point"
+Description:      intitle:"Athens Authentication Point"
+
+
+Athens is an Access Management system for controlling access to web based subscription services. It offers: * secure single username access to multiple web-based access controlled services * devolved administration facilities at organisation level * remote access user accounts * encrypted account bulk upload facilities * scalable services with 3 million accounts * replication facilities at several separate physical locations, offering a resilient authentication service
+

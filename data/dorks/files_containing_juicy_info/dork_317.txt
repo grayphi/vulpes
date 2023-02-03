@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/317
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2004-07-12
+Author:           anonymous
+GoogleDork:       exported email addresses
+Description:      exported email addresses
+
+
+Loads of user information including email addresses exported in comma separated file format (.cvs). This information may not lead directly to an attack, but most certainly counts as a serious privacy violation.

@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6595
+Severity:		  6 
+Category:         files_containing_passwords
+Published Date:   2020-10-06
+Author:           Alexandros Pappas
+GoogleDork:       rootpw --iscrypted ext:cfg
+Description:      rootpw --iscrypted ext:cfg
+
+
+# Google Dork: rootpw --iscrypted ext:cfg
+ 
+ # Exposed passwords.
+ 
+ # Date: 5/10/2020
+ 
+ # Exploit Author: Alexandros Pappas
+ 

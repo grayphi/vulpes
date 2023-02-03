@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/714
+Severity:		  4 
+Category:         files_containing_juicy_info
+Published Date:   2004-11-28
+Author:           anonymous
+GoogleDork:       ext:txt "Final encryption key"
+Description:      ext:txt "Final encryption key"
+
+
+IPSec debug/log data which contains user data and password hashes.Can be used to crack passwords.

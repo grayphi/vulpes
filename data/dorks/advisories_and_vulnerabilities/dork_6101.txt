@@ -1,0 +1,19 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6101
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2020-05-19
+Author:           Alexandros Pappas
+GoogleDork:       inurl:"sites/all/modules/ckeditor" -drupalcode.org
+Description:      inurl:"sites/all/modules/ckeditor" -drupalcode.org
+
+
+# Google Dork: inurl:"sites/all/modules/ckeditor" -drupalcode.org
+ 
+ # Drupal Module CKEditor 3.0 < 3.6.2 - Persistent EventHandler Cross-Site
+ Scripting. This dork is linked to the following existing exploit:
+ https://www.exploit-db.com/exploits/18389
+ 
+ # Date: 19/05/2020
+ 
+ # Author: Alexandros Pappas
+ 

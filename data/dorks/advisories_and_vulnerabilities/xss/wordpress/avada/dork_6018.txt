@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6018
+Severity:		  6
+Category:         advisories_and_vulnerabilities.xss.wordpress.avada
+Published Date:   2020-05-05
+Author:           Abhi Chitkara
+GoogleDork:       index of /wp-content/themes/avada
+Description:      index of /wp-content/themes/avada
+
+
+Dork: index of /wp-content/themes/avada
+ Description: This Google dork lists out Advisories and Vulnerabilities
+ about the Avada theme. Ref: https://wpvulndb.com/vulnerabilities/10209
+ Author: Abhi Chitkara
+ 

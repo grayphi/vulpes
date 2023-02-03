@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3768
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2011-12-26
+Author:           anonymous
+GoogleDork:       "Powered by kryCMS"
+Description:      "Powered by kryCMS"
+
+
+kryCMS Version 3.0 SQL Injection. Author: tempe_mendoan

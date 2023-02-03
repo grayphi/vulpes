@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/153
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-04-08
+Author:           anonymous
+GoogleDork:       inurl:vbstats.php "page generated"
+Description:      inurl:vbstats.php "page generated"
+
+
+This is your typical stats page listing referrers and top ips and such. This information can certainly be used to gather information about a site and its visitors.

@@ -1,0 +1,24 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/6150
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-05-28
+Author:           Vikash Kumar
+GoogleDork:       inurl:adminlogin.jsp
+Description:      inurl:adminlogin.jsp
+
+
+- *Google Dork:*
+ 
+* inurl:adminlogin.jsp*
+ 
+ - *Results:* *The results gives a list of admin login page of various
+ website.*
+ - *Date:* *28/05/2020*
+ - *Author:* *Vikash Kumar*
+ #Description: This Page Contains Various Admin login Pages for a web server.
+Linkedin: https://www.linkedin.com/in/mdanzaruddin/
+#Date: 15-June-2020
+---
+Regards:
+Md Anzaruddin
+

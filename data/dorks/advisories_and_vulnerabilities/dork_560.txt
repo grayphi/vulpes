@@ -1,0 +1,9 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/560
+Severity:		  5 
+Category:         advisories_and_vulnerabilities
+Published Date:   2004-10-12
+Author:           anonymous
+GoogleDork:       intitle:"EMUMAIL - Login" "Powered by EMU Webmail"
+Description:      intitle:"EMUMAIL - Login" "Powered by EMU Webmail"
+
+The failure to strip script tags in emumail.cgi allows for XSS type of attack. Vulnerable systems: * EMU Webmail version 5.0 * EMU Webmail version 5.1.0 Depending on what functions you throw in there, you get certain contents of the emumail.cgi file. The vulnerability was discovered in an obsolete script named userstat.pl shipped with Open Webmail. The script doesn't properly filter out shell characters from the loginname parameter. http://www.securityfocus.com/bid/9861

@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/383
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2004-07-26
+Author:           anonymous
+GoogleDork:       "# -FrontPage-" ext:pwd inurl:(service | authors | administrators | users) "# -FrontPage-" inurl:service.pwd
+Description:      "# -FrontPage-" ext:pwd inurl:(service | authors | administrators | users) "# -FrontPage-" inurl:service.pwd
+
+
+Frontpage.. very nice clean search results listing !!No further comments required..changelog:22 jan 2005: improved by vs1400 !

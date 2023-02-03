@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/203
+Severity:		  5 
+Category:         files_containing_passwords
+Published Date:   2004-05-04
+Author:           anonymous
+GoogleDork:       filetype:properties inurl:db intext:password
+Description:      filetype:properties inurl:db intext:password
+
+
+The db.properties file contains usernames, decrypted passwords and even hostnames and ip addresses of database servers. This is VERY severe, earning the highest danger rating.

@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4873
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-06-25
+Author:           CrimsonTorso
+GoogleDork:       "CCCLogin.aspx"
+Description:      "CCCLogin.aspx"
+
+
+Find direct login pages using ProPortal.
+ 
+ ~ CrimsonTorso
+ 

@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5781
+Severity:		  5 
+Category:         files_containing_juicy_info
+Published Date:   2020-03-10
+Author:           Keval Sheth
+GoogleDork:       intitle:"index of" "access_token"
+Description:      intitle:"index of" "access_token"
+
+
+Category : Files Containing Juicy Info
+ 
+ intitle:"index of" "access_token"
+ 
+ By : Keval Sheth
+ 

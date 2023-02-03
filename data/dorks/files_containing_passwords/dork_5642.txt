@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5642
+Severity:		  7 
+Category:         files_containing_passwords
+Published Date:   2019-11-11
+Author:           Reza Abasi
+GoogleDork:       intitle:"index of" "db.conf"
+Description:      intitle:"index of" "db.conf"
+
+
+Files containing password:
+ 
+ intitle:"index of" "db.conf"
+ 
+ Reza Abasi(Turku)
+ 

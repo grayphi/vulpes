@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/52
+Severity:		  3 
+Category:         web_server_detection.printer.xerox
+Published Date:   2003-08-11
+Author:           anonymous
+GoogleDork:       aboutprinter.shtml (More Xerox printers on the web!)
+Description:      aboutprinter.shtml (More Xerox printers on the web!)
+
+
+More Xerox printers on the web! Google found these printers. Should their management interface be open to the WHOLE INTERNET? I think not.

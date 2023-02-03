@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/740
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-12-03
+Author:           anonymous
+GoogleDork:       ext:vmdk vmdk
+Description:      ext:vmdk vmdk
+
+
+VMWare allows PC emulation across a variety of platforms. These files are VMWare disk images which essentially contain a copy of an entire PC, which could contain almost anything.

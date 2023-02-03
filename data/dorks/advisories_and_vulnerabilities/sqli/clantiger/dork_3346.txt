@@ -1,0 +1,12 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3346
+Severity:		  5 
+Category:         advisories_and_vulnerabilities.sqli.clantiger
+Published Date:   2010-11-15
+Author:           anonymous
+GoogleDork:       "Powered by ClanTiger"							
+Description:      "Powered by ClanTiger"							
+
+
+ClanTiger 1.1.1 (Auth Bypass) SQL Injection Vulnerability: https://www.exploit-db.com/exploits/8472
+ClanTiger 1.1.1 (slug) Blind SQL Injection: https://www.exploit-db.com/exploits/8473
+ClanTiger 1.1.1 Multiple Cookie Handling Vulnerabilities: https://www.exploit-db.com/exploits/8471

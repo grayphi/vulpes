@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5921
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2020-04-20
+Author:           Reza Abasi
+GoogleDork:       site:*/lost-password/
+Description:      site:*/lost-password/
+
+
+Login Portal:
+ 
+ site:*/lost-password/
+ 
+ Reza Abasi(Turku)
+ 

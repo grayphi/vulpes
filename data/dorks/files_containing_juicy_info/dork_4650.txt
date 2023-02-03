@@ -1,0 +1,12 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4650
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2018-01-04
+Author:           Pancaker
+GoogleDork:       Kodi/Chorus - Web UI (View addons/Currently Playing/Remote Control/Stream/Change Settings) v2
+Description:      Kodi/Chorus - Web UI (View addons/Currently Playing/Remote Control/Stream/Change Settings) v2
+
+
+Shout out to TorrentFreak (https://torrentfreak.com/is-your-kodi-setup-being-spied-on-180101/)
+ 
+ intitle:"Chorus 2 - Kodi web interface"

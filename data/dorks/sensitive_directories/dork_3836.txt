@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3836
+Severity:		  4 
+Category:         sensitive_directories
+Published Date:   2013-04-09
+Author:           anonymous
+GoogleDork:       "index of" inurl:root intitle:symlink
+Description:      "index of" inurl:root intitle:symlink
+
+
+Google Dork: index of" inurl:root intitle:symlink Steal Others Symlink Author: Un0wn_X

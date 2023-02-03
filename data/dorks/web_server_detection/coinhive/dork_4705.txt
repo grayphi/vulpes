@@ -1,0 +1,17 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4705
+Severity:		  7 
+Category:         web_server_detection.coinhive
+Published Date:   2018-03-21
+Author:           Alfie
+GoogleDork:       "var miner = new CoinHive" intext:document.domain
+Description:      "var miner = new CoinHive" intext:document.domain
+
+
+*Google *dorks* description: *sites running the CoinHive crypto miner
+ 
+ *Google Search:* "var miner = new CoinHive" intext:document.domain
+ 
+ *Submitted by:* Alfie
+ 
+ *Website: (*https://the-infosec.com*)*
+ 

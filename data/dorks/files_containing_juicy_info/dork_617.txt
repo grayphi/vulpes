@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/617
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2004-10-24
+Author:           anonymous
+GoogleDork:       intitle:"Index of" upload size parent directory
+Description:      intitle:"Index of" upload size parent directory
+
+
+Files uploaded through ftp by other people, sometimes you can find all sorts of things from movies to important stuff.

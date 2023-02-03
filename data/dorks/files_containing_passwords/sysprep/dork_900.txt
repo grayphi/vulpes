@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/900
+Severity:		  5 
+Category:         files_containing_passwords.sysprep
+Published Date:   2005-03-20
+Author:           anonymous
+GoogleDork:       filetype:inf sysprep
+Description:      filetype:inf sysprep
+
+
+sysprep is used to drive unanttended MS Windows installations. The files contain all information for a Windows information including Administrator's passwords, IP addresses and product IDs.

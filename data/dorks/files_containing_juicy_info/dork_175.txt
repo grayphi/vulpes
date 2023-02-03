@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/175
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2004-04-21
+Author:           anonymous
+GoogleDork:       "This is a Shareaza Node"
+Description:      "This is a Shareaza Node"
+
+
+These pages are from Shareaza client programs. Various data is displayed including client version, ip address, listening ports and uptime.

@@ -1,0 +1,15 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4723
+Severity:		  3
+Category:         pages_containing_login_portals
+Published Date:   2018-04-02
+Author:           Bruno Schmid
+GoogleDork:       intitle:"private login" username -github
+Description:      intitle:"private login" username -github
+
+
+Login portals to private/exclusive area
+ 
+ 
+ 
+ Bruno Schmid
+ 

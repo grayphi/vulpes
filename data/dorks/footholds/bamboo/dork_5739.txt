@@ -1,0 +1,13 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5739
+Severity:		  4 
+Category:         footholds.bamboo
+Published Date:   2020-02-18
+Author:           ex16x41
+GoogleDork:       site:bamboo.*.* ext:action build
+Description:      site:bamboo.*.* ext:action build
+
+
+find misconfigured and open bamboo instances
+ 
+ ex16x41
+ 

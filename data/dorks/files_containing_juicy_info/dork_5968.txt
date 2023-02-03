@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5968
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2020-04-30
+Author:           Abhi Chitkara
+GoogleDork:       intitle:"index of" settings.xml
+Description:      intitle:"index of" settings.xml
+
+
+Dork: intitle:"index of" settings.xml
+ Description: This Google dork lists out sensitive settings.xml files for
+ apps/websites.
+ Author: Abhi Chitkara
+ 

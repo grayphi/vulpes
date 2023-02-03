@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/4588
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2017-10-10
+Author:           anonymous
+GoogleDork:       ext:asax
+Description:      ext:asax
+
+
+*Summary:* A Google dork that gives the information about target .NET web application and source code. *Dork discovered by:* Goktug Serez https://endpoint-labs.com

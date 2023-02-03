@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3888
+Severity:		  7 
+Category:         files_containing_passwords.rsa-key
+Published Date:   2013-09-24
+Author:           anonymous
+GoogleDork:       "BEGIN RSA PRIVATE KEY" filetype:key -github
+Description:      "BEGIN RSA PRIVATE KEY" filetype:key -github
+
+
+To find private RSA Private SSL Keys

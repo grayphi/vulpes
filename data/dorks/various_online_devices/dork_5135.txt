@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5135
+Severity:		  4 
+Category:         various_online_devices
+Published Date:   2019-03-01
+Author:           Hussain Vohra
+GoogleDork:       intitle:"NetcamSC IP Address"
+Description:      intitle:"NetcamSC IP Address"
+
+
+Reveals ip address
+ 
+ Regards
+ Hussain Vohra
+ 

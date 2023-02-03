@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/41
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2003-06-30
+Author:           anonymous
+GoogleDork:       "produced by getstats"
+Description:      "produced by getstats"
+
+
+Another web statistics package. This one originated from a google scan of an ivy league college. *sigh*There's sooo much stuff in here!

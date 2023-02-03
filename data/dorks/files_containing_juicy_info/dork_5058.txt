@@ -1,0 +1,14 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/5058
+Severity:		  3 
+Category:         files_containing_juicy_info
+Published Date:   2018-12-14
+Author:           T3jv1l
+GoogleDork:       filetype:txt "Registration Code"
+Description:      filetype:txt "Registration Code"
+
+
+My first dork
+ 
+ Thanks!
+ T3jv1l
+ 

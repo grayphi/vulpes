@@ -1,0 +1,21 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/3865
+Severity:		  6 
+Category:         files_containing_juicy_info
+Published Date:   2013-08-08
+Author:           anonymous
+GoogleDork:       inurl:wp-content/uploads/dump.sql
+Description:      inurl:wp-content/uploads/dump.sql
+
+This is *Mohan Pendyala* (penetration tester) from india.
+
+
+
+Google Dork: *inurl:wp-content/uploads/dump.sql*
+
+*
+
+*
+
+The *Dump.sql* file reveals total info about the database tables, Users,
+
+passwords..etc

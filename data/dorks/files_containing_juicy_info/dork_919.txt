@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/919
+Severity:		  2 
+Category:         files_containing_juicy_info
+Published Date:   2005-03-30
+Author:           anonymous
+GoogleDork:       WebLog Referrers
+Description:      WebLog Referrers
+
+
+ExpressionEngine is a modular, flexible, feature-packed web publishing system that adapts to a broad range of needs.

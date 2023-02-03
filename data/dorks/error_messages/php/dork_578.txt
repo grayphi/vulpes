@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/578
+Severity:		  3 
+Category:         error_messages.php
+Published Date:   2004-10-16
+Author:           anonymous
+GoogleDork:       "The script whose uid is " "is not allowed to access"
+Description:      "The script whose uid is " "is not allowed to access"
+
+
+This PHP error message is revealing the webserver's directory and user ID.

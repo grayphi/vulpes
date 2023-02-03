@@ -1,0 +1,10 @@
+GHDB URL:         https://www.exploit-db.com/ghdb/1012
+Severity:		  4 
+Category:         files_containing_passwords.php
+Published Date:   2005-06-05
+Author:           anonymous
+GoogleDork:       intitle:"phpinfo()" +"mysql.default_password" +"Zend Scripting Language Engine"
+Description:      intitle:"phpinfo()" +"mysql.default_password" +"Zend Scripting Language Engine"
+
+
+This will look throught default phpinfo pages for ones that have a default mysql password.
