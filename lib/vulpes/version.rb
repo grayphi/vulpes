@@ -29,6 +29,6 @@ module Vulpes
     HASH = get_hash
   end
 
-  VERSION = "#{Version::VERSION}-#{Version::PRERELEASE} #{Version::HASH}"
+  VERSION = "#{Version::VERSION} #{Version::HASH}"
   GEM_VERSION = "#{Version::VERSION}"
 end
