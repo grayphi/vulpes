@@ -25,7 +25,7 @@ module Vulpes
 
     VERSION = "1.0.0"
     MAJOR, MINOR, PATCH = VERSION.split('.').map { |x| x.to_i }
-    PRERELEASE = 'dev'
+    PRERELEASE = ''
     HASH = get_hash
   end
 
