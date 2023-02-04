@@ -33,9 +33,9 @@ module Vulpes
          sys_conf_file = Vulpes::Defaults::Config.sys_conf_file
          usr_conf_file = Vulpes::Defaults::Config.usr_conf_file
          
-         self.load(config_file) if File.exist? config_file
-         self.load(sys_conf_file) if File.exist? sys_conf_file
-         self.load(usr_conf_file) if File.exist? usr_conf_file
+         self.load config_file
+         self.load sys_conf_file
+         self.load usr_conf_file
 
          Vulpes::Constants.add('CONFIG', @@CONFIG)
          @@config_loaded = true
@@ -46,7 +46,7 @@ module Vulpes
 
          Vulpes::Logger.debug "Loading config from file(#{file}):"
 
-         self.load file if !"#{file}".empty? && File.exist?(file)
+         self.load file
 
          Vulpes::Constants.add('CONFIG', @@CONFIG)
       end
@@ -81,7 +81,11 @@ module Vulpes
       end
 
       def self.load(file)
-         raise VulpesIOError, "File:'#{file}' doesn't exists." unless File.exist? file
+         return if file.nil? || file.strip.empty?
+
+         file = File.expand_path file.strip
+
+         return unless File.exist? file
 
          nr = {}  # keys that needs resolution
          File.open(file, "r") do |f|
