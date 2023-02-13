@@ -88,7 +88,7 @@ module Web
 
          def get_url
             url_pat = 'https://www.google.com/search?gbv=1&client=vulpes&q=%s&btnG=Google+' \
-               + 'Search&start=%s&num=%s'
+               + 'Search&start=%s&num=%s&filter=0'
 
             url_pat % [get_encoded_qstring, (@page_no == 1 ? '' : \
                (@page_no - 1) * @page_size), @page_size]
