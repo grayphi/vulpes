@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-if ENV['KERNEL_DBG'] && ENV['KERNEL_DBG'] == 1
+if ENV['KERNEL_DBG'] && ENV['KERNEL_DBG'].to_i == 1
    $KERNEL_DEBUG = true
 else
    $KERNEL_DEBUG = false
@@ -217,7 +217,7 @@ def parseargs(args)
       opts[:wait] = t
    end
 
-   opt.on('--timeout', Integer, 'Request timeout(sec).') do |t|
+   opt.on('--timeout tsec', Integer, 'Request timeout(sec).') do |t|
       raise UsageError, 'Invalid timeout provided, value must be > 0' if t <= 0
       opts[:timeout] = t
    end
@@ -355,6 +355,7 @@ def parseargs(args)
       exit
    rescue => e
       STDERR.puts "#{e.message}\n"
+      STDERR.puts e.backtrace if $KERNEL_DEBUG
       exit
    end
 
