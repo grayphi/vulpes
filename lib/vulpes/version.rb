@@ -25,10 +25,8 @@ module Vulpes
 
     VERSION = "1.0.3"
     MAJOR, MINOR, PATCH = VERSION.split('.').map { |x| x.to_i }
-    PRERELEASE = 'dev'
-    HASH = get_hash
   end
 
-  VERSION = "#{Version::VERSION}-#{Version::PRERELEASE} #{Version::HASH}"
+  VERSION = "#{Version::VERSION}"
   GEM_VERSION = "#{Version::VERSION}"
 end
